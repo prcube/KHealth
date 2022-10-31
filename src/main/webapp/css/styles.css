@@ -4034,8 +4034,8 @@ textarea.form-control-lg {
   align-items: center;
   justify-content: space-between;
   z-index: 9;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 .navbar > .container,
 .navbar > .container-fluid,

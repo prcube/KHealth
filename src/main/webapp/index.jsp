@@ -21,17 +21,17 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
                 <div class="container px-5 " id="sticky-wrapper" class="sticky-wrapper">
-                    <a class="navbar-brand" href="index.html">K-Health</a>
+                    <a class="navbar-brand" href=""><img src="image/khealth logo.png" height="100px"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">Intro</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pricing.html">Tips</a></li>
-                            <li class="nav-item"><a class="nav-link" href="faq.html">Market</a></li>
-                            <li class="nav-item"><a class="nav-link" href="faq.html">Q&A</a></li>
-                            <li class="nav-item"><a class="nav-link" href="faq.html">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
+                            <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="tips/TipsDummy.jsp">Tips</a></li>
+                            <li class="nav-item"><a class="nav-link" href="market/MarketDummy.jsp">Market</a></li>
+                            <li class="nav-item"><a class="nav-link" href="qna/QnaDummy.jsp">Q&A</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login/LoginDummy.jsp">Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -205,17 +205,21 @@
         <footer class="bg-dark py-4 mt-auto ">
             <div class="container px-5 ">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row ">
-                    <div class="col-auto " >
-                        <div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자 : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
+                    <div class="text-center">
+                        <div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자 : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구
+                        </div>
                         <div class="small m-0 text-white"></div>
                         <div class="small m-0 text-white">케이헬스 주식회사 (www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
                         <div class="small m-0 text-white">Copyright &copy; K-Health Corp. All rights reserved.</div>
                         <div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
-                        <a class="link-light small" href="#!">인스타로고</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">페이스북로고</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">유튜브로고</a>
+        
+                        <img src="/image/instagram.png" height="20px">        
+                        <span class="text-white mx-1">&middot;</span>        
+                        <img src="/image/facebook.png" height="20px">        
+                        <span class="text-white mx-1">&middot;</span>        
+                        <img src="/image/youtube.png" height="20px">        
+                        <span class="/image/text-white mx-1">&middot;</span>        
+                        <img src="/image/twitter.png" height="20px">
                     </div>
                 </div>
             </div>
