@@ -52,23 +52,21 @@
 		</nav>
 	</main>
 
+
+
+
 	<!--write  -->
 	<br>
 	<br>
 	<br>
 	<br>
 
-
-
-
-
-
-	<form action="/write.tips" method="post" enctype="multipart/form-data">
+	<form action="/insert.tips">
 		<div class="container">
 
 			<div class="form-group row">
 				<div class="col-sm-10">
-					<input type="text" readonly class="form-control-plaintext"
+					<input type="text" disabled class="form-control-plaintext"
 						id="header" value="tips 게시판 글쓰기">
 				</div>
 			</div>
@@ -96,15 +94,15 @@
 
 			<div class="row">
 				<div class="btn-group right" role="group" aria-label="Basic example">
-					<button type="submit" class="btn btn-primary" id="write">글쓰기</button>
-					<button type="button" class="btn btn-primary" id="back">목록으로</button>
+					<button type="submit" class="btn btn-primary" id="tipsinsert">글쓰기</button>
+					<button type="button" class="btn btn-primary" id="tipsback">목록으로</button>
 				</div>
 			</div>
 
 		</div>
 	</form>
 	<script>
-		$("#back").on("click",function(){
+		$("#tipsback").on("click",function(){
 			location.href = "TipsDummy.jsp"
 		})
 	</script>
