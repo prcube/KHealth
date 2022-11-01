@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,42 +53,47 @@
 		</nav>
 	</main>
 
-<table class="table align-middle mb-0 bg-white">
-      <thead class="bg-light">
-        <tr>
-          <th>Name</th>
-          <th>Title</th>
-          <th>Status</th>
-          <th>Position</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="fw-bold mb-1">한호</p>
-                <p class="text-muted mb-0">hano@gmail.com</p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <p class="fw-normal mb-1">데드리프트</p>
-            <p class="text-muted mb-0">가슴열고 등 잡고 천천히</p>
-          </td>
-          <td>
-            <span class="badge badge-success rounded-pill d-inline">Active</span>
-          </td>
-          <td>Senior</td>
-          <td>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
-              Edit
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+	<table class="table align-middle mb-0 bg-white">
+		<thead class="bg-light">
+			<tr>
+				<th>Name</th>
+				<th>Title</th>
+				<th>Status</th>
+				<th>Position</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<c:choose>
+			<c:when test="${not empty list}">
+				<c:forEach var="i" items="${list}">
+					<tbody>
+						<tr>
+							<td>
+								<div class="d-flex align-items-center">
+									<div class="ms-3">
+										<p class="fw-bold mb-1">${i.tips_seq }</p>
+										<p class="text-muted mb-0">${i.tips_writer }</p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<p class="fw-normal mb-1">${i.tips_title }</p>
+								<p class="text-muted mb-0">가슴열고 등 잡고 천천히</p>
+							</td>
+							<td><span class="badge badge-success rounded-pill d-inline">Active</span>
+							</td>
+							<td>Senior</td>
+							<td>
+								<button type="button" class="btn btn-link btn-sm btn-rounded">
+									Edit</button>
+							</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</c:when>
+		</c:choose>
+
+	</table>
 
 	<div class="row">
 		<div class="col">
@@ -107,36 +113,36 @@
 
 
 
-		<!-- Footer-->
-		<footer class="bg-dark py-4 mt-auto ">
-			<div class="container px-5 ">
-				<div
-					class="row align-items-center justify-content-between flex-column flex-sm-row ">
-					<div class="text-center">
-						<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 |
-							책임자 : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
-						<div class="small m-0 text-white"></div>
-						<div class="small m-0 text-white">케이헬스 주식회사
-							(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
-						<div class="small m-0 text-white">Copyright &copy; K-Health
-							Corp. All rights reserved.</div>
-						<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
+	<!-- Footer-->
+	<footer class="bg-dark py-4 mt-auto ">
+		<div class="container px-5 ">
+			<div
+				class="row align-items-center justify-content-between flex-column flex-sm-row ">
+				<div class="text-center">
+					<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자
+						: 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
+					<div class="small m-0 text-white"></div>
+					<div class="small m-0 text-white">케이헬스 주식회사
+						(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
+					<div class="small m-0 text-white">Copyright &copy; K-Health
+						Corp. All rights reserved.</div>
+					<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
 
-						<img src="/image/instagram.png" height="20px"> <span
-							class="text-white mx-1">&middot;</span> <img
-							src="/image/facebook.png" height="20px"> <span
-							class="text-white mx-1">&middot;</span> <img
-							src="/image/youtube.png" height="20px"> <span
-							class="/image/text-white mx-1">&middot;</span> <img
-							src="/image/twitter.png" height="20px">
-					</div>
+					<img src="/image/instagram.png" height="20px"> <span
+						class="text-white mx-1">&middot;</span> <img
+						src="/image/facebook.png" height="20px"> <span
+						class="text-white mx-1">&middot;</span> <img
+						src="/image/youtube.png" height="20px"> <span
+						class="/image/text-white mx-1">&middot;</span> <img
+						src="/image/twitter.png" height="20px">
 				</div>
 			</div>
-		</footer>
-		<!-- Bootstrap core JS-->
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- Core theme JS-->
-		<script src="/js/scripts.js"></script>
+		</div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="/js/scripts.js"></script>
 </body>
 </html>
