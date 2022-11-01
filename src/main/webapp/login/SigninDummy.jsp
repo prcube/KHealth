@@ -24,8 +24,6 @@
 <script>
   Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
- <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -61,105 +59,102 @@
 
 
 
-		<!-- 로그인 파트 -->
-		<section class="vh-100">
-			<div class="container py-5 h-100">
-				<div
-					class="row d-flex justify-content-center align-items-center h-100">
-					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
-						<div class="card shadow-2-strong" style="border-radius: 1rem;">
-							<div class="card-body p-5 text-center">
-
-								<h3 class="mb-5">Sign in</h3>
-
-								<div class="form-outline mb-4">
-									<input type="email" id="typeEmailX-2"
-										class="form-control form-control-lg" /> <label
-										class="form-label" for="typeEmailX-2">Email</label>
-								</div>
-
-								<div class="form-outline mb-4">
-									<input type="password" id="typePasswordX-2"
-										class="form-control form-control-lg" /> <label
-										class="form-label" for="typePasswordX-2">Password</label>
-								</div>
-
-								<!-- Checkbox -->
-								<div class="form-check d-flex justify-content-start mb-4">
-									<input class="form-check-input" type="checkbox" value=""
-										id="form1Example3" /> <label class="form-check-label"
-										for="form1Example3"> Remember password </label>
-								</div>
-
-								<button class="btn btn-primary btn-lg btn-block" type="submit"
-									style="width: 100%;">Login</button>
-
-								<hr class="my-4">
-
-								<a id="kakao-login-btn" href="javascript:loginWithKakao()">
-									<img
-									src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-									width="222" alt="카카오 로그인 버튼" />
-								</a>
-								<p id="token-result"></p>
-								<button id="naver_id_login" class="btn btn-lg btn-block btn-primary mb-2"
-									 type="submit">네이버
-								</button>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-<script type="text/javascript">
-  	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://localhost/index.jsp");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("YOUR_SERVICE_URL");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-  </script>
-
-
-
-		<script>
-  function loginWithKakao() {
-    Kakao.Auth.authorize({
-      redirectUri: 'http://localhost/index.jsp',
-    });
-  }
-
-  // 아래는 데모를 위한 UI 코드입니다.
-  displayToken()
-  function displayToken() {
-    var token = getCookie('authorize-access-token');
-
-    if(token) {
-      Kakao.Auth.setAccessToken(token);
-      Kakao.Auth.getStatusInfo()
-        .then(function(res) {
-          if (res.status === 'connected') {
-            document.getElementById('token-result').innerText
-              = 'login success, token: ' + Kakao.Auth.getAccessToken();
-          }
-        })
-        .catch(function(err) {
-          Kakao.Auth.setAccessToken(null);
-        });
+		<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
     }
-  }
 
-  function getCookie(name) {
-    var parts = document.cookie.split(name + '=');
-    if (parts.length === 2) { return parts[1].split(';')[0]; }
-  }
-</script>
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
 
-	</main>
+  <!-- Jumbotron -->
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Sign up now</h2>
+            <form>
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="form3Example1" class="form-control" />
+                    <label class="form-label" for="form3Example1">First name</label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="form3Example2" class="form-control" />
+                    <label class="form-label" for="form3Example2">Last name</label>
+                  </div>
+                </div>
+              </div>
 
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" id="form3Example3" class="form-control" />
+                <label class="form-label" for="form3Example3">Email address</label>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="password" id="form3Example4" class="form-control" />
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                <label class="form-check-label" for="form2Example33">
+                  Subscribe to our newsletter
+                </label>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Sign up
+              </button>
+
+              <!-- Register buttons -->
+              <div class="text-center">
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
 
 
 
