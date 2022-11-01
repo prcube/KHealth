@@ -2,6 +2,9 @@ package TIPSDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -48,5 +51,27 @@ public class TipsDAO {
 
 		}
 	}
+	
+	public List<TipsDTO> selectAll() throws Exception {
+		String sql = "select * from tips order by seq desc";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+
+			ResultSet rs = pstat.executeQuery();
+			List<TipsDTO> list = new ArrayList<>();
+			while (rs.next()) {
+				TipsDTO dto = new TipsDTO();
+				dto.setTips_seq(rs.getInt("seq"));
+				dto.setTips_title(rs.getString("title"));
+				dto.setTips_writer(rs.getString("writer"));
+				dto.setTips_contents(rs.getString("contents"));
+				dto.setTips_write_date(rs.getTimestamp("write_date"));
+				dto.setTips_view_count(rs.getInt("view_count"));
+				list.add(dto);
+			}
+			return list;
+		}
+	}
+	
+	
 
 }

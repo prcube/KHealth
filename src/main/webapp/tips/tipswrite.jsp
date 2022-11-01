@@ -61,7 +61,7 @@
 	<br>
 	<br>
 
-	<form action="/insert.tips">
+	<form action="/insert.tips" method="post">
 		<div class="container">
 
 			<div class="form-group row">

@@ -86,62 +86,6 @@
             </button>
           </td>
         </tr>
-        <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="fw-bold mb-1">한호</p>
-                <p class="text-muted mb-0">hano@gmail.com</p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <p class="fw-normal mb-1">스쿼트</p>
-            <p class="text-muted mb-0">가슴열고 호흡 잡고 고관절 열고</p>
-          </td>
-          <td>
-            <span class="badge badge-primary rounded-pill d-inline"
-                  >Onboarding</span
-              >
-          </td>
-          <td>Junior</td>
-          <td>
-            <button
-                    type="button"
-                    class="btn btn-link btn-rounded btn-sm fw-bold"
-                    data-mdb-ripple-color="dark"
-                    >
-              Edit
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="fw-bold mb-1">한호</p>
-                <p class="text-muted mb-0">hano@gmail.com</p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <p class="fw-normal mb-1">벤치프레스</p>
-            <p class="text-muted mb-0">견갑 잡고 가슴 열고 천천히</p>
-          </td>
-          <td>
-            <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
-          </td>
-          <td>Senior</td>
-          <td>
-            <button
-                    type="button"
-                    class="btn btn-link btn-rounded btn-sm fw-bold"
-                    data-mdb-ripple-color="dark"
-                    >
-              Edit
-            </button>
-          </td>
-        </tr>
       </tbody>
     </table>
 

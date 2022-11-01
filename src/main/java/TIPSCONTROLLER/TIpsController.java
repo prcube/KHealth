@@ -1,6 +1,7 @@
 package TIPSCONTROLLER;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,15 +27,19 @@ public class TIpsController extends HttpServlet {
 			if(uri.equals("/insert.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
 				
+				List<TipsDTO> list = dao.selectAll();
+				
 				String tips_writer =(String)(request.getSession().getAttribute("loginID")); 
 				String tips_title = request.getParameter("tips_title");
 				String tips_contents = request.getParameter("tips_contents");
 				
 				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"");
 				//request.getRequestDispatcher("/TipsDummy.jsp").forward(request, response);
+				
+				dao.insert(dto);
+				request.setAttribute("list", list);
 				response.sendRedirect("/tips/TipsDummy.jsp");
 			}
-			
 			
 			
 			
