@@ -175,7 +175,7 @@
           <div class="col-md-7">
             <div class="profile-head">
               <h5>
-                콘스탄틴프로탄틴
+                콘스탄틴프로탄틴 // 작성한 댓글 부분입니다.
               </h5>
               <h6>
                 kh1234@naver.com
