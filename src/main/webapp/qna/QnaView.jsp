@@ -38,19 +38,63 @@
             </nav>	
 		</main>
 		
-		<!--table  -->
+		<!--write  -->
+		<br>
+		<br>
+		<br>
+		<br>
 		
-		<div class="row">
-            <div class="col"> 
-                <button type="button"class="btn btn-primary" style="float:right" id="write">작성하기</button>
-               
-            </div>
-            
-            <script>
-            	$("#write").on("click",function(){
-            		location.href = "QnaView.jsp"
-            	})
-            </script>
+		
+		
+		
+		
+		
+		<form action = "/write.qna" method = "post" enctype="multipart/form-data">
+		<div class="container">
+
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<input type="text" readonly class="form-control-plaintext"
+						id="header" value="자유게시판 글쓰기">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm">
+					<input name="qna_title" id="qna_title"  class="form-control-plaintext"
+						type="text" placeholder="제목을 입력하세요.">
+				</div>
+			</div>
+
+			<div class="form-group" >
+
+				<textarea class="form-control" name="qna_contents" id="qna_contents"
+					id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
+					
+					
+					<!-- <input type = file multiple name = "file"><br> -->
+					
+				
+			</div>
+
+
+
+			<div class="row">
+				<div class="btn-group right" role="group" aria-label="Basic example">
+					<button type="submit" class="btn btn-primary" id="write">글쓰기</button>
+					<button type="button" class="btn btn-primary" id="back">목록으로</button>
+				</div>
+			</div>
+
+		</div>
+	</form>
+	<script>
+		$("#back").on("click",function(){
+			location.href = "QnaDummy.jsp"
+		})
+	</script>
+		
+		
 		
 		
 		
