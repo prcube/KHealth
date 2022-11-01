@@ -121,7 +121,7 @@
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
-  	//자동 푸쉬가 일어나길...
+  	//자동 푸쉬가 일어나길... 2트
   </script>
 
 
