@@ -34,6 +34,8 @@
                             <li class="nav-item"><a class="nav-link" href="market/MarketDummy.jsp">Market</a></li>
                             <li class="nav-item"><a class="nav-link" href="qna/QnaDummy.jsp">Q&A</a></li>
                             <li class="nav-item"><a class="nav-link" href="login/LoginDummy.jsp">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mypage/MypageDummy.jsp">Mypage</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login/SigninDummy.jsp">Signin</a></li>
                         </ul>
                     </div>
                 </div>

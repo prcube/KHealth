@@ -30,9 +30,9 @@ public class QnaController extends HttpServlet {
 				String qna_writer =(String)(request.getSession().getAttribute("loginID")); 
 				String qna_title = request.getParameter("qna_title");
 				String qna_contents = request.getParameter("qna_contents");
-				String qna_nickname = //닉네임은 member에서 불러옴 . 로그인 기능 완성 후 
 				
-				QnaDTO dto = new QnaDTO(qna_seq,qna_title,qna_writer,qna_contents,null,0,qna_nickname);
+				
+				
 			}
 			
 		}catch (Exception e) {
