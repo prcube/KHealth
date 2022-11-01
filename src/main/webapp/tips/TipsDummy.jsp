@@ -77,8 +77,8 @@
 								</div>
 							</td>
 							<td>
-								<p class="fw-normal mb-1">${i.tips_title }</p>
-								<p class="text-muted mb-0">가슴열고 등 잡고 천천히</p>
+								<p class="fw-normal mb-1"><a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a></p>
+								<p class="text-muted mb-0"></p>
 							</td>
 							<td><span class="badge badge-success rounded-pill d-inline">Active</span>
 							</td>
@@ -104,7 +104,7 @@
 
 		<script>
             	$("#tipswrite").on("click",function(){
-            		location.href = "tipswrite.jsp"
+            		location.href = "/tips/tipswrite.jsp"
             	})
             </script>
 	</div>
