@@ -36,7 +36,7 @@ public class AdminController extends HttpServlet {
 				String savePath = request.getServletContext().getRealPath("/image");
 				String writer = (String) request.getSession().getAttribute("loginId");
 				File imageSavePath = new File(savePath);  
-
+				
 				if(!imageSavePath.exists()) {
 					imageSavePath.mkdir();
 				}
@@ -69,6 +69,7 @@ public class AdminController extends HttpServlet {
 				
 				
 				System.out.println("여기까진 완료");
+				System.out.println(savePath);
 				response.sendRedirect("/list.board?cpage=1");
 				
 			
@@ -77,7 +78,7 @@ public class AdminController extends HttpServlet {
 				e.printStackTrace();
 				response.sendRedirect("/error.jsp");
 			}
-
+			
 		}
 	}
 
