@@ -8,8 +8,10 @@
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
-판매상품관리 <br><br><br>
 
-블랙리스트관리
+
+<br><br><br>
+
+<a href = "/blacklist.admin">블랙리스트 관리</a> 
 </body>
 </html>

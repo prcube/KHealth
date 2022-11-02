@@ -18,9 +18,7 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
-	integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
-	crossorigin="anonymous"></script>
+
 <script>
   Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
@@ -99,7 +97,7 @@
 
 								<hr class="my-4">
 
-								<a id="kakao-login-btn" href="javascript:loginWithKakao()">
+								<a id="kakao-login-btn" href="javascript:kakaoLogin();">
 									<img
 									src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
 									width="222" alt="카카오 로그인 버튼" />
@@ -116,6 +114,72 @@
 			</div>
 		</section>
 
+
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+		<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
+			integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
+			crossorigin="anonymous"></script>
+			
+		<script>
+  Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
+
+<ul>
+	<li onclick="kakaoLogin();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그인</span>
+      </a>
+	</li>
+	<li onclick="kakaoLogout();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+      </a>
+	</li>
+</ul>
+<!-- 카카오 스크립트 -->
+
+<script>
+Kakao.init('8890a67c089173194979845f9389950d'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
+
+
+
 		<script type="text/javascript">
   	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://localhost/index.jsp");
   	var state = naver_id_login.getUniqState();
@@ -127,47 +191,6 @@
   	//자동 푸쉬가 일어나길... 6트
   </script>
 
-
-
-		<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
-			integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
-			crossorigin="anonymous"></script>
-		<script>
-  Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
-</script>
-
-		<script>
-  function loginWithKakao() {
-    Kakao.Auth.authorize({
-      redirectUri: 'http://3.34.18.235/index.jsp',
-    });
-  }
-
-  // 아래는 데모를 위한 UI 코드입니다.
-  displayToken()
-  function displayToken() {
-    var token = getCookie('authorize-access-token');
-
-    if(token) {
-      Kakao.Auth.setAccessToken(token);
-      Kakao.Auth.getStatusInfo()
-        .then(function(res) {
-          if (res.status === 'connected') {
-            document.getElementById('token-result').innerText
-              = 'login success, token: ' + Kakao.Auth.getAccessToken();
-          }
-        })
-        .catch(function(err) {
-          Kakao.Auth.setAccessToken(null);
-        });
-    }
-  }
-
-  function getCookie(name) {
-    var parts = document.cookie.split(name + '=');
-    if (parts.length === 2) { return parts[1].split(';')[0]; }
-  }
-</script>
 
 	</main>
 
