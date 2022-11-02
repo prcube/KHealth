@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import DTO.BoardDTO;
 import TIPSDTO.TipsDTO;
 
 public class TipsDAO {
@@ -73,6 +74,23 @@ public class TipsDAO {
 		}
 	}
 	
-	
+	public TipsDTO detail(int tips_seq) throws Exception {
+		String sql = "select * from tips where tips_seq=?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setInt(1, tips_seq);
+			try (ResultSet rs = pstat.executeQuery();) {
+				rs.next();
+				TipsDTO dto = new TipsDTO();
+				dto.setTips_seq(rs.getInt("seq"));
+				dto.setTips_title(rs.getString("title"));
+				dto.setTips_writer(rs.getString("writer"));
+				dto.setTips_contents(rs.getString("contents"));
+				dto.setTips_write_date(rs.getTimestamp("write_date"));
+				dto.setTips_view_count(rs.getInt("view_count"));
+				dto.setTips_nickname("tips_nickname");
+				return dto;
+			}
+		}
+	}
 
 }
