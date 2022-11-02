@@ -56,7 +56,7 @@
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/tips/TipsDummy.jsp">Tips</a></li>
+							href="/list.tips">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
