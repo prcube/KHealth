@@ -10,12 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-<<<<<<< HEAD:src/main/java/TIPSDAO/TipsDAO.java
-
-import TIPSDTO.TipsDTO;
-=======
 import DTO.TipsDTO;
->>>>>>> 5bfee1556abc3b2d3dd2537836704ff57227f9f5:src/main/java/DAO/TipsDAO.java
+
 
 public class TipsDAO {
 
