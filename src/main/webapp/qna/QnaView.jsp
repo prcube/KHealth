@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,12 @@
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
 </head>
+<style>
+.container {
+	border 1px solid balck;
+}
+
+</style>
 <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -49,7 +56,7 @@
 		
 		
 		
-		<form action = "/write.qna" method = "post" enctype="multipart/form-data">
+		<form action = "/write.qna"  method="post">
 		<div class="container">
 
 			<div class="form-group row">
@@ -61,8 +68,8 @@
 
 			<div class="form-group row">
 				<div class="col-sm">
-					<input name="qna_title" id="qna_title"  class="form-control-plaintext"
-						type="text" placeholder="제목을 입력하세요.">
+					<input type="text" id="qna_title"  class="form-control-plaintext"
+						name="qna_title" placeholder="제목을 입력하세요.">
 				</div>
 			</div>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,20 +39,46 @@
             </nav>	
 		</main>
 		
-		<!--table  -->
+		<table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Position</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <c:forEach var = "i" items = "${list }">
+							<tr>
+								<td>${i.qna_seq }</td>
+								<td><a href = "/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+								<td>${i.qna_writer }</td>
+								<td>${i.qna_write_date }</td>
+								<td>${i.qna_view_count }</td>
+							</tr>
+		</c:forEach>
 		
-		<div class="row">
-            <div class="col"> 
-                <button type="button"class="btn btn-primary" style="float:right" id="write">작성하기</button>
-               
-            </div>
+		
+		
+    
+        
+        
+      </tbody>
+    </table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
             
-            <script>
-            	$("#write").on("click",function(){
-            		location.href = "QnaView.jsp"
-            	})
-            </script>
-		
+   
 		
 		
 		
@@ -81,11 +108,31 @@
                     </div>
                 </div>
             </div>
+            
+      <div class="row">
+            <div class="col"> 
+                <button type="button"class="btn btn-primary" style="float:right" id="write">작성하기</button>
+               
+            </div>
+            
+            <script>
+            	$("#write").on("click",function(){
+            		location.href = "/qna/QnaView.jsp"
+            	})
+            </script>
+            
+                
+            
+            
+            
+            
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="/js/scripts.js"></script>
+        
+        
         
     </body>
 </html>

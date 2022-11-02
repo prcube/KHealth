@@ -24,7 +24,13 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
+<style>
+#contents {
+ border:none;
+}
+</style>
 <body class="d-flex flex-column h-100">
+
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -49,8 +55,8 @@
 						<li class="nav-item"><a class="nav-link" href="/list.tips">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="qna/QnaDummy.jsp">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link"href="/list.qna"> 
+							 Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/LoginDummy.jsp">Login</a></li>
 						<li class="nav-item"><a class="nav-link"
@@ -61,6 +67,7 @@
 				</div>
 			</div>
 		</nav>
+
 
 
 		<header class="bg-dark py-5">
