@@ -1,4 +1,4 @@
-package TIPSDAO;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import DTO.BoardDTO;
-import TIPSDTO.TipsDTO;
+import DTO.TipsDTO;
 
 public class TipsDAO {
 
