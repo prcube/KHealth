@@ -81,16 +81,57 @@ public class TipsDAO {
 			try (ResultSet rs = pstat.executeQuery();) {
 				rs.next();
 				TipsDTO dto = new TipsDTO();
-				dto.setTips_seq(rs.getInt("seq"));
-				dto.setTips_title(rs.getString("title"));
-				dto.setTips_writer(rs.getString("writer"));
-				dto.setTips_contents(rs.getString("contents"));
-				dto.setTips_write_date(rs.getTimestamp("write_date"));
-				dto.setTips_view_count(rs.getInt("view_count"));
+				dto.setTips_seq(rs.getInt("tips_seq"));
+				dto.setTips_title(rs.getString("tips_title"));
+				dto.setTips_writer(rs.getString("tips_writer"));
+				dto.setTips_contents(rs.getString("tips_contents"));
+				dto.setTips_write_date(rs.getTimestamp("tips_write_date"));
+				dto.setTips_view_count(rs.getInt("tips_view_count"));
 				dto.setTips_nickname("tips_nickname");
 				return dto;
 			}
 		}
 	}
+	
+	public int delete(int tips_seq)throws Exception {
+		String sql = "delete from tips where tips_seq=?";
+		try(Connection con = this.getConnection(); 
+			PreparedStatement pstat =con.prepareStatement(sql);){
+			
+			pstat.setInt(1, tips_seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			con.close();
+			return result;
+		}
+	}
+	
+	public int update(String tips_title, String tips_contents, int tips_seq)throws Exception{
+		String sql = "update tips set tips_title=?, tips_contents=? where tips_seq =?";
+		try(Connection con = this.getConnection();PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, tips_title);
+			pstat.setString(2, tips_contents);
+			pstat.setInt(3, tips_seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+	
+	public int addViewCount(int tips_seq) throws Exception {
+
+		String sql = "update tips set tips_view_count = tips_view_count + 1 where tips_seq = ?";
+		try (Connection con = this.getConnection(); 
+			PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setInt(1, tips_seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+
+		}
+
+	}
+	
+	   
 
 }

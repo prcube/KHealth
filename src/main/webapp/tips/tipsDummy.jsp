@@ -60,7 +60,7 @@
 				<th>Title</th>
 				<th>Status</th>
 				<th>Position</th>
-				<th>Actions</th>
+				<th>view count</th>
 			</tr>
 		</thead>
 		<c:choose>
@@ -83,10 +83,7 @@
 							<td><span class="badge badge-success rounded-pill d-inline">Active</span>
 							</td>
 							<td>Senior</td>
-							<td>
-								<button type="button" class="btn btn-link btn-sm btn-rounded">
-									Edit</button>
-							</td>
+							<td>${i.tips_view_count }</td>
 						</tr>
 					</tbody>
 				</c:forEach>
