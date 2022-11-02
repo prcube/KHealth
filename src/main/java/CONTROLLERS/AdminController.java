@@ -28,7 +28,7 @@ public class AdminController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		
-		if(uri.equals("write.admin")) {
+		if(uri.equals("/product.admin")) {
 			
 			try {
 				int maxSize = 1024*1024*10; 

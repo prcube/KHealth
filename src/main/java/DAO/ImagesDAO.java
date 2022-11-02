@@ -58,7 +58,7 @@ public class ImagesDAO {
 	}
 	
 	public int insert(ImagesDTO dto) throws Exception{
-		String sql = "insert into images values(files_seq.nextval,?,?,?)";
+		String sql = "insert into images values(images_seq.nextval,?,?,?)";
 		try(Connection con = this.getConnection();
 			PreparedStatement pstat = con.prepareStatement(sql);)
 		{

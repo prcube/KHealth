@@ -12,6 +12,6 @@
 
 <br><br><br>
 
-<a href = "/write.admin">판매상품 관리</a> 
+<a href = "/admin/product.jsp">판매상품 관리</a> 
 </body>
 </html>
