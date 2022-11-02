@@ -101,7 +101,8 @@ public class TIpsController extends HttpServlet {
 				
 				request.getRequestDispatcher("/detail.tips?tips_seq="+tips_seq).forward(request, response);
 				//response.sendRedirect("/detail.jsp?tips_seq="+tips_seq);
-				
+				//please
+				//please
 				
 			}
 			
