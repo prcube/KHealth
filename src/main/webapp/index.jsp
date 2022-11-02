@@ -18,6 +18,7 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
+
 <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -32,7 +33,7 @@
                             <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
                             <li class="nav-item"><a class="nav-link" href="tips/TipsDummy.jsp">Tips</a></li>
                             <li class="nav-item"><a class="nav-link" href="market/MarketDummy.jsp">Market</a></li>
-                            <li class="nav-item"><a class="nav-link" href="qna/QnaDummy.jsp">Q&A</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/list.qna">Q&A</a></li>
                             <li class="nav-item"><a class="nav-link" href="login/LoginDummy.jsp">Login</a></li>
                         </ul>
                     </div>

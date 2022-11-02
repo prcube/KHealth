@@ -17,6 +17,11 @@
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
 </head>
+<style>
+ #title {
+ 	border:none;
+ }
+</style>
 <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -38,72 +43,56 @@
                 </div>
             </nav>	
 		</main>
+
+
+<div class="container">
+
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<input type="text" readonly class="form-control-plaintext"
+						id="header" value="">
+				</div>
+			
+				
+			</div>
+			
+			
+	
 		
-		<!--table  -->
-			<div class="container">
-
-        <div class="row">
-            <div class="col h3" style="text-align:center;">자유게시판</div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-1">번호</div>
-            <div class="col-sm-5">제목</div>
-            <div class="col-sm-3">작성자</div>
-            <div class="col-sm-2">날짜</div>
-            <div class="col-sm-1">조회</div>
-        </div>
         
-        
-       <c:choose>
-  		<c:when test = "${not empty list }">
-  			<c:forEach var = "i" items = "${list }">
-  				<div class = "row">
-  						<div class = "col-sm-1" >${i.qna_seq }</div>
-        				<div class = "col-sm-5"><a href = "/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></div>
-        				<div class = "col-sm-3" >${i.qna_writer }</div>
-        				<div class = "col-sm-2" >${i.qna_write_date }</div>
-        				<div class = "col-sm-1">${i.qna_view_count }</div>
-  			
-  			
-  					</div>
-  			  </c:forEach>
-  		   </c:when>
+      		<form action = "" id="detailFrm">
+        		<div class = "row">
+        			<!--value를 줘서 넘겨야함.  -->
+        			<input type=hidden value=${dto.qna_seq } style="display:none;" name = qna_seq> 
+        			<div class = "col-sm-4"> ${dto.qna_nickname }</div>
+        			<div class = "col-sm-5">${dto.qna_write_date }</div>
+        			<div class = "col-sm-3">조회 :  ${dto.qna_view_count }</div>
+        	        			<input type="text" id = "title" readonly name = "title" value="${dto.qna_title}"  >
+        			
+        			<br>
+        			<br>
+        			<div class="form-group">
 
-    
- 	</c:choose>
- 	   </div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<div class="row">
-            <div class="col"> 
-                <button type="button"class="btn btn-primary" style="float:right" id="write">작성하기</button>
-               
-            </div>
-            
-            <script>
-            	$("#write").on("click",function(){
-            		location.href = "/qna/QnaView.jsp"
-            	})
-            </script>
-            
-            
-   
-		
-		
-		
-		
-		
-
-            
-        <!-- Footer-->
+				<textarea class="form-control" name="contents" id="contents"
+					
+					id="exampleFormControlTextarea1"  readonly rows="10">${dto.qna_contents }</textarea>
+				</div>
+			
+				
+				
+				
+					<div class="row">
+				<div class="btn-group right" role="group" aria-label="Basic example">
+					<button type="button" class="btn btn-primary" id="update">수정하기</button>
+					
+					
+					<button type = "button" class="btn btn-primary" id="delete" name="qna_seq">삭제하기</button>
+					
+					
+					<button type="button" class="btn btn-primary" id="back">목록으로</button>
+				</div>
+				
+  <!-- Footer-->
         <footer class="bg-dark py-4 mt-auto ">
             <div class="container px-5 ">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row ">
@@ -125,18 +114,22 @@
                     </div>
                 </div>
             </div>
-            
-      
-                
-            
-            
-            
-            
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="/js/scripts.js"></script>
+        
+        <script>
+        	$("#delete").on("click",function(){
+        		$("#detailFrm").attr("action","/delete.qna")
+        		$("#detailFrm").submit();
+        		//
+        	
+        	})
+        
+        
+        </script>
         
     </body>
 </html>
