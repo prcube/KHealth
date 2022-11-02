@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>K-Health</title>
+<title>tipsWrite</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -18,7 +18,7 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -40,11 +40,11 @@
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Tips</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/tips/TipsDummy.jsp">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/qna/QnaDummy.jsp">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/login/LoginDummy.jsp">Login</a></li>
 					</ul>
@@ -53,61 +53,65 @@
 		</nav>
 	</main>
 
-	<table class="table align-middle mb-0 bg-white">
-		<thead class="bg-light">
-			<tr>
-				<th>Name</th>
-				<th>Title</th>
-				<th>Status</th>
-				<th>Position</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<c:choose>
-			<c:when test="${not empty list}">
-				<c:forEach var="i" items="${list}">
-					<tbody>
-						<tr>
-							<td>
-								<div class="d-flex align-items-center">
-									<div class="ms-3">
-										<p class="fw-bold mb-1">${i.tips_seq }</p>
-										<p class="text-muted mb-0">${i.tips_writer }</p>
-									</div>
-								</div>
-							</td>
-							<td>
-								<p class="fw-normal mb-1"><a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a></p>
-								<p class="text-muted mb-0"></p>
-							</td>
-							<td><span class="badge badge-success rounded-pill d-inline">Active</span>
-							</td>
-							<td>Senior</td>
-							<td>
-								<button type="button" class="btn btn-link btn-sm btn-rounded">
-									Edit</button>
-							</td>
-						</tr>
-					</tbody>
-				</c:forEach>
-			</c:when>
-		</c:choose>
 
-	</table>
 
-	<div class="row">
-		<div class="col">
-			<button type="button" class="btn btn-primary" style="float: right"
-				id="tipswrite">작성하기</button>
+
+	<!--write  -->
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<form action="/insert.tips" method="post">
+		<div class="container">
+
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<input type="text" disabled class="form-control-plaintext"
+						id="header" value="tips 게시판 글쓰기">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm">
+					<input name="tips_title" id="tips_title"
+						class="form-control-plaintext" type="text"
+						placeholder="제목을 입력하세요.">
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<textarea class="form-control" name="tips_contents" id="tips_contents"
+					id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
+
+
+				<!-- <input type = file multiple name = "file"><br> -->
+
+
+			</div>
+
+
+
+			<div class="row">
+				<div class="btn-group right" role="group" aria-label="Basic example">
+					<button type="submit" class="btn btn-primary" id="tipsinsert">글쓰기</button>
+					<button type="button" class="btn btn-primary" id="tipsback">목록으로</button>
+				</div>
+			</div>
 
 		</div>
+	</form>
+	<script>
+		$("#tipsback").on("click",function(){
+			location.href = "TipsDummy.jsp"
+		})
+	</script>
 
-		<script>
-            	$("#tipswrite").on("click",function(){
-            		location.href = "/tips/tipswrite.jsp"
-            	})
-            </script>
-	</div>
+
+
+
+
 
 
 
@@ -144,5 +148,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-package QNADAO;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import QNADTO.QnaDTO;
+import DTO.QnaDTO;
 
 public class QnaDAO {
 //   싱글턴
@@ -34,12 +34,13 @@ public class QnaDAO {
    }
    
    public int write(QnaDTO dto) throws Exception {
-      String sql = "insert into qna values (qna_seq.nextval,?,0,?,sysdate,0,0)";
+      String sql = "insert into qna values (qna_seq.nextval,?,0,?,sysdate,?,0)";
       try(Connection con = this.getConnection();
             PreparedStatement pstat = con.prepareStatement(sql);) {
         
           pstat.setString(1,dto.getQna_title());
           pstat.setString(2, dto.getQna_contents());
+          pstat.setInt(3,dto.getQna_view_count());
 
 
          int result = pstat.executeUpdate();
@@ -96,7 +97,7 @@ public class QnaDAO {
 		   
 		   return result;
 	   }
-   /*}public int updateBySeq(String qna_title , String qna_contents, int qna_seq) throws Exception {
+   }public int updateBySeq(String qna_title , String qna_contents, int qna_seq) throws Exception {
 	   String sql = "update qna set qna_title=?, qna_contents = ? where qna_seq =?";
 	   try(Connection con = this.getConnection();
 			   PreparedStatement pstat = con.prepareStatement(sql);){
@@ -197,7 +198,7 @@ public class QnaDAO {
 	}
 	
 	public List<QnaDTO> selectByRange(int start , int end) throws Exception {
-		String sql = "select *from (select qna.*,row_number()over(order by seq desc) rn from qna) where rn between ? and ?";
+		String sql = "select *from (select qna.*,row_number()over(order by qna_seq desc) rn from qna) where rn between ? and ?";
 			    
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql)){
@@ -235,10 +236,10 @@ public class QnaDAO {
 			return qna_seq;
 	}
 }
-   */
+   
 	
    
 }
-}
+
    
 

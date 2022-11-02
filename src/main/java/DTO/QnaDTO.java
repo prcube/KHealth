@@ -1,4 +1,4 @@
-package QNADTO;
+package DTO;
 
 import java.sql.Timestamp;
 

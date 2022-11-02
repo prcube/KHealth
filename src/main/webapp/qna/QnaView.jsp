@@ -17,6 +17,12 @@
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
 </head>
+<style>
+.container {
+	border 1px solid balck;
+}
+
+</style>
 <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->

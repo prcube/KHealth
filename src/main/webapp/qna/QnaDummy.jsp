@@ -39,61 +39,49 @@
             </nav>	
 		</main>
 		
-		<!--table  -->
-			<div class="container">
-
+		<table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Position</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <c:forEach var = "i" items = "${list }">
+							<tr>
+								<td>${i.qna_seq }</td>
+								<td><a href = "/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+								<td>${i.qna_writer }</td>
+								<td>${i.qna_write_date }</td>
+								<td>${i.qna_view_count }</td>
+							</tr>
+		</c:forEach>
+		
+		
+		
         <div class="row">
-            <div class="col h3" style="text-align:center;">자유게시판</div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-1">번호</div>
-            <div class="col-sm-5">제목</div>
-            <div class="col-sm-3">작성자</div>
-            <div class="col-sm-2">날짜</div>
-            <div class="col-sm-1">조회</div>
-        </div>
-        
-        
-       <c:choose>
-  		<c:when test = "${not empty list }">
-  			<c:forEach var = "i" items = "${list }">
-  				<div class = "row">
-  						<div class = "col-sm-1" >${i.qna_seq }</div>
-        				<div class = "col-sm-5"><a href = "/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></div>
-        				<div class = "col-sm-3" >${i.qna_writer }</div>
-        				<div class = "col-sm-2" >${i.qna_write_date }</div>
-        				<div class = "col-sm-1">${i.qna_view_count }</div>
-  			
-  			
-  					</div>
-  			  </c:forEach>
-  		   </c:when>
-
-    
- 	</c:choose>
- 	   </div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<div class="row">
-            <div class="col"> 
-                <button type="button"class="btn btn-primary" style="float:right" id="write">작성하기</button>
-               
+            <div class="col" style="text-align: center;">
+            	${navi }
+            
             </div>
-            
-            <script>
-            	$("#write").on("click",function(){
-            		location.href = "/qna/QnaView.jsp"
-            	})
-            </script>
-            
+    
+        
+        
+      </tbody>
+    </table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
             
    
 		
@@ -126,7 +114,18 @@
                 </div>
             </div>
             
-      
+      <div class="row">
+            <div class="col"> 
+                <button type="button"class="btn btn-primary" style="float:right" id="write">작성하기</button>
+               
+            </div>
+            
+            <script>
+            	$("#write").on("click",function(){
+            		location.href = "/qna/QnaView.jsp"
+            	})
+            </script>
+            
                 
             
             
@@ -137,6 +136,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="/js/scripts.js"></script>
+        
+        
         
     </body>
 </html>

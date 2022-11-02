@@ -1,4 +1,4 @@
-package TIPSDTO;
+package DTO;
 
 import java.sql.Timestamp;
 
