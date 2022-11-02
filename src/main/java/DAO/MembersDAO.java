@@ -1,4 +1,4 @@
-package MEMBERSDAO;
+package DAO;
 
 public class MembersDAO {
 
