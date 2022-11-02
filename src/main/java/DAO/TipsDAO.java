@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import DTO.TipsDTO;
 
+
 public class TipsDAO {
 
 	private static TipsDAO instance;

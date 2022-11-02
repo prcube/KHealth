@@ -62,11 +62,6 @@
 		
 		
 		
-        <div class="row">
-            <div class="col" style="text-align: center;">
-            	${navi }
-            
-            </div>
     
         
         
