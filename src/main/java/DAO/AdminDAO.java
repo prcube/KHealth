@@ -74,4 +74,18 @@ public class AdminDAO {
 
 		}
 	}
+	
+	public int insertBlackList(String member_nickname) throws Exception {
+		String sql = "insert into blacklist values(blacklist_seq.nextval,?,sysdate)";
+		
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){ 
+			
+			pstat.setString(1, member_nickname);
+
+			int result = pstat.executeUpdate();
+			return result;
+
+		}
+	}
 }
