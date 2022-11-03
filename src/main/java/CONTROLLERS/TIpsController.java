@@ -52,7 +52,7 @@ public class TIpsController extends HttpServlet {
 				System.out.println(list);
 				
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("/tips/tipsDummy.jsp").forward(request, response);
+				request.getRequestDispatcher("/tips/Tips.jsp").forward(request, response);
 			}
 			
 			else if(uri.equals("/detail.tips")) {
