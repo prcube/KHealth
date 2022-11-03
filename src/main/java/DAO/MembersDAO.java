@@ -32,20 +32,20 @@ public class MembersDAO {
 
 	public int insert(String id, String pwd, String name, String launch_date, String nickname, int role, String number,
 			String mail, String zip, String address1, String address2) throws Exception {
-		String sql = "insert into members values(members_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into members values(members_seq.nextval,?,?,?,sysdate,?,?,?,?,?,?,?)";
 
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
 			pstat.setString(2, pwd);
 			pstat.setString(3, name);
-			pstat.setString(4, launch_date);
-			pstat.setString(5, nickname);
-			pstat.setInt(6, role);
-			pstat.setString(7, mail);
-			pstat.setString(8, number);
-			pstat.setString(9, zip);
-			pstat.setString(10, address1);
-			pstat.setString(11, address2);
+			//pstat.setString(4, launch_date);
+			pstat.setString(4, nickname);
+			pstat.setInt(5, role);
+			pstat.setString(6, mail);
+			pstat.setString(7, number);
+			pstat.setString(8, zip);
+			pstat.setString(9, address1);
+			pstat.setString(10, address2);
 
 			int result = pstat.executeUpdate();
 			con.setAutoCommit(false);
