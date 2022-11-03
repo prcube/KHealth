@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -29,6 +30,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+
 </head>
 
 <style>
@@ -41,6 +43,7 @@
 </style>
 
 <body class="d-flex flex-column h-100">
+
 
 	<!-- Back to top button -->
 	<button type="button" class="btn btn-light btn-floating btn-sm bg-dark"
@@ -93,6 +96,7 @@
 				</c:when>
 			</c:choose>
 		</nav>
+
 
 
 
@@ -187,6 +191,7 @@
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 									allowfullscreen></iframe>
 
+
 							</div>
 
 							<div class="col mb-5 " style="height: 400px;">
@@ -243,6 +248,7 @@
 				</div>
 			</div>
 		</div>
+
 
 
 		<!-- Blog preview section-->
