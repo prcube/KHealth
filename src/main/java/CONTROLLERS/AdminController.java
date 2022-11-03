@@ -28,7 +28,7 @@ public class AdminController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		
-		if(uri.equals("/product.admin")) {
+		if(uri.equals("/../main/java/CONTROLLERS/product.admin")) {
 			
 			try {
 				int maxSize = 1024*1024*10; 
@@ -78,6 +78,10 @@ public class AdminController extends HttpServlet {
 				e.printStackTrace();
 				response.sendRedirect("/error.jsp");
 			}
+			
+		}
+		
+		if(uri.equals("/blacklist.admin")) {
 			
 		}
 	}
