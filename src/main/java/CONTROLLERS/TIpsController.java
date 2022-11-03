@@ -42,7 +42,7 @@ public class TIpsController extends HttpServlet {
 				
 				dao.insert(dto);
 				//request.setAttribute("list", list);
-				response.sendRedirect("/list.tips");
+				response.sendRedirect("/list.tips?cpage=1");
 				//request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request, response);
 			}
 			else if(uri.equals("/list.tips")) {

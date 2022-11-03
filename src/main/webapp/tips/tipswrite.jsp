@@ -41,7 +41,7 @@
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/list.tips">Tips</a></li>
+							href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Q&A</a></li>
@@ -95,8 +95,8 @@
 
 			<div class="row">
 				<div class="btn-group right" role="group" aria-label="Basic example">
-					<button type="submit" class="btn btn-primary" id="tipsinsert">글쓰기</button>
-					<button type="button" class="btn btn-primary" id="tipsback">목록으로</button>
+					<button type="submit" class="btn btn-secondary" id="tipsinsert">글쓰기</button>
+					<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
 				</div>
 			</div>
 
@@ -104,7 +104,7 @@
 	</form>
 	<script>
 		$("#tipsback").on("click",function(){
-			location.href = "/list.tips?cpage=1""
+			location.href = "/list.tips?cpage=1"
 		})
 	</script>
 

@@ -56,7 +56,7 @@
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/list.tips">Tips</a></li>
+							href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
@@ -112,8 +112,8 @@
 
 			<div class="row">
 				<div class="btn-group right" role="group" aria-label="Basic example">
-					<button type="submit" class="btn btn-primary" id="tipsModify">수정하기</button>
-					<button type="button" class="btn btn-primary" id="tipsBack">Tips
+					<button type="submit" class="btn btn-secondary" id="tipsModify">수정하기</button>
+					<button type="button" class="btn btn-secondary" id="tipsBack">Tips
 						게시판으로</button>
 				</div>
 			</div>

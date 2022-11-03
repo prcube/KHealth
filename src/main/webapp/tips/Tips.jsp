@@ -97,24 +97,24 @@
 	<div class="row">
 		<div class="col" text align="center">
 			${navi }
-			<button type="button" class="btn btn-primary" style="float: right"
+			<button type="button" class="btn btn-secondary" style="float: right"
 				name="tipswrite" id="tipswrite">작성하기</button>
 
 		</div>
 
 		<script>
-      //hi
-      $(function() {
-			$("#tipswrite").hide()
-			console.log("${dto.tips_writer}");
-			if ("${loginID}" == "${dto.writer}") {
-				$("#tipswrite").show()
-			}
+      //tips 테이블 글작성하는건 Members_role 가 1 일 경우에 작성할 수 있게 수정할것.
+//       $(function() {
+// 			$("#tipswrite").hide()
+// 			console.log("${dto.tips_writer}");
+// 			if ("${loginID}" == "${dto.writer}") {
+// 				$("#tipswrite").show()
+// 			}
       
       
       
                $("#tipswrite").on("click",function(){
-                  location.href = "/tips/tipswrite.jsp"
+                  location.href = "/tips/tipswrite.jsp?cpage=1"
                })
             </script>
 	</div>
