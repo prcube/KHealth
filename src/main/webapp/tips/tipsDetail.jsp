@@ -131,7 +131,7 @@
 
 			<script>
 				$("#golist").on("click", function() {
-					location.href = "list.tips"
+					location.href = "list.tips?cpage=1"
 				})
 
 				$("#tipsdelete").on("click", function() {

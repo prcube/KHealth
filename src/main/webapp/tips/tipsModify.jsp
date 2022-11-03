@@ -122,7 +122,7 @@
 	</form>
 	<script>
 		$("#tipsBack").on("click", function() {
-			location.href = "/list.tips"
+			location.href = "/list.tips?cpage=1"
 		})
 		
 		console.log("gg");
