@@ -89,21 +89,21 @@
 
 									<!-- Checkbox -->
 									<div class="form-check d-flex justify-content-start mb-4">
-										 <label class="form-check-label"
-											for="form1Example3">암호 기억하기 </label>&nbsp;&nbsp;
-											&nbsp;&nbsp;&nbsp;&nbsp;
-											<input class="form-check-input" type="checkbox" value=""
+										<label class="form-check-label" for="form1Example3">암호
+											기억하기 </label>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <input
+											class="form-check-input" type="checkbox" value=""
 											id="form1Example3" />
 									</div>
 
 									<button class="btn btn-primary btn-lg btn-block" type="submit"
 										style="width: 100%;">로그인</button>
-										<br><br>
+									<br>
+									<br>
 									<div>
-									<a href="SigninDummy.jsp">
-										<button type="button" class="btn text-secondary"
-										>회원가입</button></a>
-							
+										<a href="SigninDummy.jsp">
+											<button type="button" class="btn text-secondary">회원가입</button>
+										</a>
+
 										<button type="button" class="btn text-secondary">아이디
 											찾기</button>
 									</div>
