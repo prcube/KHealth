@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import DAO.TipsDAO;
+
 import DTO.TipsDTO;
 
 @WebServlet("*.tips")
@@ -42,15 +42,18 @@ public class TIpsController extends HttpServlet {
 				
 				dao.insert(dto);
 				//request.setAttribute("list", list);
-				response.sendRedirect("/list.tips");
+				response.sendRedirect("/list.tips?cpage=1");
 				//request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request, response);
 			}
 			else if(uri.equals("/list.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
-				List<TipsDTO> list = dao.selectAll();
+				int cpage =Integer.parseInt(request.getParameter("cpage"));
+				//List<TipsDTO> list = dao.selectAll();
 				
-				System.out.println(list);
+				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
 				
+				String navi = TipsDAO.getInstance().getPageNavi(cpage);
+				request.setAttribute("navi", navi);
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/tips/Tips.jsp").forward(request, response);
 			}
