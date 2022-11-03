@@ -60,7 +60,7 @@
 				<th>Title</th>
 				<th>Status</th>
 				<th>Position</th>
-				<th>Actions</th>
+				<th>view count</th>
 			</tr>
 		</thead>
 		<c:choose>
@@ -77,16 +77,15 @@
 								</div>
 							</td>
 							<td>
-								<p class="fw-normal mb-1"><a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a></p>
+								<p class="fw-normal mb-1">
+									<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+								</p>
 								<p class="text-muted mb-0"></p>
 							</td>
 							<td><span class="badge badge-success rounded-pill d-inline">Active</span>
 							</td>
 							<td>Senior</td>
-							<td>
-								<button type="button" class="btn btn-link btn-sm btn-rounded">
-									Edit</button>
-							</td>
+							<td>${i.tips_view_count }</td>
 						</tr>
 					</tbody>
 				</c:forEach>
@@ -96,16 +95,27 @@
 	</table>
 
 	<div class="row">
-		<div class="col">
-			<button type="button" class="btn btn-primary" style="float: right"
-				id="tipswrite">작성하기</button>
+		<div class="col" text align="center">
+			${navi }
+			<button type="button" class="btn btn-secondary" style="float: right"
+				name="tipswrite" id="tipswrite">작성하기</button>
 
 		</div>
 
 		<script>
-            	$("#tipswrite").on("click",function(){
-            		location.href = "/tips/tipswrite.jsp"
-            	})
+      //tips 테이블 글작성하는건 Members_role 가 1 일 경우에 작성할 수 있게 수정할것.
+//       $(function() {
+// 			$("#tipswrite").hide()
+// 			console.log("${dto.tips_writer}");
+// 			if ("${loginID}" == "${dto.writer}") {
+// 				$("#tipswrite").show()
+// 			}
+      
+      
+      
+               $("#tipswrite").on("click",function(){
+                  location.href = "/tips/tipswrite.jsp?cpage=1"
+               })
             </script>
 	</div>
 

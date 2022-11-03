@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.TipsDAO;
+
 import DTO.TipsDTO;
 
 @WebServlet("*.tips")
@@ -17,6 +18,8 @@ public class TIpsController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
 
 		String uri = request.getRequestURI();
 
@@ -39,28 +42,77 @@ public class TIpsController extends HttpServlet {
 				
 				dao.insert(dto);
 				//request.setAttribute("list", list);
-				response.sendRedirect("/list.tips");
+				response.sendRedirect("/list.tips?cpage=1");
 				//request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request, response);
 			}
 			else if(uri.equals("/list.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
-				List<TipsDTO> list = dao.selectAll();
+				int cpage =Integer.parseInt(request.getParameter("cpage"));
+				//List<TipsDTO> list = dao.selectAll();
 				
-				System.out.println(list);
+				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
 				
+				String navi = TipsDAO.getInstance().getPageNavi(cpage);
+				request.setAttribute("navi", navi);
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request, response);
+				request.getRequestDispatcher("/tips/Tips.jsp").forward(request, response);
 			}
 			
 			else if(uri.equals("/detail.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
 				//숨긴 tips_seq를 가져와서 TipsDTO dto = dao.detail(tips_seq) 이렇게 넣어야함
 				
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
 				
+				TipsDTO dto = dao.detail(tips_seq);
+				TipsDAO.getInstance().addViewCount(tips_seq);
+				request.setAttribute("dto", dto);
+				request.setAttribute("loginID", id);
 				
 				request.getRequestDispatcher("/tips/tipsDetail.jsp").forward(request, response);
 			}
 
+			else if(uri.equals("/delete.tips")) {
+				TipsDAO dao = TipsDAO.getInstance();
+				
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
+				
+				dao.delete(tips_seq);
+				
+				request.getRequestDispatcher("/list.tips").forward(request, response);
+			}
+			
+			else if(uri.equals("/gomodify.tips")) {
+				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
+				
+				request.setAttribute("tips_seq", tips_seq);
+				
+				request.getRequestDispatcher("/tips/tipsModify.jsp").forward(request, response);
+			}
+			
+			
+			else if(uri.equals("/update.tips")) {
+				TipsDAO dao = TipsDAO.getInstance();
+				
+				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
+				String tips_title = request.getParameter("tips_title");
+				String tips_contents = request.getParameter("tips_contents");
+				
+				dao.update(tips_title, tips_contents, tips_seq);
+				
+				request.getRequestDispatcher("/detail.tips?tips_seq="+tips_seq).forward(request, response);
+				//response.sendRedirect("/detail.jsp?tips_seq="+tips_seq);
+				//please
+				//please
+				
+			}
+			
+			
+			
+			
+			
 			
 			
 			

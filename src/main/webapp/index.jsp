@@ -33,13 +33,11 @@
 </style>
 
 <body class="d-flex flex-column h-100">
+
     <!-- Back to top button -->
     <button type="button" class="btn btn-light btn-floating btn-sm bg-dark" style="border-radius: 100px; border-color: transparent;" id="btn-back-to-top">
         <i class="bi bi-chevron-up" style="color: white;"></i>
     </button>
-
-
-
 
     <main class="flex-shrink-0">
         <!-- Navigation-->

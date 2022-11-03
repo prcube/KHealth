@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>tipsWrite</title>
+<title>K-Health</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -18,8 +19,22 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js">
+	
+</script>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
+	integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
+	crossorigin="anonymous"></script>
+<script>
+	Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
+
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
@@ -44,31 +59,32 @@
 							href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/login/LoginDummy.jsp">Login</a></li>
+							href="/qna/QnaDummy.jsp">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
+
+
+
+
+
+
+
 	</main>
 
 
 
 
-	<!--write  -->
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<form action="/insert.tips" method="post">
+	<form action="/update.tips"  method="post">
 		<div class="container">
-
+			<input type=hidden name="tips_seq" id="tips_seq" value="${tips_seq }">
 			<div class="form-group row">
 				<div class="col-sm-10">
 					<input type="text" disabled class="form-control-plaintext"
-						id="header" value="tips 게시판 글쓰기">
+						id="header" value="tips 게시판 글 수정하기">
 				</div>
 			</div>
 
@@ -82,8 +98,9 @@
 
 			<div class="form-group">
 
-				<textarea class="form-control" name="tips_contents" id="tips_contents"
-					id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
+				<textarea class="form-control" name="tips_contents"
+					id="tips_contents" id="exampleFormControlTextarea1" rows="10"
+					placeholder="내용을 입력하세요."></textarea>
 
 
 				<!-- <input type = file multiple name = "file"><br> -->
@@ -95,23 +112,21 @@
 
 			<div class="row">
 				<div class="btn-group right" role="group" aria-label="Basic example">
-					<button type="submit" class="btn btn-secondary" id="tipsinsert">글쓰기</button>
-					<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
+					<button type="submit" class="btn btn-secondary" id="tipsModify">수정하기</button>
+					<button type="button" class="btn btn-secondary" id="tipsBack">Tips
+						게시판으로</button>
 				</div>
 			</div>
 
 		</div>
 	</form>
 	<script>
-		$("#tipsback").on("click",function(){
+		$("#tipsBack").on("click", function() {
 			location.href = "/list.tips?cpage=1"
 		})
+		
+		console.log("gg");
 	</script>
-
-
-
-
-
 
 
 
@@ -150,4 +165,5 @@
 	<script src="/js/scripts.js"></script>
 
 </body>
+
 </html>
