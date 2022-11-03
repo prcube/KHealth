@@ -33,7 +33,7 @@
                             <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
                             <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
 
-                            <li class="nav-item"><a class="nav-link" href="/list.tips">>Tips</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1"">>Tips</a></li>
 
                             <li class="nav-item"><a class="nav-link" href="/market/MarketDummy.jsp">Market</a></li>
                             <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>

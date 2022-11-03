@@ -25,37 +25,37 @@ public class AdminController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf8");
-		
+
 		String uri = request.getRequestURI();
-		
+
 		if(uri.equals("/product.admin")) {
-			
+
 			try {
 				int maxSize = 1024*1024*10; 
 
 				String savePath = request.getServletContext().getRealPath("/image");
 				String writer = (String) request.getSession().getAttribute("loginId");
 				File imageSavePath = new File(savePath);  
-				
+
 				if(!imageSavePath.exists()) {
 					imageSavePath.mkdir();
 				}
 
 				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8", new DefaultFileRenamePolicy());
 
-				
+
 				String product_name = multi.getParameter("product_name");
 				String product_price = multi.getParameter("product_price");
 				String product_count = multi.getParameter("product_count");
 				String product_review = multi.getParameter("product_review");
-				
-				
+
+
 				int seq = AdminDAO.getInstance().getnextval();
-				
-				 AdminDAO.getInstance().insertProduct(new ProductDTO(seq, product_name, product_price, product_count, product_review ));
-				
+
+				AdminDAO.getInstance().insertProduct(new ProductDTO(seq, product_name, product_price, product_count, product_review ));
+
 				Enumeration<String> e = multi.getFileNames();
-				
+
 				while(e.hasMoreElements()) { //rs.next()와 유사
 					String name = e.nextElement();
 					System.out.println(name);
@@ -65,21 +65,38 @@ public class AdminController extends HttpServlet {
 					String sysName = multi.getFilesystemName(name);
 					ImagesDAO.getInstance().insert(new ImagesDTO(0,oriName, sysName, seq));
 				}
-				
-				
-				
+
+
+
 				System.out.println("여기까진 완료");
 				System.out.println(savePath);
 				response.sendRedirect("/list.board?cpage=1");
-				
-			
+
+
 			}
 			catch (Exception e) {
 				e.printStackTrace();
 				response.sendRedirect("/error.jsp");
 			}
-			
+
 		}
+
+		if(uri.equals("/blacklist.admin")) {
+
+			String member_nickname = request.getParameter("member_nickname");
+
+			try {AdminDAO.getInstance().insertBlackList(member_nickname);
+			response.sendRedirect("/admin/admindummy.jsp");
+
+			}catch(Exception e) {
+				e.printStackTrace();
+				response.sendRedirect("/error.jsp");
+			}
+
+
+
+		}
+
 	}
 
 
