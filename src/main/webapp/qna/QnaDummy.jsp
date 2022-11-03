@@ -17,6 +17,9 @@
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
 </head>
+<style>
+
+</style>
 <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -29,17 +32,19 @@
                             <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
                             <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/list.tips">Tips</a></li>
+
+                            <li class="nav-item"><a class="nav-link" href="/list.tips">>Tips</a></li>
+
                             <li class="nav-item"><a class="nav-link" href="/market/MarketDummy.jsp">Market</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Q&A</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>
                             <li class="nav-item"><a class="nav-link" href="/login/LoginDummy.jsp">Login</a></li>
                         </ul>
                     </div>
                 </div>
-            </nav>	
-		</main>
-		
-		<table class="table align-middle mb-0 bg-white">
+            </nav>   
+      </main>
+      
+      <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
           <th>Name</th>
@@ -51,39 +56,57 @@
       </thead>
       <tbody>
       <c:forEach var = "i" items = "${list }">
-							<tr>
-								<td>${i.qna_seq }</td>
-								<td><a href = "/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
-								<td>${i.qna_writer }</td>
-								<td>${i.qna_write_date }</td>
-								<td>${i.qna_view_count }</td>
-							</tr>
-		</c:forEach>
-		
-		
-		
+                     <tr>
+                        <td>${i.qna_seq }</td>
+                        <td><a href = "/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+                        <td>${i.qna_writer }</td>
+                        <td>${i.qna_write_date }</td>
+                        <td>${i.qna_view_count }</td>
+                        
+                     </tr>
+      </c:forEach>
+      
+      
+      
+      
+      
+      
     
         
         
       </tbody>
     </table>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    
+    <div class="row">
+            <div class="col" style="text-align: center; id = pageing">
+               ${navi }
+            
+            </div>
+
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
             
    
-		
-		
-		
-		
-		
+      
+      
+      
+      
+      
 
             
         <!-- Footer-->
@@ -98,7 +121,7 @@
                         <div class="small m-0 text-white">Copyright &copy; K-Health Corp. All rights reserved.</div>
                         <div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
         
-                       	<img src="/image/instagram.png" height="20px">        
+                          <img src="/image/instagram.png" height="20px">        
                         <span class="text-white mx-1">&middot;</span>        
                         <img src="/image/facebook.png" height="20px">        
                         <span class="text-white mx-1">&middot;</span>        
@@ -116,9 +139,9 @@
             </div>
             
             <script>
-            	$("#write").on("click",function(){
-            		location.href = "/qna/QnaView.jsp"
-            	})
+               $("#write").on("click",function(){
+                  location.href = "/qna/QnaView.jsp"
+               })
             </script>
             
                 

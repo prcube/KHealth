@@ -19,7 +19,7 @@
 </head>
 <style>
 .container {
-	border 1px solid balck;
+   border 1px solid balck;
 }
 
 </style>
@@ -37,77 +37,77 @@
                             <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
                             <li class="nav-item"><a class="nav-link" href="/list.tips">Tips</a></li>
                             <li class="nav-item"><a class="nav-link" href="/market/MarketDummy.jsp">Market</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Q&A</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>
                             <li class="nav-item"><a class="nav-link" href="/login/LoginDummy.jsp">Login</a></li>
                         </ul>
                     </div>
                 </div>
-            </nav>	
-		</main>
-		
-		<!--write  -->
-		<br>
-		<br>
-		<br>
-		<br>
-		
-		
-		
-		
-		
-		
-		<form action = "/write.qna"  method="post">
-		<div class="container">
+            </nav>   
+      </main>
+      
+      <!--write  -->
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      
+      
+      
+      
+      
+      <form action = "/write.qna" method="post">
+      <div class="container">
 
-			<div class="form-group row">
-				<div class="col-sm-10">
-					<input type="text" readonly class="form-control-plaintext"
-						id="header" value="자유게시판 글쓰기">
-				</div>
-			</div>
+         <div class="form-group row">
+            <div class="col-sm-10">
+               <input type="text" readonly class="form-control-plaintext"
+                  id="header" value="자유게시판 글쓰기">
+            </div>
+         </div>
 
-			<div class="form-group row">
-				<div class="col-sm">
-					<input type="text" id="qna_title"  class="form-control-plaintext"
-						name="qna_title" placeholder="제목을 입력하세요.">
-				</div>
-			</div>
+         <div class="form-group row">
+            <div class="col-sm">
+               <input type="text" id="qna_title"  class="form-control-plaintext"
+                  name="qna_title" placeholder="제목을 입력하세요.">
+            </div>
+         </div>
 
-			<div class="form-group" >
+         <div class="form-group" >
 
-				<textarea class="form-control" name="qna_contents" id="qna_contents"
-					id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
-					
-					
-					<!-- <input type = file multiple name = "file"><br> -->
-					
-				
-			</div>
+            <textarea class="form-control" name="qna_contents" id="qna_contents"
+               id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
+               
+               
+               <!-- <input type = file multiple name = "file"><br> -->
+               
+            
+         </div>
 
 
 
-			<div class="row">
-				<div class="btn-group right" role="group" aria-label="Basic example">
-					<button type="submit" class="btn btn-primary" id="write">글쓰기</button>
-					<button type="button" class="btn btn-primary" id="back">목록으로</button>
-				</div>
-			</div>
+         <div class="row">
+            <div class="btn-group right" role="group" aria-label="Basic example">
+               <button type="submit" class="btn btn-primary" id="write">글쓰기</button>
+               <button type="button" class="btn btn-primary" id="back">목록으로</button>
+            </div>
+         </div>
 
-		</div>
-	</form>
-	<script>
-		$("#back").on("click",function(){
-			location.href = "QnaDummy.jsp"
-		})
-	</script>
-		
-		
-		
-		
-		
-		
-		
-		
+      </div>
+   </form>
+   <script>
+      $("#back").on("click",function(){
+         location.href = "QnaDummy.jsp"
+      })
+   </script>
+      
+      
+      
+      
+      
+      
+      
+      
 
             
         <!-- Footer-->
@@ -122,7 +122,7 @@
                         <div class="small m-0 text-white">Copyright &copy; K-Health Corp. All rights reserved.</div>
                         <div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
         
-                       	<img src="/image/instagram.png" height="20px">        
+                          <img src="/image/instagram.png" height="20px">        
                         <span class="text-white mx-1">&middot;</span>        
                         <img src="/image/facebook.png" height="20px">        
                         <span class="text-white mx-1">&middot;</span>        
