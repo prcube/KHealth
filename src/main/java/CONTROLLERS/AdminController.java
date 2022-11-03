@@ -28,7 +28,7 @@ public class AdminController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		
-		if(uri.equals("/../main/java/CONTROLLERS/product.admin")) {
+		if(uri.equals("/../main/java/CONTROLLERS/AdminController.java/product.admin")) {
 			
 			try {
 				int maxSize = 1024*1024*10; 
