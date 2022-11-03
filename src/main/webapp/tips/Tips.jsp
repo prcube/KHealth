@@ -18,7 +18,9 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+<script src="https://code.jquery.com/jquery-3.6.1.js">
+	
+</script>
 </head>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -50,6 +52,13 @@
 					</ul>
 				</div>
 			</div>
+			<c:choose>
+				<c:when test="${loginID != null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+						&nbsp;</a>
+				</c:when>
+			</c:choose>
 		</nav>
 	</main>
 
@@ -103,20 +112,18 @@
 		</div>
 
 		<script>
-      //tips 테이블 글작성하는건 Members_role 가 1 일 경우에 작성할 수 있게 수정할것.
-//       $(function() {
-// 			$("#tipswrite").hide()
-// 			console.log("${dto.tips_writer}");
-// 			if ("${loginID}" == "${dto.writer}") {
-// 				$("#tipswrite").show()
-// 			}
-      
-      
-      
-               $("#tipswrite").on("click",function(){
-                  location.href = "/tips/tipswrite.jsp?cpage=1"
-               })
-            </script>
+			//tips 테이블 글작성하는건 Members_role 가 1 일 경우에 작성할 수 있게 수정할것.
+			//       $(function() {
+			// 			$("#tipswrite").hide()
+			// 			console.log("${dto.tips_writer}");
+			// 			if ("${loginID}" == "${dto.writer}") {
+			// 				$("#tipswrite").show()
+			// 			}
+
+			$("#tipswrite").on("click", function() {
+				location.href = "/tips/tipswrite.jsp?cpage=1"
+			})
+		</script>
 	</div>
 
 
