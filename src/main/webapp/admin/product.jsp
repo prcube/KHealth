@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
-	<form action="/../main/java/CONTROLLERS/AdminController.java/product.admin" method="post"
+	<form action="/product.admin" method="post"
 		enctype="multipart/form-data">
 
 		<div class="header">신규 판매상품 등록</div>
