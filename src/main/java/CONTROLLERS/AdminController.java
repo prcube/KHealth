@@ -80,6 +80,10 @@ public class AdminController extends HttpServlet {
 			}
 			
 		}
+		
+		if(uri.equals("/blacklist.admin")) {
+			
+		}
 	}
 
 

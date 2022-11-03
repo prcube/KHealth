@@ -50,8 +50,7 @@
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/list.tips">Tips</a></li>
+						<li class="nav-item"><a class="nav-link" href="/list.tips">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
@@ -65,56 +64,69 @@
 
 
 		<!-- 로그인 파트 -->
-		<section class="vh-100">
-			<div class="container py-5 h-100">
-				<div
-					class="row d-flex justify-content-center align-items-center h-100">
-					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
-						<div class="card shadow-2-strong" style="border-radius: 1rem;">
-							<div class="card-body p-5 text-center">
+		<form action="login.mem" method=post>
+			<section class="vh-100">
+				<div class="container py-5 h-100">
+					<div
+						class="row d-flex justify-content-center align-items-center h-100">
+						<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+							<div class="card shadow-2-strong" style="border-radius: 1rem;">
+								<div class="card-body p-5 text-center">
 
-								<h3 class="mb-5">Sign in</h3>
+									<h3 class="mb-5">로그인</h3>
 
-								<div class="form-outline mb-4">
-									<input type="email" id="typeEmailX-2"
-										class="form-control form-control-lg" /> <label
-										class="form-label" for="typeEmailX-2">Email</label>
+									<div class="form-outline mb-4">
+										<input type="text" id="ID" name="ID"
+											class="form-control form-control-lg"
+											placeholder="아이디를 입력해 주세요" />
+									</div>
+
+									<div class="form-outline mb-4">
+										<input type="password" id="passwd" name="passwd"
+											class="form-control form-control-lg"
+											placeholder="패스워드를 입력해 주세요" />
+									</div>
+
+									<!-- Checkbox -->
+									<div class="form-check d-flex justify-content-start mb-4">
+										 <label class="form-check-label"
+											for="form1Example3">암호 기억하기 </label>&nbsp;&nbsp;
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<input class="form-check-input" type="checkbox" value=""
+											id="form1Example3" />
+									</div>
+
+									<button class="btn btn-primary btn-lg btn-block" type="submit"
+										style="width: 100%;">로그인</button>
+										<br><br>
+									<div>
+									<a href="SigninDummy.jsp">
+										<button type="button" class="btn text-secondary"
+										>회원가입</button></a>
+							
+										<button type="button" class="btn text-secondary">아이디
+											찾기</button>
+									</div>
+
+									<hr class="my-4">
+
+									<a id="kakao-login-btn" href="javascript:loginWithKakao()">
+										<img
+										src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+										width="222" alt="카카오 로그인 버튼" />
+									</a>
+									<p id="token-result"></p>
+									<button id="naver_id_login"
+										class="btn btn-lg btn-block btn-primary mb-2" type="submit">네이버
+									</button>
+
 								</div>
-
-								<div class="form-outline mb-4">
-									<input type="password" id="typePasswordX-2"
-										class="form-control form-control-lg" /> <label
-										class="form-label" for="typePasswordX-2">Password</label>
-								</div>
-
-								<!-- Checkbox -->
-								<div class="form-check d-flex justify-content-start mb-4">
-									<input class="form-check-input" type="checkbox" value=""
-										id="form1Example3" /> <label class="form-check-label"
-										for="form1Example3"> Remember password </label>
-								</div>
-
-								<button class="btn btn-primary btn-lg btn-block" type="submit"
-									style="width: 100%;">Login</button>
-
-								<hr class="my-4">
-
-								<a id="kakao-login-btn" href="javascript:loginWithKakao()">
-									<img
-									src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-									width="222" alt="카카오 로그인 버튼" />
-								</a>
-								<p id="token-result"></p>
-								<button id="naver_id_login"
-									class="btn btn-lg btn-block btn-primary mb-2" type="submit">네이버
-								</button>
-
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</form>
 
 		<script type="text/javascript">
   	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://localhost/index.jsp");

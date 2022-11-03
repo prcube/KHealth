@@ -9,9 +9,5 @@
 </head>
 <body>
 
-
-<br><br><br>
-<a href = "/blacklist.admin">블랙리스트 관리</a>
-<a href = "/admin/product.jsp">판매상품 관리</a> 
 </body>
 </html>
