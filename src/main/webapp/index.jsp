@@ -76,7 +76,7 @@
 						<li class="nav-item"><a class="nav-link"
 							href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="market/MarketDummy.jsp">Market</a></li>
+							href="/list.market">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="qna/QnaDummy.jsp">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
