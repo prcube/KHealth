@@ -85,6 +85,7 @@
 							href="mypage/MypageDummy.jsp">Mypage</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/SigninDummy.jsp">Signin</a></li>
+							
 					</ul>
 				</div>
 			</div>
@@ -211,70 +212,7 @@
         </section>
 
 
-		<!-- 동영상 파트-->
-		<section class="py-5" id="features">
-			<div class="container px-5 my-5">
-				<div class="row gx-5">
-					<div class="col-lg-4 mb-5 mb-lg-0">
-						<h2 class="fw-bolder mb-5">K-Health Media</h2>
-					</div>
-					<div class="col-lg-12">
-						<div class="row gx-5 gy-5 row-cols-1 row-cols-md-2">
-
-							<div class="col mb-5" style="height: 400px;">
-								<div
-									class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-toggles2"></i>
-								</div>
-								<iframe class="rounded-3" width="100%" height="100%"
-									src="https://www.youtube.com/embed/ptpmRrzRtWQ"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen></iframe>
-							</div>
-							<div class="col mb-5" style="height: 400px;">
-								<div
-									class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-building"></i>
-								</div>
-								<iframe class="rounded-3" width="100%" height="100%"
-									src="https://www.youtube.com/embed/q6TI60e7kWY"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen></iframe>
-
-
-							</div>
-
-							<div class="col mb-5 " style="height: 400px;">
-								<div
-									class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-toggles2"></i>
-								</div>
-								<h2 class="h5">Featured title</h2>
-								<iframe class="rounded-3" width="100%" height="100%"
-									src="https://www.youtube.com/embed/FQy6mzpcBs0"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen></iframe>
-							</div>
-							<div class="col mb-5 " style="height: 400px;">
-								<div
-									class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-toggles2"></i>
-								</div>
-								<h2 class="h5">Featured title</h2>
-								<iframe class="rounded-3" width="100%" height="100%"
-									src="https://www.youtube.com/embed/O94yEoGXtBY"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen></iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		
 
 		<!-- Testimonial section-->
 
@@ -468,7 +406,7 @@
 					</div>
 				</section>
 
-<<<<<<< HEAD
+
                 <!-- Call to action-->
                 <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
                     <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
