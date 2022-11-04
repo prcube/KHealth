@@ -134,16 +134,17 @@
 
 							<!-- Comments section-->
 
-							<c:choose>
-								<c:when test="${not empty list }">
-									<c:forEach var="list" items="${list }">
-
+							
+									
 
 
 										<section>
 											<div class="card bg-light">
-												
-
+												<div class="card-body" id="QnaCmsArea">
+													<c:forEach var="list" items="${list }">
+														              <input type=hidden name="qnaCms_writer" value="${list.qnaCms_writer }">
+															          <input type=hidden name="qnaCms_seq" value="${list.qnaCms_seq }">
+															         <input type=hidden name="contentsComments" id="input_contentsComments">
 													<div class="d-flex mb-4 mt-4">
 														<!-- Parent comment-->
 														<div class="flex-shrink-0">
@@ -152,18 +153,21 @@
 																alt="..." />
 														</div>
 														<div class="ms-3">
-															<div class="fw-bold">Commenter Name</div>
-															${list.qnaCms_contents } ${list.qnaCms_write_date }
+										
+															<div class="fw-bold" class = "updComment">${list.qnaCms_writer } ${list.qnaCms_write_date }</div>
+															<div class = updComment id = qnaCms_contents name = qnaCms_contents>${list.qnaCms_contents }</div> 
+															<c:if test = "${loginID == list.qnaCms_writer }">
+																<button type= button class = "deleteComments" qnaCms_seq=${list.qnaCms_seq }>삭제</button>
+																
+															</c:if>
 														</div>
 													</div>
 
 												
 
 													
-									</c:forEach>
+										</c:forEach>
 
-								</c:when>
-							</c:choose>
 
 
 							<section>
@@ -186,7 +190,7 @@
 										<br>
 										<button type="button" class="btn btn-secondary"
 											id="commentsbutton">작성하기</button>
-										<button type="button" class="btn btn-secondary">수정하기</button>
+										<button type="button" class="btn btn-secondary" id = "modifyComments"  >수정하기</button>
 										<!-- Comment with nested comments-->
 		</form>
 
@@ -246,6 +250,38 @@
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
 	<script>
+	
+	
+	
+	$(".deleteComments").on("click",function(){
+		let target = $(this).attr("qnaCms_seq");
+		location.href = "/delete.comments?qnaCms_seq="+target;
+	})
+                    //댓글 수정하기
+                  $("#modifyComments").on("click",function(){
+                     $("#QnaCmsArea").attr("contenteditable","true");
+
+                     
+                     let modifyCommentsOk = $("<button>");
+                     modifyCommentsOk.html("수정완료");
+                     modifyCommentsOk.on("click",function(){
+                     $("#detailFrm").attr("action","/update.comments");
+                     $("#input_contentsComments").val($("#QnaCmsArea").html());
+                     $("#detailFrm").submit();
+                     })
+         
+                     let modifyCommentsCancel = $("<button>");
+                     modifyCommentsCancel.attr("type","button");
+                     modifyCommentsCancel.html("취소");
+                     modifyCommentsCancel.on("click",function(){
+                        location.reload();
+                     })
+                     
+                     $("#modifyComments").before(modifyCommentsOk);
+                     $("#modifyComments").before(modifyCommentsCancel);
+                  })
+
+
      
      
         $("#back").on("click",function(){

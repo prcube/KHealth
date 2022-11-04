@@ -34,13 +34,14 @@ public class QnaDAO {
    }
    
    public int write(QnaDTO dto) throws Exception {
-      String sql = "insert into qna values (qna_seq.nextval,?,0,?,sysdate,?,0)";
+      String sql = "insert into qna values (qna_seq.nextval,?,?,?,sysdate,?,0)";
       try(Connection con = this.getConnection();
             PreparedStatement pstat = con.prepareStatement(sql);) {
         
           pstat.setString(1,dto.getQna_title());
-          pstat.setString(2, dto.getQna_contents());
-          pstat.setInt(3,dto.getQna_view_count());
+          pstat.setString(2, dto.getQna_writer());
+          pstat.setString(3, dto.getQna_contents());
+          pstat.setInt(4,dto.getQna_view_count());
 
 
          int result = pstat.executeUpdate();
