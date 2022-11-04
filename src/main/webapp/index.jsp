@@ -70,7 +70,7 @@
 
 
         <header class="bg-dark py-5">
-            <div class="container px-5">
+            <div class="container px-5 ">
                 <!-- <캐러셀캐러셀> -->
                 <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="false">
                     <div class="carousel-indicators">
@@ -132,11 +132,11 @@
                     <div class="col-lg-12">
                         <div class="row gx-5 gy-5 row-cols-1 row-cols-md-2">
                             
-                            <div class="col mb-5" style="height: 400px;">
+                            <div class="col mb-5 " style="height: 400px;">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
                                     <i class="bi bi-toggles2"></i>
                                 </div>
-                                <iframe class="rounded-3" width="100%" height="100%" src="https://www.youtube.com/embed/ptpmRrzRtWQ"
+                                <iframe class="rounded-3 " width="100%" height="100%" src="https://www.youtube.com/embed/ptpmRrzRtWQ"
                                     title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
@@ -310,7 +310,7 @@
 
                 <!-- 카카오지도 카카오지도-->
                 <section class="py-5" id="features">
-                    <div class="container px-4 py-4 my-5 bg-light">
+                    <div class="container px-4 py-4 my-5 bg-light shadow border-0">
                         <div class="row gx-5">
                             <div class="col-lg-7 mb-5 mb-lg-0">
                                 <div id="map" style="width:100%;height:400px;"></div>
@@ -360,8 +360,7 @@
 
                 <!-- Call to action-->
                 <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
-                    <div
-                        class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                    <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                         <div class="mb-4 mb-xl-0">
                             <div class="fs-3 fw-bold text-white">New products,
                                 delivered to you.</div>
