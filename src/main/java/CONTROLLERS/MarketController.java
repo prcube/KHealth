@@ -33,7 +33,7 @@ public class MarketController extends HttpServlet {
 
 				//				List<BoardDTO> list = dao.selctAll(new BoardDTO(id)); 이제 이거 안 씀
 
-				List<ProductDTO> list = dao.selectByRange(cpage*10-9,cpage*10);
+				List<ProductDTO> list = dao.selectByRange(cpage*9-8,cpage*9);
 
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
