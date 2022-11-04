@@ -29,14 +29,16 @@ public class AdminController extends HttpServlet {
 		String uri = request.getRequestURI();
 
 		if(uri.equals("/product.admin")) {
-
+			
+			System.out.println("오기는왔음");
 			try {
 				int maxSize = 1024*1024*10; 
 
 				String savePath = request.getServletContext().getRealPath("/image");
 				String writer = (String) request.getSession().getAttribute("loginId");
-				int product_count = Integer.parseInt(request.getParameter("product_count")); 
+				System.out.println("여기도 왔음");
 				
+				System.out.println("여기는?");
 				File imageSavePath = new File(savePath);  
 
 				if(!imageSavePath.exists()) {
@@ -48,7 +50,7 @@ public class AdminController extends HttpServlet {
 
 				String product_name = multi.getParameter("product_name");
 				String product_price = multi.getParameter("product_price");
-				
+				int product_count = Integer.parseInt(multi.getParameter("product_count"));
 				
 
 
@@ -72,7 +74,7 @@ public class AdminController extends HttpServlet {
 
 				System.out.println("여기까진 완료");
 				System.out.println(savePath);
-				response.sendRedirect("/list.board?cpage=1");
+				response.sendRedirect("/admin/admindummy.jsp");
 
 
 			}

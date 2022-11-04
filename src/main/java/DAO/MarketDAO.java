@@ -38,7 +38,7 @@ public class MarketDAO {
 	}
 
 	public int getRecordCount() throws Exception{
-		String sql = "select count(*) from board";
+		String sql = "select count(*) from product";
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -100,22 +100,22 @@ public class MarketDAO {
 
 
 		if(needPrev) {
-			sb.append("<a href='/list.board?cpage="+(startNavi-1)+"'><</a>");
+			sb.append("<a href='/list.market?cpage="+(startNavi-1)+"'><</a>");
 		}
 		for(int i =startNavi; i<=endNavi; i++) {
-			sb.append("<a href='/list.board?cpage="+i+"'>" + i + "</a>");
+			sb.append("<a href='/list.market?cpage="+i+"'>" + i + "</a>");
 			sb.append(" ");	
 		}
 
 		if(needNext) {
-			sb.append("<a href='/list.board?cpage="+(endNavi+1)+"'>></a>");
+			sb.append("<a href='/list.market?cpage="+(endNavi+1)+"'>></a>");
 		}
 		return sb.toString();
 	}
 	
 	public List<ProductDTO> selectByRange(int start, int end) throws Exception{
 
-		String sql = "select * from (select prodcut.*, row_number() over(order by seq desc) rn from product) where rn between ? and ?";
+		String sql = "select * from (select product.*, row_number() over(order by product_seq desc) rn from product) where rn between ? and ?";
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
