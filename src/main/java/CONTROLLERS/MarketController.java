@@ -51,6 +51,22 @@ public class MarketController extends HttpServlet {
 			}
 		
 		}
+		
+		if(uri.equals("/detail.market")) {
+			
+			int product_seq = Integer.parseInt(request.getParameter("product_seq"));
+			
+			try {ProductDTO dto = MarketDAO.getInstance().detail(product_seq);
+				
+			request.setAttribute("dto", dto);
+			request.getRequestDispatcher("").forward(request, response);
+			
+				}catch(Exception e) {
+					e.printStackTrace();
+					response.sendRedirect("/error.jsp");
+				}
+			
+		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
