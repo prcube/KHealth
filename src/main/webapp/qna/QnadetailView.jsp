@@ -36,8 +36,8 @@
 	$(function(){
 		$("#update,#delete").hide();
 		console.log("${dto.qna_writer}")
-		if("${dto.qna_writer}" == "${id}") {
-			$("#update,""#delete ").show();
+		if("${dto.qna_writer}" == "${loginID}") {
+			$("#update,#delete").show();
 		}
 	})
 
@@ -96,7 +96,7 @@
 										value=${dto.qna_title } style="display: none;" name=qna_title>
 									<input type=hidden value=${dto.qna_contents }
 										style="display: none;" name=qna_contents>
-									<div class="fw-bold">${dto.qna_nickname }</div>
+									<div class="fw-bold">${dto.qna_writer }</div>
 									<div class="text-muted">News, Business</div>
 								</div>
 							</div>
@@ -167,7 +167,7 @@
 														<div class="ms-3">
 										
 															<div class="fw-bold" class = "updComment">${list.qnaCms_writer } ${list.qnaCms_write_date }</div>
-															<div class = updComment id = QnaCmsArea name = qnaCms_contents>${list.qnaCms_contents }</div> 
+															<div class = QnaCmsArea  name = qnaCms_contents>${list.qnaCms_contents }</div> 
 															<c:if test = "${loginID == list.qnaCms_writer }">
 																<button type= button class = "deleteComments" qnaCms_seq=${list.qnaCms_seq }>삭제</button>
 																<button type= button class = "modifyComments" id = "modifyComments">수정하기</button>
@@ -271,16 +271,23 @@
 		location.href = "/delete.comments?qnaCms_seq="+target;
 	})
                     //댓글 수정하기
-                  $("#modifyComments").on("click",function(){
-                     $("#QnaCmsArea").attr("contenteditable","true");
+                  $(".modifyComments").on("click",function(){
+                	  $(this).closest(".ms-3").find(".QnaCmsArea").attr("contenteditable","true");
+                      console.log($(this).closest(".ms-3").find(".QnaCmsArea").html())
+                      $(this).closest(".ms-3").find(".modifyComments").css("display", "none");
+                      $(this).closest(".ms-3").find(".deleteComments").css("display", "none");
+
 
                      
                      let modifyCommentsOk = $("<button>");
                      modifyCommentsOk.html("수정완료");
                      modifyCommentsOk.on("click",function(){
                      $("#detailFrm").attr("action","/update.comments");
-                     $("#input_contentsComments").val($("#QnaCmsArea").html());
+                     $("#input_contentsComments").val($(".QnaCmsArea").html());
                      $("#detailFrm").submit();
+                     
+                    let target = $(this).attr("qnaCms_seq");
+             		location.href = "/update.comments?qnaCms_seq="+target;
                      })
          
                      let modifyCommentsCancel = $("<button>");
@@ -290,8 +297,8 @@
                         location.reload();
                      })
                      
-                     $("#modifyComments").before(modifyCommentsOk);
-                     $("#modifyComments").before(modifyCommentsCancel);
+                $(this).before(modifyCommentsOk);
+                $(this).before(modifyCommentsCancel);
                   })
                   
                
