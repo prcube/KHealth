@@ -37,7 +37,7 @@ public class MarketController extends HttpServlet {
 
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
-				request.getRequestDispatcher("/board/mainboard.jsp").forward(request, response);
+				request.getRequestDispatcher("/market/MarketDummy.jsp").forward(request, response);
 
 			}
 			catch(Exception e) {
