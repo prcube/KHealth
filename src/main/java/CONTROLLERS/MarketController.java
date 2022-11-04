@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.ImagesDAO;
 import DAO.MarketDAO;
+import DTO.ImagesDTO;
 import DTO.ProductDTO;
 
 
@@ -34,7 +36,10 @@ public class MarketController extends HttpServlet {
 				//				List<BoardDTO> list = dao.selctAll(new BoardDTO(id)); 이제 이거 안 씀
 
 				List<ProductDTO> list = dao.selectByRange(cpage*9-8,cpage*9);
-
+				
+				List<ImagesDTO> imagesList = ImagesDAO.getInstance().selectByRange(cpage*9-8,cpage*9);
+				
+				request.setAttribute("image", imagesList);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
 				request.getRequestDispatcher("/market/MarketDummy.jsp").forward(request, response);
