@@ -95,7 +95,7 @@
 
 
 
-
+ 
 
 		</tbody>
 	</table>
@@ -103,6 +103,17 @@
 
 
 
+
+
+		<br>
+		<br>
+		<br>
+		<br>
+		
+            <div style="text-align: center;">
+            	${navi }
+            
+            </div>
 
 
 
