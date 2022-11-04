@@ -35,6 +35,8 @@ public class AdminController extends HttpServlet {
 
 				String savePath = request.getServletContext().getRealPath("/image");
 				String writer = (String) request.getSession().getAttribute("loginId");
+				int product_count = Integer.parseInt(request.getParameter("product_count")); 
+				
 				File imageSavePath = new File(savePath);  
 
 				if(!imageSavePath.exists()) {
@@ -46,13 +48,13 @@ public class AdminController extends HttpServlet {
 
 				String product_name = multi.getParameter("product_name");
 				String product_price = multi.getParameter("product_price");
-				String product_count = multi.getParameter("product_count");
-				String product_review = multi.getParameter("product_review");
+				
+				
 
 
 				int seq = AdminDAO.getInstance().getnextval();
 
-				AdminDAO.getInstance().insertProduct(new ProductDTO(seq, product_name, product_price, product_count, product_review ));
+				AdminDAO.getInstance().insertProduct(new ProductDTO(seq, product_name, product_price, product_count));
 
 				Enumeration<String> e = multi.getFileNames();
 

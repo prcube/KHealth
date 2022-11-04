@@ -17,7 +17,9 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+<script src="https://code.jquery.com/jquery-3.6.1.js">
+	
+</script>
 </head>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -48,14 +50,21 @@
 					</ul>
 				</div>
 			</div>
+
+			<c:choose>
+				<c:when test="${loginID != null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+						&nbsp;</a>
+				</c:when>
+			</c:choose>
 		</nav>
 
 
-
-
-
+		<!-- 상품페이지-->
 		<section class="py-5">
-			<div class="container px-4 px-lg-5 mt-5">
+			<div class="container px-5 my-5">
+
 				<div class="row gx-5 justify-content-center">
 					<div class="col-lg-8 col-xl-6">
 						<div class="text-center">
@@ -66,7 +75,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+
+				<div
+					class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
 					<div class="col mb-5">
 						<div class="card h-100 shadow border-0">
 							<!-- Product image-->
@@ -84,8 +95,8 @@
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="/product/ProductView.jsp">View
-										options</a>
+									<a class="btn btn-outline-dark mt-auto"
+										href="/product/ProductView.jsp">View options</a>
 								</div>
 							</div>
 						</div>
@@ -126,6 +137,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="col mb-5">
 						<div class="card h-100 shadow border-0">
 							<!-- Sale badge-->
@@ -181,10 +193,12 @@
 								<div class="text-center">
 									<a class="btn btn-outline-dark mt-auto" href="#">Add to
 										cart</a>
+
 								</div>
 							</div>
 						</div>
 					</div>
+
 					<div class="col mb-5">
 						<div class="card h-100 shadow border-0">
 							<!-- Sale badge-->
@@ -299,13 +313,16 @@
 								<div class="text-center">
 									<a class="btn btn-outline-dark mt-auto" href="#">Add to
 										cart</a>
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</section>
+
 	</main>
 
 
