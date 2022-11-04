@@ -94,6 +94,7 @@
                <c:when test="${not empty list}">
                   <c:forEach var="i" items="${list }">
 
+<<<<<<< HEAD
                      <div class="col mb-5 ">
                         <div class="card h-100 shadow border-0 row-cols-xs-3">
                            <!-- Product image-->
@@ -341,6 +342,47 @@
          <!--                         <div class="text-center"> -->
          <!--                            <a class="btn btn-outline-dark mt-auto" href="#">Add to -->
          <!--                               cart</a> -->
+=======
+							<div class="col mb-5">
+								<div class="card h-100 shadow border-0 row-cols-xs-3">
+									<!-- Product image-->
+									<img class="card-img-top"
+										src="C:\Users\taek\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\KHealth\image\aa.png"
+										alt="..." />
+									<!-- Product details-->
+									<div class="card-body p-4">
+										<div class="text-center">
+											<!-- Product name-->
+											<h5 class="fw-bolder">${i.product_name }</h5>
+											<!-- Product price-->
+											${i.product_price }
+										</div>
+									</div>
+									<!-- Product actions-->
+									<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+										<div class="text-center">
+										
+											<a class="btn btn-outline-dark mt-auto"
+												href="/detail.market?product_seq=${i.product_seq }">View options</a>
+										</div>
+									</div>
+								</div>
+								</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<div>출력할 내용이 없습니다.</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="navi" style="text-align: center;">${navi}</div>
+
+
+	
+			</div>
+			</div>
+			</div>
+>>>>>>> 45f5658a967859efc9590b6650520d4f544bd607
 
          <!--                         </div> -->
          <!--                      </div> -->

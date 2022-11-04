@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="java.net.HttpURLConnection" %>
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.InputStreamReader" %>
 <!DOCTYPE html>
 <html>
 
@@ -50,6 +55,7 @@
       <i class="bi bi-chevron-up" style="color: white;"></i>
    </button>
 
+<<<<<<< HEAD
    <main class="flex-shrink-0">
       <!-- Navigation-->
       <nav
@@ -100,6 +106,58 @@
             </c:when>
          </c:choose>
       </nav>
+=======
+	<main class="flex-shrink-0">
+		<!-- Navigation-->
+		<nav
+			class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
+			<div class="container px-5 " id="sticky-wrapper"
+				class="sticky-wrapper">
+				<a class="navbar-brand" href=""><img
+					src="image/khealth logo.png" height="100px"></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link"
+							href="/admin/admindummy.jsp">Admin</a></li>
+						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.tips?cpage=1">Tips</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.market?cpage=1">Market</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="qna/QnaDummy.jsp">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="login/LoginDummy.jsp">Login</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="mypage/MypageDummy.jsp">Mypage</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="login/SigninDummy.jsp">Signin</a></li>
+					</ul>
+				</div>
+			</div>
+			<c:choose>
+				<c:when test="${loginID != null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp; &nbsp; &nbsp;
+						</a>
+					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+						value="로그아웃">
+				</c:when>
+				<c:when test="${loginID == null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white"></a>
+				</c:when>
+			</c:choose>
+		</nav>
+>>>>>>> 45f5658a967859efc9590b6650520d4f544bd607
 
 
 
@@ -477,6 +535,7 @@
    <script src="js/scripts.js"></script>
 </body>
 
+<<<<<<< HEAD
 
 <script type="text/javascript">
    var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA",
@@ -492,6 +551,50 @@
       //alert(naver_id_login.getProfileData('age'));
    }
 </script>
+=======
+ <%
+    String clientId = "_5b0QUYbnHTk93odBRsA";//애플리케이션 클라이언트 아이디값";
+    String clientSecret = "VA5gRXY82n";//애플리케이션 클라이언트 시크릿값";
+    String code = request.getParameter("code");
+    String state = request.getParameter("state");
+    String redirectURI = URLEncoder.encode("http://127.0.0.1/index.jsp", "UTF-8");
+    String apiURL;
+    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
+    apiURL += "client_id=" + clientId;
+    apiURL += "&client_secret=" + clientSecret;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&code=" + code;
+    apiURL += "&state=" + state;
+    String access_token = "";
+    String refresh_token = "";
+    System.out.println("apiURL="+apiURL);
+    try {
+      URL url = new URL(apiURL);
+      HttpURLConnection con = (HttpURLConnection)url.openConnection();
+      con.setRequestMethod("GET");
+      int responseCode = con.getResponseCode();
+      BufferedReader br;
+      System.out.print("responseCode="+responseCode);
+      if(responseCode==200) { // 정상 호출
+        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+      } else {  // 에러 발생
+        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+      }
+      String inputLine;
+      StringBuffer res = new StringBuffer();
+      while ((inputLine = br.readLine()) != null) {
+        res.append(inputLine);
+      }
+      br.close();
+      if(responseCode==200) {
+        out.println(res.toString());
+      }
+    } catch (Exception e) {
+      System.out.println(e);
+    }
+  %>
+  </body>
+>>>>>>> 45f5658a967859efc9590b6650520d4f544bd607
 
 
 <script>
