@@ -52,7 +52,7 @@ public class MarketDAO {
 
 		int recordTotalCount = this.getRecordCount(); // board table에 글이 총 144개 있다고 가정
 
-		int recordCountPerPage = 10; // 게시판 한 페이지당 10개의 글씩 보여주기로 설정
+		int recordCountPerPage = 9; // 게시판 한 페이지당 10개의 글씩 보여주기로 설정
 
 		int naviCountPerPage = 10; // 게시판 하단의 Page Navigator 가 한번에 몇 개씩 보여질지 지설정
 
