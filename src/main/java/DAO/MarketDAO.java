@@ -128,7 +128,7 @@ public class MarketDAO {
 
 				while(rs.next()) {
 
-					int product_seq = rs.getInt("seq");
+					int product_seq = rs.getInt("product_seq");
 
 					String product_name =rs.getString("product_name");	
 					String product_price = rs.getString("product_price");
