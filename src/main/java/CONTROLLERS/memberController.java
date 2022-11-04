@@ -56,6 +56,9 @@ public class memberController extends HttpServlet {
 				boolean result = dao.isIDExist(id);
 				response.getWriter().append(String.valueOf(result));
 
+			} else if (uri.equals("/logout.mem")) {
+				request.getSession().invalidate();
+				response.sendRedirect("/");
 			}
 
 		} catch (Exception e) {
