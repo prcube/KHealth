@@ -88,13 +88,13 @@
             </div>
          </div>
          <div
-            class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+            class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 px-5 justify-content-center">
             <c:choose>
 
                <c:when test="${not empty list}">
                   <c:forEach var="i" items="${list }">
 
-                     <div class="col mb-5">
+                     <div class="col mb-5 ">
                         <div class="card h-100 shadow border-0 row-cols-xs-3">
                            <!-- Product image-->
                            <img class="card-img-top"
@@ -128,7 +128,8 @@
          <div class="navi" style="text-align: center;">${navi}</div>
 
 
-         <!--                <div class="col mb-5"> -->
+
+			<!--                <div class="col mb-5"> -->
          <!--                   <div class="card h-100 shadow border-0"> -->
          <!--                      Sale badge -->
          <!--                      <div class="badge bg-dark text-white position-absolute" -->
