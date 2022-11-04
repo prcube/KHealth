@@ -57,12 +57,6 @@
 					<!-- 로그인을 한 사용자 -->
 					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
 						&nbsp;</a>
-					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
-						value="로그아웃">
-				</c:when>
-				<c:when test="${loginID == null}">
-					<!-- 로그인을 한 사용자 -->
-					<a style="color: white"></a>
 				</c:when>
 			</c:choose>
 		</nav>
@@ -87,7 +81,6 @@
 								<div class="d-flex align-items-center">
 									<div class="ms-3">
 										<p class="fw-bold mb-1">${i.tips_seq }</p>
-										<p class="text-muted mb-0">${i.tips_writer }</p>
 									</div>
 								</div>
 							</td>
@@ -97,9 +90,8 @@
 								</p>
 								<p class="text-muted mb-0"></p>
 							</td>
-							<td><span class="badge badge-success rounded-pill d-inline">Active</span>
-							</td>
-							<td>Senior</td>
+							<td>${i.tips_writer }</td>
+							<td>${i.tips_write_date }</td>
 							<td>${i.tips_view_count }</td>
 						</tr>
 					</tbody>
