@@ -42,7 +42,7 @@
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="/list.tips">Tips</a></li>
+						<li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/qna/QnaDummy.jsp">Q&A</a></li>
