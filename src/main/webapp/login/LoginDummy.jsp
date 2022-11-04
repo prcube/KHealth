@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +64,17 @@
 			</div>
 		</nav>
 
-
+		<%
+		String clientId = "_5b0QUYbnHTk93odBRsA";//애플리케이션 클라이언트 아이디값";
+		String redirectURI = URLEncoder.encode("http://127.0.0.1/index.jsp", "UTF-8");
+		SecureRandom random = new SecureRandom();
+		String state = new BigInteger(130, random).toString();
+		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+		apiURL += "&client_id=" + clientId;
+		apiURL += "&redirect_uri=" + redirectURI;
+		apiURL += "&state=" + state;
+		session.setAttribute("state", state);
+		%>
 
 		<!-- 로그인 파트 -->
 		<form action="login.mem" method=post>
@@ -97,8 +110,7 @@
 
 									<button class="btn btn-primary btn-lg btn-block" type="submit"
 										style="width: 100%;">로그인</button>
-									<br>
-									<br>
+									<br> <br>
 									<div>
 										<a href="SigninDummy.jsp">
 											<button type="button" class="btn text-secondary">회원가입</button>
@@ -116,10 +128,9 @@
 										width="222" alt="카카오 로그인 버튼" />
 									</a>
 									<p id="token-result"></p>
-									<button id="naver_id_login"
-										class="btn btn-lg btn-block btn-primary mb-2" type="submit">네이버
-									</button>
 
+									<a href="<%=apiURL%>"><img height="50"
+										src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
 								</div>
 							</div>
 						</div>
@@ -128,16 +139,6 @@
 			</section>
 		</form>
 
-		<script type="text/javascript">
-  	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://localhost/index.jsp");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("YOUR_SERVICE_URL");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-  	//자동 푸쉬가 일어나길... 6트
-  </script>
 
 
 
