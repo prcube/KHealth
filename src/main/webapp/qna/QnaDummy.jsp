@@ -22,7 +22,11 @@
 	
 </script>
 </head>
+<style>
+
+</style>
 <body class="d-flex flex-column h-100">
+
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -42,10 +46,10 @@
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="/list.tips">Tips</a></li>
+						<li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/login/LoginDummy.jsp">Login</a></li>
 					</ul>
@@ -162,4 +166,5 @@
 
 
 </body>
+
 </html>

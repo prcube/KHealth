@@ -1,6 +1,7 @@
 package DTO;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class QnaDTO {
    private int qna_seq;
@@ -10,6 +11,7 @@ public class QnaDTO {
    private Timestamp qna_write_date;
    private int qna_view_count;
    private String qna_nickname;
+
 
    public QnaDTO() {}
    public QnaDTO(int qna_seq, String qna_title, String qna_writer, String qna_contents, Timestamp qna_write_date,
@@ -64,6 +66,10 @@ public class QnaDTO {
    }
    public void setQna_nickname(String qna_nickname) {
       this.qna_nickname = qna_nickname;
+   }
+   public String getFormedDate() {
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+      return sdf.format(this.qna_write_date);
    }
 
 }

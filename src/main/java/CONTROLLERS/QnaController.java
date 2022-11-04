@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
+import DTO.QnaCommentsDTO;
+import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
+
 
 
 
@@ -23,29 +27,39 @@ public class QnaController extends HttpServlet {
    
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
+
+     
+      
       String uri = request.getRequestURI();
       
       request.setCharacterEncoding("utf8");
       
       try {
          if(uri.equals("/list.qna")) {
-        	 
-        	 
-        	 QnaDAO dao = QnaDAO.getInstance();
-        	 List<QnaDTO> list = dao.selectAll();
-        	 System.out.println(list);
- 	
-        	 
-        	 
-        	 request.setAttribute("list", list);
-        	 
+            
+            
+            int cpage = Integer.parseInt(request.getParameter("cpage"));
+        
+         
+         String navi = QnaDAO.getInstance().getPageNavi(cpage);
+            
+            QnaDAO dao = QnaDAO.getInstance();
+            //List<QnaDTO> list = dao.selectAll();
+            List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
+            System.out.println(list);
+    
+            
+            
+            request.setAttribute("list", list);
+            request.setAttribute("navi", navi);
+            
 
             request.getRequestDispatcher("/qna/QnaDummy.jsp").forward(request, response);
            
            
          }else if(uri.equals("/write.qna")) {
-        	 QnaDAO dao = QnaDAO.getInstance();
-        	 
+            QnaDAO dao = QnaDAO.getInstance();
+            
             
              String qna_title = request.getParameter("qna_title");
              String qna_contents = request.getParameter("qna_contents");
@@ -55,37 +69,53 @@ public class QnaController extends HttpServlet {
             dao.write(dto);
           
             
-            response.sendRedirect("/list.qna");
+            response.sendRedirect("/list.qna?cpage=1");
             //게시판 1페이지로 이동
             
          }else if(uri.equals("/detail.qna")) {
-        	 
-        	 
-        	 QnaDAO dao = QnaDAO.getInstance();
-        	 int seq = Integer.parseInt(request.getParameter("qna_seq"));
-        	 
-        	 QnaDTO dto = dao.selectBySeq(seq);
-        	 QnaDAO.getInstance().addViewCount(seq);
-        	 request.setAttribute("dto", dto);
-        	 
-        	 request.getRequestDispatcher("/qna/QnadetailView.jsp").forward(request, response);
+            
+            
+            QnaDAO dao = QnaDAO.getInstance();
+            int seq = Integer.parseInt(request.getParameter("qna_seq"));
+            
+            List<QnaCommentsDTO> list = QnaCommentsDAO.getInstance().selectAll(seq);
+            
+           
+            QnaDTO dto = dao.selectBySeq(seq);
+            QnaDAO.getInstance().addViewCount(seq);
+            request.setAttribute("list", list);
+            request.setAttribute("dto", dto);
+            
+            request.getRequestDispatcher("/qna/QnadetailView.jsp").forward(request, response);
             
          }else if(uri.equals("/update.qna")) {
+            QnaDAO dao = QnaDAO.getInstance();
             int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
             String qna_title = request.getParameter("qna_title");
             String qna_contents = request.getParameter("qna_contents");
             
-            int resilt = QnaDAO.getInstance().updateBySeq(qna_title, qna_contents, qna_seq);
+            dao.updateBySeq(qna_title, qna_contents, qna_seq);
             
-            response.sendRedirect("/detail.qna?qna_seq="+qna_seq);
+          
+          
+            
+            request.getRequestDispatcher("/detail.qna?qna_seq="+qna_seq).forward(request, response);
+            
+            
+         }else if(uri.equals("/gomodify.qna")) {
+            int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
+            request.setAttribute("qna_seq", qna_seq);
+            request.getRequestDispatcher("/qna/QnaModify.jsp").forward(request, response);
+            
             
          }else if(uri.equals("/delete.qna")) {
         
             int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
-        	QnaDAO dao = QnaDAO.getInstance();
+           QnaDAO dao = QnaDAO.getInstance();
             int result = dao.deleteBySeq(qna_seq);
-            response.sendRedirect("/list.qna");
-        
+            
+            response.sendRedirect("/list.qna?cpage=1");
+            
 //         }else if(uri.equals("/detail.board")) {
 //
 //            int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
