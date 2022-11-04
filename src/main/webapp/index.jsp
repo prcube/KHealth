@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -88,8 +89,14 @@
 			<c:choose>
 				<c:when test="${loginID != null}">
 					<!-- 로그인을 한 사용자 -->
-					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp; &nbsp; &nbsp;
 						&nbsp;</a>
+					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+						value="로그아웃">
+				</c:when>
+				<c:when test="${loginID == null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white"></a>
 				</c:when>
 			</c:choose>
 		</nav>
@@ -512,6 +519,10 @@
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
+
+	$("#logout").on("click", function() {
+		location.href = "/logout.mem";
+	})
 </script>
 
 </html>
