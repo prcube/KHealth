@@ -78,7 +78,7 @@ private static QnaCommentsDAO instance = null;
 			return result;
 		}
 	}public int update (String qnaCms_contents , int qnaCms_seq) throws Exception {
-		String sql = "update qnaCommtents qnaCms_contents = ? where qnaCms_seq ? ";
+		String sql = "update qnaComments set qnaCms_contents = ? where qnaCms_seq = ? ";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, qnaCms_contents);

@@ -31,6 +31,18 @@
 	charset="utf-8"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+	$(function(){
+		$("#update,#delete").hide();
+		console.log("${dto.qna_writer}")
+		if("${dto.qna_writer}" == "${id}") {
+			$("#update,""#delete ").show();
+		}
+	})
+
+</script>
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -140,7 +152,7 @@
 
 										<section>
 											<div class="card bg-light">
-												<div class="card-body" id="QnaCmsArea">
+												<div class="card-body">
 													<c:forEach var="list" items="${list }">
 														              <input type=hidden name="qnaCms_writer" value="${list.qnaCms_writer }">
 															          <input type=hidden name="qnaCms_seq" value="${list.qnaCms_seq }">
@@ -155,9 +167,10 @@
 														<div class="ms-3">
 										
 															<div class="fw-bold" class = "updComment">${list.qnaCms_writer } ${list.qnaCms_write_date }</div>
-															<div class = updComment id = qnaCms_contents name = qnaCms_contents>${list.qnaCms_contents }</div> 
+															<div class = updComment id = QnaCmsArea name = qnaCms_contents>${list.qnaCms_contents }</div> 
 															<c:if test = "${loginID == list.qnaCms_writer }">
 																<button type= button class = "deleteComments" qnaCms_seq=${list.qnaCms_seq }>삭제</button>
+																<button type= button class = "modifyComments" id = "modifyComments">수정하기</button>
 																
 															</c:if>
 														</div>
@@ -190,7 +203,7 @@
 										<br>
 										<button type="button" class="btn btn-secondary"
 											id="commentsbutton">작성하기</button>
-										<button type="button" class="btn btn-secondary" id = "modifyComments"  >수정하기</button>
+									
 										<!-- Comment with nested comments-->
 		</form>
 
@@ -280,7 +293,8 @@
                      $("#modifyComments").before(modifyCommentsOk);
                      $("#modifyComments").before(modifyCommentsCancel);
                   })
-
+                  
+               
 
      
      
