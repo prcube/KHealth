@@ -90,7 +90,7 @@
 				<c:when test="${loginID != null}">
 					<!-- 로그인을 한 사용자 -->
 					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp; &nbsp; &nbsp;
-						&nbsp;</a>
+						</a>
 					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
 						value="로그아웃">
 				</c:when>
