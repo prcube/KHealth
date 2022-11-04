@@ -101,63 +101,115 @@
 
 
 
-		<header class="bg-dark py-5">
-			<div class="container px-5">
-				<!-- <캐러셀캐러셀> -->
-				<div id="carouselExampleCaptions"
-					class="carousel slide carousel-fade" data-bs-ride="false">
-					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleCaptions"
-							data-bs-slide-to="0" class="active" aria-current="true"
-							aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions"
-							data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions"
-							data-bs-slide-to="2" aria-label="Slide 3"></button>
-					</div>
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<img src="/image/index1.png" style="border-radius: 15px;"
-								class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>First slide label</h5>
-								<p>Some representative placeholder content for the first
-									slide.</p>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<img src="/image/index2.png" style="border-radius: 15px;"
-								class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>Second slide label</h5>
-								<p>Some representative placeholder content for the second
-									slide.</p>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<img src="/image/index3.png" style="border-radius: 15px;"
-								class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>Third slide label</h5>
-								<p>Some representative placeholder content for the third
-									slide.</p>
-							</div>
-						</div>
-					</div>
-					<button class="carousel-control-prev" type="button"
-						data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button"
-						data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-				</div>
-			</div>
-		</header>
-		<!--         캐러셀끝 -->
+        <header class="bg-dark py-5">
+            <div class="container px-5 ">
+                <!-- <캐러셀캐러셀> -->
+                <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="false">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/image/index1.png" style="border-radius: 15px;" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Some representative placeholder content for the first
+                                    slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/image/index2.png" style="border-radius: 15px;" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Second slide label</h5>
+                                <p>Some representative placeholder content for the second
+                                    slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/image/index3.png" style="border-radius: 15px;" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Third slide label</h5>
+                                <p>Some representative placeholder content for the third
+                                    slide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!--         캐러셀끝 -->
+
+        <!-- 동영상 파트-->
+        <section class="py-5" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h2 class="fw-bolder mb-5"> K-Health Media </h2>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row gx-5 gy-5 row-cols-1 row-cols-md-2">
+                            
+                            <div class="col mb-5 " style="height: 400px;">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <i class="bi bi-toggles2"></i>
+                                </div>
+                                <iframe class="rounded-3 " width="100%" height="100%" src="https://www.youtube.com/embed/ptpmRrzRtWQ"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="col mb-5" style="height: 400px;">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <i class="bi bi-building"></i>
+                                </div>
+                                <iframe class="rounded-3" width="100%" height="100%" src="https://www.youtube.com/embed/q6TI60e7kWY"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                    
+                            </div>
+                    
+                            <div class="col mb-5 " style="height: 400px;">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <i class="bi bi-toggles2"></i>
+                                </div>
+                                <h2 class="h5">Featured title</h2>
+                                <iframe class="rounded-3" width="100%" height="100%" src="https://www.youtube.com/embed/FQy6mzpcBs0"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="col mb-5 " style="height: 400px;">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <i class="bi bi-toggles2"></i>
+                                </div>
+                                <h2 class="h5">Featured title</h2>
+                                <iframe class="rounded-3" width="100%" height="100%" src="https://www.youtube.com/embed/O94yEoGXtBY"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 		<!-- 동영상 파트-->
 		<section class="py-5" id="features">
@@ -360,20 +412,19 @@
 
 
 
-				<!-- 카카오지도 카카오지도-->
-				<section class="py-5" id="features">
-					<div class="container px-4 py-4 my-5 bg-light">
-						<div class="row gx-5">
-							<div class="col-lg-7 mb-5 mb-lg-0">
-								<div id="map" style="width: 100%; height: 400px;"></div>
-								<script>
-									var container = document
-											.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-									var options = { //지도를 생성할 때 필요한 기본 옵션
-										center : new kakao.maps.LatLng(
-												37.5679067, 126.9830668), //지도의 중심좌표.
-										level : 3
-									//지도의 레벨(확대, 축소 정도)
+
+                <!-- 카카오지도 카카오지도-->
+                <section class="py-5" id="features">
+                    <div class="container px-4 py-4 my-5 bg-light shadow border-0">
+                        <div class="row gx-5">
+                            <div class="col-lg-7 mb-5 mb-lg-0">
+                                <div id="map" style="width:100%;height:400px;"></div>
+                                <script>
+                                    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                                    var options = { //지도를 생성할 때 필요한 기본 옵션
+                                        center: new kakao.maps.LatLng(37.5679067, 126.9830668), //지도의 중심좌표.
+                                        level: 3 //지도의 레벨(확대, 축소 정도)
+
 
 									};
 									var map = new kakao.maps.Map(container,
@@ -417,46 +468,45 @@
 					</div>
 				</section>
 
-				<!-- Call to action-->
-				<aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
-					<div
-						class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
-						<div class="mb-4 mb-xl-0">
-							<div class="fs-3 fw-bold text-white">New products,
-								delivered to you.</div>
-							<div class="text-white-50">Sign up for our newsletter for
-								the latest updates.</div>
-						</div>
-						<div class="ms-xl-4">
-							<div class="input-group mb-2">
-								<input class="form-control" type="text"
-									placeholder="Email address..." aria-label="Email address..."
-									aria-describedby="button-newsletter" />
-								<button class="btn btn-outline-light" id="button-newsletter"
-									type="button">Sign up</button>
-							</div>
-							<div class="small text-white-50">We care about privacy, and
-								will never share your data.</div>
-						</div>
-					</div>
-				</aside>
-			</div>
-		</section>
-	</main>
-	<!-- Footer-->
-	<footer class="bg-dark py-4 mt-auto ">
-		<div class="container px-5 ">
-			<div
-				class="row align-items-center justify-content-between flex-column flex-sm-row ">
-				<div class="text-center">
-					<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자
-						: 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
-					<div class="small m-0 text-white"></div>
-					<div class="small m-0 text-white">케이헬스 주식회사
-						(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
-					<div class="small m-0 text-white">Copyright &copy; K-Health
-						Corp. All rights reserved.</div>
-					<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
+<<<<<<< HEAD
+                <!-- Call to action-->
+                <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+                    <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                        <div class="mb-4 mb-xl-0">
+                            <div class="fs-3 fw-bold text-white">New products,
+                                delivered to you.</div>
+                            <div class="text-white-50">Sign up for our newsletter for
+                                the latest updates.</div>
+                        </div>
+                        <div class="ms-xl-4">
+                            <div class="input-group mb-2">
+                                <input class="form-control" type="text" placeholder="Email address..."
+                                    aria-label="Email address..." aria-describedby="button-newsletter" />
+                                <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign
+                                    up</button>
+                            </div>
+                            <div class="small text-white-50">We care about privacy, and
+                                will never share your data.</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-dark py-4 mt-auto ">
+        <div class="container px-5 ">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row ">
+                <div class="text-center">
+                    <div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자
+                        : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
+                    <div class="small m-0 text-white"></div>
+                    <div class="small m-0 text-white">케이헬스 주식회사
+                        (www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
+                    <div class="small m-0 text-white">Copyright &copy; K-Health
+                        Corp. All rights reserved.</div>
+                    <div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
+
 
 					<img src="/image/instagram.png" height="20px"> <span
 						class="text-white mx-1">&middot;</span> <img
