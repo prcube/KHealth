@@ -59,7 +59,7 @@ public class MarketController extends HttpServlet {
 			try {ProductDTO dto = MarketDAO.getInstance().detail(product_seq);
 				
 			request.setAttribute("dto", dto);
-			request.getRequestDispatcher("").forward(request, response);
+			request.getRequestDispatcher("/product/ProductView.jsp").forward(request, response);
 			
 				}catch(Exception e) {
 					e.printStackTrace();
