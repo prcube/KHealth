@@ -34,12 +34,10 @@ public class AdminController extends HttpServlet {
 			try {
 				int maxSize = 1024*1024*10; 
 
-							
+				
 				String savePath = request.getServletContext().getRealPath("/image");
 				String writer = (String) request.getSession().getAttribute("loginId");
-				System.out.println("여기도 왔음");
-				
-				System.out.println("여기는?");
+
 				File imageSavePath = new File(savePath);  
 
 				if(!imageSavePath.exists()) {

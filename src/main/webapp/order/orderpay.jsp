@@ -19,6 +19,7 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
@@ -152,14 +153,52 @@
 									</tr>
 								</tbody>
 							</table>
-							<button type="button" class="btn btn-success btn-lg btn-block">
+							
+				
+							<button onclick="requestPay()" class="btn btn-success btn-lg btn-block">
 								결제하기   <span class="glyphicon glyphicon-chevron-right"></span>
 							</button>
-							</td>
+							
+					<script>
+					var buyer = "${loginname }";
+					var name = "${dto.product_name }";
+					const numberStr2 = "${dto.product_price }";
+					const number2 = numberStr.replace(/,/g, "");
+					var result2 = number2 * ${amount };
+					    function requestPay() {
+					      // IMP.request_pay(param, callback) 결제창 호출
+					        var IMP = window.IMP; // 생략 가능
+						    IMP.init("imp52470434"); // 예: imp00000000
+					      IMP.request_pay({ // param
+					          pg: "html5_inicis",
+					          pay_method: "card",
+					          /* merchant_uid: "ORD20180131-0000011", */
+					          name: name,
+					          /* amount: result2, */
+					          amount: 100,
+					          buyer_email: "",
+					          buyer_name: buyer,
+					          buyer_tel: "",
+					          buyer_addr: "서울특별시 강남구 신사동",
+					          buyer_postcode: "01181"
+					      }, function (rsp) { // callback
+					          if (rsp.success) {
+					              var msg = '결제가 완료되었습니다.';
+					              alert(msg);
+					          } else {
+					        	  var msg = '결제에 실패하였습니다.';
+					              msg += '에러내용 : ' + rsp.error_msg;
+					              alert(msg)
+					          }
+					      });
+					    }
+  				</script>	
+							
+						
 						</div>
 					</div>
 				</div>
-				</
+			
 			</div>
 		</section>
 

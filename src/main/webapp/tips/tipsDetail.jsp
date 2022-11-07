@@ -130,6 +130,19 @@
 
 
 			<script>
+			
+				$("#golist,#tipsmodify,#tipsdelete").hide();
+				
+				console.log("${dto.tips_writer}");
+				console.log("${loginID}");
+				if("${loginID}" == "${dto.tips_writer}"){
+					$("#golist,#tipsmodify,#tipsdelete").show();
+				}
+				else if(${member_role}){
+					$("#golist,#tipsmodify,#tipsdelete").show();
+				}
+				
+
 				$("#golist").on("click", function() {
 					location.href = "list.tips?cpage=1"
 				})
