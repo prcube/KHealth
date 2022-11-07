@@ -74,9 +74,10 @@ public class TIpsController extends HttpServlet {
 				
 				TipsDTO dto = dao.detail(tips_seq);
 				TipsDAO.getInstance().addViewCount(tips_seq);
+				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
 				request.setAttribute("dto", dto);
 				request.setAttribute("loginID", id);
-				
+				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/tips/tipsDetail.jsp").forward(request, response);
 			}
 

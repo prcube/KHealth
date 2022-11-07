@@ -39,8 +39,8 @@ public class QnaController extends HttpServlet {
 
 
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
-				int member_role = (int) request.getSession().getAttribute("member_role");
-				System.out.println(member_role);
+				
+				
 				String navi = QnaDAO.getInstance().getPageNavi(cpage);
 
 				QnaDAO dao = QnaDAO.getInstance();

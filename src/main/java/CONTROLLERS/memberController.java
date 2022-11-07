@@ -2,6 +2,7 @@ package CONTROLLERS;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.MembersDAO;
+import DTO.MemberDTO;
 
 @WebServlet("*.mem")
 public class memberController extends HttpServlet {
@@ -42,18 +44,16 @@ public class memberController extends HttpServlet {
 			} else if (uri.equals("/login/login.mem")) {
 				String id = request.getParameter("ID");
 				String pwd = request.getParameter("passwd");
-				//int member_role = Integer.parseInt(request.getParameter("member_role"));
+				
 				MembersDAO dao = MembersDAO.getInstance();
 				
 				System.out.println(id + pwd);
 				boolean result = dao.login(id, pwd);
-				boolean member_role = dao.isYouTeacher(id);
+				
 				if (result) {
 					System.out.println("로그인 성공!");
 					request.getSession().setAttribute("loginID", id);
-					request.setAttribute("member_role", member_role);
-					//request.getSession().setAttribute("member_role", member_role);
-					//System.out.println(member_role);
+
 					response.sendRedirect("/");
 				}
 			} else if (uri.equals("/login/duplCheck.mem")) {
@@ -65,8 +65,16 @@ public class memberController extends HttpServlet {
 			} else if (uri.equals("/logout.mem")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/");
+				
+			}else if(uri.equals("/mypage.mem")) {
+				MembersDAO dao = MembersDAO.getInstance();
+				//nickname을 어떻게 받을지 ...세션에 넣을까..
+				String nickname = (String)(request.getSession().getAttribute("nickname"));
+				List<MemberDTO> list = dao.mynickname(nickname);
+				request.setAttribute("list", list);
+				
+				request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("error.html");
