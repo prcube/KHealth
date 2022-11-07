@@ -151,23 +151,14 @@ public class MarketDAO {
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				){
-			
 			pstat.setInt(1, product_seq);
-			
-
 			try(ResultSet rs =pstat.executeQuery();){
-
 				rs.next();
-
 					int product_seq2 = rs.getInt("product_seq");
-
 					String product_name =rs.getString("product_name");	
 					String product_price = rs.getString("product_price");
 					int product_count = rs.getInt("product_count");
-					
 					ProductDTO dto2 = new ProductDTO(product_seq2, product_name, product_price, product_count);
-					
-
 				return dto2;
 			}
 
