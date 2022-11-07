@@ -1,6 +1,6 @@
 package DTO;
 
-public class ProdcutReviewDTO {
+public class ProductReviewDTO {
 	
 	private int pr_seq;
 	private int pr_productseq;
@@ -11,7 +11,11 @@ public class ProdcutReviewDTO {
 	
 	
 	
-	public ProdcutReviewDTO(int pr_seq, int pr_productseq, String pr_contents, String pr_writer, String pr_id) {
+	
+	
+	
+	
+	public ProductReviewDTO(int pr_seq, int pr_productseq, String pr_contents, String pr_writer, String pr_id) {
 		super();
 		this.pr_seq = pr_seq;
 		this.pr_productseq = pr_productseq;
@@ -19,8 +23,9 @@ public class ProdcutReviewDTO {
 		this.pr_writer = pr_writer;
 		this.pr_id = pr_id;
 	}
-	
-	
+	public ProductReviewDTO() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getPr_seq() {
 		return pr_seq;
 	}
