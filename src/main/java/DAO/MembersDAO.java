@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import DTO.MemberDTO;
 
 public class MembersDAO {
 	private static MembersDAO instance = null;
@@ -75,6 +79,34 @@ public class MembersDAO {
 				return rs.next();
 			}
 		}
+	}
+	
+	
+	public List<MemberDTO> mynickname(String nickname) throws Exception {
+		String sql = "select * from members where nickname like ?";
+		try (Connection con = this.getConnection();
+			PreparedStatement pstat = con.prepareStatement(sql);){
+			
+			pstat.setString(1, nickname);
+			
+			ResultSet rs = pstat.executeQuery();
+			List<MemberDTO> myid = new ArrayList<>();
+			while (rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				dto.setSeq(rs.getInt("seq"));
+				dto.setRole(rs.getInt("role"));
+				dto.setPwd(rs.getString("pw"));
+				dto.setName(rs.getString("name"));
+				dto.setMail(rs.getString("mail"));
+				dto.setNumber(rs.getString("number"));
+				dto.setZip(rs.getString("zip"));
+				dto.setAddress1(rs.getString("address1"));
+				dto.setAddress2(rs.getString("address2"));
+				dto.setLaunch_date(rs.getString("launch_date"));
+				myid.add(dto);
+			}
+			return myid;			
+		}		
 	}
 
 }
