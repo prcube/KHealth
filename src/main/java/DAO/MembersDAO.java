@@ -81,31 +81,29 @@ public class MembersDAO {
 		}
 	}
 
-	public List<MemberDTO> mynickname(String nickname) throws Exception {
-		String sql = "select * from members where nickname like ?";
-		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
-
-			pstat.setString(1, nickname);
-
+	public MemberDTO selectById(String id) throws Exception {
+		String sql = "select * from members where member_id = ?";
+		try (Connection con = this.getConnection();
+			PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
 			ResultSet rs = pstat.executeQuery();
-			List<MemberDTO> mynickname = new ArrayList<>();
-			while (rs.next()) {
-				MemberDTO dto = new MemberDTO();
-				dto.setSeq(rs.getInt("seq"));
-				dto.setRole(rs.getInt("role"));
-				dto.setPwd(rs.getString("pw"));
-				dto.setName(rs.getString("name"));
-				dto.setMail(rs.getString("mail"));
-				dto.setNumber(rs.getString("number"));
-				dto.setZip(rs.getString("zip"));
-				dto.setAddress1(rs.getString("address1"));
-				dto.setAddress2(rs.getString("address2"));
-				dto.setLaunch_date(rs.getString("launch_date"));
-				mynickname.add(dto);
-			}
-			return mynickname;
+			rs.next();
+			MemberDTO dto = new MemberDTO();
+			dto.setSeq(rs.getInt("member_seq"));
+			dto.setRole(rs.getInt("member_role"));
+			dto.setPwd(rs.getString("member_pw"));
+			dto.setName(rs.getString("member_name"));
+			dto.setNickname(rs.getString("member_nickname"));
+			dto.setMail(rs.getString("member_email"));
+			dto.setNumber(rs.getString("meber_phone"));
+			dto.setZip(rs.getString("member_post"));
+			dto.setAddress1(rs.getString("member_address"));
+			dto.setAddress2(rs.getString("member_address_detail"));
+			dto.setLaunch_date(rs.getString("member_join_date"));		
+			return dto;
 		}
 	}
+		
 
 	public boolean isYouTeacher(String id) throws Exception {
 		String sql = "select * from members where member_role=1 and member_id =?";

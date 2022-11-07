@@ -2,7 +2,6 @@ package CONTROLLERS;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,13 +67,15 @@ public class memberController extends HttpServlet {
 
 				
 			}else if(uri.equals("/mypage.mem")) {
-				MembersDAO dao = MembersDAO.getInstance();
-				//nickname을 어떻게 받을지 ...세션에 넣을까..
-				String nickname = (String)(request.getSession().getAttribute("nickname"));
-				List<MemberDTO> list = dao.mynickname(nickname);
-				request.setAttribute("list", list);
+				String id = (String)request.getSession().getAttribute("loginID");
+				//String nickname = (String)(request.getSession().getAttribute("nickname"));
 				
-				request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
+				MemberDTO dto = MembersDAO.getInstance().selectById(id);
+				
+				request.setAttribute("dto", dto);
+
+				
+				request.getRequestDispatcher("/mypage/MypageDummy.jsp").forward(request, response);
 			}
 
 		} catch (Exception e) {
