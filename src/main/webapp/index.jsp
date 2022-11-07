@@ -84,7 +84,7 @@
 						<li class="nav-item"><a class="nav-link"
 							href="login/LoginDummy.jsp">Login</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="mypage/MypageDummy.jsp">Mypage</a></li>
+							href="/mypage.mem">Mypage</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/SigninDummy.jsp">Signin</a></li>
 					</ul>
