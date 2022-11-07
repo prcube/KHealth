@@ -76,5 +76,16 @@ public class MembersDAO {
 			}
 		}
 	}
+	
+	public boolean isYouTeacher(String id) throws Exception{
+		String sql ="select * from members where member_role=1 and member_id =?";
+		
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+	}
 
 }
