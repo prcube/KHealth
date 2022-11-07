@@ -3,6 +3,7 @@ package CONTROLLERS;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import DAO.AdminDAO;
 import DAO.ImagesDAO;
-import DTO.AdminDTO;
+import DAO.QnaDAO;
+import DTO.BlacklistDTO;
 import DTO.ImagesDTO;
 import DTO.ProductDTO;
 
@@ -29,12 +31,12 @@ public class AdminController extends HttpServlet {
 		String uri = request.getRequestURI();
 
 		if(uri.equals("/product.admin")) {
-			
+
 			System.out.println("오기는왔음");
 			try {
 				int maxSize = 1024*1024*10; 
 
-				
+
 				String savePath = request.getServletContext().getRealPath("/image");
 				String writer = (String) request.getSession().getAttribute("loginId");
 
@@ -50,7 +52,7 @@ public class AdminController extends HttpServlet {
 				String product_name = multi.getParameter("product_name");
 				String product_price = multi.getParameter("product_price");
 				int product_count = Integer.parseInt(multi.getParameter("product_count"));
-				
+
 
 
 				int seq = AdminDAO.getInstance().getnextval();
@@ -94,6 +96,27 @@ public class AdminController extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 				response.sendRedirect("/error.jsp");
+			}
+
+
+
+		}
+
+		if(uri.equals("/showblacklist.admin")) {
+
+			try {
+
+				QnaDAO dao = QnaDAO.getInstance();
+				
+				List<BlacklistDTO> list = AdminDAO.getInstance().selectAll();
+
+				request.setAttribute("list", list);
+
+				request.getRequestDispatcher("/admin/blacklist.jsp").forward(request, response);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				response.sendRedirect("error.jsp");
 			}
 
 

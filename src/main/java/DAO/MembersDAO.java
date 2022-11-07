@@ -129,4 +129,15 @@ public class MembersDAO {
 			}
 		}
 	}
+	
+	public boolean isInBlacklist(String id) throws Exception{
+		String sql = "select * from blacklist where blacklist_member_nickname = (select member_nickname from members where member_id=?)";
+		
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+	}
 }
