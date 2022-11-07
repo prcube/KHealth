@@ -44,16 +44,15 @@ public class memberController extends HttpServlet {
 			} else if (uri.equals("/login/login.mem")) {
 				String id = request.getParameter("ID");
 				String pwd = request.getParameter("passwd");
-				
+				String name = request.getParameter("nama");
 				MembersDAO dao = MembersDAO.getInstance();
-				
-				System.out.println(id + pwd);
+				System.out.println(id + pwd + name);
 				boolean result = dao.login(id, pwd);
 				
 				if (result) {
 					System.out.println("로그인 성공!");
 					request.getSession().setAttribute("loginID", id);
-
+					request.getSession().setAttribute("loginname", name);
 					response.sendRedirect("/");
 				}
 			} else if (uri.equals("/login/duplCheck.mem")) {

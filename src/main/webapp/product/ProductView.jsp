@@ -71,6 +71,7 @@
 					</ul>
 				</div>
 			</div>
+			
 			<c:choose>
 				<c:when test="${loginID != null}">
 					<!-- 로그인을 한 사용자 -->
@@ -123,6 +124,7 @@
 								<button class="btn btn-outline-dark flex-shrink-0" type="button">
 									<i class="bi-cart-fill me-1"></i> 장바구니
 								</button>
+							
 							<input
 									type="submit" class="btn btn-outline-dark flex-shrink-0"
 									id="buy" value="구매하기">

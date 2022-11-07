@@ -71,9 +71,7 @@
 			</c:choose>
 		</nav>
 
-		<link
-			href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-			rel="stylesheet" id="bootstrap-css">
+
 		<script
 			src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<script
@@ -160,7 +158,7 @@
 							</button>
 							
 					<script>
-					var buyer = "${loginname }";
+					var buyer  = "${buyer }";
 					var name = "${dto.product_name }";
 					const numberStr2 = "${dto.product_price }";
 					const number2 = numberStr.replace(/,/g, "");
@@ -177,14 +175,15 @@
 					          /* amount: result2, */
 					          amount: 100,
 					          buyer_email: "",
-					          buyer_name: buyer,
+					          buyer_name: buyer ,
 					          buyer_tel: "",
 					          buyer_addr: "서울특별시 강남구 신사동",
 					          buyer_postcode: "01181"
 					      }, function (rsp) { // callback
 					          if (rsp.success) {
-					              var msg = '결제가 완료되었습니다.';
-					              alert(msg);
+					              /* var msg = '결제가 완료되었습니다.';
+					              alert(msg); */
+					        	  location.href = "/completed.buy";
 					          } else {
 					        	  var msg = '결제에 실패하였습니다.';
 					              msg += '에러내용 : ' + rsp.error_msg;

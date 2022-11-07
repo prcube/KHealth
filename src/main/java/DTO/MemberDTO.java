@@ -18,6 +18,10 @@ public class MemberDTO {
 	
 	
 	public MemberDTO() {}
+	public MemberDTO(int seq, String name) {
+		this.seq = seq;
+		this.name = name;
+	}
 	public MemberDTO(int seq, String pwd, String name, String nickname, String mail, String number, String zip,
 			String address1, String address2, String launch_date, int role) {
 		super();

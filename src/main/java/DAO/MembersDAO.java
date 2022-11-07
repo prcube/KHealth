@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.MemberDTO;
+import DTO.ProductDTO;
 
 public class MembersDAO {
 	private static MembersDAO instance = null;
@@ -60,7 +61,7 @@ public class MembersDAO {
 
 	public boolean login(String id, String pwd) throws Exception { // 어떤 계정에 대한 실제로 로그인을 시도하는 함수, 인자값으로 ID와 Password를 받아
 		// login을 판단함.
-		String sql = "SELECT * FROM members WHERE member_id = ? and member_pw = ? "; // 실제로 DB에 입력될 명령어를 SQL 문장으로 만듬.
+		String sql = "SELECT * FROM members WHERE member_id = ? and member_pw = ?  "; // 실제로 DB에 입력될 명령어를 SQL 문장으로 만듬.
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
 			pstat.setString(2, pwd);
@@ -127,6 +128,9 @@ public class MembersDAO {
 			try (ResultSet rs = pstat.executeQuery();) {
 				return rs.next();
 			}
-		}
 	}
+	}
+	
+	
+	
 }
