@@ -67,6 +67,26 @@ private static QnaCommentsDAO instance = null;
 			}
 			return list;
 		}
+	}public int delete (int qnaCms_seq)throws Exception {
+		String sql = "delete from qnaComments where qnaCms_seq = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, qnaCms_seq);
+			
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}public int update (String qnaCms_contents , int qnaCms_seq) throws Exception {
+		String sql = "update qnaComments set qnaCms_contents = ? where qnaCms_seq = ? ";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, qnaCms_contents);
+			pstat.setInt(2, qnaCms_seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
 	}
 	
 
