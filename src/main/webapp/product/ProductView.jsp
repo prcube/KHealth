@@ -40,6 +40,8 @@
 </head>
 
 <body class="d-flex flex-column h-100">
+
+<form action="/item.buy?product_seq=${dto.product_seq }" method="post">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -86,6 +88,7 @@
 
 
 		<!-- Product section-->
+		
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 my-5">
 				<div class="row gx-4 gx-lg-5 align-items-center">
@@ -93,11 +96,12 @@
 						<img class="card-img-top mb-5 mb-md-0"
 							src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
 					</div>
+
 					<div class="col-md-6">
 						<div class="small mb-1">SKU: BST-498</div>
 						<h1 class="display-5 fw-bolder">${dto.product_name }</h1>
-						<div class="fs-5 mb-5">
-							<span>${dto.product_price } 원</span> 
+						<div class="fs-5 mb-5" >
+							<span>${dto.product_price } 원</span>
 						</div>
 						<p class="lead">Lorem ipsum dolor sit amet consectetur
 							adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi
@@ -105,26 +109,28 @@
 							blanditiis delectus ipsam minima ea iste laborum vero?</p>
 						<div class="d-flex">
 
-							<div id='result' class="form-control text-center me-3"
-								id="inputQuantity" style="max-width: 3rem">1</div>
 							<div>
-								<input type='button' onclick='count("plus")' value='+' /> <input
-									type='button' onclick='count("minus")' value='-' />
+								
+									<input type="text" name="amount" style="max-width: 3rem" value="1"> <input
+										type="button" value="+"
+										onClick="javascript:this.form.amount.value++;"> <input
+										type="button" value="-"
+										onClick="javascript:this.form.amount.value--;">
+									
 							</div>
 							<br> <br>
 							<div>
 								<button class="btn btn-outline-dark flex-shrink-0" type="button">
 									<i class="bi-cart-fill me-1"></i> 장바구니
 								</button>
-								<a href="/order/orderpay.jsp"><button
-										class="btn btn-outline-dark flex-shrink-0" type="button">
-										구매하기</button></a>
+							<input
+									type="submit" class="btn btn-outline-dark flex-shrink-0"
+									id="buy" value="구매하기">
 							</div>
 						</div>
 
 					</div>
 		</section>
-
 
 		<!-- review section -->
 		<section class="py-5">
@@ -264,29 +270,8 @@
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
 
-	<script>
-		function count(type) {
-			// 결과를 표시할 element
-			const resultElement = document.getElementById('result');
 
-			// 현재 화면에 표시된 값
-			let number = resultElement.innerText;
-
-			// 더하기/빼기
-			if (type === 'plus') {
-				number = parseInt(number) + 1;
-			} else if (type === 'minus') {
-				if (number == 0) {
-					number = parseInt(number) - 0;
-				} else {
-					number = parseInt(number) - 1;
-				}
-			}
-			// 결과 출력
-			resultElement.innerText = number;
-		}
-	</script>
-
+</form>
 </body>
 
 </html>
