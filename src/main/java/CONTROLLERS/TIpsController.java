@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.MembersDAO;
 import DAO.TipsDAO;
 
 import DTO.TipsDTO;
@@ -46,15 +47,21 @@ public class TIpsController extends HttpServlet {
 				//request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request, response);
 			}
 			else if(uri.equals("/list.tips")) {
+				
 				TipsDAO dao = TipsDAO.getInstance();
 				int cpage =Integer.parseInt(request.getParameter("cpage"));
 				//List<TipsDTO> list = dao.selectAll();
+				String id = (String) request.getSession().getAttribute("loginID");
+				boolean member_role = MembersDAO.getInstance().isYouTeacher(id);
+				System.out.println(id);
 				
 				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
 				
 				String navi = TipsDAO.getInstance().getPageNavi(cpage);
 				request.setAttribute("navi", navi);
 				request.setAttribute("list", list);
+				request.setAttribute("member_role", member_role);
+				
 				request.getRequestDispatcher("/tips/Tips.jsp").forward(request, response);
 			}
 			
@@ -67,9 +74,10 @@ public class TIpsController extends HttpServlet {
 				
 				TipsDTO dto = dao.detail(tips_seq);
 				TipsDAO.getInstance().addViewCount(tips_seq);
+				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
 				request.setAttribute("dto", dto);
 				request.setAttribute("loginID", id);
-				
+				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/tips/tipsDetail.jsp").forward(request, response);
 			}
 
