@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +11,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>K-Health</title>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -18,7 +20,6 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
 <style>
 /* body {
       background: -webkit-linear-gradient(left, #3931af, #00c6ff);
@@ -135,6 +136,20 @@
 	color: #0062cc;
 }
 </style>
+
+<script>
+	$(function(){
+		if(${member_role}){
+			let adminBtn = $("#btnArea").append("<button>");
+			adminBtn.attr("type", "button");
+			adminBtn.text("관리자 페이지로 이동");
+			
+			adminBtn.on("click",function(){
+				location.href="/admin/admindummy.jsp";
+			})
+		}
+	});
+</script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -178,39 +193,39 @@
 			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!------ Include the above in your HEAD tag ---------->
 
-<<<<<<< HEAD
+
 		<div class="container emp-profile">
-			<form method="post">
+			<form acition="" method="post" id="mypageFrm">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="profile-img">아마도 사진?</div>
 					</div>
-					<c:forEach var="i" items="${list}">
-						<div class="col-md-7">
-							<div class="profile-head">
-								<h5>${i.nickname }</h5>
-								<h6>${i.mail }</h6>
-								<p class="proile-rating">
-									Member : <span>Gold</span>
-								</p>
-								<ul class="nav nav-tabs" id="myTab" role="tablist">
-									<li class="nav-item"><a class="nav-link active"
-										id="home-tab" data-toggle="tab" href="#home" role="tab"
-										aria-controls="home" aria-selected="true">About</a></li>
-								</ul>
-							</div>
+
+					<div class="col-md-7">
+						<div class="profile-head" >
+							<h5>${dto.name }</h5>
+							<h6>${dto.mail }</h6>
+							<p class="proile-rating">
+								Member : <span>Gold</span>
+							</p>
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item"><a class="nav-link active"
+									id="home-tab" data-toggle="tab" href="#home" role="tab"
+									aria-controls="home" aria-selected="true">About</a></li>
+							</ul>
 						</div>
-						<div class="col-md-2">
-							<!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /> -->
-						</div>
+					</div>
+					<div class="col-md-2">
+						<!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /> -->
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3">
 						<div class="profile-work">
 							<p>My Page</p>
-							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br /> <a
-								href="/mypage/MypageUpdate.jsp">프로필 수정</a><br /> <a
-								href="/mypage/MypageBoard.jsp">작성한 글</a><br /> <a
+							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br />
+							<button id="modifyBtn" type=button>프로필 수정</button>
+							<br /> <a href="/mypage/MypageBoard.jsp">작성한 글</a><br /> <a
 								href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
 							<p>Order</p>
 							<a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br />
@@ -220,20 +235,28 @@
 						<div class="tab-content profile-tab" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
+
+								<input type=hidden id="input_modify_nickname"
+									name="modify_nickname}"> <input type=hidden
+									id="input_modify_mail" name="modify_mail}"> <input
+									type=hidden id="input_modify_number" name="modify_number}">
+								<input type=hidden id="input_modify_address1"
+									name="modify_address1}">
+
+								<div class="row">
+									<div class="col-md-3" >
+										<label>Name</label>
+									</div>
+									<div class="col-md-9">
+										<p>${dto.name }</p>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-md-3">
 										<label>User NickName</label>
 									</div>
 									<div class="col-md-9">
-										<p>${i.nname }</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-3">
-										<label>Name</label>
-									</div>
-									<div class="col-md-9">
-										<p>${i.name }</p>
+										<p class="modify" id="modify_nickname">${dto.nickname }</p>
 									</div>
 								</div>
 								<div class="row">
@@ -241,7 +264,7 @@
 										<label>Email</label>
 									</div>
 									<div class="col-md-9">
-										<p>${i.mail }</p>
+										<p class="modify" id="modify_mail">${dto.mail }</p>
 									</div>
 								</div>
 								<div class="row">
@@ -249,7 +272,7 @@
 										<label>Phone</label>
 									</div>
 									<div class="col-md-9">
-										<p>${i.number }</p>
+										<p class="modify" id="modify_number">${dto.number }</p>
 									</div>
 								</div>
 								<div class="row">
@@ -257,111 +280,57 @@
 										<label>Address</label>
 									</div>
 									<div class="col-md-9">
-										<p>${i.address1 }</p>
+										<p class="modify" id="modify_address1">${dto.address1 }</p>
 									</div>
 								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<label>Join Date</label>
+									</div>
+									<div class="col-md-9">
+										<p>${dto.launch_date }</p>
+									</div>
+								</div>
+								<div id=btnArea></div>
 							</div>
-
 						</div>
+						<script>
+							
+								$("#modifyBtn").on("click",function(){
+									console.log("a")
+									$(".modify").attr("contenteditable","true");
+									console.log("b")
+									
+									let modifyOk = $("<button>");
+									modifyOk.html("수정완료");
+									modifyOk.on("click",function(){
+										$("#mypageFrm").attr("action","/mypage.mem")
+										$("#input_modify_nickname").val($("#modify_nickname").text());
+										$("#input_modify_mail").val($("#modify_mail").text());
+										$("#input_modify_number").val($("#modify_number").text());
+										$("#input_modify_address1").val($("#modify_address1").text());
+										$("#mypageFrm").submit();
+									})
+										let modifyCancel = $("<button>");
+										modifyCancel.attr("type", "button");
+										modifyCancel.text("취소");
+										modifyCancel.addClass("btn");
+										modifyCancel.on("click", function() {
+											location.reload();
+										});
+									
+									$("#btnArea").append(modifyOk);
+									$("#btnArea").append(modifyCancel);
+								})
+							
+						</script>
+
+
 					</div>
 				</div>
-				</c:forEach>
 			</form>
 		</div>
-=======
-    <div class="container emp-profile">
-      <form method="post">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="profile-img">
-              아마도 사진?
-            </div>
-          </div>
-          <div class="col-md-7">
-            <div class="profile-head">
-              <h5>
-                콘스탄틴프로탄틴
-              </h5>
-              <h6>
-                kh1234@naver.com
-              </h6>
-              <p class="proile-rating">Member : <span>Gold</span></p>
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                    aria-controls="home" aria-selected="true">About</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /> -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="profile-work">
-              <p>My Page</p>
-              <a href="/mypage/MypageDummy.jsp">프로필 정보</a><br />
-              <a href="/mypage/MypageUpdate.jsp">프로필 수정</a><br />
-              <a href="/mypage/MypageBoard.jsp">작성한 글</a><br />
-              <a href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
-              <p>Order</p>
-              <a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br/>
-              
-            </div>
-          </div>
-          <div class="col-md-9">
-            <div class="tab-content profile-tab" id="myTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>User Id</label>
-                  </div>
-                  <div class="col-md-9">
-                    <p>콘스탄틴프로탄틴</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>Name</label>
-                  </div>
-                  <div class="col-md-9">
-                    <p>윤성민</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>Email</label>
-                  </div>
-                  <div class="col-md-9">
-                    <p>kh1234@naver.com</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>Phone</label>
-                  </div>
-                  <div class="col-md-9">
-                    <p>010-1234-1234</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>Address</label>
-                  </div>
-                  <div class="col-md-9">
-                    <p>서울특별시 졸리구 피곤하동 KH아파트 123동 1202호</p>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
->>>>>>> 1e5f801a348615d1181eddc8e4eb0facff30a204
+
 
 
 
