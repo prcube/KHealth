@@ -119,8 +119,19 @@ public class AdminController extends HttpServlet {
 				response.sendRedirect("error.jsp");
 			}
 
-
-
+		}
+		
+		if(uri.equals("/removeblacklist.admin")) {
+			try {
+				int removeBlacklist_seq = Integer.parseInt(request.getParameter("removeBlacklist_seq"));
+				AdminDAO.getInstance().removeBlacklist(removeBlacklist_seq);
+				
+				response.sendRedirect("/showblacklist.admin");
+			}catch(Exception e) {
+				e.printStackTrace();
+				response.sendRedirect("/error.jsp");
+			}
+			
 		}
 
 	}

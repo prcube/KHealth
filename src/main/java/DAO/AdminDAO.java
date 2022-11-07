@@ -107,4 +107,18 @@ public class AdminDAO {
 			return list;
 		}
 	}
+	
+	public int removeBlacklist(int blacklist_seq) throws Exception{
+		String sql = "delete from blacklist where blacklist_seq=?";
+		
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){ 
+
+			pstat.setInt(1, blacklist_seq);
+
+			int result = pstat.executeUpdate();
+			return result;
+
+		}
+	}
 }

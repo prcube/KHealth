@@ -34,14 +34,9 @@
 					<td>${i.blacklist_seq }</td>
 					<td>${i.blacklist_member_nickname }</td>
 					<td>${i.blacklist_date }</td>
-					<td><button type="button" id="removeBlacklistBtn" >블랙리스트 해제</button></td>
+					<td><button type="button" class="removeBlacklistBtn" removeBlacklist_seq="${i.blacklist_seq }">블랙리스트 해제</button></td>
 				</tr>
 			</c:forEach>
-
-
-
-
-
 
 		</tbody>
 	</table>
@@ -55,6 +50,16 @@
 		</div>
 	</form>
 
-
+	<script>
+		$(".removeBlacklistBtn").on("click",function(){
+			
+			let reallyremove = confirm("정말로 블랙리스트에서 제거하시겠습니까?");
+			
+			if(reallyremove){
+				let target = $(this).attr("removeBlacklist_seq");
+				location.href = "/removeblacklist.admin?removeBlacklist_seq="+target+"";
+			}
+		})	
+	</script>
 </body>
 </html>
