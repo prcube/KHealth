@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.MembersDAO;
 import DTO.MemberDTO;
-import controllers.String;
+
 
 @WebServlet("*.mem")
 public class memberController extends HttpServlet {
@@ -72,9 +72,10 @@ public class memberController extends HttpServlet {
 				//String nickname = (String)(request.getSession().getAttribute("nickname"));
 				
 				MemberDTO dto = MembersDAO.getInstance().selectById(id);
+				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
 				
 				request.setAttribute("dto", dto);
-
+				request.setAttribute("member_role", member_role);
 				
 				request.getRequestDispatcher("/mypage/MypageDummy.jsp").forward(request, response);
 			}else if(uri.equals("/update.mem")) {

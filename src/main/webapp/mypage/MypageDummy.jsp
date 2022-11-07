@@ -136,6 +136,20 @@
 	color: #0062cc;
 }
 </style>
+
+<script>
+	$(function(){
+		if(${member_role}){
+			let adminBtn = $("#btnArea").append("<button>");
+			adminBtn.attr("type", "button");
+			adminBtn.text("관리자 페이지로 이동");
+			
+			adminBtn.on("click",function(){
+				location.href="/admin/admindummy.jsp";
+			})
+		}
+	});
+</script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -187,32 +201,32 @@
 						<div class="profile-img">아마도 사진?</div>
 					</div>
 
-						<div class="col-md-7">
-							<div class="profile-head">
-								<h5>${dto.name }</h5>
-								<h6>${dto.mail }</h6>
-								<p class="proile-rating">
-									Member : <span>Gold</span>
-								</p>
-								<ul class="nav nav-tabs" id="myTab" role="tablist">
-									<li class="nav-item"><a class="nav-link active"
-										id="home-tab" data-toggle="tab" href="#home" role="tab"
-										aria-controls="home" aria-selected="true">About</a></li>
-								</ul>
-							</div>
+					<div class="col-md-7">
+						<div class="profile-head" >
+							<h5>${dto.name }</h5>
+							<h6>${dto.mail }</h6>
+							<p class="proile-rating">
+								Member : <span>Gold</span>
+							</p>
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item"><a class="nav-link active"
+									id="home-tab" data-toggle="tab" href="#home" role="tab"
+									aria-controls="home" aria-selected="true">About</a></li>
+							</ul>
 						</div>
-						<div class="col-md-2">
-							<!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /> -->
-						</div>
+					</div>
+					<div class="col-md-2">
+						<!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /> -->
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3">
 						<div class="profile-work">
 							<p>My Page</p>
-							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br/>
-							<button id="modifyBtn" type=button>프로필 수정</button><br/>
-							<a href="/mypage/MypageBoard.jsp">작성한 글</a><br/>
-							<a href="/mypage/MypageComment.jsp">작성한 댓글</a><br/>
+							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br />
+							<button id="modifyBtn" type=button>프로필 수정</button>
+							<br /> <a href="/mypage/MypageBoard.jsp">작성한 글</a><br /> <a
+								href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
 							<p>Order</p>
 							<a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br />
 						</div>
@@ -221,14 +235,16 @@
 						<div class="tab-content profile-tab" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
-								
-								<input type=hidden id="input_modify_nickname" name="modify_nickname}">
-								<input type=hidden id="input_modify_mail" name="modify_mail}">
-								<input type=hidden id="input_modify_number" name="modify_number}">
-								<input type=hidden id="input_modify_address1" name="modify_address1}">
-								
+
+								<input type=hidden id="input_modify_nickname"
+									name="modify_nickname}"> <input type=hidden
+									id="input_modify_mail" name="modify_mail}"> <input
+									type=hidden id="input_modify_number" name="modify_number}">
+								<input type=hidden id="input_modify_address1"
+									name="modify_address1}">
+
 								<div class="row">
-									<div class="col-md-3">
+									<div class="col-md-3" >
 										<label>Name</label>
 									</div>
 									<div class="col-md-9">
