@@ -16,6 +16,9 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+<!-- 써머노트 임포트 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 </head>
 <style>
 .container {
@@ -70,6 +73,7 @@
             <div class="col-sm">
                <input type="text" id="qna_title"  class="form-control-plaintext"
                   name="qna_title" placeholder="제목을 입력하세요.">
+           		<input type="hidden" id = "qna_write_date" name = "qna_write_date">
             </div>
          </div>
 
@@ -77,6 +81,8 @@
 
             <textarea class="form-control" name="qna_contents" id="qna_contents"
                id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
+               
+               
                
                
                <!-- <input type = file multiple name = "file"><br> -->
@@ -87,11 +93,19 @@
 
 
          <div class="row">
+          
+         
+       
             <div class="btn-group right" role="group" aria-label="Basic example">
+             
                <button type="submit" class="btn btn-primary" id="write">글쓰기</button>
+             
                <button type="button" class="btn btn-primary" id="back">목록으로</button>
             </div>
+             
          </div>
+         
+       
 
       </div>
    </form>
@@ -99,6 +113,12 @@
       $("#back").on("click",function(){
          location.href = "QnaDummy.jsp"
       })
+      //서머노트 
+         $('#qna_contents').summernote({
+	        placeholder: '내용을 입력하세요.',
+	        tabsize: 2,
+	        height: 300
+	      });
    </script>
       
       

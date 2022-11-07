@@ -33,6 +33,8 @@
    charset="utf-8"></script>
 <script type="text/javascript"
    src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -124,6 +126,12 @@
       $("#qnaBack").on("click", function() {
          location.href = "/list.qna"
       })
+      
+      $('#qna_contents').summernote({
+	        placeholder: '내용을 입력하세요.',
+	        tabsize: 2,
+	        height: 300
+	      });
       
       console.log("gg");
    </script>
