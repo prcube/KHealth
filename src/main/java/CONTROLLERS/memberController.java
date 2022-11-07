@@ -65,7 +65,19 @@ public class memberController extends HttpServlet {
 			} else if (uri.equals("/logout.mem")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/");
+			}else if(uri.equals("/mypage.mem")) {
+				String id = (String)request.getSession().getAttribute("loginID");
+				
+				
+				MemberDTO dto = MembersDAO.getInstance().selectById(id);
+				
+				request.setAttribute("dto", dto);
+				
+				request.getRequestDispatcher("/mypage/MypagBoard.jsp").forward(request, response);
+				
+			
 			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
