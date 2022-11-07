@@ -73,7 +73,7 @@ public class memberController extends HttpServlet {
 				List<MemberDTO> list = dao.mynickname(nickname);
 				request.setAttribute("list", list);
 				
-				request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
+				request.getRequestDispatcher("/member/MypageDummy.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
