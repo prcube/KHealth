@@ -113,36 +113,39 @@
 										<th class="text-center">합</th>
 									</tr>
 								</thead>
+	
 								<tbody>
 									<tr>
-										<td class="col-md-7"><em>Baked Rodopa Sheep Feta</em>
+										<td class="col-md-7"><h4><em>${dto.product_name }</em>
 											</h4></td>
-										<td class="col-md-2" style="text-align: center">2</td>
-										<td class="col-md-2 text-center">$13</td>
-										<td class="col-md-1 text-center">$26</td>
+										<td class="col-md-2" style="text-align: center">${amount }</td>
+										<td class="col-md-2 text-center">${dto.product_price } 원</td>
+										<td class="col-md-1 text-center">
+										<script>
+										//콤마 제거
+										const numberStr = "${dto.product_price }";
+										const number = numberStr.replace(/,/g, "");
+										var result = number * ${amount };
+										// 수량과 금액 곱한 후 결과 값에 콤마 다시 추가
+										var sum = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+										document.write(sum.toString());
+										
+										</script>원
+										</td>
 									</tr>
-									<tr>
-										<td class="col-md-9"><em>Lebanese Cabbage Salad</em>
-											</h4></td>
-										<td class="col-md-1" style="text-align: center">1</td>
-										<td class="col-md-1 text-center">$8</td>
-										<td class="col-md-1 text-center">$8</td>
-									</tr>
-									<tr>
-										<td class="col-md-9"><em>Baked Tart with Thyme and
-												Garlic</em>
-											</h4></td>
-										<td class="col-md-1" style="text-align: center">3</td>
-										<td class="col-md-1 text-center">$16</td>
-										<td class="col-md-1 text-center">$48</td>
-									</tr>
+								
 									<tr>
 
 										<td class="text-center"><h4>
 												<strong>결제금액: </strong>
 											</h4></td>
 										<td class="text-center text-danger"><h4>
-												<strong>$31.53</strong>
+										<strong>₩</strong>
+											<strong>
+												<script>
+										document.write(sum.toString()); 
+										</script>
+										</strong><strong>원</strong>
 											</h4></td>
 										<td> </td>
 										<td> </td>
@@ -192,7 +195,7 @@
 		<!-- Bootstrap core JS-->
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- Core theme JS-->
+		<!-- Core theme JS--> 
 		<script src="/js/scripts.js"></script>
 </body>
 

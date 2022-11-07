@@ -178,6 +178,7 @@
 			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!------ Include the above in your HEAD tag ---------->
 
+<<<<<<< HEAD
 		<div class="container emp-profile">
 			<form method="post">
 				<div class="row">
@@ -267,6 +268,100 @@
 				</c:forEach>
 			</form>
 		</div>
+=======
+    <div class="container emp-profile">
+      <form method="post">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-img">
+              아마도 사진?
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="profile-head">
+              <h5>
+                콘스탄틴프로탄틴
+              </h5>
+              <h6>
+                kh1234@naver.com
+              </h6>
+              <p class="proile-rating">Member : <span>Gold</span></p>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                    aria-controls="home" aria-selected="true">About</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-work">
+              <p>My Page</p>
+              <a href="/mypage/MypageDummy.jsp">프로필 정보</a><br />
+              <a href="/mypage/MypageUpdate.jsp">프로필 수정</a><br />
+              <a href="/mypage/MypageBoard.jsp">작성한 글</a><br />
+              <a href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
+              <p>Order</p>
+              <a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br/>
+              
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>User Id</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>콘스탄틴프로탄틴</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Name</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>윤성민</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Email</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>kh1234@naver.com</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Phone</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>010-1234-1234</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Address</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>서울특별시 졸리구 피곤하동 KH아파트 123동 1202호</p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+>>>>>>> 1e5f801a348615d1181eddc8e4eb0facff30a204
 
 
 

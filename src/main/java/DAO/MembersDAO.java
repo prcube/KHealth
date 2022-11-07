@@ -80,17 +80,15 @@ public class MembersDAO {
 			}
 		}
 	}
-	
-	
+
 	public List<MemberDTO> mynickname(String nickname) throws Exception {
 		String sql = "select * from members where nickname like ?";
-		try (Connection con = this.getConnection();
-			PreparedStatement pstat = con.prepareStatement(sql);){
-			
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+
 			pstat.setString(1, nickname);
-			
+
 			ResultSet rs = pstat.executeQuery();
-			List<MemberDTO> myid = new ArrayList<>();
+			List<MemberDTO> mynickname = new ArrayList<>();
 			while (rs.next()) {
 				MemberDTO dto = new MemberDTO();
 				dto.setSeq(rs.getInt("seq"));
@@ -103,10 +101,22 @@ public class MembersDAO {
 				dto.setAddress1(rs.getString("address1"));
 				dto.setAddress2(rs.getString("address2"));
 				dto.setLaunch_date(rs.getString("launch_date"));
-				myid.add(dto);
+				mynickname.add(dto);
 			}
-			return myid;			
-		}		
+			return mynickname;
+		}
+	}
+
+	public boolean isYouTeacher(String id) throws Exception {
+		String sql = "select * from members where member_role=1 and member_id =?";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+
 	}
 
 }
