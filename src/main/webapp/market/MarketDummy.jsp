@@ -95,7 +95,7 @@
 								<div class="card h-100 shadow border-0 row-cols-xs-3">
 									<!-- Product image-->
 									<img class="card-img-top"
-										src="C:\Users\taek\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\KHealth\image\aa.png"
+										src="file://C:/Users/taek/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/KHealth/image/aa.png"
 										alt="..." />
 									<!-- Product details-->
 									<div class="card-body p-4">
