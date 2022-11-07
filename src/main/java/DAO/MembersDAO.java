@@ -104,6 +104,22 @@ public class MembersDAO {
 		}
 	}
 		
+	public int mypageUpdate(MemberDTO dto , String id ) throws Exception {
+		String sql = "update members set member_nickname=?, member_email=?, meber_phone=?, member_address=? where id=?";
+		try(
+			Connection con = getConnection();
+			PreparedStatement pstat=con.prepareStatement(sql);){
+			pstat.setString(1,dto.getNickname());
+			pstat.setString(2,dto.getMail());
+			pstat.setString(3,dto.getNumber());
+			pstat.setString(4,dto.getAddress1());
+			pstat.setString(5,id);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+
 
 	public boolean isYouTeacher(String id) throws Exception {
 		String sql = "select * from members where member_role=1 and member_id =?";

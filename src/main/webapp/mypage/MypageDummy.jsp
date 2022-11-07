@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +11,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>K-Health</title>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -18,7 +20,6 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
 <style>
 /* body {
       background: -webkit-linear-gradient(left, #3931af, #00c6ff);
@@ -180,7 +181,7 @@
 
 
 		<div class="container emp-profile">
-			<form method="post">
+			<form acition="" method="post" id="mypageFrm">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="profile-img">아마도 사진?</div>
@@ -188,7 +189,7 @@
 
 						<div class="col-md-7">
 							<div class="profile-head">
-								<h5>${dto.nickname }</h5>
+								<h5>${dto.name }</h5>
 								<h6>${dto.mail }</h6>
 								<p class="proile-rating">
 									Member : <span>Gold</span>
@@ -208,10 +209,10 @@
 					<div class="col-md-3">
 						<div class="profile-work">
 							<p>My Page</p>
-							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br /> <a
-								href="/mypage/MypageUpdate.jsp">프로필 수정</a><br /> <a
-								href="/mypage/MypageBoard.jsp">작성한 글</a><br /> <a
-								href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
+							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br/>
+							<button id="modifyBtn" type=button>프로필 수정</button><br/>
+							<a href="/mypage/MypageBoard.jsp">작성한 글</a><br/>
+							<a href="/mypage/MypageComment.jsp">작성한 댓글</a><br/>
 							<p>Order</p>
 							<a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br />
 						</div>
@@ -220,14 +221,12 @@
 						<div class="tab-content profile-tab" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
-								<div class="row">
-									<div class="col-md-3">
-										<label>User NickName</label>
-									</div>
-									<div class="col-md-9">
-										<p>${dto.name }</p>
-									</div>
-								</div>
+								
+								<input type=hidden id="input_modify_nickname" name="modify_nickname}">
+								<input type=hidden id="input_modify_mail" name="modify_mail}">
+								<input type=hidden id="input_modify_number" name="modify_number}">
+								<input type=hidden id="input_modify_address1" name="modify_address1}">
+								
 								<div class="row">
 									<div class="col-md-3">
 										<label>Name</label>
@@ -238,10 +237,18 @@
 								</div>
 								<div class="row">
 									<div class="col-md-3">
+										<label>User NickName</label>
+									</div>
+									<div class="col-md-9">
+										<p class="modify" id="modify_nickname">${dto.nickname }</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
 										<label>Email</label>
 									</div>
 									<div class="col-md-9">
-										<p>${dto.mail }</p>
+										<p class="modify" id="modify_mail">${dto.mail }</p>
 									</div>
 								</div>
 								<div class="row">
@@ -249,7 +256,7 @@
 										<label>Phone</label>
 									</div>
 									<div class="col-md-9">
-										<p>${dto.number }</p>
+										<p class="modify" id="modify_number">${dto.number }</p>
 									</div>
 								</div>
 								<div class="row">
@@ -257,7 +264,7 @@
 										<label>Address</label>
 									</div>
 									<div class="col-md-9">
-										<p>${dto.address1 }</p>
+										<p class="modify" id="modify_address1">${dto.address1 }</p>
 									</div>
 								</div>
 								<div class="row">
@@ -268,9 +275,41 @@
 										<p>${dto.launch_date }</p>
 									</div>
 								</div>
+								<div id=btnArea></div>
 							</div>
-
 						</div>
+						<script>
+							
+								$("#modifyBtn").on("click",function(){
+									console.log("a")
+									$(".modify").attr("contenteditable","true");
+									console.log("b")
+									
+									let modifyOk = $("<button>");
+									modifyOk.html("수정완료");
+									modifyOk.on("click",function(){
+										$("#mypageFrm").attr("action","/mypage.mem")
+										$("#input_modify_nickname").val($("#modify_nickname").text());
+										$("#input_modify_mail").val($("#modify_mail").text());
+										$("#input_modify_number").val($("#modify_number").text());
+										$("#input_modify_address1").val($("#modify_address1").text());
+										$("#mypageFrm").submit();
+									})
+										let modifyCancel = $("<button>");
+										modifyCancel.attr("type", "button");
+										modifyCancel.text("취소");
+										modifyCancel.addClass("btn");
+										modifyCancel.on("click", function() {
+											location.reload();
+										});
+									
+									$("#btnArea").append(modifyOk);
+									$("#btnArea").append(modifyCancel);
+								})
+							
+						</script>
+
+
 					</div>
 				</div>
 			</form>
