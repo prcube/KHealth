@@ -78,15 +78,19 @@ public class QnaController extends HttpServlet {
 
 				QnaDAO dao = QnaDAO.getInstance();
 				int seq = Integer.parseInt(request.getParameter("qna_seq"));
-
+				String id = (String) request.getSession().getAttribute("loginID");
+				
 				List<QnaCommentsDTO> list = QnaCommentsDAO.getInstance().selectAll(seq);
 
-
+				
 				QnaDTO dto = dao.selectBySeq(seq);
 				QnaDAO.getInstance().addViewCount(seq);
+				
+				boolean member_role = MembersDAO.getInstance().isInBlacklist(id);
+				
 				request.setAttribute("list", list);
 				request.setAttribute("dto", dto);
-
+				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/qna/QnadetailView.jsp").forward(request, response);
 
 			}else if(uri.equals("/update.qna")) {
