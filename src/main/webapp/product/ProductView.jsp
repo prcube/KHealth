@@ -40,9 +40,8 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-
-	<form action="/item.buy?product_seq=${dto.product_seq }" method="post">
-		<main class="flex-shrink-0">
+	<main class="flex-shrink-0">
+		<form action="/item.buy?product_seq=${dto.product_seq }" method="post">
 			<!-- Navigation-->
 			<nav
 				class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
@@ -134,9 +133,12 @@
 				</div>
 
 			</section>
+		</form>
 
-			<!-- review section -->
-			
+		<!-- review section -->
+
+
+		<form action="" id="reviewFrm" method="post">
 			<section class="py-5">
 				<div class="row d-flex justify-content-center px-md-5 mx-md-5">
 					<div class="container px-4 px-lg-5 my-5">
@@ -144,12 +146,14 @@
 							style="background-color: #f0f2f5;">
 							<div class="card-body p-4">
 								<div class="form-outline mb-4">
+								<input type=hidden value="${review.nickname }"  name="review_nickname">
+								<input type=hidden value="${dto.product_name }" name="product_name">
+								<input type=hidden value="${dto.product_seq }" name="productreview_seq">
+								
 
-									<input type="text" id="addANote" class="form-control"
+									<input type="text" id="addANote" name="productreview_contents" class="form-control"
 										placeholder="Type comment..." />
-											<button type=button class="insertReview"
-															id="insertReview">리뷰작성</button>
-									
+									<button type=button class="insertReview" id="insertReview">리뷰작성</button>
 								</div>
 
 								<div class="card mb-4">
@@ -193,13 +197,13 @@
 								<div class="card mb-4">
 									<div class="card-body">
 										<c:forEach var="list" items="${list }">
-											
+
 										</c:forEach>
-									
-									
-									
-									
-									
+
+
+
+
+
 										<p>Type your note, and hit enter to add it</p>
 
 										<div class="d-flex justify-content-between">
@@ -239,10 +243,8 @@
 					</div>
 				</div>
 			</section>
-
-		</main>
-
-
+		</form>
+	</main>
 
 
 
@@ -251,38 +253,46 @@
 
 
 
-		<!-- Footer-->
-		<footer class="bg-dark py-4 mt-auto ">
-			<div class="container px-5 ">
-				<div
-					class="row align-items-center justify-content-between flex-column flex-sm-row ">
-					<div class="text-center">
-						<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 |
-							책임자 : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
-						<div class="small m-0 text-white"></div>
-						<div class="small m-0 text-white">케이헬스 주식회사
-							(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
-						<div class="small m-0 text-white">Copyright &copy; K-Health
-							Corp. All rights reserved.</div>
-						<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
 
-						<img src="/image/instagram.png" height="20px"> <span
-							class="text-white mx-1">&middot;</span> <img
-							src="/image/facebook.png" height="20px"> <span
-							class="text-white mx-1">&middot;</span> <img
-							src="/image/youtube.png" height="20px"> <span
-							class="/image/text-white mx-1">&middot;</span> <img
-							src="/image/twitter.png" height="20px">
-					</div>
+
+	<!-- Footer-->
+	<footer class="bg-dark py-4 mt-auto ">
+		<div class="container px-5 ">
+			<div
+				class="row align-items-center justify-content-between flex-column flex-sm-row ">
+				<div class="text-center">
+					<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자
+						: 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
+					<div class="small m-0 text-white"></div>
+					<div class="small m-0 text-white">케이헬스 주식회사
+						(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
+					<div class="small m-0 text-white">Copyright &copy; K-Health
+						Corp. All rights reserved.</div>
+					<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
+
+					<img src="/image/instagram.png" height="20px"> <span
+						class="text-white mx-1">&middot;</span> <img
+						src="/image/facebook.png" height="20px"> <span
+						class="text-white mx-1">&middot;</span> <img
+						src="/image/youtube.png" height="20px"> <span
+						class="/image/text-white mx-1">&middot;</span> <img
+						src="/image/twitter.png" height="20px">
 				</div>
 			</div>
-		</footer>
-		<!-- Bootstrap core JS-->
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- Core theme JS-->
-		<script src="/js/scripts.js"></script>
-	</form>
+		</div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="/js/scripts.js"></script>
+	<script>
+		$("#insertReview").on("click", function(){
+			$("#reviewFrm").attr("action","/insert.review")
+			$("#reviewFrm").submit();
+		})
+	</script>
+
 </body>
 
 </html>

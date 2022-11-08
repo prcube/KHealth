@@ -9,14 +9,8 @@ public class ProductReviewDTO {
 	private String pr_id;
 	
 	
-	
-	
-	
-	
-	
-	
 	public ProductReviewDTO(int pr_seq, int pr_productseq, String pr_contents, String pr_writer, String pr_id) {
-		super();
+		
 		this.pr_seq = pr_seq;
 		this.pr_productseq = pr_productseq;
 		this.pr_contents = pr_contents;
@@ -24,7 +18,7 @@ public class ProductReviewDTO {
 		this.pr_id = pr_id;
 	}
 	public ProductReviewDTO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public int getPr_seq() {
 		return pr_seq;

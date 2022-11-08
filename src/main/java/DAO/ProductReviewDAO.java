@@ -28,15 +28,26 @@ public class ProductReviewDAO {
 		return ds.getConnection();
 	}
 	
-	public int write(ProductReviewDTO dto)throws Exception{
+	public int insert(ProductReviewDTO dto)throws Exception{
+		
 		String sql = "insert into product_review values(product_seq.nextval,?,?,?,?)";
+		System.out.println("DAO 테스트");
+		System.out.println(dto.getPr_contents());
+		System.out.println(dto.getPr_id());
+		System.out.println(dto.getPr_productseq());
+		System.out.println(dto.getPr_seq());
+		System.out.println(dto.getPr_writer());
+		
+		
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			
-			pstat.setInt(1, dto.getPr_productseq());
-			pstat.setString(2, dto.getPr_contents());
-			pstat.setString(3, dto.getPr_writer());
-			pstat.setString(4, dto.getPr_id());
+			pstat.setString(1, dto.getPr_writer()); //별명
+			pstat.setString(2, dto.getPr_id());
+			pstat.setInt(3, dto.getPr_productseq());
+			pstat.setString(4, dto.getPr_contents());
+			
+			
 			
 			int result = pstat.executeUpdate();
 			con.commit();

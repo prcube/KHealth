@@ -1,8 +1,6 @@
 package CONTROLLERS;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.taglibs.standard.tag.el.fmt.RequestEncodingTag;
-
+import DAO.MembersDAO;
 import DAO.ProductReviewDAO;
+import DTO.MemberDTO;
+import DTO.ProductReviewDTO;
 
 
 
@@ -21,7 +20,7 @@ public class ProductReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String uri = request.getRequestURI();
-		request.setCharacterEncoding("uft8");
+		request.setCharacterEncoding("utf8");
 		
 		try {
 			
@@ -42,13 +41,21 @@ public class ProductReviewController extends HttpServlet {
 			}
 			
 			else if(uri.equals("/insert.review")) {
-				
-				
+				System.out.println("테스트입니다.");
 				ProductReviewDAO dao = ProductReviewDAO.getInstance();
-				String pr_contents = request.getParameter("productreview_contents");
-				String pr_writerid = (String) request.getSession().getAttribute("loginID");
-				int pr_productseq = Integer.parseInt(request.getParameter("productreview_seq"));
+				MembersDAO dao2 = MembersDAO.getInstance();
 				
+				String contents = request.getParameter("productreview_contents");
+				String writerid = (String) request.getSession().getAttribute("loginID");
+				
+				int productseq = Integer.parseInt(request.getParameter("productreview_seq"));
+				String writercharacter = request.getParameter("review_nickname");
+				
+				
+				
+				MemberDTO dto = dao2.selectById(writerid); 
+				ProductReviewDTO dto2 = new ProductReviewDTO(0,productseq,contents,writercharacter,writerid);
+				dao.insert(dto2);
 			}
 			
 		}
