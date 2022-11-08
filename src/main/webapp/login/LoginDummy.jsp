@@ -77,7 +77,7 @@
 		%>
 
 		<!-- 로그인 파트 -->
-		<form action="login.mem" method=post>
+		<form action="/login.mem" method=post>
 			<section class="vh-100">
 				<div class="container py-5 h-100">
 					<div

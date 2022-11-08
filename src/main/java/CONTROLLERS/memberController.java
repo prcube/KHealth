@@ -41,7 +41,7 @@ public class memberController extends HttpServlet {
 				int result = dao.insert(id, passwd, name, launch_date, nickname, 0, mail, number, zipcode, post1,
 						post2);
 				response.sendRedirect("/");
-			} else if (uri.equals("/login/login.mem")) {
+			} else if (uri.equals("/login.mem")) {
 				String id = request.getParameter("ID");
 				String pwd = request.getParameter("passwd");
 				
@@ -56,7 +56,7 @@ public class memberController extends HttpServlet {
 
 					response.sendRedirect("/");
 				}
-			} else if (uri.equals("/login/duplCheck.mem")) {
+			} else if (uri.equals("/duplCheck.mem")) {
 				String id = request.getParameter("ID");
 				MembersDAO dao = MembersDAO.getInstance();
 				boolean result = dao.isIDExist(id);
