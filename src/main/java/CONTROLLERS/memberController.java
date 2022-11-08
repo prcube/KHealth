@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.MembersDAO;
 import DTO.MemberDTO;
-import controllers.String;
 
 @WebServlet("*.mem")
 public class memberController extends HttpServlet {
@@ -77,13 +76,14 @@ public class memberController extends HttpServlet {
 
 				
 				request.getRequestDispatcher("/mypage/MypageDummy.jsp").forward(request, response);
+				
 			}else if(uri.equals("/update.mem")) {
 				String loginID=(String)request.getSession().getAttribute("loginID");
 				String nickname = request.getParameter("modify_nickname");
 				String mail = request.getParameter("modify_mail");
 				String number = request.getParameter("modify_number");
 				String address1 = request.getParameter("modify_address1");
-				
+				System.out.println(nickname);
 				MemberDTO dto = new MemberDTO(0,null,null,nickname,mail,number,null,address1,null,null,0);
 				
 				int result = MembersDAO.getInstance().mypageUpdate(dto,loginID);
@@ -91,7 +91,7 @@ public class memberController extends HttpServlet {
 				System.out.println(result);
 				
 				if(result>0) {
-					response.sendRedirect("/myPage.mem");
+					response.sendRedirect("/mypage.mem");
 				}
 			}
 

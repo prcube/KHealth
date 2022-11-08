@@ -135,6 +135,10 @@
 	font-weight: 600;
 	color: #0062cc;
 }
+.mypageBtn{
+background-color: transparent;
+border: none;
+}
 </style>
 </head>
 
@@ -209,12 +213,12 @@
 					<div class="col-md-3">
 						<div class="profile-work">
 							<p>My Page</p>
-							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br/>
-							<button id="modifyBtn" type=button>프로필 수정</button><br/>
-							<a href="/mypage/MypageBoard.jsp">작성한 글</a><br/>
-							<a href="/mypage/MypageComment.jsp">작성한 댓글</a><br/>
+							<button class="mypageBtn" type=button>프로필 정보</button><br/>
+							<button class="mypageBtn" id="modifyBtn" type=button>프로필 수정</button><br/>
+							<button class="mypageBtn" type=button>작성한 글</button><br/>
+							<button class="mypageBtn" type=button>작성한 댓글</button><br/>
 							<p>Order</p>
-							<a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br />
+							<button class="mypageBtn" type=button>구매 내역</button><br />
 						</div>
 					</div>
 					<div class="col-md-9">
@@ -222,10 +226,10 @@
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
 								
-								<input type=hidden id="input_modify_nickname" name="modify_nickname}">
-								<input type=hidden id="input_modify_mail" name="modify_mail}">
-								<input type=hidden id="input_modify_number" name="modify_number}">
-								<input type=hidden id="input_modify_address1" name="modify_address1}">
+								<input type=hidden id="input_modify_nickname" name="modify_nickname">
+								<input type=hidden id="input_modify_mail" name="modify_mail">
+								<input type=hidden id="input_modify_number" name="modify_number">
+								<input type=hidden id="input_modify_address1" name="modify_address1">
 								
 								<div class="row">
 									<div class="col-md-3">
@@ -274,45 +278,46 @@
 									<div class="col-md-9">
 										<p>${dto.launch_date }</p>
 									</div>
+				</form>
 								</div>
 								<div id=btnArea></div>
 							</div>
 						</div>
-						<script>
-							
-								$("#modifyBtn").on("click",function(){
-									console.log("a")
-									$(".modify").attr("contenteditable","true");
-									console.log("b")
-									
-									let modifyOk = $("<button>");
-									modifyOk.html("수정완료");
-									modifyOk.on("click",function(){
-										$("#mypageFrm").attr("action","/mypage.mem")
-										$("#input_modify_nickname").val($("#modify_nickname").text());
-										$("#input_modify_mail").val($("#modify_mail").text());
-										$("#input_modify_number").val($("#modify_number").text());
-										$("#input_modify_address1").val($("#modify_address1").text());
-										$("#mypageFrm").submit();
-									})
-										let modifyCancel = $("<button>");
-										modifyCancel.attr("type", "button");
-										modifyCancel.text("취소");
-										modifyCancel.addClass("btn");
-										modifyCancel.on("click", function() {
-											location.reload();
-										});
-									
-									$("#btnArea").append(modifyOk);
-									$("#btnArea").append(modifyCancel);
-								})
-							
-						</script>
+		<script>
+			//mypage 수정
+			let modifyOk = $("<button>");
+				modifyOk.html("수정완료");
+
+			let modifyCancel = $("<button>");
+				modifyCancel.attr("type", "button");
+				modifyCancel.text("취소");
+				modifyCancel.addClass("btn");
+
+			$("#modifyBtn").on("click", function() {
+				$(".modify").attr("contenteditable", "true");
+
+				$("#btnArea").append(modifyOk);
+				$("#btnArea").append(modifyCancel);
+			})
+
+			modifyOk.on("click", function() {
+				$("#mypageFrm").attr("action", "/update.mem")
+				$("#input_modify_nickname").val($("#modify_nickname").text());
+				$("#input_modify_mail").val($("#modify_mail").text());
+				$("#input_modify_number").val($("#modify_number").text());
+				$("#input_modify_address1").val($("#modify_address1").text());
+				console.log($("#input_modify_nickname").val())
+				$("#mypageFrm").submit();
+			})
+			modifyCancel.on("click", function() {
+				location.reload();
+			});
+		</script>
 
 
-					</div>
+		</div>
 				</div>
-			</form>
+			
 		</div>
 
 

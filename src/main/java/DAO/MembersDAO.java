@@ -105,7 +105,8 @@ public class MembersDAO {
 	}
 		
 	public int mypageUpdate(MemberDTO dto , String id ) throws Exception {
-		String sql = "update members set member_nickname=?, member_email=?, meber_phone=?, member_address=? where id=?";
+		
+		String sql = "update members set member_nickname=?, member_email=?, meber_phone=?, member_address=? where member_id=?";
 		try(
 			Connection con = getConnection();
 			PreparedStatement pstat=con.prepareStatement(sql);){
