@@ -50,7 +50,7 @@ public class ProductReviewController extends HttpServlet {
 				MemberDTO dto = dao2.selectById(writerid); 
 				ProductReviewDTO dto2 = new ProductReviewDTO(0,productseq,contents,writercharacter,writerid);
 				dao.insert(dto2);
-				request.getRequestDispatcher("/detail.market?product_seq="+productseq);
+				request.getRequestDispatcher("/detail.market?product_seq="+productseq).forward(request, response);
 			}
 			
 		}
