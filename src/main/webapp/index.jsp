@@ -70,8 +70,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link"
-							href="/admin/admindummy.jsp">Admin</a></li>
+
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
@@ -80,7 +79,7 @@
 						<li class="nav-item"><a class="nav-link"
 							href="/list.market?cpage=1">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="qna/QnaDummy.jsp">Q&A</a></li>
+							href="/list.qna?cpage=1">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/LoginDummy.jsp">Login</a></li>
 						<li class="nav-item"><a class="nav-link"
