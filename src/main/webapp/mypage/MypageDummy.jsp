@@ -239,23 +239,14 @@ border: none;
 						<div class="tab-content profile-tab" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
-<<<<<<< HEAD
+
 								
 								<input type=hidden id="input_modify_nickname" name="modify_nickname">
 								<input type=hidden id="input_modify_mail" name="modify_mail">
 								<input type=hidden id="input_modify_number" name="modify_number">
 								<input type=hidden id="input_modify_address1" name="modify_address1">
 								
-=======
 
-								<input type=hidden id="input_modify_nickname"
-									name="modify_nickname}"> <input type=hidden
-									id="input_modify_mail" name="modify_mail}"> <input
-									type=hidden id="input_modify_number" name="modify_number}">
-								<input type=hidden id="input_modify_address1"
-									name="modify_address1}">
-
->>>>>>> 91456ef76a89509734e43a9e1b0bc7e289f2721c
 								<div class="row">
 									<div class="col-md-3" >
 										<label>Name</label>

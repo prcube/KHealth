@@ -25,16 +25,10 @@ public class ProductReviewController extends HttpServlet {
 		try {
 			
 			if(uri.equals("/list.review")) {
+//				String id = (String) request.getSession().getAttribute("loginID");
+//				int pr_seq = request.getParameter("")
 				
-//				ProductReviewDAO dao = ProductReviewDAO.getInstance();
-//				int product seq = request.getParameter("seq")
-//				
-//				
-//				int parentseq = Integer.parseInt(request.getParameter("seq"));
-//				List<CommentsDTO> list2 = dao.output();
-//				System.out.println(list2);
-//				request.setAttribute("list2", list2);
-//				request.getRequestDispatcher("/detail.board").forward(request, response);
+				
 				
 				
 				
@@ -56,6 +50,7 @@ public class ProductReviewController extends HttpServlet {
 				MemberDTO dto = dao2.selectById(writerid); 
 				ProductReviewDTO dto2 = new ProductReviewDTO(0,productseq,contents,writercharacter,writerid);
 				dao.insert(dto2);
+				request.getRequestDispatcher("/detail.market?product_seq="+productseq);
 			}
 			
 		}
