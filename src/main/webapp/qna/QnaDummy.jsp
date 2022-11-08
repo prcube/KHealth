@@ -23,7 +23,6 @@
 </script>
 </head>
 <style>
-
 </style>
 <body class="d-flex flex-column h-100">
 
@@ -46,10 +45,12 @@
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.qna?cpage=1">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/login/LoginDummy.jsp">Login</a></li>
 					</ul>
@@ -95,7 +96,7 @@
 
 
 
- 
+
 
 		</tbody>
 	</table>
@@ -105,15 +106,12 @@
 
 
 
-		<br>
-		<br>
-		<br>
-		<br>
-		
-            <div style="text-align: center;">
-            	${navi }
-            
-            </div>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="text-align: center;">${navi }</div>
 
 
 
@@ -163,8 +161,17 @@
 			</div>
 
 			<script>
+			console.log("${loginID}");
+			console.log(${isInBlacklist});
 				$("#write").on("click", function() {
-					location.href = "/qna/QnaView.jsp"
+					
+					if(${isInBlacklist}){
+						alert("회원님은 블랙리스트에 등록되어 게시판 글 작성이 불가능합니다.");
+						return;
+					}else{
+						location.href = "/qna/QnaView.jsp";
+					}
+					
 				})
 			</script>
 	</footer>
