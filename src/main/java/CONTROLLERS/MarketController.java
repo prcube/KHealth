@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ImagesDAO;
 import DAO.MarketDAO;
+import DAO.MembersDAO;
 import DTO.ImagesDTO;
+import DTO.MemberDTO;
 import DTO.ProductDTO;
 
 
@@ -30,8 +32,10 @@ public class MarketController extends HttpServlet {
 				MarketDAO dao = MarketDAO.getInstance();
 				String id = (String) request.getSession().getAttribute("loginId");
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
-
 				String navi = dao.getPageNavi(cpage);
+				
+				
+				
 				
 
 				//				List<BoardDTO> list = dao.selctAll(new BoardDTO(id)); 이제 이거 안 씀
@@ -43,6 +47,7 @@ public class MarketController extends HttpServlet {
 				request.setAttribute("imagelist", imagesList);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
+				
 				
 				request.getRequestDispatcher("/market/MarketDummy.jsp").forward(request, response);
 				System.out.println("b");
@@ -60,7 +65,12 @@ public class MarketController extends HttpServlet {
 			int product_seq = Integer.parseInt(request.getParameter("product_seq"));
 			
 			try {ProductDTO dto = MarketDAO.getInstance().detail(product_seq);
-				
+			
+			String id = (String) request.getSession().getAttribute("loginID");
+			MembersDAO dao2 = MembersDAO.getInstance();
+			MemberDTO review = dao2.selectById(id); 
+			
+			request.setAttribute("review", review);
 			request.setAttribute("dto", dto);
 			request.getRequestDispatcher("/product/ProductView.jsp").forward(request, response);
 			
