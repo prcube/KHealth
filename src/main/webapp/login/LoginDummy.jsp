@@ -156,7 +156,7 @@
       redirectUri: 'http://192.168.150.4/index.jsp',
     });
     
-    confirm("여기까진가능");
+    
     Kakao.API.request({
     	  url: '/v2/user/me',
     	  data: {
