@@ -25,13 +25,14 @@ public class MarketController extends HttpServlet {
 		String uri = request.getRequestURI();
 		
 		if(uri.equals("/list.market")) {
+			
 			try {
 				MarketDAO dao = MarketDAO.getInstance();
 				String id = (String) request.getSession().getAttribute("loginId");
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 
 				String navi = dao.getPageNavi(cpage);
-
+				
 
 				//				List<BoardDTO> list = dao.selctAll(new BoardDTO(id)); 이제 이거 안 씀
 
@@ -39,10 +40,12 @@ public class MarketController extends HttpServlet {
 				
 				List<ImagesDTO> imagesList = ImagesDAO.getInstance().selectByRange(cpage*9-8,cpage*9);
 				
-				request.setAttribute("image", imagesList);
+				request.setAttribute("imagelist", imagesList);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
+				
 				request.getRequestDispatcher("/market/MarketDummy.jsp").forward(request, response);
+				System.out.println("b");
 
 			}
 			catch(Exception e) {
