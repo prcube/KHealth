@@ -168,7 +168,16 @@
 					if(${isInBlacklist}){
 						alert("회원님은 블랙리스트에 등록되어 게시판 글 작성이 불가능합니다.");
 						return;
-					}else{
+					}
+					else if("${loginID}"==""){
+						let loginplz = confirm("로그인 후 이용가능합니다. 로그인페이지로 이동합니다.");
+						if(loginplz){
+							location.href = "login/LoginDummy.jsp";
+						}else{
+							return;
+						}
+					}
+					else{
 						location.href = "/qna/QnaView.jsp";
 					}
 					
