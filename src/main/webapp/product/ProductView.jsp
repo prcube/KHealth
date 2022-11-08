@@ -130,11 +130,14 @@
 							</div>
 
 						</div>
+					</div>
+				</div>
+
 			</section>
 
 			<!-- review section -->
+			
 			<section class="py-5">
-
 				<div class="row d-flex justify-content-center px-md-5 mx-md-5">
 					<div class="container px-4 px-lg-5 my-5">
 						<div class="card shadow-0 border"
@@ -144,8 +147,9 @@
 
 									<input type="text" id="addANote" class="form-control"
 										placeholder="Type comment..." />
-									<inputype ="submit" class="btn btn-outline-dark flex-shrink-0"
-										id="buy" value="작성하기테스트">
+											<button type=button class="insertReview"
+															id="insertReview">리뷰작성</button>
+									
 								</div>
 
 								<div class="card mb-4">
@@ -188,6 +192,14 @@
 
 								<div class="card mb-4">
 									<div class="card-body">
+										<c:forEach var="list" items="${list }">
+											
+										</c:forEach>
+									
+									
+									
+									
+									
 										<p>Type your note, and hit enter to add it</p>
 
 										<div class="d-flex justify-content-between">
@@ -270,8 +282,6 @@
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		<!-- Core theme JS-->
 		<script src="/js/scripts.js"></script>
-
-
 	</form>
 </body>
 

@@ -15,15 +15,12 @@ import DTO.ProductReviewDTO;
 public class ProductReviewDAO {
 
 	private static ProductReviewDAO instance = null;
-	
 	public static ProductReviewDAO getInstance() throws Exception{
 		if(instance == null) {
 			instance = new ProductReviewDAO();
 		}
 		return instance;
 	}
-	
-	private ProductReviewDAO() {}
 	
 	private Connection getConnection() throws Exception{
 		Context ctx = new InitialContext();
@@ -35,11 +32,11 @@ public class ProductReviewDAO {
 		String sql = "insert into product_review values(product_seq.nextval,?,?,?,?)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
-			pstat.setInt(1, dto.getPr_seq());
-			pstat.setInt(2, dto.getPr_productseq());
-			pstat.setString(3, dto.getPr_contents());
-			pstat.setString(4, dto.getPr_writer());
-			pstat.setString(5, dto.getPr_id());
+			
+			pstat.setInt(1, dto.getPr_productseq());
+			pstat.setString(2, dto.getPr_contents());
+			pstat.setString(3, dto.getPr_writer());
+			pstat.setString(4, dto.getPr_id());
 			
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -48,17 +45,18 @@ public class ProductReviewDAO {
 		}
 	}
 	
-	public List<ProductReviewDTO>selectAll(int pr_seq) throws Exception{
+	public List<ProductReviewDTO> selectAll(int product_seq) throws Exception{
 		String sql = "select * from product_review where product_seq =? order by productReview_seq";
 		try(Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);){
-			pstat.setInt(1, pr_seq);
-			ResultSet rs = pstat.executeQuery();
-			List<ProductReviewDTO>list = new ArrayList<>();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();){
+			pstat.setInt(1, product_seq);
+			
+			List<ProductReviewDTO> list = new ArrayList<>();
 			while(rs.next()) {
 				ProductReviewDTO dto = new ProductReviewDTO();
 				dto.setPr_seq(rs.getInt("product_seq"));
-				dto.setPr_productseq(rs.getInt("productReview_seq"));
+//				dto.setPr_productseq(rs.getInt("productReview_seq"));
 				dto.setPr_contents(rs.getString("productReview_contents"));
 				dto.setPr_writer(rs.getString("productReview_writerChracter"));
 				dto.setPr_id(rs.getString("productReview_writerId"));
