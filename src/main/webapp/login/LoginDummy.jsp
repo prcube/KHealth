@@ -36,6 +36,7 @@
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
+
 		<nav
 			class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
 			<div class="container px-5 " id="sticky-wrapper"
@@ -50,6 +51,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
@@ -60,6 +62,7 @@
 							href="/qna/QnaDummy.jsp">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
 					</ul>
+
 				</div>
 			</div>
 		</nav>
@@ -92,7 +95,7 @@
 										<input type="text" id="ID" name="ID"
 											class="form-control form-control-lg"
 											placeholder="아이디를 입력해 주세요" />
-											
+
 									</div>
 
 									<div class="form-outline mb-4">
@@ -154,26 +157,24 @@
   function loginWithKakao() {
     Kakao.Auth.authorize({
       redirectUri: 'http://192.168.150.4/index.jsp',
-      success : function(response){
-    	  
-    	  Kakao.API.request({
-    		  url: '/v2/user/me',
-    		  data: {
-    			  property_keys: ['kakao_account.email', 'profile_nickname'],
-    		  },
-    		})
-    		  .then(function(response) {
-    		    console.log(response);
-    		  })
-    		  .catch(function(error) {
-    		    console.log(error);
-    		  });
-      }
     });
+
   }
 
-
+  Kakao.API.request({
+	  	  url: '/v2/user/me',
+	  	  data: {
+	  	    property_keys: ['kakao_account.email', 'profile_nickname'],
+	  	  },
+	  	})
+	  	  .then(function(response) {
+	  	    console.log(response);
+	  	  })
+	  	  .catch(function(error) {
+	  	    console.log(error);
+	  	  });
   
+
   // 아래는 데모를 위한 UI 코드입니다.
   displayToken()
   function displayToken() {
