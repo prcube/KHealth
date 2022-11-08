@@ -154,23 +154,26 @@
   function loginWithKakao() {
     Kakao.Auth.authorize({
       redirectUri: 'http://192.168.150.4/index.jsp',
+      success : function(response){
+    	  
+    	  Kakao.API.request({
+    		  url: '/v2/user/me',
+    		  data: {
+    			  property_keys: ['kakao_account.email', 'profile_nickname'],
+    		  },
+    		})
+    		  .then(function(response) {
+    		    console.log(response);
+    		  })
+    		  .catch(function(error) {
+    		    console.log(error);
+    		  });
+      }
     });
-    
-    
-    Kakao.API.request({
-    	  url: '/v2/user/me',
-    	  data: {
-    	    property_keys: ['kakao_account.email', 'profile_nickname'],
-    	  },
-    	})
-    	  .then(function(response) {
-    	    console.log(response);
-    	  })
-    	  .catch(function(error) {
-    	    console.log(error);
-    	  });
   }
 
+
+  
   // 아래는 데모를 위한 UI 코드입니다.
   displayToken()
   function displayToken() {
