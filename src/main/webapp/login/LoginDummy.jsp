@@ -153,7 +153,7 @@
 		<script>
   function loginWithKakao() {
     Kakao.Auth.authorize({
-      redirectUri: 'http://3.34.18.235/index.jsp',
+      redirectUri: 'http://192.168.150.4/index.jsp',
     });
   }
 
