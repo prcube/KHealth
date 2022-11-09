@@ -249,11 +249,12 @@ public class TipsDAO {
 				dto1.setTips_write_date(rs.getTimestamp("tips_write_date"));
 				dto1.setTips_view_count(rs.getInt("tips_view_count"));
 				dto1.setTips_nickname(rs.getString("tips_nickname"));
+				dto1.setRn(rs.getInt("rn"));
 				list.add(dto1);
+				
 			}
 			return list;
 		}
 	}
 	   
-
 }
