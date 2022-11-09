@@ -185,30 +185,28 @@
         <div class="row">
           <div class="col-md-3">
             <div class="profile-img">
-              아마도 사진?
+              장바구니
             </div>
           </div>
           <div class="col-md-7">
             <div class="profile-head">
               <h5>
-                콘스탄틴프로탄틴asa // 작성한 글 부분입니다.
+               콘스탄틴프로탄틴님의 장바구니 목록입니다.
               </h5>
-              <h6>
-                kh1234@naver.com
-              </h6>
-              <p class="proile-rating">Member : <span>Gold</span></p>
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                    aria-controls="home" aria-selected="true">About</a>
-                </li>
-              </ul>
+  
+         
+
             </div>
           </div>
           <div class="col-md-2">
             <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /> -->
           </div>
         </div>
+        <div class="row">
+        
+        <p></p>
+  
+       	</div>
         <div class="row">
           <div class="col-md-3">
             <div class="profile-work">

@@ -41,7 +41,7 @@
 
 <body class="d-flex flex-column h-100">
    <main class="flex-shrink-0">
-      <form action="/item.buy?product_seq=${dto.product_seq }" method="post">
+      <form action="/item.buy?product_seq=${dto.product_seq }" method="post" id="productFrm">
          <!-- Navigation-->
          <nav
             class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
@@ -87,7 +87,8 @@
 
 
          <!-- Product section-->
-
+		<input type = "hidden" value = "${dto.product_name }" name="product_nameForWishlist">
+		<input type = "hidden" value = "${dto.product_price }" name="product_priceForWishlist">
          <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                <div class="row gx-4 gx-lg-5 align-items-center">
@@ -120,7 +121,7 @@
                         <br> <br>
                         <div>
                            <button class="btn btn-outline-dark flex-shrink-0"
-                              type="button">
+                              type="button" id="addwishlist">
                               <i class="bi-cart-fill me-1"></i> 장바구니
                            </button>
                            <input type="submit" class="btn btn-outline-dark flex-shrink-0"
@@ -236,6 +237,11 @@
       $("#insertReview").on("click", function() {
          $("#reviewFrm").attr("action", "/insert.review")
          $("#reviewFrm").submit();
+      })
+      
+      $("#addwishlist").on("click",function(){
+    	  $("#productFrm").attr("action", "/add.wish");
+    	  $("#productFrm").submit();
       })
    </script>
 
