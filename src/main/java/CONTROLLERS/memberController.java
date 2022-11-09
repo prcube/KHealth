@@ -2,7 +2,6 @@ package CONTROLLERS;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.MembersDAO;
 import DTO.MemberDTO;
+
 
 @WebServlet("*.mem")
 public class memberController extends HttpServlet {
@@ -41,7 +41,7 @@ public class memberController extends HttpServlet {
 				int result = dao.insert(id, passwd, name, launch_date, nickname, 0, mail, number, zipcode, post1,
 						post2);
 				response.sendRedirect("/");
-			} else if (uri.equals("/login/login.mem")) {
+			} else if (uri.equals("/login.mem")) {
 				String id = request.getParameter("ID");
 				String pwd = request.getParameter("passwd");
 				
@@ -56,7 +56,7 @@ public class memberController extends HttpServlet {
 
 					response.sendRedirect("/");
 				}
-			} else if (uri.equals("/login/duplCheck.mem")) {
+			} else if (uri.equals("/duplCheck.mem")) {
 				String id = request.getParameter("ID");
 				MembersDAO dao = MembersDAO.getInstance();
 				boolean result = dao.isIDExist(id);
@@ -65,16 +65,36 @@ public class memberController extends HttpServlet {
 			} else if (uri.equals("/logout.mem")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/");
+
 				
 			}else if(uri.equals("/mypage.mem")) {
-				MembersDAO dao = MembersDAO.getInstance();
-				//nickname을 어떻게 받을지 ...세션에 넣을까..
-				String nickname = (String)(request.getSession().getAttribute("nickname"));
-				List<MemberDTO> list = dao.mynickname(nickname);
-				request.setAttribute("list", list);
+				String id = (String)request.getSession().getAttribute("loginID");
+				//String nickname = (String)(request.getSession().getAttribute("nickname"));
 				
-				request.getRequestDispatcher("/member/MypageDummy.jsp").forward(request, response);
+
+				MemberDTO dto = MembersDAO.getInstance().selectById(id);
+				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
+				
+				request.setAttribute("dto", dto);
+				request.setAttribute("member_role", member_role);
+				
+				request.getRequestDispatcher("/mypage/MypageDummy.jsp").forward(request, response);
+				
+			}else if(uri.equals("/update.mem")) {
+				String loginID=(String)request.getSession().getAttribute("loginID");
+				String nickname = request.getParameter("modify_nickname");
+				String mail = request.getParameter("modify_mail");
+				String number = request.getParameter("modify_number");
+				String address1 = request.getParameter("modify_address1");
+				System.out.println(nickname);
+				MemberDTO dto = new MemberDTO(0,null,null,nickname,mail,number,null,address1,null,null,0);
+				
+				int result = MembersDAO.getInstance().mypageUpdate(dto,loginID);
+				
+				System.out.println(result);
+			
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("error.html");

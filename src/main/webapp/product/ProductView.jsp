@@ -40,193 +40,156 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-
-<form action="/item.buy?product_seq=${dto.product_seq }" method="post">
 	<main class="flex-shrink-0">
-		<!-- Navigation-->
-		<nav
-			class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
-			<div class="container px-5 " id="sticky-wrapper"
-				class="sticky-wrapper">
-				<a class="navbar-brand" href="/index.jsp"><img
-					src="/image/khealth logo.png" height="100px"></a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/tips/TipsDummy.jsp">Tips</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/qna/QnaDummy.jsp">Q&A</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
-					</ul>
-				</div>
-			</div>
-			<c:choose>
-				<c:when test="${loginID != null}">
-					<!-- 로그인을 한 사용자 -->
-					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
-						&nbsp;</a>
-					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
-						value="로그아웃">
-				</c:when>
-				<c:when test="${loginID == null}">
-					<!-- 로그인을 한 사용자 -->
-					<a style="color: white"></a>
-				</c:when>
-			</c:choose>
-		</nav>
-
-
-		<!-- Product section-->
-		
-		<section class="py-5">
-			<div class="container px-4 px-lg-5 my-5">
-				<div class="row gx-4 gx-lg-5 align-items-center">
-					<div class="col-md-6">
-						<img class="card-img-top mb-5 mb-md-0"
-							src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
+		<form action="/item.buy?product_seq=${dto.product_seq }" method="post">
+			<!-- Navigation-->
+			<nav
+				class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
+				<div class="container px-5 " id="sticky-wrapper"
+					class="sticky-wrapper">
+					<a class="navbar-brand" href="/index.jsp"><img
+						src="/image/khealth logo.png" height="100px"></a>
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
+							<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="/tips/TipsDummy.jsp">Tips</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="/market/MarketDummy.jsp">Market</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="/qna/QnaDummy.jsp">Q&A</a></li>
+							<li class="nav-item"><a class="nav-link" href="">Login</a></li>
+						</ul>
 					</div>
+				</div>
+				<c:choose>
+					<c:when test="${loginID != null}">
+						<!-- 로그인을 한 사용자 -->
+						<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+							&nbsp;</a>
+						<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+							value="로그아웃">
+					</c:when>
+					<c:when test="${loginID == null}">
+						<!-- 로그인을 한 사용자 -->
+						<a style="color: white"></a>
+					</c:when>
+				</c:choose>
+			</nav>
 
-					<div class="col-md-6">
-						<div class="small mb-1">SKU: BST-498</div>
-						<h1 class="display-5 fw-bolder">${dto.product_name }</h1>
-						<div class="fs-5 mb-5" >
-							<span>${dto.product_price } 원</span>
+
+			<!-- Product section-->
+
+			<section class="py-5">
+				<div class="container px-4 px-lg-5 my-5">
+					<div class="row gx-4 gx-lg-5 align-items-center">
+						<div class="col-md-6">
+							<img class="card-img-top mb-5 mb-md-0"
+								src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
 						</div>
-						<p class="lead">Lorem ipsum dolor sit amet consectetur
-							adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi
-							consequatur obcaecati excepturi alias magni, accusamus eius
-							blanditiis delectus ipsam minima ea iste laborum vero?</p>
-						<div class="d-flex">
 
-							<div>
-								
-									<input type="text" name="amount" style="max-width: 3rem" value="1"> <input
-										type="button" value="+"
+						<div class="col-md-6">
+							<div class="small mb-1">SKU: BST-498</div>
+							<h1 class="display-5 fw-bolder">${dto.product_name }</h1>
+							<div class="fs-5 mb-5">
+								<span>${dto.product_price } 원</span>
+							</div>
+							<p class="lead">Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi
+								consequatur obcaecati excepturi alias magni, accusamus eius
+								blanditiis delectus ipsam minima ea iste laborum vero?</p>
+							<div class="d-flex">
+
+								<div>
+
+									<input type="text" name="amount" style="max-width: 3rem"
+										value="1"> <input type="button" value="+"
 										onClick="javascript:this.form.amount.value++;"> <input
 										type="button" value="-"
 										onClick="javascript:this.form.amount.value--;">
-									
-							</div>
-							<br> <br>
-							<div>
-								<button class="btn btn-outline-dark flex-shrink-0" type="button">
-									<i class="bi-cart-fill me-1"></i> 장바구니
-								</button>
-							<input
-									type="submit" class="btn btn-outline-dark flex-shrink-0"
-									id="buy" value="구매하기">
-							</div>
-						</div>
 
+								</div>
+								<br> <br>
+								<div>
+									<button class="btn btn-outline-dark flex-shrink-0"
+										type="button">
+										<i class="bi-cart-fill me-1"></i> 장바구니
+									</button>
+									<input type="submit" class="btn btn-outline-dark flex-shrink-0"
+										id="buy" value="구매하기">
+								</div>
+							</div>
+
+						</div>
 					</div>
-		</section>
+				</div>
+
+			</section>
+		</form>
 
 		<!-- review section -->
-		<section class="py-5">
 
-			<div class="row d-flex justify-content-center px-md-5 mx-md-5">
-				<div class="container px-4 px-lg-5 my-5">
-					<div class="card shadow-0 border"
-						style="background-color: #f0f2f5;">
-						<div class="card-body p-4">
-							<div class="form-outline mb-4">
 
-								<input type="text" id="addANote" class="form-control"
-									placeholder="Type comment..." />
-
-							</div>
-
-							<div class="card mb-4">
-								<div class="card-body">
-									<p>Type your note, and hit enter to add it</p>
-
-									<div class="d-flex justify-content-between">
-										<div class="d-flex flex-row align-items-center">
-
-											<p class="small mb-0 ms-2">Martha</p>
-										</div>
-										<div class="d-flex flex-row align-items-center">
-											<p class="small text-muted mb-0">Upvote?</p>
-											<i class="far fa-thumbs-up mx-2 fa-xs text-black"
-												style="margin-top: -0.16rem;"></i>
-											<p class="small text-muted mb-0">3</p>
-										</div>
-									</div>
+		<form action="" id="reviewFrm" method="post">
+			<section class="py-5">
+				<div class="row d-flex justify-content-center px-md-5 mx-md-5">
+					<div class="container px-4 px-lg-5 my-5">
+						<div class="card shadow-0 border"
+							style="background-color: #f0f2f5;">
+							<div class="card-body p-4">
+								<div class="form-outline mb-4">
+									<input type=hidden value="${review.nickname }"name="review_nickname">
+									<input type=hidden value="${dto.product_name }" name="product_name">
+									<input type=hidden value="${dto.product_seq }"name="productreview_seq">
+									
+									<input type="text"	id="addANote" name="productreview_contents"
+										class="form-control" placeholder="Type comment..." />
+									<button type=button class="insertReview" id="insertReview">리뷰작성</button>
 								</div>
-							</div>
 
-							<div class="card mb-4">
-								<div class="card-body">
-									<p>Type your note, and hit enter to add it</p>
+								
 
-									<div class="d-flex justify-content-between">
-										<div class="d-flex flex-row align-items-center">
 
-											<p class="small mb-0 ms-2">Johny</p>
-										</div>
-										<div class="d-flex flex-row align-items-center">
-											<p class="small text-muted mb-0">Upvote?</p>
-											<i class="far fa-thumbs-up mx-2 fa-xs text-black"
-												style="margin-top: -0.16rem;"></i>
-											<p class="small text-muted mb-0">4</p>
-										</div>
-									</div>
-								</div>
-							</div>
 
-							<div class="card mb-4">
-								<div class="card-body">
-									<p>Type your note, and hit enter to add it</p>
+								<div class="card mb-4">
+									<div class="card-body">
+										<c:forEach var="list" items="${list }">
+											<div class="card mb-4">
+												<div class="card-body">
+													<p>${list.pr_contents }</p>
 
-									<div class="d-flex justify-content-between">
-										<div class="d-flex flex-row align-items-center">
+													<div class="d-flex justify-content-between">
+														<div class="d-flex flex-row align-items-center">
 
-											<p class="small mb-0 ms-2">Mary Kate</p>
-										</div>
-										<div class="d-flex flex-row align-items-center text-primary">
-											<p class="small mb-0">Upvoted</p>
-											<i class="fas fa-thumbs-up mx-2 fa-xs"
-												style="margin-top: -0.16rem;"></i>
-											<p class="small mb-0">2</p>
-										</div>
-									</div>
-								</div>
-							</div>
+															<p class="small mb-0 ms-2">${list.pr_writer }</p>
+														</div>
+														<div class="d-flex flex-row align-items-center">
+															<p class="small text-muted mb-0">Upvote?</p>
+															<i class="far fa-thumbs-up mx-2 fa-xs text-black"
+																style="margin-top: -0.16rem;"></i>
+															<p class="small text-muted mb-0">3</p>
+														</div>
+													</div>
+												</div>
+											</div>
 
-							<div class="card">
-								<div class="card-body">
-									<p>Type your note, and hit enter to add it</p>
-
-									<div class="d-flex justify-content-between">
-										<div class="d-flex flex-row align-items-center">
-
-											<p class="small mb-0 ms-2">Johny</p>
-										</div>
-										<div class="d-flex flex-row align-items-center">
-											<p class="small text-muted mb-0">Upvote?</p>
-											<i class="far fa-thumbs-up ms-2 fa-xs text-black"
-												style="margin-top: -0.16rem;"></i>
-										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-
+			</section>
+		</form>
 	</main>
 
 
@@ -269,9 +232,13 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
+	<script>
+		$("#insertReview").on("click", function() {
+			$("#reviewFrm").attr("action", "/insert.review")
+			$("#reviewFrm").submit();
+		})
+	</script>
 
-
-</form>
 </body>
 
 </html>

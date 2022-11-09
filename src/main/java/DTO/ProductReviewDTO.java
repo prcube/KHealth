@@ -1,6 +1,6 @@
 package DTO;
 
-public class ProdcutReviewDTO {
+public class ProductReviewDTO {
 	
 	private int pr_seq;
 	private int pr_productseq;
@@ -9,18 +9,17 @@ public class ProdcutReviewDTO {
 	private String pr_id;
 	
 	
-	
-	
-	public ProdcutReviewDTO(int pr_seq, int pr_productseq, String pr_contents, String pr_writer, String pr_id) {
-		super();
+	public ProductReviewDTO(int pr_seq, int pr_productseq, String pr_contents, String pr_writer, String pr_id) {
+		
 		this.pr_seq = pr_seq;
 		this.pr_productseq = pr_productseq;
 		this.pr_contents = pr_contents;
 		this.pr_writer = pr_writer;
 		this.pr_id = pr_id;
 	}
-	
-	
+	public ProductReviewDTO() {
+		
+	}
 	public int getPr_seq() {
 		return pr_seq;
 	}

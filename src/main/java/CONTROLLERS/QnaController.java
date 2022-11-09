@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.MembersDAO;
 import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
 import DTO.QnaCommentsDTO;
@@ -28,8 +29,6 @@ public class QnaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
-
 		String uri = request.getRequestURI();
 
 		request.setCharacterEncoding("utf8");
@@ -39,37 +38,43 @@ public class QnaController extends HttpServlet {
 
 
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
-				
-				
-				String navi = QnaDAO.getInstance().getPageNavi(cpage);
 
+				String navi = QnaDAO.getInstance().getPageNavi(cpage);
+				
 				QnaDAO dao = QnaDAO.getInstance();
 				//List<QnaDTO> list = dao.selectAll();
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
 				System.out.println(list);
-
-
+				
+				String id = (String) request.getSession().getAttribute("loginID");
+				boolean isInBlacklist = MembersDAO.getInstance().isInBlacklist(id);
 
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
-
+				request.setAttribute("isInBlacklist", isInBlacklist);
 
 				request.getRequestDispatcher("/qna/QnaDummy.jsp").forward(request, response);
 
 
 			}else if(uri.equals("/write.qna")) {
-				QnaDAO dao = QnaDAO.getInstance();
 
-				String qna_writer = (String)request.getSession().getAttribute("loginID");
-				String qna_title = request.getParameter("qna_title");
-				String qna_contents = request.getParameter("qna_contents");
+				try {
+					String qna_writer = (String)request.getSession().getAttribute("loginID");
+					String qna_title = request.getParameter("qna_title");
+					String qna_contents = request.getParameter("qna_contents");
+
+					QnaDAO dao = QnaDAO.getInstance();
+					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0,"");
+					dao.write(dto);
+
+					response.sendRedirect("/list.qna?cpage=1");
+				}catch(Exception e) {
+					e.printStackTrace();
+					response.sendRedirect("/error.jsp");
+				}
 
 
-				QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0,"");
-				dao.write(dto);
 
-
-				response.sendRedirect("/list.qna?cpage=1");
 				//게시판 1페이지로 이동
 
 			}else if(uri.equals("/detail.qna")) {
@@ -77,15 +82,20 @@ public class QnaController extends HttpServlet {
 
 				QnaDAO dao = QnaDAO.getInstance();
 				int seq = Integer.parseInt(request.getParameter("qna_seq"));
-
+				String id = (String) request.getSession().getAttribute("loginID");
+				
 				List<QnaCommentsDTO> list = QnaCommentsDAO.getInstance().selectAll(seq);
+				
 
-
+				
 				QnaDTO dto = dao.selectBySeq(seq);
 				QnaDAO.getInstance().addViewCount(seq);
+				
+				boolean member_role = MembersDAO.getInstance().isInBlacklist(id);
+				
 				request.setAttribute("list", list);
 				request.setAttribute("dto", dto);
-
+				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/qna/QnadetailView.jsp").forward(request, response);
 
 			}else if(uri.equals("/update.qna")) {
@@ -114,7 +124,7 @@ public class QnaController extends HttpServlet {
 				QnaDAO dao = QnaDAO.getInstance();
 				int result = dao.deleteBySeq(qna_seq);
 
-				response.sendRedirect("/list.qna?cpage=1");
+				response.sendRedirect("/list.qna?cpage=1");	
 
 				//         }else if(uri.equals("/detail.board")) {
 				//

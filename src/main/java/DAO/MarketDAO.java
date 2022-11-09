@@ -124,7 +124,7 @@ public class MarketDAO {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
 
-			try(ResultSet rs =pstat.executeQuery();){
+			try(ResultSet rs =pstat.executeQuery();){	
 
 				while(rs.next()) {
 
