@@ -71,9 +71,7 @@
 			</c:choose>
 		</nav>
 
-		<link
-			href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-			rel="stylesheet" id="bootstrap-css">
+
 		<script
 			src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<script
@@ -89,9 +87,9 @@
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
 								<address>
-									<strong>배송지 정보</strong> <br> 2135 Sunset Blvd <br>
-									Los Angeles, CA 90026 <br> <abbr title="Phone">P:</abbr>
-									(213) 484-6829
+									<strong>배송지 정보</strong> <br> ${dao.zip } <br>
+									${dao.address1 }<br> ${dao.address2 }  <br> <abbr title="Phone">Phone:</abbr>
+									${dao.number }
 								</address>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -117,11 +115,21 @@
 	
 								<tbody>
 									<tr>
-										<td class="col-md-7"><h4><em>${dto.product_name }</em>
+										<td class="col-md-7"><h4><em>
+										</em>
+										${dto.product_name }
 											</h4></td>
-										<td class="col-md-2" style="text-align: center">${amount }</td>
+										<td class="col-md-2" style="text-align: center">
+										
+										${amount }</td>
 										<td class="col-md-2 text-center">${dto.product_price } 원</td>
 										<td class="col-md-1 text-center">
+										</td>
+										
+									
+										
+										
+										<td>
 										<script>
 										//콤마 제거
 										const numberStr = "${dto.product_price }";
@@ -153,19 +161,25 @@
 									</tr>
 								</tbody>
 							</table>
-							
+						<form action ="/completed.buy" name ="formgo" method="post">
+						<input type = "hidden" value="${dto.product_name }" name = "name">
+						<input type = "hidden" value="${amount }" name = "amount">
+						<input type = "hidden" value="${loginID }" name = "ID">
+						<input type = "hidden" value="${dao.nickname }" name = "nickname">
+						</form>
 				
-							<button onclick="requestPay()" class="btn btn-success btn-lg btn-block">
-								결제하기   <span class="glyphicon glyphicon-chevron-right"></span>
-							</button>
+							<input type="submit" value="결제하기" onclick="requestPay()" class="btn btn-success btn-lg btn-block">
+							
+							<span class="glyphicon glyphicon-chevron-right"></span>
 							
 					<script>
-					var buyer = "${loginname }";
+					var buyer  = "${dao.name }";
 					var name = "${dto.product_name }";
 					const numberStr2 = "${dto.product_price }";
 					const number2 = numberStr.replace(/,/g, "");
 					var result2 = number2 * ${amount };
 					    function requestPay() {
+					    	var form = document.formgo;
 					      // IMP.request_pay(param, callback) 결제창 호출
 					        var IMP = window.IMP; // 생략 가능
 						    IMP.init("imp52470434"); // 예: imp00000000
@@ -177,14 +191,12 @@
 					          /* amount: result2, */
 					          amount: 100,
 					          buyer_email: "",
-					          buyer_name: buyer,
-					          buyer_tel: "",
-					          buyer_addr: "서울특별시 강남구 신사동",
-					          buyer_postcode: "01181"
+					          buyer_name: buyer ,
+				          	  buyer_tel: ""
+
 					      }, function (rsp) { // callback
 					          if (rsp.success) {
-					              var msg = '결제가 완료되었습니다.';
-					              alert(msg);
+					            form.submit();
 					          } else {
 					        	  var msg = '결제에 실패하였습니다.';
 					              msg += '에러내용 : ' + rsp.error_msg;
@@ -194,7 +206,6 @@
 					    }
   				</script>	
 							
-						
 						</div>
 					</div>
 				</div>
@@ -205,12 +216,12 @@
 
 
 
-		<!-- Footer-->
-		<footer class="bg-dark py-4 mt-auto ">
-			<div class="container px-5 ">
-				<div
-					class="row align-items-center justify-content-between flex-column flex-sm-row ">
-					<div class="text-center"></div>
+	<!-- Footer-->
+	<footer class="bg-dark py-4 mt-auto ">
+		<div class="container px-5 ">
+			<div
+				class="row align-items-center justify-content-between flex-column flex-sm-row ">
+				<div class="text-center">
 					<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자
 						: 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
 					<div class="small m-0 text-white"></div>
@@ -229,13 +240,13 @@
 						src="/image/twitter.png" height="20px">
 				</div>
 			</div>
-			</div>
-		</footer>
-		<!-- Bootstrap core JS-->
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- Core theme JS--> 
-		<script src="/js/scripts.js"></script>
-</body>
+		</div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="/js/scripts.js"></script>
 
+</body>
 </html>

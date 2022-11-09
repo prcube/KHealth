@@ -126,14 +126,7 @@
 				</c:choose>
 			</div>
 			<div class="navi" style="text-align: center;">${navi}</div>
-
-
-	
-
-
-        
       </section>
-
    </main>
 
 

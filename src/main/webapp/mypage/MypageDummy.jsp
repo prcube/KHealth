@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>K-Health</title>
@@ -16,8 +16,8 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet" />
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+   rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
 <style>
@@ -25,139 +25,139 @@
       background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     } */
 .emp-profile {
-	border: 2px solid #212529;
-	padding: 3%;
-	margin-top: 3%;
-	margin-bottom: 3%;
-	border-radius: 0.5rem;
-	background: #fff;
+   border: 2px solid #212529;
+   padding: 3%;
+   margin-top: 3%;
+   margin-bottom: 3%;
+   border-radius: 0.5rem;
+   background: #fff;
 }
 
 .profile-img {
-	text-align: center;
+   text-align: center;
 }
 
 .profile-img img {
-	width: 70%;
-	height: 100%;
+   width: 70%;
+   height: 100%;
 }
 
 .profile-img .file {
-	position: relative;
-	overflow: hidden;
-	margin-top: -20%;
-	width: 70%;
-	border: none;
-	border-radius: 0;
-	font-size: 15px;
-	background: #212529b8;
+   position: relative;
+   overflow: hidden;
+   margin-top: -20%;
+   width: 70%;
+   border: none;
+   border-radius: 0;
+   font-size: 15px;
+   background: #212529b8;
 }
 
 .profile-img .file input {
-	position: absolute;
-	opacity: 0;
-	right: 0;
-	top: 0;
+   position: absolute;
+   opacity: 0;
+   right: 0;
+   top: 0;
 }
 
 .profile-head h5 {
-	color: #333;
+   color: #333;
 }
 
 .profile-head h6 {
-	color: #0062cc;
+   color: #0062cc;
 }
 
 .profile-edit-btn {
-	border: none;
-	border-radius: 1.5rem;
-	width: 70%;
-	padding: 2%;
-	font-weight: 600;
-	color: #6c757d;
-	cursor: pointer;
+   border: none;
+   border-radius: 1.5rem;
+   width: 70%;
+   padding: 2%;
+   font-weight: 600;
+   color: #6c757d;
+   cursor: pointer;
 }
 
 .proile-rating {
-	font-size: 12px;
-	color: #818182;
-	margin-top: 5%;
+   font-size: 12px;
+   color: #818182;
+   margin-top: 5%;
 }
 
 .proile-rating span {
-	color: #495057;
-	font-size: 15px;
-	font-weight: 600;
+   color: #495057;
+   font-size: 15px;
+   font-weight: 600;
 }
 
 .profile-head .nav-tabs {
-	margin-bottom: 5%;
+   margin-bottom: 5%;
 }
 
 .profile-head .nav-tabs .nav-link {
-	font-weight: 600;
-	border: none;
+   font-weight: 600;
+   border: none;
 }
 
 .profile-head .nav-tabs .nav-link.active {
-	border: none;
-	border-bottom: 2px solid #0062cc;
+   border: none;
+   border-bottom: 2px solid #0062cc;
 }
 
 .profile-work {
-	padding: 14%;
-	margin-top: -15%;
+   padding: 14%;
+   margin-top: -15%;
 }
 
 .profile-work p {
-	font-size: 12px;
-	color: #818182;
-	font-weight: 600;
-	margin-top: 10%;
+   font-size: 12px;
+   color: #818182;
+   font-weight: 600;
+   margin-top: 10%;
 }
 
 .profile-work a {
-	text-decoration: none;
-	color: #495057;
-	font-weight: 600;
-	font-size: 14px;
+   text-decoration: none;
+   color: #495057;
+   font-weight: 600;
+   font-size: 14px;
 }
 
 .profile-work ul {
-	list-style: none;
+   list-style: none;
 }
 
 .profile-tab label {
-	font-weight: 600;
+   font-weight: 600;
 }
 
 .profile-tab p {
-	font-weight: 600;
-	color: #0062cc;
+   font-weight: 600;
+   color: #0062cc;
 }
 
 .mypageBtn {
-	background-color: transparent;
-	border: none;
+   background-color: transparent;
+   border: none;
 }
 
 #imform {
-	display: none;
+   display: none;
 }
 </style>
 
 <script>
-	$(function(){
-		if(${member_role}){
-			let adminBtn = $("#btnArea").append("<button>");
-			adminBtn.attr("type", "button");
-			adminBtn.text("관리자 페이지로 이동");
-			
-			adminBtn.on("click",function(){
-				location.href="/admin/admindummy.jsp";
-			})
-		}
-	});
+   $(function(){
+      if(${member_role}){
+         let adminBtn = $("#btnArea").append("<button>");
+         adminBtn.attr("type", "button");
+         adminBtn.text("관리자 페이지로 이동");
+         
+         adminBtn.on("click",function(){
+            location.href="/admin/admindummy.jsp";
+         })
+      }
+   });
 </script>
 </head>
 
@@ -372,7 +372,6 @@
 							<br />
 						</div>
 					</div>
-
 					<script>
 						$("#mypageInformation").on("click", function () {
 							location.href = "/mypage.mem"
@@ -387,7 +386,7 @@
 							location.href = "/mypage.mem"
 						})
 					</script>
-
+				
 <!-- 마이페이지 정보들 뿌리기 -->
 					<div class="col-md-9" id="information">
 						<div class="tab-content profile-tab" id="myTabContent">
@@ -465,11 +464,11 @@
 			modifyCancel.addClass("btn");
 
 			$("#modifyBtn").on("click", function () {
-				$(".modify").attr("contenteditable", "true");
+			$(".modify").attr("contenteditable", "true");
 
-				$("#btnArea").append(modifyOk);
-				$("#btnArea").append(modifyCancel);
-			})
+            $("#btnArea").append(modifyOk);
+            $("#btnArea").append(modifyCancel);
+         	})
 
 			modifyOk.on("click", function () {
 				$("#mypageFrm").attr("action", "/update.mem")

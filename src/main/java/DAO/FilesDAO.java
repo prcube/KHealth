@@ -43,13 +43,11 @@ private static FilesDAO instance = null;
 				con.commit();
 				return result;
 			}
-		}public List<FilesDTO> selectAll(int seq) throws Exception {
+		}public List<FilesDTO> selectAll() throws Exception {
 //			parent_seq값을 seq로 받아준다.
-			String sql  =  "select * from files where parent_seq = ?";
+			String sql  =  "select * from files";
 			try(Connection con = this.getConnection();
 					PreparedStatement pstat = con.prepareStatement(sql);){
-			
-				pstat.setInt(1, seq);
 				ResultSet rs = pstat.executeQuery();
 				
 				List<FilesDTO> list = new ArrayList<>();
@@ -62,6 +60,7 @@ private static FilesDAO instance = null;
 					list.add(dto);
 					
 				}
+				System.out.println("FilesDAO : " + list.size());
 				return list;
 			}
 		}

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -9,7 +12,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>K-Health</title>
+<title>주문완료</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -21,17 +24,16 @@
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link type="text/css" rel="stylesheet"
+	href="https://ssl.pstatic.net/static.checkout/layout/202211031430/css/customer/chk_n_common.css">
+<link type="text/css" rel="stylesheet"
+	href="//img.pay.naver.net/o/wstatic/css/service/front/order/ordersheet.css?1667460476788">
 </head>
-<style>
 
-	a {
-		text-decoration:none;
-		color : black;
-	}
 
-</style>
 <body class="d-flex flex-column h-100">
-
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -52,16 +54,16 @@
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/list.tips?cpage=1">Tips</a></li>
+							href="/tips/TipsDummy.jsp">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/list.qna?cpage=1">Q&A</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/login/LoginDummy.jsp">Login</a></li>
+							href="/qna/QnaDummy.jsp">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
 					</ul>
 				</div>
 			</div>
+			
 			<c:choose>
 				<c:when test="${loginID != null}">
 					<!-- 로그인을 한 사용자 -->
@@ -76,53 +78,58 @@
 				</c:when>
 			</c:choose>
 		</nav>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- container -->
+		<div id="container">
+			<!-- content -->
+			<div id="content" class="_root _cartDiv">
+
+				<div class="order_sc">
+					<div class="order_header">
+						<h3 class="order_payment">
+							<span class="blind">주문/결제</span>
+						</h3>
+						<ol class="process">
+							<li><em class="pro2"><span class="blind">주문/결제</span></em></li>
+							<li class="on"><em class="pro3"><span class="blind">주문완료</span></em></li>
+						</ol>
+					</div>
+					<br> <br>
+					<div class="order_content">
+						<div class="orderendtxt_wrap">
+							<span class="top_line"></span>
+							<div class="orderendtxt_content">
+								<br> <br>
+								<h1 align="center">주문이 완료 되었습니다!</h1>
+								<br> <br> <br>
+								<h5 align="center">빠른 시일내에 배송 될 수 있도록 노력 하겠습니다.</h5>
+								<br> <br> <br>
+								<div align="center"></div>
+							</div>
+							<div class="cutting_line cutting_line_v3">
+								<span class="ico_scissors"></span> <span class="shdw_left"></span>
+								<span class="shdw_right"></span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //content -->
+		</div>
+		<div align="center">
+			<a href="/index.jsp">
+				<button type="button" class="btn btn-secondary btn-lg">홈으로
+					이동</button>
+			</a>
+		</div>
+
 	</main>
-
-	<table class="table align-middle mb-0 bg-white">
-		<thead class="bg-light">
-			<tr>
-				<th>글 번호</th>
-				<th>제목</th>
-				<th>아이디</th>
-				<th>날짜</th>
-				<th>조회수</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="i" items="${list }">
-				<tr>
-					<td>${i.qna_seq }</td>
-					<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
-					<td>${i.qna_writer }</td>
-					<td>${i.formedDate }</td>
-					<td>${i.qna_view_count }</td>
-				</tr>
-			</c:forEach>
-
-
-
-
-
-
-		</tbody>
-	</table>
-
-
-
-
-
-
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div style="text-align: center;">${navi }</div>
-
-
-
-
-
 
 
 
@@ -158,37 +165,6 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col">
-				<button type="button" class="btn btn-primary" style="float: right"
-					id="write">작성하기</button>
-
-			</div>
-
-			<script>
-			console.log("${loginID}");
-			console.log(${isInBlacklist});
-				$("#write").on("click", function() {
-					
-					if(${isInBlacklist}){
-						alert("회원님은 블랙리스트에 등록되어 게시판 글 작성이 불가능합니다.");
-						return;
-					}
-					else if("${loginID}"==""){
-						let loginplz = confirm("로그인 후 이용가능합니다. 로그인페이지로 이동합니다.");
-						if(loginplz){
-							location.href = "login/LoginDummy.jsp";
-						}else{
-							return;
-						}
-					}
-					else{
-						location.href = "/qna/QnaView.jsp";
-					}
-					
-				})
-			</script>
 	</footer>
 	<!-- Bootstrap core JS-->
 	<script
@@ -196,8 +172,5 @@
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
 
-
-
 </body>
-
 </html>
