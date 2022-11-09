@@ -148,18 +148,56 @@
 			integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
 			crossorigin="anonymous"></script>
 		<script>
-  //Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
+  Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 
 		<script>
-		let target = $("#token-result").val();
-		$.ajax({
-			url : '/KakaoLoginAjaxController',
-			data : "target="+target+"",
-			dataType : "json" 
-		})
+// 		let target = $("#token-result").val();
+// 		$.ajax({
+// 			url : '/KakaoLoginAjaxController',
+// 			data : "target="+target+"",
+// 			dataType : "json" 
+// 		})
 
+ function loginWithKakao() {
+    Kakao.Auth.authorize({
+      redirectUri: 'http://127.0.0.1/login/LoginDummy.jsp',
+      state: 'userme',
+    });
+  }
 
+  function requestUserInfo() {
+    Kakao.API.request({
+      url: '/v2/user/me',
+    })
+      .then(function(res) {
+        alert(JSON.stringify(res));
+      })
+      .catch(function(err) {
+        alert(
+          'failed to request user information: ' + JSON.stringify(err)
+        );
+      });
+  }
+
+  // 아래는 데모를 위한 UI 코드입니다.
+  
+  function displayToken() {
+    var token = getCookie('authorize-access-token');
+
+    if(token) {
+      Kakao.Auth.setAccessToken(token);
+      document.querySelector('#token-result').innerText = 'login success, ready to request API';
+      document.querySelector('button.api-btn').style.visibility = 'visible';
+    }
+  }
+  
+  displayToken();
+  
+  function getCookie(name) {
+    var parts = document.cookie.split(name + '=');
+    if (parts.length === 2) { return parts[1].split(';')[0]; }
+  }
   
   
 //   Kakao.API.request({

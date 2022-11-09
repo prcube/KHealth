@@ -130,4 +130,29 @@ public class ImagesDAO {
 		}
 	}
 	
+	public String getImageOriName(int product_seq) throws Exception{
+		
+		String sql = "select * from images where parent_seq=?";
+		
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			
+			pstat.setInt(1, product_seq);
+			
+
+			try(ResultSet rs =pstat.executeQuery();){
+
+				rs.next();
+
+					String oriName = rs.getString("oriname");
+
+				
+				int result = pstat.executeUpdate();
+				return oriName;
+			}
+
+		}
+	}
+	
 }
