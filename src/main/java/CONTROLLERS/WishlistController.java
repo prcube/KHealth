@@ -30,7 +30,7 @@ public class WishlistController extends HttpServlet {
 				List<WishlistDTO> wishlist = WishlistDAO.getInstance().selectByRange(cpage*4-3, cpage*4);
 				
 				request.setAttribute("wishlist", wishlist);
-
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 				response.sendRedirect("/error.jsp");
