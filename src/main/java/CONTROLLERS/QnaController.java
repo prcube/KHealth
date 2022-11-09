@@ -54,7 +54,6 @@ public class QnaController extends HttpServlet {
 				QnaDAO dao = QnaDAO.getInstance();
 				//List<QnaDTO> list = dao.selectAll();
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
-				System.out.println(list);
 				
 				String id = (String) request.getSession().getAttribute("loginID");
 				boolean isInBlacklist = MembersDAO.getInstance().isInBlacklist(id);
@@ -74,7 +73,6 @@ public class QnaController extends HttpServlet {
 					int maxSize = 1024*1024*10;
 					
 					String savePath = request.getServletContext().getRealPath("/files");
-					System.out.println(savePath);
 					
 					File fileSavePath = new File(savePath);
 //					경로안에없으면 디렉토리 생성
