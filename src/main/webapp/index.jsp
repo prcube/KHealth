@@ -71,6 +71,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
+
                   <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
                   <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
                   <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
@@ -80,6 +81,7 @@
                      href="/list.market?cpage=1">Market</a></li>
                   <li class="nav-item"><a class="nav-link"
                      href="/list.qna?cpage=1">Q&A</a></li>
+
 
 
                   <li class="nav-item dropdown"><a
@@ -92,25 +94,28 @@
                         <li class="nav-item"><a class="nav-link"
                            href="login/SigninDummy.jsp">Signin</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <c:choose>
-                           <c:when test="${loginID != null}">
-                              <!-- 로그인을 한 사용자 -->
-                              <li class="nav-item"><a class="nav-link" style="color: white">${loginID }님 <br> 안녕하세요?</a></li>
-                              <input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt" value="로그아웃">
-                           </c:when>
-                           <c:when test="${loginID == null}">
-                              <!-- 로그인을 한 사용자 -->
-                              <a style="color: white"></a>
-                           </c:when>
-                        </c:choose>
+
+               
                      </ul></li>
 
 
-
-
-
-
                </ul>
+                              
+               <c:choose>
+                     <c:when test="${loginID != null}">
+                        <!-- 로그인을 한 사용자 -->
+                        <li class="nav-item"><a class="nav-link"
+                           style="color: white">${loginID }님 <br> 안녕하세요?
+                        </a></li>
+                        
+                        <input type="button" id="logout"
+                           style="WIDTH: 60pt; HEIGHT: 20pt; margin-top:27px" value="로그아웃">
+                     </c:when>
+                     <c:when test="${loginID == null}">
+                        <!-- 로그인을 한 사용자 -->
+                        <a style="color: white"></a>
+                     </c:when>
+                  </c:choose>
             </div>
          </div>
       </nav>

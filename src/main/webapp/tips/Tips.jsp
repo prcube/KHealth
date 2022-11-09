@@ -18,6 +18,17 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
+
+<style>
+.board-border {
+	border: 2px solid #212529;
+	padding: 0%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	border-radius: 0.5rem;
+	background: #fff;
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
@@ -60,56 +71,61 @@
 				</c:when>
 			</c:choose>
 		</nav>
-	</main>
 
-	<table class="table align-middle mb-0 bg-white">
-		<thead class="bg-light">
-			<tr>
-				<th>Name</th>
-				<th>Title</th>
-				<th>Status</th>
-				<th>Position</th>
-				<th>view count</th>
-			</tr>
-		</thead>
-		<c:choose>
-			<c:when test="${not empty list}">
-				<c:forEach var="i" items="${list}">
-					<tbody>
-						<tr>
-							<td>
-								<div class="d-flex align-items-center">
-									<div class="ms-3">
-										<p class="fw-bold mb-1">${i.rn }</p>
-									</div>
-								</div>
-							</td>
-							<td>
-								<p class="fw-normal mb-1">
-									<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
-								</p>
-								<p class="text-muted mb-0"></p>
-							</td>
-							<td>${i.tips_writer }</td>
-							<td>${i.tips_write_date }</td>
-							<td>${i.tips_view_count }</td>
-						</tr>
-					</tbody>
-				</c:forEach>
-			</c:when>
-		</c:choose>
+		<div class="container board-border">
+			<table class="table align-middle mb-0 bg-white">
+				<thead class="bg-light">
+					<tr>
+						<th>Name</th>
+						<th>Title</th>
+						<th>Status</th>
+						<th>Position</th>
+						<th>view count</th>
+					</tr>
+				</thead>
+				<c:choose>
+					<c:when test="${not empty list}">
+						<c:forEach var="i" items="${list}">
+							<tbody>
+								<tr>
+									<td>
+										<div class="d-flex align-items-center">
+											<div class="ms-3">
+												<p class="fw-bold mb-1">${i.rn }</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<p class="fw-normal mb-1">
+											<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+										</p>
+										<p class="text-muted mb-0"></p>
+									</td>
+									<td>${i.tips_writer }</td>
+									<td>${i.tips_write_date }</td>
+									<td>${i.tips_view_count }</td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</c:when>
+				</c:choose>
 
-	</table>
-
-	<div class="row">
-		<div class="col" text align="center">
-			${navi }
-			<button type="button" class="btn btn-secondary" style="float: right"
-				name="tipswrite" id="tipswrite">작성하기</button>
+			</table>
 
 		</div>
 
-		<script>
+		<div class="row mb-3">
+			<div class="col" text align="center">
+				${navi }
+				<button type="button" class="btn btn-secondary" style="float: right"
+					name="tipswrite" id="tipswrite">작성하기</button>
+			</div>
+
+
+
+
+
+			<script>
 			$("#tipswrite").hide();
 			console.log(${member_role});
 			if (${member_role}) {
@@ -120,8 +136,8 @@
 				location.href = "/tips/tipswrite.jsp?cpage=1"
 			})
 		</script>
-	</div>
-
+		</div>
+	</main>
 
 
 
