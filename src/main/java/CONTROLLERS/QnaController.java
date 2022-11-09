@@ -85,6 +85,7 @@ public class QnaController extends HttpServlet {
 				String id = (String) request.getSession().getAttribute("loginID");
 				
 				List<QnaCommentsDTO> list = QnaCommentsDAO.getInstance().selectAll(seq);
+				
 
 				
 				QnaDTO dto = dao.selectBySeq(seq);

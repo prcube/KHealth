@@ -146,96 +146,42 @@
 							style="background-color: #f0f2f5;">
 							<div class="card-body p-4">
 								<div class="form-outline mb-4">
-								<input type=hidden value="${review.nickname }"  name="review_nickname">
-								<input type=hidden value="${dto.product_name }" name="product_name">
-								<input type=hidden value="${dto.product_seq }" name="productreview_seq">
-								
-
-									<input type="text" id="addANote" name="productreview_contents" class="form-control"
-										placeholder="Type comment..." />
+									<input type=hidden value="${review.nickname }"name="review_nickname">
+									<input type=hidden value="${dto.product_name }" name="product_name">
+									<input type=hidden value="${dto.product_seq }"name="productreview_seq">
+									
+									<input type="text"	id="addANote" name="productreview_contents"
+										class="form-control" placeholder="Type comment..." />
 									<button type=button class="insertReview" id="insertReview">리뷰작성</button>
 								</div>
 
-								<div class="card mb-4">
-									<div class="card-body">
-										<p>Type your note, and hit enter to add it</p>
+								
 
-										<div class="d-flex justify-content-between">
-											<div class="d-flex flex-row align-items-center">
 
-												<p class="small mb-0 ms-2">Martha</p>
-											</div>
-											<div class="d-flex flex-row align-items-center">
-												<p class="small text-muted mb-0">Upvote?</p>
-												<i class="far fa-thumbs-up mx-2 fa-xs text-black"
-													style="margin-top: -0.16rem;"></i>
-												<p class="small text-muted mb-0">3</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="card mb-4">
-									<div class="card-body">
-										<p>Type your note, and hit enter to add it</p>
-
-										<div class="d-flex justify-content-between">
-											<div class="d-flex flex-row align-items-center">
-
-												<p class="small mb-0 ms-2">Johny</p>
-											</div>
-											<div class="d-flex flex-row align-items-center">
-												<p class="small text-muted mb-0">Upvote?</p>
-												<i class="far fa-thumbs-up mx-2 fa-xs text-black"
-													style="margin-top: -0.16rem;"></i>
-												<p class="small text-muted mb-0">4</p>
-											</div>
-										</div>
-									</div>
-								</div>
 
 								<div class="card mb-4">
 									<div class="card-body">
 										<c:forEach var="list" items="${list }">
+											<div class="card mb-4">
+												<div class="card-body">
+													<p>${list.pr_contents }</p>
+
+													<div class="d-flex justify-content-between">
+														<div class="d-flex flex-row align-items-center">
+
+															<p class="small mb-0 ms-2">${list.pr_writer }</p>
+														</div>
+														<div class="d-flex flex-row align-items-center">
+															<p class="small text-muted mb-0">Upvote?</p>
+															<i class="far fa-thumbs-up mx-2 fa-xs text-black"
+																style="margin-top: -0.16rem;"></i>
+															<p class="small text-muted mb-0">3</p>
+														</div>
+													</div>
+												</div>
+											</div>
 
 										</c:forEach>
-
-
-
-
-
-										<p>Type your note, and hit enter to add it</p>
-
-										<div class="d-flex justify-content-between">
-											<div class="d-flex flex-row align-items-center">
-
-												<p class="small mb-0 ms-2">Mary Kate</p>
-											</div>
-											<div class="d-flex flex-row align-items-center text-primary">
-												<p class="small mb-0">Upvoted</p>
-												<i class="fas fa-thumbs-up mx-2 fa-xs"
-													style="margin-top: -0.16rem;"></i>
-												<p class="small mb-0">2</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="card">
-									<div class="card-body">
-										<p>Type your note, and hit enter to add it</p>
-
-										<div class="d-flex justify-content-between">
-											<div class="d-flex flex-row align-items-center">
-
-												<p class="small mb-0 ms-2">Johny</p>
-											</div>
-											<div class="d-flex flex-row align-items-center">
-												<p class="small text-muted mb-0">Upvote?</p>
-												<i class="far fa-thumbs-up ms-2 fa-xs text-black"
-													style="margin-top: -0.16rem;"></i>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -287,8 +233,8 @@
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
 	<script>
-		$("#insertReview").on("click", function(){
-			$("#reviewFrm").attr("action","/insert.review")
+		$("#insertReview").on("click", function() {
+			$("#reviewFrm").attr("action", "/insert.review")
 			$("#reviewFrm").submit();
 		})
 	</script>

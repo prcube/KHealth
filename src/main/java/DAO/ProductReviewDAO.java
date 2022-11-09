@@ -57,24 +57,29 @@ public class ProductReviewDAO {
 	}
 	
 	public List<ProductReviewDTO> selectAll(int product_seq) throws Exception{
-		String sql = "select * from product_review where product_seq =? order by productReview_seq";
+		String sql = "select * from product_review where productreview_seq =? order by product_seq";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
-				ResultSet rs = pstat.executeQuery();){
+				){
 			pstat.setInt(1, product_seq);
 			
-			List<ProductReviewDTO> list = new ArrayList<>();
-			while(rs.next()) {
-				ProductReviewDTO dto = new ProductReviewDTO();
-				dto.setPr_seq(rs.getInt("product_seq"));
-//				dto.setPr_productseq(rs.getInt("productReview_seq"));
-				dto.setPr_contents(rs.getString("productReview_contents"));
-				dto.setPr_writer(rs.getString("productReview_writerChracter"));
-				dto.setPr_id(rs.getString("productReview_writerId"));
-				
-				list.add(dto);
+			try(ResultSet rs = pstat.executeQuery();){
+				List<ProductReviewDTO> list = new ArrayList<>();
+				while(rs.next()) {
+					ProductReviewDTO dto = new ProductReviewDTO();
+//					dto.setPr_seq(rs.getInt("product_seq"));
+					dto.setPr_productseq(rs.getInt("productReview_seq"));
+					dto.setPr_contents(rs.getString("productReview_contents"));
+					dto.setPr_writer(rs.getString("productReview_writerCharacter"));
+					dto.setPr_id(rs.getString("productReview_writerId"));
+					
+					list.add(dto);
+				}
+				return list;
 			}
-			return list;
+			
+
+			
 		}
 		
 	}
