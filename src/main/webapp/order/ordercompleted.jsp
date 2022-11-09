@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -9,7 +12,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>K-Health</title>
+<title>주문완료</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -18,21 +21,18 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-
-<style>
-.board-border {
-	border: 2px solid #212529;
-	padding: 0%;
-	margin-top: 3%;
-	margin-bottom: 3%;
-	border-radius: 0.5rem;
-	background: #fff;
-}
-</style>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link type="text/css" rel="stylesheet"
+	href="https://ssl.pstatic.net/static.checkout/layout/202211031430/css/customer/chk_n_common.css">
+<link type="text/css" rel="stylesheet"
+	href="//img.pay.naver.net/o/wstatic/css/service/front/order/ordersheet.css?1667460476788">
 </head>
+
+
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
@@ -53,95 +53,89 @@
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Tips</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/tips/TipsDummy.jsp">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/qna/QnaDummy.jsp">Q&A</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/login/LoginDummy.jsp">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
 					</ul>
 				</div>
 			</div>
+			
 			<c:choose>
 				<c:when test="${loginID != null}">
 					<!-- 로그인을 한 사용자 -->
 					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
 						&nbsp;</a>
+					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+						value="로그아웃">
+				</c:when>
+				<c:when test="${loginID == null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white"></a>
 				</c:when>
 			</c:choose>
 		</nav>
 
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-		<div class="container board-border" >
-			
-			<table class="table align-middle mb-0 bg-white">
-				<thead class="bg-light">
-					<tr>
-						<th>Name</th>
-						<th>Title</th>
-						<th>Status</th>
-						<th>Position</th>
-						<th>view count</th>
-					</tr>
-				</thead>
-				<c:choose>
-					<c:when test="${not empty list}">
-						<c:forEach var="i" items="${list}">
-							<tbody>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="ms-3">
-												<p class="fw-bold mb-1">${i.tips_seq }</p>
-											</div>
-										</div>
-									</td>
-									<td>
-										<p class="fw-normal mb-1">
-											<a target="_blank"
-												href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
-										</p>
-										<p class="text-muted mb-0"></p>
-									</td>
-									<td>${i.tips_writer }</td>
-									<td>${i.tips_write_date }</td>
-									<td>${i.tips_view_count }</td>
+		<!-- container -->
+		<div id="container">
+			<!-- content -->
+			<div id="content" class="_root _cartDiv">
 
-								</tr>
-							</tbody>
-						</c:forEach>
-					</c:when>
-				</c:choose>
+				<div class="order_sc">
+					<div class="order_header">
+						<h3 class="order_payment">
+							<span class="blind">주문/결제</span>
+						</h3>
+						<ol class="process">
+							<li><em class="pro2"><span class="blind">주문/결제</span></em></li>
+							<li class="on"><em class="pro3"><span class="blind">주문완료</span></em></li>
+						</ol>
+					</div>
+					<br> <br>
+					<div class="order_content">
+						<div class="orderendtxt_wrap">
+							<span class="top_line"></span>
+							<div class="orderendtxt_content">
+								<br> <br>
+								<h1 align="center">주문이 완료 되었습니다!</h1>
+								<br> <br> <br>
+								<h5 align="center">빠른 시일내에 배송 될 수 있도록 노력 하겠습니다.</h5>
+								<br> <br> <br>
+								<div align="center"></div>
+							</div>
+							<div class="cutting_line cutting_line_v3">
+								<span class="ico_scissors"></span> <span class="shdw_left"></span>
+								<span class="shdw_right"></span>
+							</div>
 
-			</table>
-
+						</div>
+					</div>
+				</div>
 			</div>
-
-		<div class="row mb-3">
-			<div class="col" text align="center">
-				${navi }
-				<button type="button" class="btn btn-secondary" style="float: right"
-					name="tipswrite" id="tipswrite">작성하기</button>
-			</div>
-
-
-
-
-
-			<script>
-			$("#tipswrite").hide();
-			console.log(${member_role});
-			if (${member_role}) {
-				$("#tipswrite").show()
-			}
-
-			$("#tipswrite").on("click", function() {
-				location.href = "/tips/tipswrite.jsp?cpage=1"
-			})
-		</script>
+			<!-- //content -->
 		</div>
+		<div align="center">
+			<a href="/index.jsp">
+				<button type="button" class="btn btn-secondary btn-lg">홈으로
+					이동</button>
+			</a>
+		</div>
+
 	</main>
+
+
+
+
+
+
 
 
 
@@ -177,5 +171,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
+
 </body>
 </html>
