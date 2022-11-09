@@ -19,6 +19,7 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
@@ -113,50 +114,91 @@
 										<th class="text-center">합</th>
 									</tr>
 								</thead>
+	
 								<tbody>
 									<tr>
-										<td class="col-md-7"><em>Baked Rodopa Sheep Feta</em>
+										<td class="col-md-7"><h4><em>${dto.product_name }</em>
 											</h4></td>
-										<td class="col-md-2" style="text-align: center">2</td>
-										<td class="col-md-2 text-center">$13</td>
-										<td class="col-md-1 text-center">$26</td>
+										<td class="col-md-2" style="text-align: center">${amount }</td>
+										<td class="col-md-2 text-center">${dto.product_price } 원</td>
+										<td class="col-md-1 text-center">
+										<script>
+										//콤마 제거
+										const numberStr = "${dto.product_price }";
+										const number = numberStr.replace(/,/g, "");
+										var result = number * ${amount };
+										// 수량과 금액 곱한 후 결과 값에 콤마 다시 추가
+										var sum = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+										document.write(sum.toString());
+										
+										</script>원
+										</td>
 									</tr>
-									<tr>
-										<td class="col-md-9"><em>Lebanese Cabbage Salad</em>
-											</h4></td>
-										<td class="col-md-1" style="text-align: center">1</td>
-										<td class="col-md-1 text-center">$8</td>
-										<td class="col-md-1 text-center">$8</td>
-									</tr>
-									<tr>
-										<td class="col-md-9"><em>Baked Tart with Thyme and
-												Garlic</em>
-											</h4></td>
-										<td class="col-md-1" style="text-align: center">3</td>
-										<td class="col-md-1 text-center">$16</td>
-										<td class="col-md-1 text-center">$48</td>
-									</tr>
+								
 									<tr>
 
 										<td class="text-center"><h4>
 												<strong>결제금액: </strong>
 											</h4></td>
 										<td class="text-center text-danger"><h4>
-												<strong>$31.53</strong>
+										<strong>₩</strong>
+											<strong>
+												<script>
+										document.write(sum.toString()); 
+										</script>
+										</strong><strong>원</strong>
 											</h4></td>
 										<td> </td>
 										<td> </td>
 									</tr>
 								</tbody>
 							</table>
-							<button type="button" class="btn btn-success btn-lg btn-block">
+							
+				
+							<button onclick="requestPay()" class="btn btn-success btn-lg btn-block">
 								결제하기   <span class="glyphicon glyphicon-chevron-right"></span>
 							</button>
-							</td>
+							
+					<script>
+					var buyer = "${loginname }";
+					var name = "${dto.product_name }";
+					const numberStr2 = "${dto.product_price }";
+					const number2 = numberStr.replace(/,/g, "");
+					var result2 = number2 * ${amount };
+					    function requestPay() {
+					      // IMP.request_pay(param, callback) 결제창 호출
+					        var IMP = window.IMP; // 생략 가능
+						    IMP.init("imp52470434"); // 예: imp00000000
+					      IMP.request_pay({ // param
+					          pg: "html5_inicis",
+					          pay_method: "card",
+					          /* merchant_uid: "ORD20180131-0000011", */
+					          name: name,
+					          /* amount: result2, */
+					          amount: 100,
+					          buyer_email: "",
+					          buyer_name: buyer,
+					          buyer_tel: "",
+					          buyer_addr: "서울특별시 강남구 신사동",
+					          buyer_postcode: "01181"
+					      }, function (rsp) { // callback
+					          if (rsp.success) {
+					              var msg = '결제가 완료되었습니다.';
+					              alert(msg);
+					          } else {
+					        	  var msg = '결제에 실패하였습니다.';
+					              msg += '에러내용 : ' + rsp.error_msg;
+					              alert(msg)
+					          }
+					      });
+					    }
+  				</script>	
+							
+						
 						</div>
 					</div>
 				</div>
-				</
+			
 			</div>
 		</section>
 
@@ -192,7 +234,7 @@
 		<!-- Bootstrap core JS-->
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- Core theme JS-->
+		<!-- Core theme JS--> 
 		<script src="/js/scripts.js"></script>
 </body>
 

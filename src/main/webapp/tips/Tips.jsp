@@ -110,13 +110,11 @@
 		</div>
 
 		<script>
-			//tips 테이블 글작성하는건 Members_role 가 1 일 경우에 작성할 수 있게 수정할것.
-			//       $(function() {
-			// 			$("#tipswrite").hide()
-			// 			console.log("${dto.tips_writer}");
-			// 			if ("${loginID}" == "${dto.writer}") {
-			// 				$("#tipswrite").show()
-			// 			}
+			$("#tipswrite").hide();
+			console.log(${member_role});
+			if (${member_role}) {
+				$("#tipswrite").show()
+			}
 
 			$("#tipswrite").on("click", function() {
 				location.href = "/tips/tipswrite.jsp?cpage=1"

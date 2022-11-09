@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import DTO.MemberDTO;
 
 public class MembersDAO {
 	private static MembersDAO instance = null;
@@ -77,4 +81,78 @@ public class MembersDAO {
 		}
 	}
 
+	public MemberDTO selectById(String id) throws Exception {
+		String sql = "select * from members where member_id = ?";
+		try (Connection con = this.getConnection();
+			PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			ResultSet rs = pstat.executeQuery();
+			rs.next();
+			MemberDTO dto = new MemberDTO();
+			dto.setSeq(rs.getInt("member_seq"));
+			dto.setRole(rs.getInt("member_role"));
+			dto.setPwd(rs.getString("member_pw"));
+			dto.setName(rs.getString("member_name"));
+			dto.setNickname(rs.getString("member_nickname"));
+			dto.setMail(rs.getString("member_email"));
+			dto.setNumber(rs.getString("meber_phone"));
+			dto.setZip(rs.getString("member_post"));
+			dto.setAddress1(rs.getString("member_address"));
+			dto.setAddress2(rs.getString("member_address_detail"));
+			dto.setLaunch_date(rs.getString("member_join_date"));		
+			return dto;
+		}
+	}
+		
+	public int mypageUpdate(MemberDTO dto , String id ) throws Exception {
+		
+		String sql = "update members set member_nickname=?, member_email=?, meber_phone=?, member_address=? where member_id=?";
+		try(
+			Connection con = getConnection();
+			PreparedStatement pstat=con.prepareStatement(sql);){
+			pstat.setString(1,dto.getNickname());
+			pstat.setString(2,dto.getMail());
+			pstat.setString(3,dto.getNumber());
+			pstat.setString(4,dto.getAddress1());
+			pstat.setString(5,id);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+
+
+	public boolean isYouTeacher(String id) throws Exception {
+		String sql = "select * from members where member_role=1 and member_id =?";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+
+	}
+	
+	public boolean isYouAdmin(String id) throws Exception{
+		String sql ="select * from members where member_role=2 and member_id =?";
+		
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+	}
+	
+	public boolean isInBlacklist(String id) throws Exception{
+		String sql = "select * from blacklist where blacklist_member_nickname = (select member_nickname from members where member_id=?)";
+		
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+	}
 }

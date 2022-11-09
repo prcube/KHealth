@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.net.URLEncoder" %>
-<%@ page import="java.net.URL" %>
-<%@ page import="java.net.HttpURLConnection" %>
-<%@ page import="java.io.BufferedReader" %>
-<%@ page import="java.io.InputStreamReader" %>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.net.URL"%>
+<%@ page import="java.net.HttpURLConnection"%>
+<%@ page import="java.io.BufferedReader"%>
+<%@ page import="java.io.InputStreamReader"%>
 <!DOCTYPE html>
 <html>
 
@@ -27,7 +27,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75fab7aa29c4b6b3c0b3ade35a4bd975"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
-	
+   
 </script>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
@@ -54,7 +54,6 @@
 		id="btn-back-to-top">
 		<i class="bi bi-chevron-up" style="color: white;"></i>
 	</button>
-
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -71,8 +70,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link"
-							href="/admin/admindummy.jsp">Admin</a></li>
+
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
@@ -81,11 +79,10 @@
 						<li class="nav-item"><a class="nav-link"
 							href="/list.market?cpage=1">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="qna/QnaDummy.jsp">Q&A</a></li>
+							href="/list.qna?cpage=1">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/LoginDummy.jsp">Login</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="mypage/MypageDummy.jsp">Mypage</a></li>
+						<li class="nav-item"><a class="nav-link" href="/mypage.mem">Mypage</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/SigninDummy.jsp">Signin</a></li>
 					</ul>
@@ -94,8 +91,8 @@
 			<c:choose>
 				<c:when test="${loginID != null}">
 					<!-- 로그인을 한 사용자 -->
-					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp; &nbsp; &nbsp;
-						</a>
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+						&nbsp; &nbsp; </a>
 					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
 						value="로그아웃">
 				</c:when>
@@ -105,6 +102,7 @@
 				</c:when>
 			</c:choose>
 		</nav>
+
 
 
 
@@ -373,26 +371,26 @@
 							<div class="col-lg-7 mb-5 mb-lg-0">
 								<div id="map" style="width: 100%; height: 400px;"></div>
 								<script>
-									var container = document
-											.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-									var options = { //지도를 생성할 때 필요한 기본 옵션
-										center : new kakao.maps.LatLng(
-												37.5679067, 126.9830668), //지도의 중심좌표.
-										level : 3
-									//지도의 레벨(확대, 축소 정도)
+                           var container = document
+                                 .getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                           var options = { //지도를 생성할 때 필요한 기본 옵션
+                              center : new kakao.maps.LatLng(
+                                    37.5679067, 126.9830668), //지도의 중심좌표.
+                              level : 3
+                           //지도의 레벨(확대, 축소 정도)
 
-									};
-									var map = new kakao.maps.Map(container,
-											options); //지도 생성 및 객체 리턴
-									var markerPosition = new kakao.maps.LatLng(
-											37.5679067, 126.9830668);
-									var marker = new kakao.maps.Marker({
-										position : markerPosition
-									});
-									marker.setMap(map);
+                           };
+                           var map = new kakao.maps.Map(container,
+                                 options); //지도 생성 및 객체 리턴
+                           var markerPosition = new kakao.maps.LatLng(
+                                 37.5679067, 126.9830668);
+                           var marker = new kakao.maps.Marker({
+                              position : markerPosition
+                           });
+                           marker.setMap(map);
 
-									map.setDraggable(false);
-								</script>
+                           map.setDraggable(false);
+                        </script>
 							</div>
 							<div class="col-lg-5">
 								<div class="row gx-5 row-cols-1 row-cols-md-1">
@@ -482,7 +480,8 @@
 	<script src="js/scripts.js"></script>
 </body>
 
- <%
+
+<%
     String clientId = "_5b0QUYbnHTk93odBRsA";//애플리케이션 클라이언트 아이디값";
     String clientSecret = "VA5gRXY82n";//애플리케이션 클라이언트 시크릿값";
     String code = request.getParameter("code");
@@ -523,38 +522,39 @@
       System.out.println(e);
     }
   %>
-  </body>
+</body>
+
 
 
 <script>
-	//@@@@@@@@TOP 스크롤 버튼스크립트
-	//Get the button
-	let mybutton = document.getElementById("btn-back-to-top");
+   //@@@@@@@@TOP 스크롤 버튼스크립트
+   //Get the button
+   let mybutton = document.getElementById("btn-back-to-top");
 
-	// When the user scrolls down 20px from the top of the document, show the button
-	window.onscroll = function() {
-		scrollFunction();
-	};
+   // When the user scrolls down 20px from the top of the document, show the button
+   window.onscroll = function() {
+      scrollFunction();
+   };
 
-	function scrollFunction() {
-		if (document.body.scrollTop > 20
-				|| document.documentElement.scrollTop > 200) {
-			mybutton.style.display = "block";
-		} else {
-			mybutton.style.display = "none";
-		}
-	}
-	// When the user clicks on the button, scroll to the top of the document
-	mybutton.addEventListener("click", backToTop);
+   function scrollFunction() {
+      if (document.body.scrollTop > 20
+            || document.documentElement.scrollTop > 200) {
+         mybutton.style.display = "block";
+      } else {
+         mybutton.style.display = "none";
+      }
+   }
+   // When the user clicks on the button, scroll to the top of the document
+   mybutton.addEventListener("click", backToTop);
 
-	function backToTop() {
-		document.body.scrollTop = 0;
-		document.documentElement.scrollTop = 0;
-	}
+   function backToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+   }
 
-	$("#logout").on("click", function() {
-		location.href = "/logout.mem";
-	})
+   $("#logout").on("click", function() {
+      location.href = "/logout.mem";
+   })
 </script>
 
 </html>

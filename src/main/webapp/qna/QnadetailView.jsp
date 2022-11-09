@@ -66,7 +66,8 @@
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1"">Tips</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.tips?cpage=1"">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
@@ -131,104 +132,73 @@
 										<p class="fs-5 mb-4" id="qna_contents">${dto.qna_contents }
 										</p>
 									</div>
-
-
-
-
 								</section>
 							</article>
 
-
-
-
-
-
-
 							<!-- Comments section-->
 
-							
-									
+							<section>
+								<div class="card bg-light">
+									<div class="card-body">
+										<c:forEach var="list" items="${list }">
+											<input type=hidden name="qnaCms_writer"
+												value="${list.qnaCms_writer }">
+											<input type=hidden name="qnaCms_seq"
+												value="${list.qnaCms_seq }">
+											<input type=hidden name="contentsComments"
+												id="input_contentsComments">
+											<div class="d-flex mb-4 mt-4">
+												<!-- Parent comment-->
+												<div class="flex-shrink-0">
+													<img class="rounded-circle"
+														src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+														alt="..." />
+												</div>
+												<div class="ms-3">
+
+													<div class="fw-bold" class="updComment">${list.qnaCms_writer }
+														${list.qnaCms_write_date }</div>
+													<div class=QnaCmsArea name=qnaCms_contents>${list.qnaCms_contents }</div>
+													<c:if test="${loginID == list.qnaCms_writer }">
+														<button type=button class="deleteComments"
+															qnaCms_seq=${list.qnaCms_seq }>삭제</button>
+														<button type=button class="modifyComments"
+															id="modifyComments">수정하기</button>
+													</c:if>
+												</div>
+											</div>
+										</c:forEach>
+
 
 
 										<section>
 											<div class="card bg-light">
 												<div class="card-body">
-													<c:forEach var="list" items="${list }">
-														              <input type=hidden name="qnaCms_writer" value="${list.qnaCms_writer }">
-															          <input type=hidden name="qnaCms_seq" value="${list.qnaCms_seq }">
-															         <input type=hidden name="contentsComments" id="input_contentsComments">
-													<div class="d-flex mb-4 mt-4">
+													<div class="d-flex mb-4">
 														<!-- Parent comment-->
-														<div class="flex-shrink-0">
-															<img class="rounded-circle"
-																src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-																alt="..." />
-														</div>
-														<div class="ms-3">
-										
-															<div class="fw-bold" class = "updComment">${list.qnaCms_writer } ${list.qnaCms_write_date }</div>
-															<div class = QnaCmsArea  name = qnaCms_contents>${list.qnaCms_contents }</div> 
-															<c:if test = "${loginID == list.qnaCms_writer }">
-																<button type= button class = "deleteComments" qnaCms_seq=${list.qnaCms_seq }>삭제</button>
-																<button type= button class = "modifyComments" id = "modifyComments">수정하기</button>
-																
-															</c:if>
-														</div>
+														<div class="flex-shrink-0"></div>
 													</div>
-
-												
-
-													
-										</c:forEach>
-
-
-
-							<section>
-								<div class="card bg-light">
-									<div class="card-body">
-
-										<div class="d-flex mb-4">
-											<!-- Parent comment-->
-											<div class="flex-shrink-0">
-											
+													<!-- Comment form-->
+													<form class="mb">
+														<textarea class="form-control" rows="3"
+															placeholder="Join the discussion and leave a comment!"
+															id=comments name=comments></textarea>
+													</form>
+													<br>
+													<button type="button" class="btn btn-secondary"
+														id="commentsbutton">작성하기</button>
+												</div>
 											</div>
-											
-										</div>
-										<!-- Comment form-->
-										<form class="mb">
-											<textarea class="form-control" rows="3"
-												placeholder="Join the discussion and leave a comment!"
-												id=comments name=comments></textarea>
-										</form>
-										<br>
-										<button type="button" class="btn btn-secondary"
-											id="commentsbutton">작성하기</button>
-									
-										<!-- Comment with nested comments-->
+										</section>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
 		</form>
-
-
-
-
-
-		</div>
-		</div>
-		</section>
-		</div>
-		</div>
-		</div>
-		</section>
-
 	</main>
-
-
-
-
-
-
-
-
-
 
 
 	<!-- Footer-->
@@ -311,14 +281,18 @@
            $("#delete").on("click",function(){
               $("#detailFrm").attr("action","/delete.qna")
               $("#detailFrm").submit();
-              //
-           
            })
        $("#update").on("click", function() {
                location.href = "/gomodify.qna?qna_seq=${dto.qna_seq }"
             })
         
             $("#commentsbutton").on("click",function(){
+            	
+            	if(${member_role}){
+            		alert("회원님은 블랙리스트에 등록되어 댓글을 작성할 수 없습니다.");
+            		return;
+            	}
+            	
             	$("#detailFrm").attr("action","/write.comments");
             	$("#detailFrm").submit();
             })
@@ -331,12 +305,10 @@
 
 
 <div class="container">
-
 	<div class="form-group row">
 		<div class="col-sm-10">
 			<input type="text" readonly class="form-control-plaintext"
 				id="header" value="">
 		</div>
-
-
 	</div>
+</div>

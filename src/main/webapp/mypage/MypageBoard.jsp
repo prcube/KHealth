@@ -175,7 +175,7 @@
           <div class="col-md-7">
             <div class="profile-head">
               <h5>
-                콘스탄틴프로탄틴 // 작성한 글 부분입니다.
+                콘스탄틴프로탄틴asa // 작성한 글 부분입니다.
               </h5>
               <h6>
                 kh1234@naver.com
@@ -202,7 +202,8 @@
               <a href="/mypage/MypageBoard.jsp">작성한 글</a><br />
               <a href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
               <p>Order</p>
-              <a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br/>                            
+              <a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br/>
+              
             </div>
           </div>
           <div class="col-md-9">

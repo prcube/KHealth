@@ -117,6 +117,7 @@
          $('#qna_contents').summernote({
 	        placeholder: '내용을 입력하세요.',
 	        tabsize: 2,
+	        disableResizeEditor: true,
 	        height: 300
 	      });
    </script>
