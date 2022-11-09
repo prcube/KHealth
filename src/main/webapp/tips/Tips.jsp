@@ -72,9 +72,7 @@
 			</c:choose>
 		</nav>
 
-
-		<div class="container board-border" >
-			
+		<div class="container board-border">
 			<table class="table align-middle mb-0 bg-white">
 				<thead class="bg-light">
 					<tr>
@@ -93,21 +91,19 @@
 									<td>
 										<div class="d-flex align-items-center">
 											<div class="ms-3">
-												<p class="fw-bold mb-1">${i.tips_seq }</p>
+												<p class="fw-bold mb-1">${i.rn }</p>
 											</div>
 										</div>
 									</td>
 									<td>
 										<p class="fw-normal mb-1">
-											<a target="_blank"
-												href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+											<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
 										</p>
 										<p class="text-muted mb-0"></p>
 									</td>
 									<td>${i.tips_writer }</td>
 									<td>${i.tips_write_date }</td>
 									<td>${i.tips_view_count }</td>
-
 								</tr>
 							</tbody>
 						</c:forEach>
@@ -116,7 +112,7 @@
 
 			</table>
 
-			</div>
+		</div>
 
 		<div class="row mb-3">
 			<div class="col" text align="center">

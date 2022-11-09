@@ -71,6 +71,7 @@ public class memberController extends HttpServlet {
 				String id = (String)request.getSession().getAttribute("loginID");
 				//String nickname = (String)(request.getSession().getAttribute("nickname"));
 				
+
 				MemberDTO dto = MembersDAO.getInstance().selectById(id);
 				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
 				
@@ -91,10 +92,7 @@ public class memberController extends HttpServlet {
 				int result = MembersDAO.getInstance().mypageUpdate(dto,loginID);
 				
 				System.out.println(result);
-				
-				if(result>0) {
-					response.sendRedirect("/mypage.mem");
-				}
+			
 			}
 
 		} catch (Exception e) {
