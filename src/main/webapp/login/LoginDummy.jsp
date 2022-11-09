@@ -66,21 +66,8 @@
 				</div>
 			</div>
 		</nav>
-<!-- NaverLogin -->
-		<%
-		String clientId = "_5b0QUYbnHTk93odBRsA";//애플리케이션 클라이언트 아이디값";
-		String redirectURI = URLEncoder.encode("http://127.0.0.1/index.jsp", "UTF-8");
-		SecureRandom random = new SecureRandom();
-		String state = new BigInteger(130, random).toString();
-		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		apiURL += "&client_id=" + clientId;
-		apiURL += "&redirect_uri=" + redirectURI;
-		apiURL += "&state=" + state;
-		session.setAttribute("state", state);
-		%>
 		
-
-		<!-- 로그인 파트 -->
+<!-- 로그인 파트 -->
 		<form action="/login.mem" method=post>
 			<section class="vh-100">
 				<div class="container py-5 h-100">
@@ -141,7 +128,7 @@
 				</div>
 			</section>
 		</form>
-<<<<<<< HEAD
+
 <!-- NaverLogin -->
 <script type="text/javascript">
   	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://127.0.0.1/");
@@ -154,10 +141,7 @@
   </script>
 
 
-=======
-		
-		
->>>>>>> d8f984ab49c73e4622416a51a6bbe441af7e94df
+
 		<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
 			integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
 			crossorigin="anonymous"></script>
