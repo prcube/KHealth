@@ -95,7 +95,8 @@
 									<input type=hidden value=${dto.qna_seq } style="display: none;"
 										name=qna_seq> <input type=hidden
 										value=${dto.qna_title } style="display: none;" name=qna_title>
-									<input type=hidden style="display: none;" name=qna_contents>
+									<input type=hidden 
+										style="display: none;" name=qna_contents>
 									<div class="fw-bold">${dto.qna_writer }</div>
 									<div class="text-muted">News, Business</div>
 								</div>
@@ -121,7 +122,9 @@
 								</header>
 								<!-- Preview image figure-->
 								<figure class="mb-4">
-
+									<img class="img-fluid rounded"
+										src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+										alt="..." />
 								</figure>
 								<!-- Post content-->
 								<section class="mb-5">
@@ -165,19 +168,12 @@
 												</div>
 											</div>
 										</c:forEach>
-									<fieldset>
-											<legend>File List</legend>
-											<c:forEach var ="filelist" items="${filelist }">
-												<div>${filelist.seq }.<a href="/download.file?sysname=${filelist.sysName }&oriname=${filelist.oriName}">${filelist.oriName }</a>
-												</div>
-											</c:forEach>
-									</fieldset>
-									</div>
-									<div class="total"></div>
-		</form>
+										
 
 
-		<section>
+
+
+										<section>
 											<div class="card bg-light">
 												<div class="card-body">
 													<div class="d-flex mb-4">
