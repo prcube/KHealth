@@ -102,7 +102,7 @@
 								<li class="nav-item"><a class="nav-link"
 									style="color: white">${loginID }님 <br> 안녕하세요?
 								</a></li>
-								<i class="bi bi-cart"></i>
+								<span id=tobuylist>장바구니</span> 
 								<input type="button" id="logout"
 									style="WIDTH: 60pt; HEIGHT: 20pt; margin-top:27px" value="로그아웃">
 							</c:when>
@@ -113,7 +113,7 @@
 						</c:choose>
 
 
-
+<i class="bi bi-cart"></i>
 					</ul>
 				</div>
 			</div>
