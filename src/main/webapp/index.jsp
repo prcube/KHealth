@@ -92,21 +92,25 @@
 								<li class="nav-item"><a class="nav-link"
 									href="login/SigninDummy.jsp">Signin</a></li>
 								<li><hr class="dropdown-divider"></li>
-								<c:choose>
-									<c:when test="${loginID != null}">
-										<!-- 로그인을 한 사용자 -->
-										<li class="nav-item"><a class="nav-link" style="color: white">${loginID }님 <br> 안녕하세요?</a></li>
-										<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt" value="로그아웃">
-									</c:when>
-									<c:when test="${loginID == null}">
-										<!-- 로그인을 한 사용자 -->
-										<a style="color: white"></a>
-									</c:when>
-								</c:choose>
+
 							</ul></li>
 
 
-
+						<c:choose>
+							<c:when test="${loginID != null}">
+								<!-- 로그인을 한 사용자 -->
+								<li class="nav-item"><a class="nav-link"
+									style="color: white">${loginID }님 <br> 안녕하세요?
+								</a></li>
+								<i class="bi bi-cart"></i>
+								<input type="button" id="logout"
+									style="WIDTH: 60pt; HEIGHT: 20pt; margin-top:27px" value="로그아웃">
+							</c:when>
+							<c:when test="${loginID == null}">
+								<!-- 로그인을 한 사용자 -->
+								<a style="color: white"></a>
+							</c:when>
+						</c:choose>
 
 
 
