@@ -135,9 +135,14 @@
 	font-weight: 600;
 	color: #0062cc;
 }
-.mypageBtn{
-background-color: transparent;
-border: none;
+
+.mypageBtn {
+	background-color: transparent;
+	border: none;
+}
+
+#imform {
+	display: none;
 }
 </style>
 
@@ -217,21 +222,90 @@ border: none;
 			<form acition="" method="post" id="mypageFrm">
 				<div class="row">
 					<div class="col-md-3">
-						<div class="profile-img">아마도 사진?</div>
+						<div class="profile-img">${dto.nickname }</div>
 					</div>
 
 					<div class="col-md-7">
 						<div class="profile-head">
 							<h5>${dto.name }</h5>
-							<h6>${dto.mail }</h6>
 							<p class="proile-rating">
 								Member : <span>Gold</span>
 							</p>
 							<ul class="nav nav-tabs" id="myTab" role="tablist">
 								<li class="nav-item"><a class="nav-link active"
-									id="home-tab" data-toggle="tab" href="#home" role="tab"
+									data-toggle="tab" href='#' onclick="aboutTab()" role="tab"
 									aria-controls="home" aria-selected="true">About</a></li>
+
+								<li class="nav-item"><a class="nav-link active"
+									id="board-tab" data-toggle="tab" href='#' onclick="boardTab()"
+									role="tab" aria-controls="home" aria-selected="true">Board</a></li>
+
+								<li class="nav-item"><a class="nav-link active"
+									data-toggle="tab" href='#' onclick="commentsTab()" role="tab"
+									aria-controls="home" aria-selected="true">Comments</a></li>
+
+								<li class="nav-item"><a class="nav-link active"
+									id="orderlist-tab" data-toggle="tab" href='#'
+									onclick="orderlistTab()" role="tab" aria-controls="home"
+									aria-selected="true">Orderlist</a></li>
 							</ul>
+							
+							<div id="mypageComments">
+							    <table id="tableMypage" style="border: 1px solid black; display: none;">
+							        <tr>
+							            <td>번호</td>
+							            <td>제목</td>
+							            <td>내용</td>
+							            <td>작성자</td>
+							            <td>작성날짜</td>
+							        </tr>
+							    </table>
+							</div>
+							
+							<script>
+							    function commentsTab() {
+							        $("#information").css("display", "none")
+							        $("#tableMypage").css("display", "block")
+							        $.ajax({
+							            url: "/mypageComments.ajax?cpage=1",
+							            dataType: "json"
+							        }).done(function (resp) {
+							            console.log(resp);
+							            console.log(JSON.parse(resp.list)[0]);
+							            let target = JSON.parse(resp.list);
+							            console.log(target[0].qnaCms_writer);
+							
+							            for (let i = 0; i < target.length; i++) {
+							                let tr = $("<tr>");
+							
+							                let tdSeq = $("<td>");
+							                tdSeq.append(target[i].qnaCms_seq);
+							
+							                let tdTitle = $("<td>");
+							                tdTitle.append(target[i].qnaCms_parent_seq);
+							
+							                let tdContents = $("<td>");
+							                tdContents.append(target[i].qnaCms_contents);
+							
+							                let tdWriter = $("<td>");
+							                tdWriter.append(target[i].qnaCms_writer);
+							
+							                let tdDate = $("<td>");
+							                tdDate.append(target[i].qnaCms_write_date);
+							
+							                tr.append(tdSeq);
+							                tr.append(tdTitle);
+							                tr.append(tdContents);
+							                tr.append(tdWriter);
+							                tr.append(tdDate);
+							                $("table").append(tr);
+							            }
+							        })
+							
+							    }
+							
+							</script>
+
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -242,30 +316,56 @@ border: none;
 					<div class="col-md-3">
 						<div class="profile-work">
 							<p>My Page</p>
-							<button class="mypageBtn" type=button>프로필 정보</button><br/>
-							<button class="mypageBtn" id="modifyBtn" type=button>프로필 수정</button><br/>
-							<button class="mypageBtn" type=button>작성한 글</button><br/>
-							<button class="mypageBtn" type=button>작성한 댓글</button><br/>
+							<button class="mypageBtn" id="mypageInformation" type=button>프로필
+								정보</button>
+							<br />
+							<button class="mypageBtn" id="modifyBtn" type=button>프로필
+								수정</button>
+							<br />
+							<button class="mypageBtn" id="aa" type=button>작성한 글</button>
+							<br />
+							<button class="mypageBtn" id="bb" type=button>작성한 댓글</button>
+							<br />
 							<p>Order</p>
+
 
 							<a href="/orderhistory.mypage">구매 내역</a><br />
 
 							<button class="mypageBtn" type=button>구매 내역</button><br />
 
+
+							<button class="mypageBtn" id="cc" type=button>구매 내역</button>
+
 						</div>
 					</div>
-					<div class="col-md-9">
+
+					<script>
+						$("#mypageInformation").on("click",function(){
+							location.href = "/mypage.mem"
+						})
+						$("#aa").on("click",function(){
+							location.href = "/mypage/MypageBoard.jsp"
+						})
+						$("#bb").on("click",function(){
+							location.href = "/mypage/MypageComment.jsp"
+						})
+						$("#cc").on("click",function(){
+							location.href = "/mypage/MypageOrderlist.jsp"
+						})
+						
+					</script>
+
+
+					<div class="col-md-9" id="information">
 						<div class="tab-content profile-tab" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
-
-								
+							
 								<input type=hidden id="input_modify_nickname" name="modify_nickname">
 								<input type=hidden id="input_modify_mail" name="modify_mail">
 								<input type=hidden id="input_modify_number" name="modify_number">
 								<input type=hidden id="input_modify_address1" name="modify_address1">
 								
-
 								<div class="row">
 									<div class="col-md-3">
 										<label>Name</label>
@@ -313,11 +413,11 @@ border: none;
 									<div class="col-md-9">
 										<p>${dto.launch_date }</p>
 									</div>
-				</form>
-								</div>
-								<div id=btnArea></div>
-							</div>
-						</div>
+			</form>
+		</div>
+		<div id=btnArea></div>
+		</div>
+		</div>
 		<script>
 			//mypage 수정
 			let modifyOk = $("<button>");
@@ -351,8 +451,8 @@ border: none;
 
 
 		</div>
-				</div>
-			
+		</div>
+
 		</div>
 
 

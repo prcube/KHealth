@@ -83,11 +83,6 @@ public class MarketController extends HttpServlet {
 					e.printStackTrace();
 					response.sendRedirect("/error.jsp");
 				}
-				
-				
-
-
-
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
