@@ -48,28 +48,29 @@
 
 <body class="d-flex flex-column h-100">
 
-   <!-- Back to top button -->
-   <button type="button" class="btn btn-light btn-floating btn-sm bg-dark"
-      style="border-radius: 100px; border-color: transparent;"
-      id="btn-back-to-top">
-      <i class="bi bi-chevron-up" style="color: white;"></i>
-   </button>
-   <main class="flex-shrink-0">
-      <!-- Navigation-->
-      <nav
-         class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
-         <div class="container px-5 " id="sticky-wrapper"
-            class="sticky-wrapper">
-            <a class="navbar-brand" href=""><img
-               src="image/khealth logo.png" height="100px"></a>
-            <button class="navbar-toggler" type="button"
-               data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-               aria-controls="navbarSupportedContent" aria-expanded="false"
-               aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+	<!-- Back to top button -->
+	<button type="button" class="btn btn-light btn-floating btn-sm bg-dark"
+		style="border-radius: 100px; border-color: transparent;"
+		id="btn-back-to-top">
+		<i class="bi bi-chevron-up" style="color: white;"></i>
+	</button>
+	<main class="flex-shrink-0">
+		<!-- Navigation-->
+		<nav
+			class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
+			<div class="container px-5 " id="sticky-wrapper"
+				class="sticky-wrapper">
+				<a class="navbar-brand" href=""><img
+					src="image/khealth logo.png" height="100px"></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
 
                   <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
                   <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
@@ -106,14 +107,11 @@
                      </ul></li>
 
 
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-
-
-
-               </ul>
-            </div>
-         </div>
-      </nav>
 
 
 
