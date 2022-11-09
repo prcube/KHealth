@@ -36,6 +36,7 @@
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
+
 		<nav
 			class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
 			<div class="container px-5 " id="sticky-wrapper"
@@ -50,6 +51,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
@@ -60,6 +62,7 @@
 							href="/qna/QnaDummy.jsp">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
 					</ul>
+
 				</div>
 			</div>
 		</nav>
@@ -93,7 +96,7 @@
 										<input type="text" id="ID" name="ID"
 											class="form-control form-control-lg"
 											placeholder="아이디를 입력해 주세요" />
-											
+
 									</div>
 
 									<div class="form-outline mb-4">
@@ -123,8 +126,8 @@
 									</div>
 
 									<hr class="my-4">
-
-									<a id="kakao-login-btn" href="javascript:loginWithKakao()">
+									
+									<a id="kakao-login-btn" href="javascript:loginWithKakao();">
 										<img
 										src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
 										width="222" alt="카카오 로그인 버튼" />
@@ -138,6 +141,7 @@
 				</div>
 			</section>
 		</form>
+<<<<<<< HEAD
 <!-- NaverLogin -->
 <script type="text/javascript">
   	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://127.0.0.1/");
@@ -150,6 +154,10 @@
   </script>
 
 
+=======
+		
+		
+>>>>>>> d8f984ab49c73e4622416a51a6bbe441af7e94df
 		<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
 			integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
 			crossorigin="anonymous"></script>
@@ -158,50 +166,72 @@
 </script>
 
 		<script>
-  function loginWithKakao() {
+// 		let target = $("#token-result").val();
+// 		$.ajax({
+// 			url : '/KakaoLoginAjaxController',
+// 			data : "target="+target+"",
+// 			dataType : "json" 
+// 		})
+
+ function loginWithKakao() {
     Kakao.Auth.authorize({
-      redirectUri: 'http://192.168.150.4/index.jsp',
+      redirectUri: 'http://127.0.0.1/login/LoginDummy.jsp',
+      state: 'userme',
     });
-    
-    confirm("여기까진가능");
+  }
+
+  function requestUserInfo() {
     Kakao.API.request({
-    	  url: '/v2/user/me',
-    	  data: {
-    	    property_keys: ['kakao_account.email', 'profile_nickname'],
-    	  },
-    	})
-    	  .then(function(response) {
-    	    console.log(response);
-    	  })
-    	  .catch(function(error) {
-    	    console.log(error);
-    	  });
+      url: '/v2/user/me',
+    })
+      .then(function(res) {
+        alert(JSON.stringify(res));
+      })
+      .catch(function(err) {
+        alert(
+          'failed to request user information: ' + JSON.stringify(err)
+        );
+      });
   }
 
   // 아래는 데모를 위한 UI 코드입니다.
-  displayToken()
+  
   function displayToken() {
     var token = getCookie('authorize-access-token');
 
     if(token) {
       Kakao.Auth.setAccessToken(token);
-      Kakao.Auth.getStatusInfo()
-        .then(function(res) {
-          if (res.status === 'connected') {
-            document.getElementById('token-result').innerText
-              = 'login success, token: ' + Kakao.Auth.getAccessToken();
-          }
-        })
-        .catch(function(err) {
-          Kakao.Auth.setAccessToken(null);
-        });
+      document.querySelector('#token-result').innerText = 'login success, ready to request API';
+      document.querySelector('button.api-btn').style.visibility = 'visible';
     }
   }
-
+  
+  displayToken();
+  
   function getCookie(name) {
     var parts = document.cookie.split(name + '=');
     if (parts.length === 2) { return parts[1].split(';')[0]; }
   }
+  
+  
+//   Kakao.API.request({
+//   	  url: '/v2/user/me',
+//   	  data: {
+//   	    property_keys: ['kakao_account.email', 'profile_nickname'],
+//   	  },
+//   	})
+//   	  .then(function(response) {
+//   		  console.log("난 살아있다..");
+//   	    console.log(response);
+//   	  })
+//   	  .catch(function(error) {
+//   		console.log("나도 살아있다..");
+//   	    console.log(error);
+//   	  });
+  
+ 
+
+
 </script>
 
 	</main>

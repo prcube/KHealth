@@ -113,7 +113,7 @@
 										<div class="text-center">
 										
 											<a class="btn btn-outline-dark mt-auto"
-												href="/detail.market?product_seq=${i.product_seq }">View options</a>
+												href="/detail.market?cpage=1&product_seq=${i.product_seq }">View options</a>
 										</div>
 									</div>
 								</div>
