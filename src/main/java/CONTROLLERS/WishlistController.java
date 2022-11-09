@@ -31,6 +31,7 @@ public class WishlistController extends HttpServlet {
 				
 				request.setAttribute("wishlist", wishlist);
 				
+				request.getRequestDispatcher("/market/wishlist.jsp").forward(request, response);
 			}catch(Exception e) {
 				e.printStackTrace();
 				response.sendRedirect("/error.jsp");
