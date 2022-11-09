@@ -63,7 +63,7 @@
 				</div>
 			</div>
 		</nav>
-
+<!-- NaverLogin -->
 		<%
 		String clientId = "_5b0QUYbnHTk93odBRsA";//애플리케이션 클라이언트 아이디값";
 		String redirectURI = URLEncoder.encode("http://127.0.0.1/index.jsp", "UTF-8");
@@ -75,6 +75,7 @@
 		apiURL += "&state=" + state;
 		session.setAttribute("state", state);
 		%>
+		
 
 		<!-- 로그인 파트 -->
 		<form action="/login.mem" method=post>
@@ -129,9 +130,7 @@
 										width="222" alt="카카오 로그인 버튼" />
 									</a>
 									<p id="token-result"></p>
-
-									<a href="<%=apiURL%>"><img height="50"
-										src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
+									<div id="naver_id_login"></div>
 								</div>
 							</div>
 						</div>
@@ -139,8 +138,16 @@
 				</div>
 			</section>
 		</form>
-
-
+<!-- NaverLogin -->
+<script type="text/javascript">
+  	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://127.0.0.1/");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("green", 3,40);
+  	naver_id_login.setDomain("http://localhost/login/LoginDummy.jsp");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  </script>
 
 
 		<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
