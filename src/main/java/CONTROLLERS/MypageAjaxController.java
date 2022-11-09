@@ -25,7 +25,7 @@ public class MypageAjaxController extends HttpServlet {
 		
 		try {
 			
-		//mypage Comments 정보 올리기 
+		//mypage list up
 		if(uri.equals("/mypageComments.ajax")) {
 			JsonObject total = new JsonObject();
 			
@@ -39,7 +39,7 @@ public class MypageAjaxController extends HttpServlet {
 			
 			total.addProperty("navi",new Gson().toJson(navi));
 			total.addProperty("list",new Gson().toJson(list));
-			
+			total.addProperty("list2",new Gson().toJson(list2));
 			response.setContentType("text/html;charset=utf8");
 			
 			response.getWriter().append(total.toString());

@@ -34,16 +34,15 @@ public class MypageAjaxDAO {
 		return ds.getConnection();
 	}
 	
-	//
+	//mypage comments 정보 불러오기
 	public List<QnaCommentsDTO> selectByRange(String loginID, int start, int end) throws Exception{
-		String sql = "select * from (select qnaComments.*, row_number() over(order by qnaCms_seq desc) rn from qnaComments) where qnaCms_writer = ? and (rn between ? and ?)";
-		//시작과 끝 번호를 어떤거로 가져와야 하지? seq는 안돼 왜냐하면 시작번호 150 부터 10개를 가져온다고 치면 150-141까지 인데 만약에 도중에 삭제한 데이터가 있으면 8-7개 등 부족한 수를 가져온다
-		//그래서 row_number() over() 를 이용해서 SQL데이터 행번호를 가져온다.
+		String sql = "select * from (select qnaComments.*, row_number() over(order by qnaCms_seq desc) rn from qnaComments) where qnaCms_writer = ?";
+
 		try(Connection con = this.getConnection();
 			PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, loginID);
-			pstat.setInt(2, start);
-			pstat.setInt(3, end);
+			//pstat.setInt(2, start);
+			//pstat.setInt(3, end);
 
 			try(ResultSet rs = pstat.executeQuery()){
 				List<QnaCommentsDTO> list = new ArrayList<>();
@@ -62,10 +61,10 @@ public class MypageAjaxDAO {
 		}
 	}
 	
+	//mypage board 정보 불러오기
 	public List<QnaDTO> selectByRange2(String loginID, int start, int end) throws Exception{
-		String sql = "select * from (select qna.*, row_number() over(order by qna_seq desc) rn from qna) where qna_writer = ? and (rn between ? and ?)";
-		//시작과 끝 번호를 어떤거로 가져와야 하지? seq는 안돼 왜냐하면 시작번호 150 부터 10개를 가져온다고 치면 150-141까지 인데 만약에 도중에 삭제한 데이터가 있으면 8-7개 등 부족한 수를 가져온다
-		//그래서 row_number() over() 를 이용해서 SQL데이터 행번호를 가져온다.
+		String sql = "select * from (select qna.*, row_number() over(order by qna_seq desc) rn from qna) where qna_writer = ?";
+		
 		try(Connection con = this.getConnection();
 			PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, loginID);
@@ -88,6 +87,7 @@ public class MypageAjaxDAO {
 		}
 	}
 	
+	//네비 관련 코드
 	public int getRecordCount() throws Exception{
 		String sql = "select count(*) from qnaComments";
 		try(Connection con = this.getConnection();
@@ -98,6 +98,7 @@ public class MypageAjaxDAO {
 		}
 	}
 	
+	//네비 관련 코드
 	public String getPageNavi(int currentPage) throws Exception{
 
 		int recordTotalCount = this.getRecordCount(); //총 게시글의 수

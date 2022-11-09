@@ -45,7 +45,6 @@ public class QnaController extends HttpServlet {
 				QnaDAO dao = QnaDAO.getInstance();
 				//List<QnaDTO> list = dao.selectAll();
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
-				System.out.println(list);
 				
 				String id = (String) request.getSession().getAttribute("loginID");
 				boolean isInBlacklist = MembersDAO.getInstance().isInBlacklist(id);
@@ -60,6 +59,7 @@ public class QnaController extends HttpServlet {
 			}else if(uri.equals("/write.qna")) {
 
 				try {
+
 					String qna_writer = (String)request.getSession().getAttribute("loginID");
 					String qna_title = request.getParameter("qna_title");
 					String qna_contents = request.getParameter("qna_contents");
