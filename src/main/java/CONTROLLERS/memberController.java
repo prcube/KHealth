@@ -54,6 +54,7 @@ public class memberController extends HttpServlet {
 					request.getSession().setAttribute("loginID", id);
 					request.getSession().setAttribute("loginname", name);
 					response.sendRedirect("/");
+					
 				}
 			} else if (uri.equals("/login/duplCheck.mem")) {
 				String id = request.getParameter("ID");

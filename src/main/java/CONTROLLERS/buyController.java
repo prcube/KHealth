@@ -1,6 +1,7 @@
 package CONTROLLERS;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,20 +34,36 @@ public class buyController extends HttpServlet {
 				System.out.println(result);
 				
 				ProductDTO dto = MarketDAO.getInstance().detail(product_seq);
-				MarketDAO dao = MarketDAO.getInstance()
+				MemberDTO dao = MembersDAO.getInstance().selectById(id);
 				request.setAttribute("dto", dto);
 				request.setAttribute("amount", result);
-				request.setAttribute("buyer", id);
+				request.setAttribute("dao", dao);
 //				request.setAttribute("price", price * result);
 				request.getRequestDispatcher("/order/orderpay.jsp").forward(request, response);
 
 			}else if (uri.equals("/completed.buy")) {
+				
+				String id = (String) request.getSession().getAttribute("loginID");
+				String productname = request.getParameter("name");
+				String userid = request.getParameter("ID");
+				String nickname = request.getParameter("nickname");
+				String amount = request.getParameter("amount");
+				System.out.println(productname + userid + nickname + amount);
+			
+				MemberDTO dao2 = MembersDAO.getInstance().selectById(id);
+				MarketDAO dao = MarketDAO.getInstance();
+				int result = dao.insert(productname, userid, nickname, amount);
 				request.getRequestDispatcher("/order/ordercompleted.jsp").forward(request, response);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("/error.jsp");
+		    response.setContentType("text/html; charset=UTF-8");
+		    PrintWriter out = response.getWriter();
+		    out.println("<script>alert('에러!'); history.go(-1);</script>");
+		    out.flush();
+		    response.flushBuffer();
+		    out.close();
 		}
 	}
 

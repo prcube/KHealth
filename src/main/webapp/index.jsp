@@ -70,7 +70,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
+						<li class="nav-item"><a class="nav-link"
+							href="/admin/admindummy.jsp">Admin</a></li>
 						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
@@ -79,11 +80,11 @@
 						<li class="nav-item"><a class="nav-link"
 							href="/list.market?cpage=1">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/list.qna?cpage=1">Q&A</a></li>
+							href="qna/QnaDummy.jsp">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/LoginDummy.jsp">Login</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/mypage.mem">Mypage</a></li>
+							href="mypage/MypageDummy.jsp">Mypage</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="login/SigninDummy.jsp">Signin</a></li>
 					</ul>
@@ -92,7 +93,7 @@
 			<c:choose>
 				<c:when test="${loginID != null}">
 					<!-- 로그인을 한 사용자 -->
-					<a style="color: white">${loginname }님 안녕하세요? &nbsp; &nbsp; &nbsp; &nbsp;
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp; &nbsp; &nbsp;
 						</a>
 					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
 						value="로그아웃">

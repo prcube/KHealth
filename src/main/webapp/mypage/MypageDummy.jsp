@@ -182,6 +182,21 @@
 					</ul>
 				</div>
 			</div>
+
+			<c:choose>
+				<c:when test="${loginID != null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+						&nbsp;</a>
+					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+						value="로그아웃">
+				</c:when>
+				<c:when test="${loginID == null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white"></a>
+				</c:when>
+			</c:choose>
+
 		</nav>
 
 		<link
@@ -202,7 +217,7 @@
 					</div>
 
 					<div class="col-md-7">
-						<div class="profile-head" >
+						<div class="profile-head">
 							<h5>${dto.name }</h5>
 							<h6>${dto.mail }</h6>
 							<p class="proile-rating">
@@ -228,7 +243,7 @@
 							<br /> <a href="/mypage/MypageBoard.jsp">작성한 글</a><br /> <a
 								href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
 							<p>Order</p>
-							<a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br />
+							<a href="/orderhistory.mypage">구매 내역</a><br />
 						</div>
 					</div>
 					<div class="col-md-9">
@@ -244,7 +259,7 @@
 									name="modify_address1}">
 
 								<div class="row">
-									<div class="col-md-3" >
+									<div class="col-md-3">
 										<label>Name</label>
 									</div>
 									<div class="col-md-9">

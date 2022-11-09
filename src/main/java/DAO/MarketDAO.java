@@ -164,5 +164,20 @@ public class MarketDAO {
 
 		}
 	}
+	
+	public int insert(String name, String id, String nickname, String amount ) throws Exception {
+		String sql = "insert into buy_record values(buy_record_seq.nextval,?,?,?,?)";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, name);
+			pstat.setString(2, id);
+			pstat.setString(3, nickname);
+			pstat.setString(4, amount);
+			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
+			con.close();
+			return result;
+		}
+	}
 
 }

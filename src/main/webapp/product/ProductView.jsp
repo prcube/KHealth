@@ -67,7 +67,8 @@
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/qna/QnaDummy.jsp">Q&A</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="login/LoginDummy.jsp">Login</a></li>
 					</ul>
 				</div>
 			</div>
