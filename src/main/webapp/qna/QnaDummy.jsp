@@ -23,6 +23,13 @@
 </script>
 </head>
 <style>
+<<<<<<< HEAD
+	a {
+		text-decoration:none;
+		color : black;
+	}
+=======
+>>>>>>> a960ae9dbf70dfc3fac313219c4f4ec33b45ad59
 </style>
 <body class="d-flex flex-column h-100">
 
@@ -75,11 +82,11 @@
 	<table class="table align-middle mb-0 bg-white">
 		<thead class="bg-light">
 			<tr>
-				<th>Name</th>
-				<th>Title</th>
-				<th>Status</th>
-				<th>Position</th>
-				<th>Actions</th>
+				<th>글 번호</th>
+				<th>제목</th>
+				<th>아이디</th>
+				<th>날짜</th>
+				<th>조회수</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -88,7 +95,7 @@
 					<td>${i.qna_seq }</td>
 					<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
 					<td>${i.qna_writer }</td>
-					<td>${i.qna_write_date }</td>
+					<td>${i.formedDate }</td>
 					<td>${i.qna_view_count }</td>
 				</tr>
 			</c:forEach>
