@@ -47,7 +47,6 @@
 </style>
 
 <body class="d-flex flex-column h-100">
-
 	<!-- Back to top button -->
 	<button type="button" class="btn btn-light btn-floating btn-sm bg-dark"
 		style="border-radius: 100px; border-color: transparent;"
@@ -104,11 +103,6 @@
 									</c:when>
 								</c:choose>
 							</ul></li>
-
-
-
-
-
 
 					</ul>
 				</div>
