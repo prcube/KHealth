@@ -92,12 +92,12 @@
             <c:choose>
 
                <c:when test="${not empty list}">
-                  <c:forEach var="i" items="${list }">
+                  <c:forEach var="i" items="${list }" varStatus="status">
 							<div class="col mb-5">
 								<div class="card h-100 shadow border-0 row-cols-xs-3">
 									<!-- Product image-->
 									<img class="card-img-top"
-										src="file://C:/Users/taek/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/KHealth/image/aa.png"
+										src="/image/${imagelist[status.index].oriName }"
 										alt="..." />
 									<!-- Product details-->
 									<div class="card-body p-4">
@@ -113,7 +113,7 @@
 										<div class="text-center">
 										
 											<a class="btn btn-outline-dark mt-auto"
-												href="/detail.market?product_seq=${i.product_seq }">View options</a>
+												href="/detail.market?cpage=1&product_seq=${i.product_seq }">View options</a>
 										</div>
 									</div>
 								</div>
