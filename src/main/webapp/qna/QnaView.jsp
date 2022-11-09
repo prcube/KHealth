@@ -59,7 +59,7 @@
       
       
       
-      <form action = "/write.qna" method="post">
+      <form action = "/write.qna" method="post"  enctype="multipart/form-data">
       <div class="container">
 
          <div class="form-group row">
@@ -80,7 +80,15 @@
          <div class="form-group" >
 
             <textarea class="form-control" name="qna_contents" id="qna_contents"
-               id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
+               id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요.">
+               
+               </textarea>
+               <fieldset>
+					<legend>파일목록</legend>
+						<button id = "fileAdd" type=button>+</button>
+				</fieldset>
+               
+               
                
                
                
@@ -118,8 +126,45 @@
 	        placeholder: '내용을 입력하세요.',
 	        tabsize: 2,
 	        disableResizeEditor: true,
+	        fontNames : ['맑은고딕','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',],
+	        fontNamesIgnoreCheck : ['맑은고딕'],
+	        fontSizes: ['8','9','10','11','12','13','14','15','16','17','18','19','20','24','30','36','48','64','82','150'],
 	        height: 300
 	      });
+      
+      
+      /* 숫자를 붙여 name값이 다르게 함.  */
+  	let count=0;
+  	$("#fileAdd").on("click",function(){
+  		/* 파일 4개까지만 통제 */
+  		if($("input[type=file]").length>4) {
+  			alert("파일은 최대 5개까지만 업로드가 가능합니다.");
+  			return;
+  		}
+  		let fileDiv = $("<div>");
+  		
+  		/* 누르면 input타입파일을 만듬. */
+  		let inputFile = $("<input>");
+  		inputFile.attr("type","file");
+  		inputFile.attr("name","file" + count++);
+  		
+  		let delBtn = $("<a>");
+  		delBtn.html("x");
+  		delBtn.addClass("line-del");
+  		delBtn.on("click",function(){
+  			$(this).parent().remove();
+  		});
+  		
+  		
+  		
+  		/* 파일지움.  */
+  		fileDiv.append(inputFile);
+  		fileDiv.append(delBtn);
+  		
+  		$("#fileAdd").parent().after(fileDiv);
+  		
+  	
+  	});
    </script>
       
       
