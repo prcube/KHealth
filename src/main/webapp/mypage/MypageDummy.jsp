@@ -413,6 +413,7 @@
 									<div class="col-md-9">
 										<p>${dto.launch_date }</p>
 									</div>
+									</div>
 			</form>
 		</div>
 		<div id=btnArea></div>
