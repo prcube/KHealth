@@ -84,7 +84,8 @@ a {
 		</nav>
 
 
-		<ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+		<ul class="nav nav-tabs mt-5 justify-content-center" id="myTab"
+            role="tablist">
 			<li class="nav-item" role="presentation">
 				<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
 					data-bs-target="#home-tab-pane" type="button" role="tab"
@@ -93,17 +94,20 @@ a {
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="profile-tab" data-bs-toggle="tab"
 					data-bs-target="#profile-tab-pane" type="button" role="tab"
-					aria-controls="profile-tab-pane" aria-selected="false">등 운동</button>
+					aria-controls="profile-tab-pane" aria-selected="false">등
+					운동</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="contact-tab" data-bs-toggle="tab"
 					data-bs-target="#contact-tab-pane" type="button" role="tab"
-					aria-controls="contact-tab-pane" aria-selected="false">하체 운동</button>
+					aria-controls="contact-tab-pane" aria-selected="false">하체
+					운동</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="disabled-tab" data-bs-toggle="tab"
 					data-bs-target="#disabled-tab-pane" type="button" role="tab"
-					aria-controls="disabled-tab-pane" aria-selected="false">어깨 운동</button>
+					aria-controls="disabled-tab-pane" aria-selected="false">어깨
+					운동</button>
 			</li>
 		</ul>
 
@@ -115,13 +119,13 @@ a {
 					<table class="table align-middle  mb-0 bg-white">
 						<thead class="bg-light">
 							<tr>
-								<th>Name</th>
-								<th>Bullet Point</th>
-								<th>Title</th>
-								<th>Status</th>
-								<th>Position</th>
-								<th>view count</th>
-								<th>Thumbs up</th>
+								<th>글 번호</th>
+								<th>부위</th>
+								<th>제목</th>
+								<th>닉네임</th>
+								<th>날짜</th>
+								<th>조회수</th>
+								<th>추천</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -165,13 +169,13 @@ a {
 					<table class="table align-middle mb-0 bg-white">
 						<thead class="bg-light">
 							<tr>
-								<th>Name</th>
-								<th>Bullet Point</th>
-								<th>Title</th>
-								<th>Status</th>
-								<th>Position</th>
-								<th>view count</th>
-								<th>Thumbs up</th>
+								<th>글 번호</th>
+								<th>부위</th>
+								<th>제목</th>
+								<th>닉네임</th>
+								<th>날짜</th>
+								<th>조회수</th>
+								<th>추천</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -213,13 +217,13 @@ a {
 					<table class="table align-middle mb-0 bg-white">
 						<thead class="bg-light">
 							<tr>
-								<th>Name</th>
-								<th>Bullet Point</th>
-								<th>Title</th>
-								<th>Status</th>
-								<th>Position</th>
-								<th>view count</th>
-								<th>Thumbs up</th>
+								<th>글 번호</th>
+								<th>부위</th>
+								<th>제목</th>
+								<th>닉네임</th>
+								<th>날짜</th>
+								<th>조회수</th>
+								<th>추천</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -261,13 +265,13 @@ a {
 					<table class="table align-middle mb-0 bg-white">
 						<thead class="bg-light">
 							<tr>
-								<th>Name</th>
-								<th>Bullet Point</th>
-								<th>Title</th>
-								<th>Status</th>
-								<th>Position</th>
-								<th>view count</th>
-								<th>Thumbs up</th>
+								<th>글 번호</th>
+								<th>부위</th>
+								<th>제목</th>
+								<th>닉네임</th>
+								<th>날짜</th>
+								<th>조회수</th>
+								<th>추천</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -311,9 +315,9 @@ a {
 
 
 
-	<div class="row mb-3">
-		<div class="col" style="text-align: center;">${navi }</div>
-	</div>
+		<div class="row mb-3">
+			<div class="col" style="text-align: center;">${navi }</div>
+		</div>
 
 		<script>
 			$("#tipswrite").hide();
@@ -327,9 +331,9 @@ a {
 			})
 		</script>
 
-	
 
-</main>
+
+	</main>
 
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
