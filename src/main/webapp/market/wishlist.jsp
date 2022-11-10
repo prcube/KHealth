@@ -134,7 +134,7 @@
 																	<i class="fas fa-minus"></i>
 																</button>
 
-																<input id="form1" min="0" name="quantity"
+																<input class="form1" min="0" name="quantity"
 																	value="${i.product_wish_count }" type="number"
 																	class="form-control form-control-sm" />
 
