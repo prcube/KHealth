@@ -11,11 +11,13 @@ public class QnaDTO {
    private Timestamp qna_write_date;
    private int qna_view_count;
    private String qna_nickname;
+   private int rn;
+   
 
 
    public QnaDTO() {}
    public QnaDTO(int qna_seq, String qna_title, String qna_writer, String qna_contents, Timestamp qna_write_date,
-         int qna_view_count, String qna_nickname) {
+         int qna_view_count, String qna_nickname, int rn) {
       super();
       this.qna_seq = qna_seq;
       this.qna_title = qna_title;
@@ -24,6 +26,7 @@ public class QnaDTO {
       this.qna_write_date = qna_write_date;
       this.qna_view_count = qna_view_count;
       this.qna_nickname = qna_nickname;
+      this.rn = rn;
    }
    public int getQna_seq() {
       return qna_seq;
@@ -66,6 +69,12 @@ public class QnaDTO {
    }
    public void setQna_nickname(String qna_nickname) {
       this.qna_nickname = qna_nickname;
+   }
+   public int getRn() {
+	   return rn;
+   }
+   public void setRn(int rn) {
+	   this.rn =rn;
    }
    public String getFormedDate() {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
