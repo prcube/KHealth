@@ -23,13 +23,12 @@
 </script>
 </head>
 <style>
-<<<<<<< HEAD
+
 	a {
 		text-decoration:none;
 		color : black;
 	}
-=======
->>>>>>> a960ae9dbf70dfc3fac313219c4f4ec33b45ad59
+
 </style>
 <body class="d-flex flex-column h-100">
 
