@@ -90,8 +90,11 @@ public class TipsDAO {
 				dto.setTips_contents(rs.getString("tips_contents"));
 				dto.setTips_write_date(rs.getTimestamp("tips_write_date"));
 				dto.setTips_view_count(rs.getInt("tips_view_count"));
+				
+
 				dto.setTips_nickname(rs.getString("tips_nickname"));
 				dto.setTips_bullet(rs.getString("tips_bullet"));
+				con.setAutoCommit(false);
 				return dto;
 			}
 		}
@@ -127,6 +130,7 @@ public class TipsDAO {
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, tips_seq);
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
 			return result;
 

@@ -222,7 +222,7 @@
 								href="/mypage/MypageBoard.jsp">작성한 글</a><br /> <a
 								href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
 							<p>Order</p>
-							<a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br />
+							<a href="/orderhistory.mypage?cpage=1">구매 내역</a>
 						</div>
 					</div>
 					<div class="col-md-9">
@@ -230,24 +230,21 @@
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
 								<div class="row">
-									<div class="col-md-3"align="center">
+									<div class="col-md-3" align="center">
 										<label>상품명</label>
 									</div>
-									<div class="col-md-3"align="center">
+									<div class="col-md-3" align="center">
 										<label>구매 수량</label>
 									</div>
 									<c:choose>
-										<c:when test="${not empty list }">
+										<c:when test="${not empty list2 }">
 											<!-- i.DTO -->
-											<c:forEach var="i" items="${list}">
+											<c:forEach var="i" items="${list2}">
 												<tr>
 													<div class="row">
-													<div class="col-md-3" align="center">
-													${i.product_name }
-													</div>
-													<div class="col-md-3"align="center">
-													${i.amount }
-													</div>
+														<div class="col-md-3" align="center">
+															${i.product_name }</div>
+														<div class="col-md-3" align="center">${i.amount }</div>
 													</div>
 
 												</tr>
@@ -263,17 +260,31 @@
 									</c:choose>
 								</div>
 							</div>
-
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<h4 style="color: red" id="test">
+							<c:choose>
+								<c:when test="${empty list2 }">
+									<!-- i.DTO -->
+									<c:forEach var="i" items="${list2}">
+										<tr>
+
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									${navi }
+								</c:otherwise>
+							</c:choose>
+
+						</h4>
 					</div>
 				</div>
 			</form>
 		</div>
-
-
-
-
-
 		<!-- Footer-->
 		<footer class="bg-dark py-4 mt-auto ">
 			<div class="container px-5 ">

@@ -1,6 +1,8 @@
 package CONTROLLERS;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -48,23 +50,38 @@ public class memberController extends HttpServlet {
 				MembersDAO dao = MembersDAO.getInstance();
 				System.out.println(id + pwd + name);
 				boolean result = dao.login(id, pwd);
+				boolean result2 = dao.checkIDExist(id);
+				System.out.println(result2);
 				
 				if (result) {
-					String nickname = MembersDAO.getInstance().getNickname(id);
 					System.out.println("로그인 성공!");
 					request.getSession().setAttribute("loginID", id);
 					request.getSession().setAttribute("loginname", name);
-					request.getSession().setAttribute("loginNickname", nickname);
 					response.sendRedirect("/");
-					
+				}else {
+				    response.setContentType("text/html; charset=UTF-8");
+				    PrintWriter out = response.getWriter();
+				    out.println("<script>alert('아이디 및 패스워드를 확인해 주세요.'); history.go(-1);</script>");
+				    out.flush();
+				    response.flushBuffer();
+				    out.close();
 				}
-			} else if (uri.equals("/duplCheck.mem")) {
-				String id = request.getParameter("ID");
+			} else if (uri.equals("/login/duplCheck.mem")) {
+				String id = request.getParameter("id");
 				MembersDAO dao = MembersDAO.getInstance();
 				boolean result = dao.isIDExist(id);
+				System.out.println(id);
 				response.getWriter().append(String.valueOf(result));
 
-			} else if (uri.equals("/logout.mem")) {
+			}else if (uri.equals("/login/nickCheck.mem")) {
+				String nick = request.getParameter("nickname");
+				MembersDAO dao = MembersDAO.getInstance();
+				boolean result = dao.isNickExist(nick);
+				System.out.println(nick);
+				response.getWriter().append(String.valueOf(result));
+			}
+			
+			else if (uri.equals("/logout.mem")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/");
 
@@ -73,12 +90,12 @@ public class memberController extends HttpServlet {
 				String id = (String)request.getSession().getAttribute("loginID");
 				//String nickname = (String)(request.getSession().getAttribute("nickname"));
 				
-
 				MemberDTO dto = MembersDAO.getInstance().selectById(id);
 				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
 				
 				request.setAttribute("dto", dto);
 				request.setAttribute("member_role", member_role);
+				
 				request.getRequestDispatcher("/mypage/MypageDummy.jsp").forward(request, response);
 				
 			}else if(uri.equals("/update.mem")) {
@@ -87,12 +104,16 @@ public class memberController extends HttpServlet {
 				String mail = request.getParameter("modify_mail");
 				String number = request.getParameter("modify_number");
 				String address1 = request.getParameter("modify_address1");
+				System.out.println(nickname);
 				MemberDTO dto = new MemberDTO(0,null,null,nickname,mail,number,null,address1,null,null,0);
 				
 				int result = MembersDAO.getInstance().mypageUpdate(dto,loginID);
 				
 				System.out.println(result);
-			
+				
+				if(result>0) {
+					response.sendRedirect("/mypage.mem");
+				}
 			}
 
 		} catch (Exception e) {
