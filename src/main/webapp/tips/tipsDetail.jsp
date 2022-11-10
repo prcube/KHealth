@@ -73,7 +73,7 @@
 
 		<!-- Page Content-->
 		<form action="">
-		<input type=hidden name="tips_seq" value="${i.tips_seq}">
+			<input type=hidden name="tips_seq" value="${i.tips_seq}">
 			<section class="py-5">
 				<div class="container px-5 my-5">
 					<div class="row gx-5">
@@ -127,7 +127,9 @@
 				style="float: right">글 수정</button>
 			<button type="button" id="tipsdelete" class="btn btn-secondary"
 				style="float: right">글 삭제</button>
-
+			<button type="button" id="tipsthumbsup" class="btn-secondary">
+				<i class="bi bi-hand-thumbs-up"></i>
+			</button>
 
 			<script>
 			
@@ -155,6 +157,10 @@
 				$("#tipsmodify").on("click", function() {
 					location.href = "/gomodify.tips?tips_seq=${dto.tips_seq }"
 				})
+				
+				$("#tipsthumbsup").on("click", function() {
+				location.href = "/thumbsup.tips?cpage=1&tips_seq="+${dto.tips_seq }+""
+			})
 			</script>
 
 
