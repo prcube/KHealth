@@ -124,8 +124,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list1}">
+								<c:forEach var="i" items="${list1}">
 									<tbody>
 										<tr>
 											<td>
@@ -172,8 +172,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list2}">
+								<c:forEach var="i" items="${list2}">
 									<tbody>
 										<tr>
 											<td>
@@ -218,8 +218,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list3}">
+								<c:forEach var="i" items="${list3}">
 									<tbody>
 										<tr>
 											<td>
@@ -264,8 +264,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list4}">
+								<c:forEach var="i" items="${list4}">
 									<tbody>
 										<tr>
 											<td>
