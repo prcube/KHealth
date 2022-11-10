@@ -136,6 +136,14 @@ public class TipsDTO {
 					return "방금 전";
 				}else if(gapTime < 300) {
 					return "5분 전";
+				}else if(gapTime < 600) {
+					return "10분 전";
+				}else if(gapTime < 1200) {
+					return "20분 전";
+				}else if(gapTime < 1800) {
+					return "30분 전";
+				}else if(gapTime < 2700) {
+					return "45분 전";
 				}else if(gapTime < 3600) {
 					return "1시간 전";
 				}else if(gapTime < 7200) {
@@ -146,7 +154,20 @@ public class TipsDTO {
 					return "4시간 전";
 				}else if(gapTime < 18000) {
 					return "5시간 전";
-				
+				}else if(gapTime < 21600) {
+					return "6시간 전";
+				}else if(gapTime < 25200) {
+					return "7시간 전";
+				}else if(gapTime < 28800) {
+					return "8시간 전";
+				}else if(gapTime < 32400) {
+					return "9시간 전";
+				}else if(gapTime < 36000) {
+					return "10시간 전";
+				}else if(gapTime < 39600) {
+					return "11시간 전";
+				}else if(gapTime < 43200) {
+					return "12시간 전";
 				}else if(gapTime < 86400) {
 					
 					return "하루 전";
