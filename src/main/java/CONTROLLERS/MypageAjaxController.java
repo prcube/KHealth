@@ -47,7 +47,14 @@ public class MypageAjaxController extends HttpServlet {
 		}
 		
 		if(uri.equals("/wishlist.ajax")) {
+			System.out.println("aa");
+			String amount = request.getParameter("amount");
+			String price = request.getParameter("price");
 			
+			System.out.println(amount);
+			System.out.println(price);
+			
+			response.getWriter().append("clear");
 		}
 		
 		}catch(Exception e) {

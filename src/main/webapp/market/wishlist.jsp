@@ -271,18 +271,18 @@
 			console.log(amount[0].value);
 			console.log(amount[1].value);
 			
-				 	   let params = {
-				 			"amount" : amount,
-				 			"price" : price
-				 	   }
+				 	   let params = 
 
 				 	   $.ajax({
-				 		 type="post",
-				 		 url="/wishlist.ajax",
-				 		 data : params,
-				 		 dataType="json",
+				 		 type:"post",
+				 		 url:"/wishlist.ajax",
+				 		 data : {
+					 			"amount" : amount,
+					 			"price" : price
+					 	   },
+				 		 dataType:"json",
 				 		 success : function(resp){
-
+							console.log(resp);
 				 		 },
 				 		 error : function(resp){
 				 			 alert("에러 발생!");
