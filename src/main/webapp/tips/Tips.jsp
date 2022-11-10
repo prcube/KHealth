@@ -85,30 +85,34 @@ a {
 
 
 		<div class="container ">
-					<ul class="nav nav-tabs mt-5 justify-content-center" id="myTab" role="tablist" >
-						<li class="nav-item" role="presentation">
-							<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-								data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
-								aria-selected="true">가슴 운동</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-								data-bs-target="#profile-tab-pane" type="button" role="tab"
-								aria-controls="profile-tab-pane" aria-selected="false">등 운동</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-								data-bs-target="#contact-tab-pane" type="button" role="tab"
-								aria-controls="contact-tab-pane" aria-selected="false">하체 운동</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="disabled-tab" data-bs-toggle="tab"
-								data-bs-target="#disabled-tab-pane" type="button" role="tab"
-								aria-controls="disabled-tab-pane" aria-selected="false">어깨 운동</button>
-						</li>
-					</ul>
-				
-			</div>
+			<ul class="nav nav-tabs mt-5 justify-content-center" id="myTab"
+				role="tablist">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+						data-bs-target="#home-tab-pane" type="button" role="tab"
+						aria-controls="home-tab-pane" aria-selected="true">가슴 운동</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+						data-bs-target="#profile-tab-pane" type="button" role="tab"
+						aria-controls="profile-tab-pane" aria-selected="false">등
+						운동</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+						data-bs-target="#contact-tab-pane" type="button" role="tab"
+						aria-controls="contact-tab-pane" aria-selected="false">하체
+						운동</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="disabled-tab" data-bs-toggle="tab"
+						data-bs-target="#disabled-tab-pane" type="button" role="tab"
+						aria-controls="disabled-tab-pane" aria-selected="false">어깨
+						운동</button>
+				</li>
+			</ul>
+
+		</div>
 
 
 		<div class="tab-content" id="myTabContent">
@@ -313,9 +317,9 @@ a {
 
 
 
-	<div class="row mb-3">
-		<div class="col" style="text-align: center;">${navi }</div>
-	</div>
+		<div class="row mb-3">
+			<div class="col" style="text-align: center;">${navi }</div>
+		</div>
 
 		<script>
 			$("#tipswrite").hide();
@@ -329,9 +333,9 @@ a {
 			})
 		</script>
 
-	
 
-</main>
+
+	</main>
 
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
