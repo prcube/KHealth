@@ -253,6 +253,7 @@ public class TipsDAO {
 				dto1.setTips_view_count(rs.getInt("tips_view_count"));
 				dto1.setTips_nickname(rs.getString("tips_nickname"));
 				dto1.setRn(rs.getInt("rn"));
+				dto1.setTips_bullet(rs.getString("tips_bullet"));
 				list.add(dto1);
 				
 			}
