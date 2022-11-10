@@ -121,6 +121,7 @@ a {
 								<th>Status</th>
 								<th>Position</th>
 								<th>view count</th>
+								<th>Thumbs up</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -145,6 +146,7 @@ a {
 											<td>${i.tips_nickname }</td>
 											<td>${i.formedDate }</td>
 											<td>${i.tips_view_count }</td>
+											<td>${i.tips_thumbsup }</td>
 										</tr>
 									</tbody>
 								</c:forEach>
@@ -169,6 +171,7 @@ a {
 								<th>Status</th>
 								<th>Position</th>
 								<th>view count</th>
+								<th>Thumbs up</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -193,6 +196,7 @@ a {
 											<td>${i.tips_nickname }</td>
 											<td>${i.formedDate }</td>
 											<td>${i.tips_view_count }</td>
+											<td>${i.tips_thumbsup }</td>
 										</tr>
 									</tbody>
 								</c:forEach>
@@ -215,6 +219,7 @@ a {
 								<th>Status</th>
 								<th>Position</th>
 								<th>view count</th>
+								<th>Thumbs up</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -239,6 +244,7 @@ a {
 											<td>${i.tips_nickname }</td>
 											<td>${i.formedDate }</td>
 											<td>${i.tips_view_count }</td>
+											<td>${i.tips_thumbsup }</td>
 										</tr>
 									</tbody>
 								</c:forEach>
@@ -261,6 +267,7 @@ a {
 								<th>Status</th>
 								<th>Position</th>
 								<th>view count</th>
+								<th>Thumbs up</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -285,6 +292,7 @@ a {
 											<td>${i.tips_nickname }</td>
 											<td>${i.formedDate }</td>
 											<td>${i.tips_view_count }</td>
+											<td>${i.tips_thumbsup }</td>
 										</tr>
 									</tbody>
 								</c:forEach>
