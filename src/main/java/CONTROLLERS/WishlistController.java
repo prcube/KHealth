@@ -24,11 +24,12 @@ public class WishlistController extends HttpServlet {
 
 		if(uri.equals("list.wish")) {
 			try {
-
+				String id = (String) request.getSession().getAttribute("loginID");
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				String navi = WishlistDAO.getInstance().getPageNavi(cpage);
 				
 				List<WishlistDTO> wishlist = WishlistDAO.getInstance().selectByRange(cpage*4-3, cpage*4);
+				
 				
 				request.setAttribute("wishlist", wishlist);
 				

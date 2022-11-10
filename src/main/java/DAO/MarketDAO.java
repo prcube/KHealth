@@ -179,5 +179,35 @@ public class MarketDAO {
 			return result;
 		}
 	}
+	
+	public List<ProductDTO> selectByPrductName(int start, int end) throws Exception{
 
+		String sql = "select * from images where parent_seq = (select product_seq from product where product_name = (select product_name from wishlist where product_wish_user=?))";
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			List<ProductDTO> result = new ArrayList<>();
+			pstat.setInt(1, start);
+			pstat.setInt(2, end);
+
+			try(ResultSet rs =pstat.executeQuery();){	
+
+				while(rs.next()) {
+
+					int product_seq = rs.getInt("product_seq");
+
+					String product_name =rs.getString("product_name");	
+					String product_price = rs.getString("product_price");
+					int product_count = rs.getInt("product_count");
+					
+					ProductDTO dto2 = new ProductDTO(product_seq, product_name, product_price, product_count);
+					result.add(dto2);
+
+				}
+				return result;
+			}
+
+		}
+	}
 }
