@@ -89,7 +89,6 @@ a {
 			<table class="table align-middle mb-0 bg-white">
 				<thead class="">
 					<!-- 				<thead class="bg-light"> -->
-
 					<tr>
 						<th>글번호</th>
 						<th>제목</th>
