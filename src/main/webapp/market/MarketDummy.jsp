@@ -113,7 +113,7 @@
 										<div class="text-center">
 										
 											<a class="btn btn-outline-dark mt-auto"
-												href="/detail.market?cpage=1&product_seq=${i.product_seq }">View options</a>
+												href="javascript:areYouLogin();">View options</a>
 										</div>
 									</div>
 								</div>
@@ -169,6 +169,12 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
    <script src="/js/scripts.js"></script>
-
+	
+	<script>
+	function areYouLogin(){
+		
+		location.href = "/detail.market?cpage=1&product_seq="+${i.product_seq }+"";
+	}
+	</script>
 </body>
 </html>
