@@ -18,28 +18,20 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<!-- 써머노트 임포트 -->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js">
+	
+</script>
 </head>
 <style>
-/* .container {border 1px solid balck; */
 
-/* } */
-.board-border {
-	border: 1px solid #212529;
-	padding: 0%;
-	margin-top: 3%;
-	margin-bottom: 3%;
-	border-radius: 0.5rem;
-	background: #fff;
-}
+	a {
+		text-decoration:none;
+		color : black;
+	}
+
 </style>
 <body class="d-flex flex-column h-100">
+
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -70,127 +62,84 @@
 					</ul>
 				</div>
 			</div>
+			<c:choose>
+				<c:when test="${loginID != null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+						&nbsp;</a>
+					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+						value="로그아웃">
+				</c:when>
+				<c:when test="${loginID == null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white"></a>
+				</c:when>
+			</c:choose>
 		</nav>
-
-
-
-
-
-		<form action="/write.qna" method="post">
-			<div class="container board-border px-3">
-				<div class="row">
-					<div class="col-5 mt-4 mb-5">
-						<h1>게시판 글쓰기</h1>
-					</div>
-					<div class="col-5 mt-4 mb-5 ">
-						<button type="submit" class="btn btn-secondary" id="write">글쓰기</button>
-						<button type="button" class="btn btn-secondary" id="back">목록으로</button>
-					</div>
-				</div>
-
-				<div class="row">
-					<select class="form-select" aria-label="Default select example">
-						<option selected>Open this select menu</option>
-						<option value="1">한호</option>
-						<option value="2">화</option>
-						<option value="3">이</option>
-						<option value="4">팅</option>
-					</select>
-				</div>
-
-
-
-
-				<div class="form-group row">
-					<div class="col-sm">
-						<input type="text" id="qna_title" class="form-control-plaintext"
-							name="qna_title" placeholder="제목을 입력하세요."> <input
-							type="hidden" id="qna_write_date" name="qna_write_date">
-					</div>
-				</div>
-				<div class="form-group">
-					<form>
-						<input type=file>
-					</form>
-					<textarea class="form-control" name="qna_contents"
-						id="qna_contents" id="exampleFormControlTextarea1" rows="10"
-						placeholder="내용을 입력하세요.">
-               </textarea>
-					<!-- <input type = file multiple name = "file"><br> -->
-				</div>
-
-			</div>
-		</form>
-
-
-		<script>
-			$("#back").on("click", function() {
-				location.href = "QnaDummy.jsp"
-			})
-			//서머노트 
-			$('#qna_contents')
-					.summernote(
-							{
-								callbacks : {
-									onImageUpload : function(files, editor) {
-										//에디터 이미지 업로드 기능
-										console.log(files);
-
-										var data = new FormData();
-										// 
-										data.append('imgFile', files[0]);
-										$.ajax({
-											url : 'upload.file',
-											type : 'post',
-											data : data,
-											enctype : 'multipart/form-data',
-											contentType : false, // 
-											processData : false
-										// 
-										}).done(
-												function(resp) {
-
-													var imgNode = $("<img>");
-													imgNode.attr("src", resp);
-
-													$(".note-editable").append(
-															imgNode);
-												}).fail(function(a, b, c) {
-											console.log(a);
-											console.log(b);
-											console.log(c);
-										});
-									}
-								},
-
-								placeholder : '내용을 입력하세요.',
-								tabsize : 2,
-								height : 400,
-								toolbar : [
-										[ 'style', [ 'style' ] ],
-										[
-												'font',
-												[ 'bold', 'undeerline', 'clear' ] ],
-										[ 'color', [ 'color' ] ],
-										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-										[ 'table', [ 'table' ] ],
-										[ 'insert',
-												[ 'link', 'picture', 'video' ] ],
-										[
-												'view',
-												[ 'fullscreen', 'codeview',
-														'help' ] ] ]
-							});
-		</script>
-
-
-
-
-
-
-
-
 	</main>
+
+	<table class="table align-middle mb-0 bg-white">
+		<thead class="bg-light">
+			<tr>
+				<th>글 번호</th>
+				<th>제목</th>
+				<th>아이디</th>
+				<th>날짜</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="i" items="${list }">
+				<tr>
+					<td>${i.qna_seq }</td>
+					<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+					<td>${i.qna_writer }</td>
+					<td>${i.formedDate }</td>
+					<td>${i.qna_view_count }</td>
+				</tr>
+			</c:forEach>
+
+
+
+
+
+
+		</tbody>
+	</table>
+
+
+
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="text-align: center;">${navi }</div>
+	
+	<div class = "search">
+		<form action = "/search.qna">
+			<input type=text name = qna_title placeholder = "검색">
+			<button>검색</button>
+		
+		</form>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
@@ -217,6 +166,37 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col">
+				<button type="button" class="btn btn-primary" style="float: right"
+					id="write">작성하기</button>
+
+			</div>
+
+			<script>
+			console.log("${loginID}");
+			console.log(${isInBlacklist});
+				$("#write").on("click", function() {
+					
+					if(${isInBlacklist}){
+						alert("회원님은 블랙리스트에 등록되어 게시판 글 작성이 불가능합니다.");
+						return;
+					}
+					else if("${loginID}"==""){
+						let loginplz = confirm("로그인 후 이용가능합니다. 로그인페이지로 이동합니다.");
+						if(loginplz){
+							location.href = "login/LoginDummy.jsp";
+						}else{
+							return;
+						}
+					}
+					else{
+						location.href = "/qna/QnaView.jsp";
+					}
+					
+				})
+			</script>
 	</footer>
 	<!-- Bootstrap core JS-->
 	<script
@@ -224,5 +204,8 @@
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
 
+
+
 </body>
+
 </html>

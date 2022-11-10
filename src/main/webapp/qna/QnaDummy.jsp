@@ -132,9 +132,27 @@ a {
 		</div>
 	</div>
 
-	<div class="row mb-3">
-		<div class="col" style="text-align: center;">${navi }</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="text-align: center;">${navi }</div>
+	
+	<div class = "search">
+		<form action = "/search.qna">
+			<input type=text name = qna_title placeholder = "검색">
+			<button>검색</button>
+		
+		</form>
 	</div>
+
+
+
+
+
 
 
 
