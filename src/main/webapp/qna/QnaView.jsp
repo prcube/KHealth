@@ -40,46 +40,54 @@
 }
 </style>
 <body class="d-flex flex-column h-100">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
-                <div class="container px-5 " id="sticky-wrapper" class="sticky-wrapper">
-                    <a class="navbar-brand" href="/index.jsp"><img src="/image/khealth logo.png" height="100px"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/market/MarketDummy.jsp">Market</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/login/LoginDummy.jsp">Login</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>   
-      </main>
-      
-      <!--write  -->
-      <br>
-      <br>
-      <br>
-      <br>
-      
-      <form action = "/write.qna" method="post">
-      <div class="container">
+	<main class="flex-shrink-0">
+		<!-- Navigation-->
+		<nav
+			class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
+			<div class="container px-5 " id="sticky-wrapper"
+				class="sticky-wrapper">
+				<a class="navbar-brand" href="/index.jsp"><img
+					src="/image/khealth logo.png" height="100px"></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.tips?cpage=1">Tips</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/market/MarketDummy.jsp">Market</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.qna?cpage=1">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/login/LoginDummy.jsp">Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+		<!--write  -->
+		<br> <br> <br> <br>
 
 		<form action="/write.qna" method="post">
+
+
+
 			<div class="container board-border px-3">
 				<div class="row">
-					<div class="col-5 mt-4 mb-5">
+					<div class=" mt-4 mb-5">
 						<h1>게시판 글쓰기</h1>
+						
+						<hr class="mb-4">
 					</div>
-					<div class="col-5 mt-4 mb-5 ">
-						<button type="submit" class="btn btn-secondary" id="write">글쓰기</button>
-						<button type="button" class="btn btn-secondary" id="back">목록으로</button>
-					</div>
+
 				</div>
 
 				<div class="row">
@@ -112,8 +120,13 @@
                </textarea>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
-
+				<div class="mt-3 mb-3 d-flex justify-content-end">
+					<button type="submit" class="btn btn-secondary me-2" id="write">글쓰기</button>
+					<button type="button" class="btn btn-secondary" id="back">목록으로</button>
+				</div>
 			</div>
+			
+			
 		</form>
 
 
@@ -176,13 +189,6 @@
 														'help' ] ] ]
 							});
 		</script>
-
-
-
-
-
-
-
 
 	</main>
 

@@ -91,6 +91,7 @@ a {
 
 		<div class="container">
 			<div class="row mt-5">
+			<h1>QNA 게시판</h1>
 				<div class="search ">
 					<form action="/search.qna" style="float: right">
 						<div class="input-group">
@@ -101,6 +102,8 @@ a {
 					</form>
 				</div>
 			</div>
+			
+			<hr class="mb-4">
 
 			<div class="container board-border ">
 				<table class="table align-middle mb-0 bg-white">
