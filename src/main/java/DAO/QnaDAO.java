@@ -89,7 +89,7 @@ public class QnaDAO {
             Timestamp qna_write_date = rs.getTimestamp("qna_write_date");
             int qna_view_count = rs.getInt("qna_view_count");
             String qna_nickname = rs.getString("qna_nickname");
-           QnaDTO dto = new QnaDTO(qna_seq, qna_title, qna_writer,qna_contents,qna_write_date,qna_view_count,qna_nickname); 
+           QnaDTO dto = new QnaDTO(qna_seq, qna_title, qna_writer,qna_contents,qna_write_date,qna_view_count,qna_nickname,0); 
             
            return dto;
          }
@@ -206,7 +206,7 @@ public class QnaDAO {
    }
    
    public List<QnaDTO> selectByRange(int start , int end) throws Exception {
-      String sql = "select *from (select qna.*,row_number()over(order by qna_seq desc) rn from qna) where rn between ? and ?";
+      String sql = "select *from (select qna.*,row_number()over(order by qna_seq desc)as rn from qna) where rn between ? and ?";
              
       try(Connection con = this.getConnection();
             PreparedStatement pstat = con.prepareStatement(sql)){
@@ -223,6 +223,7 @@ public class QnaDAO {
                dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
                dto.setQna_view_count(rs.getInt("qna_view_count"));
                dto.setQna_nickname(rs.getString("qna_nickname"));
+               dto.setRn(rs.getInt("rn"));
                list.add(dto);
             }
             return list;
@@ -243,6 +244,28 @@ public class QnaDAO {
          con.commit();
          return qna_seq;
    }
+}public List<QnaDTO> search(String qna_title) throws Exception {
+	String sql = "select * from qna where qna_title like ?";
+	try(Connection con = this.getConnection();
+			PreparedStatement pstat = con.prepareStatement(sql);){
+		pstat.setString(1, "%"+qna_title+"%");
+		try(ResultSet rs = pstat.executeQuery();){
+			List<QnaDTO> list = new ArrayList<>();
+			while(rs.next()) {
+				QnaDTO dto = new QnaDTO();
+				dto.setQna_seq(rs.getInt("qna_seq"));
+				dto.setQna_title(rs.getString("qna_title"));
+				dto.setQna_writer(rs.getString("qna_writer"));
+				dto.setQna_contents(rs.getString("qna_contents"));
+				dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
+				dto.setQna_view_count(rs.getInt("qna_view_count"));
+				dto.setQna_nickname(rs.getString("qna_nickname"));
+				list.add(dto);
+				
+			}
+			return list;
+		}
+	}
 }
    
    
