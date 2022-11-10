@@ -49,7 +49,7 @@
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
-   
+	
 </script>
 </head>
 <body class="d-flex flex-column h-100">
@@ -134,7 +134,7 @@
 																	<i class="fas fa-minus"></i>
 																</button>
 
-																<input class="form1" min="0" name="quantity"
+																<input class="form1 totalAmount" min="0" name="quantity"
 																	value="${i.product_wish_count }" type="number"
 																	class="form-control form-control-sm" />
 
@@ -144,7 +144,7 @@
 																</button>
 															</div>
 															<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-																<h6 class="mb-0">${i.product_price }</h6>
+																<h6 class="mb-0 totalPrice">${i.product_price }</h6>
 															</div>
 															<div class="col-md-1 col-lg-1 col-xl-1 text-end">
 																<a href="#!" class="text-muted"><i
@@ -263,25 +263,32 @@
 	<script src="/js/scripts.js"></script>
 
 	<script>
-   $(function{
-	   
-	   let params = {
-			  
-	   }
-	   
-	   $.ajax({
-		 type="post",
-		 url="",
-		 data : params,
-		 dataType="json",
-		 success : function(resp){
-			 
-		 },
-		 error : function(resp){
-			 alert("에러 발생!");
-		 }
-	   })
-   })
-   </script>
+		$(function() {
+			
+			let amount = document.getElementsByClassName("totalAmount");
+			let price = document.getElementsByClassName("totalPrice");
+			
+			console.log(amount[0].value);
+			console.log(amount[1].value);
+			
+				 	   let params = {
+				 			"amount" : amount,
+				 			"price" : price
+				 	   }
+
+				 	   $.ajax({
+				 		 type="post",
+				 		 url="/wishlist.ajax",
+				 		 data : params,
+				 		 dataType="json",
+				 		 success : function(resp){
+
+				 		 },
+				 		 error : function(resp){
+				 			 alert("에러 발생!");
+				 		 }
+				 	   })
+		});
+	</script>
 </body>
 </html>

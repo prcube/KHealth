@@ -290,7 +290,7 @@
             })
         
             $("#commentsbutton").on("click",function(){
-            	
+            	console.log(${member_role});
             	if(${member_role}){
             		alert("회원님은 블랙리스트에 등록되어 댓글을 작성할 수 없습니다.");
             		return;

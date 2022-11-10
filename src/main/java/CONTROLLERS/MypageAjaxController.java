@@ -46,6 +46,10 @@ public class MypageAjaxController extends HttpServlet {
 			
 		}
 		
+		if(uri.equals("/wishlist.ajax")) {
+			
+		}
+		
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("/error.jsp");
