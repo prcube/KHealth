@@ -107,6 +107,7 @@ a {
 			</li>
 		</ul>
 
+
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="home-tab-pane"
 				role="tabpanel" aria-labelledby="home-tab" tabindex="0">
@@ -153,8 +154,8 @@ a {
 					</table>
 
 				</div>
-				
-				
+
+
 			</div>
 			<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
 				aria-labelledby="profile-tab" tabindex="0">
@@ -293,14 +294,14 @@ a {
 					</table>
 
 				</div>
-				
+
 			</div>
 		</div>
 
 		<button type="button" class="btn btn-secondary" style="float: right"
 			name="tipswrite" id="tipswrite">작성하기</button>
-			
-			
+
+
 
 
 
