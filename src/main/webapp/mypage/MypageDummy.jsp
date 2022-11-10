@@ -312,7 +312,7 @@
                      <button class="mypageBtn" id="bb" type=button>작성한 댓글</button>
                      <br />
                      <p>Order</p>
-                     <a href="/orderhistory.mypage">구매 내역</a>
+                     <a href="/orderhistory.mypage?cpage=1">구매 내역</a>
                      <br />
                   </div>
                </div>

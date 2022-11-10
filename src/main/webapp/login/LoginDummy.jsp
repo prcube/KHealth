@@ -33,6 +33,14 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
+<style>
+body {
+
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("/image/loginbg.jpg");
+	background-size: cover;
+}
+</style>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
@@ -113,7 +121,7 @@
 									</div>
 
 									<button class="btn btn-primary btn-lg btn-block" type="submit"
-										style="width: 100%;">로그인</button>
+										id="logcheck" style="width: 100%;">로그인</button>
 									<br> <br>
 									<div>
 										<a href="SigninDummy.jsp">
@@ -183,7 +191,7 @@
     if (parts.length === 2) { return parts[1].split(';')[0]; }
   }
   
-  
+
 //   Kakao.API.request({
 //   	  url: '/v2/user/me',
 //   	  data: {

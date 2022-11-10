@@ -29,17 +29,18 @@ public class MypageController extends HttpServlet {
 				MypageDAO dao = MypageDAO.getInstance();
 				System.out.println(id);
 				List<MypageDTO> list = MypageDAO.getInstance().selectAll(id);
-				System.out.println(list);
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				List<MypageDTO> list2 = MypageDAO.getInstance().selectByRange(cpage * 5 - 4, cpage * 5, id);
+				String navi = MypageDAO.getInstance().getPageNavi(cpage);
+				
+
+				request.setAttribute("list2", list2);
+				request.setAttribute("navi", navi);
 				request.setAttribute("list", list);
 				request.setAttribute("id", id);
 				request.getRequestDispatcher("/mypage/MypageOrderlist.jsp").forward(request, response);
 
 			}
-			
-			
-			
-			
-			
 			
 			
 			

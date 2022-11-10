@@ -1,6 +1,8 @@
 package CONTROLLERS;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -48,21 +50,38 @@ public class memberController extends HttpServlet {
 				MembersDAO dao = MembersDAO.getInstance();
 				System.out.println(id + pwd + name);
 				boolean result = dao.login(id, pwd);
+				boolean result2 = dao.checkIDExist(id);
+				System.out.println(result2);
 				
 				if (result) {
 					System.out.println("로그인 성공!");
 					request.getSession().setAttribute("loginID", id);
 					request.getSession().setAttribute("loginname", name);
 					response.sendRedirect("/");
-					
+				}else {
+				    response.setContentType("text/html; charset=UTF-8");
+				    PrintWriter out = response.getWriter();
+				    out.println("<script>alert('아이디 및 패스워드를 확인해 주세요.'); history.go(-1);</script>");
+				    out.flush();
+				    response.flushBuffer();
+				    out.close();
 				}
-			} else if (uri.equals("/duplCheck.mem")) {
-				String id = request.getParameter("ID");
+			} else if (uri.equals("/login/duplCheck.mem")) {
+				String id = request.getParameter("id");
 				MembersDAO dao = MembersDAO.getInstance();
 				boolean result = dao.isIDExist(id);
+				System.out.println(id);
 				response.getWriter().append(String.valueOf(result));
 
-			} else if (uri.equals("/logout.mem")) {
+			}else if (uri.equals("/login/nickCheck.mem")) {
+				String nick = request.getParameter("nickname");
+				MembersDAO dao = MembersDAO.getInstance();
+				boolean result = dao.isNickExist(nick);
+				System.out.println(nick);
+				response.getWriter().append(String.valueOf(result));
+			}
+			
+			else if (uri.equals("/logout.mem")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/");
 

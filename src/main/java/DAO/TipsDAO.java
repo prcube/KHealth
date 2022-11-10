@@ -88,6 +88,7 @@ public class TipsDAO {
 				dto.setTips_write_date(rs.getTimestamp("tips_write_date"));
 				dto.setTips_view_count(rs.getInt("tips_view_count"));
 				dto.setTips_nickname("tips_nickname");
+				con.setAutoCommit(false);
 				return dto;
 			}
 		}
@@ -125,6 +126,7 @@ public class TipsDAO {
 			PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, tips_seq);
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
 			return result;
 

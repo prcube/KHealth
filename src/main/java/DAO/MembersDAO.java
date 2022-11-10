@@ -81,11 +81,32 @@ public class MembersDAO {
 			}
 		}
 	}
+	
+	public boolean checkIDExist(String id) throws Exception {
+		String sql = "select * from members where member_id = ?";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+	}
+
+	public boolean isNickExist(String nickname) throws Exception {
+		String sql = "select * from members where member_nickname = ?";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, nickname);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+	}
 
 	public MemberDTO selectById(String id) throws Exception {
 		String sql = "select * from members where member_id = ?";
-		try (Connection con = this.getConnection();
-			PreparedStatement pstat = con.prepareStatement(sql);) {
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
 			ResultSet rs = pstat.executeQuery();
 			rs.next();
@@ -100,28 +121,25 @@ public class MembersDAO {
 			dto.setZip(rs.getString("member_post"));
 			dto.setAddress1(rs.getString("member_address"));
 			dto.setAddress2(rs.getString("member_address_detail"));
-			dto.setLaunch_date(rs.getString("member_join_date"));		
+			dto.setLaunch_date(rs.getString("member_join_date"));
 			return dto;
 		}
 	}
-		
-	public int mypageUpdate(MemberDTO dto , String id ) throws Exception {
-		
+
+	public int mypageUpdate(MemberDTO dto, String id) throws Exception {
+
 		String sql = "update members set member_nickname=?, member_email=?, meber_phone=?, member_address=? where member_id=?";
-		try(
-			Connection con = getConnection();
-			PreparedStatement pstat=con.prepareStatement(sql);){
-			pstat.setString(1,dto.getNickname());
-			pstat.setString(2,dto.getMail());
-			pstat.setString(3,dto.getNumber());
-			pstat.setString(4,dto.getAddress1());
-			pstat.setString(5,id);
+		try (Connection con = getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, dto.getNickname());
+			pstat.setString(2, dto.getMail());
+			pstat.setString(3, dto.getNumber());
+			pstat.setString(4, dto.getAddress1());
+			pstat.setString(5, id);
 			int result = pstat.executeUpdate();
 			con.commit();
 			return result;
 		}
 	}
-
 
 	public boolean isYouTeacher(String id) throws Exception {
 		String sql = "select * from members where member_role=1 and member_id =?";
@@ -134,23 +152,22 @@ public class MembersDAO {
 		}
 
 	}
-	
-	public boolean isYouAdmin(String id) throws Exception{
-		String sql ="select * from members where member_role=2 and member_id =?";
-		
+
+	public boolean isYouAdmin(String id) throws Exception {
+		String sql = "select * from members where member_role=2 and member_id =?";
+
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
 			try (ResultSet rs = pstat.executeQuery();) {
 				return rs.next();
 			}
-	}
+		}
 
 	}
-	
-	
-	public boolean isInBlacklist(String id) throws Exception{
+
+	public boolean isInBlacklist(String id) throws Exception {
 		String sql = "select * from blacklist where blacklist_member_nickname = (select member_nickname from members where member_id=?)";
-		
+
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
 			try (ResultSet rs = pstat.executeQuery();) {
