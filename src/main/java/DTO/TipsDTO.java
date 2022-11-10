@@ -13,14 +13,16 @@ public class TipsDTO {
 	private String tips_nickname;
 	private int rn;
 	private String tips_bullet;
+	private int tips_thumbsup;
+	
 	
 	
 	public TipsDTO () {}
 
-	
-	
-	   public TipsDTO(int tips_seq, String tips_title, String tips_writer, String tips_contents, Timestamp tips_write_date,
-			int tips_view_count, String tips_nickname, int rn, String tips_bullet) {
+	 
+
+	public TipsDTO(int tips_seq, String tips_title, String tips_writer, String tips_contents, Timestamp tips_write_date,
+			int tips_view_count, String tips_nickname, int rn, String tips_bullet, int tips_thumbsup) {
 		super();
 		this.tips_seq = tips_seq;
 		this.tips_title = tips_title;
@@ -31,6 +33,7 @@ public class TipsDTO {
 		this.tips_nickname = tips_nickname;
 		this.rn = rn;
 		this.tips_bullet = tips_bullet;
+		this.tips_thumbsup = tips_thumbsup;
 	}
 
 
@@ -40,9 +43,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_seq(int tips_seq) {
 		this.tips_seq = tips_seq;
 	}
+
 
 
 	public String getTips_title() {
@@ -50,9 +55,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_title(String tips_title) {
 		this.tips_title = tips_title;
 	}
+
 
 
 	public String getTips_writer() {
@@ -60,9 +67,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_writer(String tips_writer) {
 		this.tips_writer = tips_writer;
 	}
+
 
 
 	public String getTips_contents() {
@@ -70,9 +79,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_contents(String tips_contents) {
 		this.tips_contents = tips_contents;
 	}
+
 
 
 	public Timestamp getTips_write_date() {
@@ -80,9 +91,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_write_date(Timestamp tips_write_date) {
 		this.tips_write_date = tips_write_date;
 	}
+
 
 
 	public int getTips_view_count() {
@@ -90,9 +103,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_view_count(int tips_view_count) {
 		this.tips_view_count = tips_view_count;
 	}
+
 
 
 	public String getTips_nickname() {
@@ -100,9 +115,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_nickname(String tips_nickname) {
 		this.tips_nickname = tips_nickname;
 	}
+
 
 
 	public int getRn() {
@@ -110,9 +127,11 @@ public class TipsDTO {
 	}
 
 
+
 	public void setRn(int rn) {
 		this.rn = rn;
 	}
+
 
 
 	public String getTips_bullet() {
@@ -120,9 +139,23 @@ public class TipsDTO {
 	}
 
 
+
 	public void setTips_bullet(String tips_bullet) {
 		this.tips_bullet = tips_bullet;
 	}
+
+
+
+	public int getTips_thumbsup() {
+		return tips_thumbsup;
+	}
+
+
+
+	public void setTips_thumbsup(int tips_thumbsup) {
+		this.tips_thumbsup = tips_thumbsup;
+	}
+
 
 
 	public String getFormedDate() {
@@ -176,5 +209,7 @@ public class TipsDTO {
 				}
 		     
 		   }
+	
+	   
 
 }
