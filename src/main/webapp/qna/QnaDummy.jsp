@@ -97,7 +97,7 @@ a {
 			<tr>
 				<th>글 번호</th>
 				<th>제목</th>
-				<th>아이디</th>
+				<th>닉네임</th>
 				<th>날짜</th>
 				<th>조회수</th>
 			</tr>
@@ -107,7 +107,7 @@ a {
 				<tr>
 					<td>${i.qna_seq }</td>
 					<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
-					<td>${i.qna_writer }</td>
+					<td>${i.qna_nickname }</td>
 					<td>${i.formedDate }</td>
 					<td>${i.qna_view_count }</td>
 				</tr>

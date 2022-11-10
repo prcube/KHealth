@@ -159,4 +159,14 @@ public class MembersDAO {
 		}
 	}
 
+	public String getNickname(String id) throws Exception{
+		String sql = "select * from members where member_id = ? ";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			ResultSet rs = pstat.executeQuery();
+			rs.next();
+			String member_nickname = rs.getString("member_nickname");
+			return member_nickname;
+		}	
+	}
 }

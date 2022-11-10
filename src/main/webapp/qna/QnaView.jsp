@@ -54,11 +54,6 @@
       <br>
       <br>
       
-      
-      
-      
-      
-      
       <form action = "/write.qna" method="post">
       <div class="container">
 

@@ -34,20 +34,19 @@ public class QnaDAO {
    }
    
    public int write(QnaDTO dto) throws Exception {
-      String sql = "insert into qna values (qna_seq.nextval,?,?,?,sysdate,?,0)";
+      String sql = "insert into qna values (qna_seq.nextval,?,?,?,sysdate,?,?)";
       try(Connection con = this.getConnection();
-            PreparedStatement pstat = con.prepareStatement(sql);) {
-        
+          PreparedStatement pstat = con.prepareStatement(sql);) {
+
           pstat.setString(1,dto.getQna_title());
           pstat.setString(2, dto.getQna_writer());
           pstat.setString(3, dto.getQna_contents());
           pstat.setInt(4,dto.getQna_view_count());
-
-
-         int result = pstat.executeUpdate();
-         con.commit();
-         con.close();
-         return result;
+          pstat.setString(5, dto.getQna_nickname());         
+          int result = pstat.executeUpdate();
+          con.commit();
+          con.close();
+          return result;
          
       }
    }public List<QnaDTO> selectAll() throws Exception {
@@ -207,6 +206,7 @@ public class QnaDAO {
          pstat.setInt(2, end);
          try(ResultSet rs = pstat.executeQuery()){
             List<QnaDTO> list = new ArrayList<>();
+
             while(rs.next()) {
                QnaDTO dto = new QnaDTO();
                dto.setQna_seq(rs.getInt("qna_seq"));
@@ -216,6 +216,7 @@ public class QnaDAO {
                dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
                dto.setQna_view_count(rs.getInt("qna_view_count"));
                dto.setQna_nickname(rs.getString("qna_nickname"));
+
                list.add(dto);
             }
             return list;
