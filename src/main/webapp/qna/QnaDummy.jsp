@@ -87,10 +87,10 @@ a {
 				</c:when>
 			</c:choose>
 		</nav>
-	</main>
 	
 	
-<div class="container board-border">
+	
+<div class="container board-border ">
 	<table class="table align-middle mb-0 bg-white">
 <!-- 		<thead class="bg-light"> -->
 		<thead class="bg-light">
@@ -132,8 +132,21 @@ a {
 		</div>
 	</div>
 
-	<div class="row mb-3">
-		<div class="col" style="text-align: center;">${navi }</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="text-align: center;">${navi }</div>
+	
+	<div class = "search">
+		<form action = "/search.qna">
+			<input type=text name = qna_title placeholder = "검색">
+			<button>검색</button>
+		
+		</form>
 	</div>
 
 
@@ -147,6 +160,11 @@ a {
 
 
 
+
+
+
+
+</main>
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
 		<div class="container px-5 ">

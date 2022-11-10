@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>tipsWrite</title>
+<title>K-Health</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -18,20 +18,20 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.1.js">
+	
+</script>
 </head>
 <style>
-.board-border {
-	border: 1px solid #212529;
-	padding: 0%;
-	margin-top: 3%;
-	margin-bottom: 3%;
-	border-radius: 0.5rem;
-	background: #fff;
-}
+
+	a {
+		text-decoration:none;
+		color : black;
+	}
+
 </style>
 <body class="d-flex flex-column h-100">
+
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -55,78 +55,92 @@
 							href="/list.tips?cpage=1">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Q&A</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/list.qna?cpage=1">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/login/LoginDummy.jsp">Login</a></li>
 					</ul>
 				</div>
 			</div>
+			<c:choose>
+				<c:when test="${loginID != null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+						&nbsp;</a>
+					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+						value="로그아웃">
+				</c:when>
+				<c:when test="${loginID == null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white"></a>
+				</c:when>
+			</c:choose>
 		</nav>
-
-
-
-
-
-		<!--write  -->
-		<form action="/insert.tips" method="post">
-			<div class="container board-border px-3">
-				<div class="row">
-					<div class="col-5 mt-4 mb-5">
-						<h1>게시판 글쓰기</h1>
-					</div>
-					<div class="col-5 mt-4 mb-5 ">
-						<button type="submit" class="btn btn-secondary" id="tipsinsert">글쓰기</button>
-						<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
-					</div>
-				</div>
-
-				<div class="row">
-					<select class="form-select" aria-label="Default select example">
-						<option selected>Open this select menu</option>
-						<option value="1">한호</option>
-						<option value="2">화</option>
-						<option value="3">이</option>
-						<option value="4">팅</option>
-					</select>
-				</div>
-
-				<div class="form-group row">
-					<div class="col-sm">
-						<input name="tips_title" id="tips_title"
-							class="form-control-plaintext" type="text"
-							placeholder="제목을 입력하세요.">
-					</div>
-				</div>
-
-				<div class="form-group">
-
-					<textarea class="form-control" name="tips_contents"
-						id="tips_contents" id="exampleFormControlTextarea1" rows="10"
-						placeholder="내용을 입력하세요."></textarea>
-					<!-- <input type = file multiple name = "file"><br> -->
-				</div>
-			</div>
-		</form>
-
-
-
-
-		<script>
-			$("#tipsback").on("click", function() {
-				location.href = "/list.tips?cpage=1"
-			})
-			
-		</script>
-
-
-
-
-
-
-
-
-
 	</main>
+
+	<table class="table align-middle mb-0 bg-white">
+		<thead class="bg-light">
+			<tr>
+				<th>글 번호</th>
+				<th>제목</th>
+				<th>아이디</th>
+				<th>날짜</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="i" items="${list }">
+				<tr>
+					<td>${i.qna_seq }</td>
+					<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+					<td>${i.qna_writer }</td>
+					<td>${i.formedDate }</td>
+					<td>${i.qna_view_count }</td>
+				</tr>
+			</c:forEach>
+
+
+
+
+
+
+		</tbody>
+	</table>
+
+
+
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="text-align: center;">${navi }</div>
+	
+	<div class = "search">
+		<form action = "/search.qna">
+			<input type=text name = qna_title placeholder = "검색">
+			<button>검색</button>
+		
+		</form>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
 		<div class="container px-5 ">
@@ -152,6 +166,37 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col">
+				<button type="button" class="btn btn-primary" style="float: right"
+					id="write">작성하기</button>
+
+			</div>
+
+			<script>
+			console.log("${loginID}");
+			console.log(${isInBlacklist});
+				$("#write").on("click", function() {
+					
+					if(${isInBlacklist}){
+						alert("회원님은 블랙리스트에 등록되어 게시판 글 작성이 불가능합니다.");
+						return;
+					}
+					else if("${loginID}"==""){
+						let loginplz = confirm("로그인 후 이용가능합니다. 로그인페이지로 이동합니다.");
+						if(loginplz){
+							location.href = "login/LoginDummy.jsp";
+						}else{
+							return;
+						}
+					}
+					else{
+						location.href = "/qna/QnaView.jsp";
+					}
+					
+				})
+			</script>
 	</footer>
 	<!-- Bootstrap core JS-->
 	<script
@@ -159,5 +204,8 @@
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
 
+
+
 </body>
+
 </html>
