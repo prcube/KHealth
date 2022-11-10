@@ -179,5 +179,5 @@ public class MarketDAO {
 			return result;
 		}
 	}
-
+	
 }
