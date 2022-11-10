@@ -74,6 +74,8 @@
                <input type="text" id="qna_title"  class="form-control-plaintext"
                   name="qna_title" placeholder="제목을 입력하세요.">
            		<input type="hidden" id = "qna_write_date" name = "qna_write_date">
+           		
+           	
             </div>
          </div>
 

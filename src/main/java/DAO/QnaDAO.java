@@ -34,7 +34,13 @@ public class QnaDAO {
    }
    
    public int write(QnaDTO dto) throws Exception {
-      String sql = "insert into qna values (qna_seq.nextval,?,?,?,sysdate,?,0)";
+      String sql = "insert into qna values (qna_seq.nextval,?,?,?,sysdate,?,?)";
+      System.out.println("DAO테스트");
+      System.out.println(dto.getQna_title());
+      System.out.println(dto.getQna_writer());
+      System.out.println(dto.getQna_contents());
+      System.out.println(dto.getQna_view_count());
+      System.out.println(dto.getQna_nickname());
       try(Connection con = this.getConnection();
             PreparedStatement pstat = con.prepareStatement(sql);) {
         
@@ -42,6 +48,7 @@ public class QnaDAO {
           pstat.setString(2, dto.getQna_writer());
           pstat.setString(3, dto.getQna_contents());
           pstat.setInt(4,dto.getQna_view_count());
+          pstat.setString(5, dto.getQna_nickname());
 
 
          int result = pstat.executeUpdate();

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.MembersDAO;
 import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
-import DTO.QnaCommentsDTO;
+import DTO.MemberDTO;
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
 
@@ -60,12 +60,17 @@ public class QnaController extends HttpServlet {
 			}else if(uri.equals("/write.qna")) {
 
 				try {
+					QnaDAO dao = QnaDAO.getInstance();
+					
 					String qna_writer = (String)request.getSession().getAttribute("loginID");
 					String qna_title = request.getParameter("qna_title");
 					String qna_contents = request.getParameter("qna_contents");
-
-					QnaDAO dao = QnaDAO.getInstance();
-					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0,"");
+				
+					
+			
+					
+					
+					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0,null);
 					dao.write(dto);
 
 					response.sendRedirect("/list.qna?cpage=1");
