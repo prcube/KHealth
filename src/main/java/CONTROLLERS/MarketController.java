@@ -59,7 +59,7 @@ public class MarketController extends HttpServlet {
 				try {
 					int product_seq = Integer.parseInt(request.getParameter("product_seq"));
 					
-					String id = (String) request.getSession().getAttribute("loginID");
+					
 					
 					List<ProductReviewDTO> list = ProductReviewDAO.getInstance().selectAll(product_seq);
 
@@ -68,13 +68,13 @@ public class MarketController extends HttpServlet {
 
 					
 					MembersDAO dao2 = MembersDAO.getInstance();
-					MemberDTO review = dao2.selectById(id); 
+					
 					
 					int cpage = Integer.parseInt(request.getParameter("cpage"));
 					String oriName = ImagesDAO.getInstance().getImageOriName(product_seq);
 
 					request.setAttribute("oriName", oriName);
-					request.setAttribute("review", review);
+					
 					request.setAttribute("dto", dto);
 					request.setAttribute("list", list); // added
 				

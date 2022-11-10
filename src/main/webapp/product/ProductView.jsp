@@ -25,9 +25,7 @@
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
    integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
    crossorigin="anonymous"></script>
-<script>
-   Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
-</script>
+
 <script type="text/javascript"
    src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
    charset="utf-8"></script>
@@ -41,7 +39,7 @@
 
 <body class="d-flex flex-column h-100">
    <main class="flex-shrink-0">
-      <form action="/item.buy?product_seq=${dto.product_seq }" method="post" id="productFrm">
+      <form id="buyFrm" method="post" id="productFrm">
          <!-- Navigation-->
          <nav
             class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
@@ -124,7 +122,7 @@
                               type="button" id="addwishlist">
                               <i class="bi-cart-fill me-1"></i> 장바구니
                            </button>
-                           <input type="submit" class="btn btn-outline-dark flex-shrink-0"
+                           <input type="button" class="btn btn-outline-dark flex-shrink-0"
                               id="buy" value="구매하기">
                         </div>
                      </div>
@@ -147,9 +145,9 @@
                      style="background-color: #f0f2f5;">
                      <div class="card-body p-4">
                         <div class="form-outline mb-4">
-                           <input type=hidden value="${review.nickname }"name="review_nickname">
+                           
                            <input type=hidden value="${dto.product_name }" name="product_name">
-                           <input type=hidden value="${dto.product_seq }"name="productreview_seq">
+                           <input type=hidden value="${dto.product_seq }" name="product_seq">
                            
                            <input type="text"   id="addANote" name="productreview_contents"
                               class="form-control" placeholder="Type comment..." />
@@ -235,13 +233,40 @@
    <script src="/js/scripts.js"></script>
    <script>
       $("#insertReview").on("click", function() {
-         $("#reviewFrm").attr("action", "/insert.review")
+         $("#reviewFrm").attr("action", "/insert.review?cpage=1")
          $("#reviewFrm").submit();
       })
       
       $("#addwishlist").on("click",function(){
-    	  $("#productFrm").attr("action", "/add.wish");
-    	  $("#productFrm").submit();
+    	  if("${loginID }" == ""){
+    		  let loginplz = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.");
+    		  if(loginplz){
+    			  location.href="/login/LoginDummy.jsp";
+    		  }else{
+    			  return;
+    		  }
+    		  
+    	  }else{
+        	  $("#productFrm").attr("action", "/add.wish");
+        	  $("#productFrm").submit();
+    	  }
+
+      })
+      
+      $("#buy").on("click",function(){
+    	  
+    	  if("${loginID }" == ""){
+    		  let loginplz = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.");
+    		  if(loginplz){
+    			  location.href="/login/LoginDummy.jsp";
+    		  }else{
+    			  return;
+    		  }
+    		  
+    	  }else{
+        	  $("#buyFrm").attr("action", "/item.buy?product_seq="+${dto.product_seq }+"");
+        	  $("#buyFrm").submit();
+    	  }
       })
    </script>
 
