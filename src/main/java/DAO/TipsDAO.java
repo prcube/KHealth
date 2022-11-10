@@ -36,7 +36,7 @@ public class TipsDAO {
 
 	// insert
 	public int insert(TipsDTO dto) throws Exception {
-		String sql = "insert into tips values (tips_seq.nextval,?,?,?,sysdate,?,0,?)";
+		String sql = "insert into tips values (tips_seq.nextval,?,?,?,sysdate,?,0,?,0)";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			// pstat.setInt(1, dto.getTips_seq());
