@@ -268,16 +268,20 @@
 			let amount = document.getElementsByClassName("totalAmount");
 			let price = document.getElementsByClassName("totalPrice");
 			
+			
+			
+			let target = amount[0].value
 			console.log(amount[0].value);
 			console.log(amount[1].value);
 			
-				 	   let params = 
-
+				 	   
+			let jsonamount = JSON.stringfy(amount);
+			
 				 	   $.ajax({
 				 		 type:"post",
 				 		 url:"/wishlist.ajax",
 				 		 data : {
-					 			"amount" : amount,
+					 			"amount" : jsonamount,
 					 			"price" : price
 					 	   },
 				 		 dataType:"json",
