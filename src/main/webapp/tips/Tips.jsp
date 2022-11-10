@@ -303,7 +303,9 @@ a {
 
 
 
-
+	<div class="row mb-3">
+		<div class="col" style="text-align: center;">${navi }</div>
+	</div>
 
 		<script>
 			$("#tipswrite").hide();
@@ -317,11 +319,9 @@ a {
 			})
 		</script>
 
-	</main>
-	<div class="row mb-3">
-		<div class="col" style="text-align: center;">${navi }</div>
-	</div>
+	
 
+</main>
 
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
