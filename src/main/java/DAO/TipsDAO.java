@@ -252,6 +252,7 @@ public class TipsDAO {
 				dto1.setTips_nickname(rs.getString("tips_nickname"));
 				dto1.setRn(rs.getInt("rn"));
 				dto1.setTips_bullet(rs.getString("tips_bullet"));
+				dto1.setTips_thumbsup(rs.getInt("tips_thumbsup"));
 				list.add(dto1);
 
 			}
@@ -279,6 +280,7 @@ public class TipsDAO {
 				dto2.setTips_nickname(rs.getString("tips_nickname"));
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
+				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
 				list1.add(dto2);
 
 			}
@@ -306,6 +308,7 @@ public class TipsDAO {
 				dto2.setTips_nickname(rs.getString("tips_nickname"));
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
+				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
 				list2.add(dto2);
 
 			}
@@ -333,6 +336,7 @@ public class TipsDAO {
 				dto2.setTips_nickname(rs.getString("tips_nickname"));
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
+				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
 				list3.add(dto2);
 
 			}
@@ -360,10 +364,25 @@ public class TipsDAO {
 				dto2.setTips_nickname(rs.getString("tips_nickname"));
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
+				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
 				list4.add(dto2);
 
 			}
 			return list4;
+		}
+
+	}
+	
+	
+	public int addthumbsupCount(int tips_seq) throws Exception {
+
+		String sql = "update tips set tips_thumbsup = tips_thumbsup + 1 where tips_seq = ?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setInt(1, tips_seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+
 		}
 
 	}
