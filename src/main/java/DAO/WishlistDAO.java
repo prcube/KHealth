@@ -55,15 +55,17 @@ public class WishlistDAO {
 
 	}
 	
-	public int insert(int wishlist_seq, String product_name, String product_price, int amount, String id) throws Exception {
-		String sql = "insert into wishlist values(?,?,?,?,?)";
+	public int insert(int wishlist_seq, String product_name, int prodcut_seq, String product_price, int amount, String id, String oriName) throws Exception {
+		String sql = "insert into wishlist values(?,?,?,?,?,?,?)";
 
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, wishlist_seq);
 			pstat.setString(2, product_name);
-			pstat.setString(3, product_price);
-			pstat.setInt(4, amount);
-			pstat.setString(5, id);
+			pstat.setInt(3, prodcut_seq);
+			pstat.setString(4, product_price);
+			pstat.setInt(5, amount);
+			pstat.setString(6, id);
+			pstat.setString(7, oriName);
 			int result = pstat.executeUpdate();
 			con.setAutoCommit(false);
 			con.close();
@@ -105,11 +107,12 @@ public class WishlistDAO {
 					int wishlist_seq = rs.getInt("wishlist_seq");
 
 					String product_name =rs.getString("product_name");	
+					int product_seq = rs.getInt("prodcut_seq");
 					String product_price = rs.getString("product_price");
 					int product_wish_count = rs.getInt("product_wish_count");
 					String product_wish_user = rs.getString("product_wish_user");
-					
-					WishlistDTO dto = new WishlistDTO(wishlist_seq, product_name, product_price, product_wish_count,product_wish_user);
+					String product_image_oriName = rs.getString("prodcut_image_oriname");
+					WishlistDTO dto = new WishlistDTO(wishlist_seq, product_name, product_seq, product_price, product_wish_count,product_wish_user, product_image_oriName);
 					result.add(dto);
 
 				}
@@ -135,12 +138,14 @@ public class WishlistDAO {
 
 					int wishlist_seq = rs.getInt("wishlist_seq");
 
-					String product_name =rs.getString("product_name");	
+					String product_name =rs.getString("product_name");
+					int product_seq = rs.getInt("product_seq");
 					String product_price = rs.getString("product_price");
 					int product_wish_count = rs.getInt("product_wish_count");
 					String product_wish_user = rs.getString("product_wish_user");
+					String product_image_oriName = rs.getString("product_image_oriname");
 					
-					WishlistDTO dto = new WishlistDTO(wishlist_seq, product_name, product_price, product_wish_count,product_wish_user);
+					WishlistDTO dto = new WishlistDTO(wishlist_seq, product_name, product_seq, product_price, product_wish_count,product_wish_user, product_image_oriName);
 					result.add(dto);
 
 				}

@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.ImagesDAO;
 import DAO.MarketDAO;
 import DAO.WishlistDAO;
+import DTO.ImagesDTO;
 import DTO.ProductDTO;
 import DTO.WishlistDTO;
 
@@ -23,7 +25,7 @@ public class WishlistController extends HttpServlet {
 
 		String uri = request.getRequestURI();
 
-		if(uri.equals("list.wish")) {
+		if(uri.equals("/list.wish")) {
 			try {
 				String id = (String) request.getSession().getAttribute("loginID");
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
@@ -43,23 +45,27 @@ public class WishlistController extends HttpServlet {
 		if(uri.equals("/add.wish")) {
 
 			try {
+				
 				int wishlist_seq = WishlistDAO.getInstance().getnextval();
 
 				String id = (String) request.getSession().getAttribute("loginID");
 				int amount = Integer.parseInt(request.getParameter("amount"));
-
+				int product_seq = Integer.parseInt(request.getParameter("product_seqForWishlist"));
 				String product_name = request.getParameter("product_nameForWishlist");
 				String product_price = request.getParameter("product_priceForWishlist");
 				
+				String oriName = ImagesDAO.getInstance().getImageOriName(product_seq);
+				System.out.println(product_seq);
 				boolean result = WishlistDAO.getInstance().isProductExist(id, product_name);
 				
 				if(result) {
 					WishlistDAO.getInstance().addupdate(amount, product_name, id);
 				}else {
-					WishlistDAO.getInstance().insert(wishlist_seq,product_name,product_price,amount,id);
+					WishlistDAO.getInstance().insert(wishlist_seq, product_name, product_seq, product_price,amount,id, oriName);
 				}
 				
 				System.out.println("삽입 완료");
+				
 				response.sendRedirect("/list.wish?cpage=1");
 
 			}catch(Exception e) {
@@ -68,6 +74,8 @@ public class WishlistController extends HttpServlet {
 			}
 
 		}
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

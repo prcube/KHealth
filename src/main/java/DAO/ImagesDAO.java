@@ -104,6 +104,36 @@ public class ImagesDAO {
 		}
 	}
 	
+	public List<ImagesDTO> selectAll() throws Exception{
+
+		String sql = "select * from images";
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			List<ImagesDTO> result = new ArrayList<>();
+
+
+			try(ResultSet rs =pstat.executeQuery();){
+
+				while(rs.next()) {
+
+					int images_seq = rs.getInt("images_seq");
+					String oriName = rs.getString("oriname");
+					String sysName = rs.getString("sysname");
+					int parent_seq = rs.getInt("parent_seq");
+					
+					ImagesDTO dto = new ImagesDTO(images_seq, oriName, sysName, parent_seq);
+					result.add(dto);
+
+				}
+				return result;
+			}
+
+		}
+	}
+	
+	
 	
 	public int getimage(int product_seq) throws Exception{
 		
