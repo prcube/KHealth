@@ -472,22 +472,22 @@
                <div class="small m-0 text-white">Copyright &copy; K-Health
                   Corp. All rights reserved.</div>
                <div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
-					<img src="/image/instagram.png" height="20px"> <span
-						class="text-white mx-1">&middot;</span> <img
-						src="/image/facebook.png" height="20px"> <span
-						class="text-white mx-1">&middot;</span> <img
-						src="/image/youtube.png" height="20px"> <span
-						class="/image/text-white mx-1">&middot;</span> <img
-						src="/image/twitter.png" height="20px">
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+               <img src="/image/instagram.png" height="20px"> <span
+                  class="text-white mx-1">&middot;</span> <img
+                  src="/image/facebook.png" height="20px"> <span
+                  class="text-white mx-1">&middot;</span> <img
+                  src="/image/youtube.png" height="20px"> <span
+                  class="/image/text-white mx-1">&middot;</span> <img
+                  src="/image/twitter.png" height="20px">
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- Bootstrap core JS-->
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
+   <script src="js/scripts.js"></script>
                <img src="/image/instagram.png" height="20px"><span
                   class="text-white mx-1">&middot;</span><img
                   src="/image/facebook.png" height="20px"><span
@@ -515,10 +515,10 @@
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
   function naverSignInCallback() {
-	//alert(naver_id_login.getProfileData('name'));
-   	//alert(naver_id_login.getProfileData('email'));
-  	//alert(naver_id_login.getProfileData('nickname'));
-   	//alert(naver_id_login.getProfileData('mobile'));
+   //alert(naver_id_login.getProfileData('name'));
+      //alert(naver_id_login.getProfileData('email'));
+     //alert(naver_id_login.getProfileData('nickname'));
+      //alert(naver_id_login.getProfileData('mobile'));
   }
 </script>
 <script>
