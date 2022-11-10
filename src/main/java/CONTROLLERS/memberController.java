@@ -50,9 +50,11 @@ public class memberController extends HttpServlet {
 				boolean result = dao.login(id, pwd);
 				
 				if (result) {
+					String nickname = MembersDAO.getInstance().getNickname(id);
 					System.out.println("로그인 성공!");
 					request.getSession().setAttribute("loginID", id);
 					request.getSession().setAttribute("loginname", name);
+					request.getSession().setAttribute("loginNickname", nickname);
 					response.sendRedirect("/");
 					
 				}
@@ -77,7 +79,6 @@ public class memberController extends HttpServlet {
 				
 				request.setAttribute("dto", dto);
 				request.setAttribute("member_role", member_role);
-				
 				request.getRequestDispatcher("/mypage/MypageDummy.jsp").forward(request, response);
 				
 			}else if(uri.equals("/update.mem")) {
@@ -86,7 +87,6 @@ public class memberController extends HttpServlet {
 				String mail = request.getParameter("modify_mail");
 				String number = request.getParameter("modify_number");
 				String address1 = request.getParameter("modify_address1");
-				System.out.println(nickname);
 				MemberDTO dto = new MemberDTO(0,null,null,nickname,mail,number,null,address1,null,null,0);
 				
 				int result = MembersDAO.getInstance().mypageUpdate(dto,loginID);
