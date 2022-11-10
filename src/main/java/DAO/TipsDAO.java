@@ -152,12 +152,12 @@ public class TipsDAO {
 				return rs.getInt(1);
 			}
 		}
-		public String getPageNavi(int currentPage) {
+		public String getPageNavi(int currentPage) throws Exception{
 
 			// 밑에 얘네들은 데이터 테이블에 넣고 관리해야한다.
-			int recordTotalCount = 30; // 원래는 sql에서 데이터를 가져와야하는데 일단은 borad에 144개의 글이 있다고 가정
+			int recordTotalCount = this.getRecordCount(); // 원래는 sql에서 데이터를 가져와야하는데 일단은 borad에 144개의 글이 있다고 가정
 			int recordCountPerPage = 10; // 게시판 한 페이지당 한개의 페이지에 10개의 글을 보여주기로 설정
-			int naviCountPerPage = 3; // 게시판 하단의 Page Navigator 가 한번에 몇개씩 보여질지 설정
+			int naviCountPerPage = 10; // 게시판 하단의 Page Navigator 가 한번에 몇개씩 보여질지 설정
 
 			// 전체 페이지의 개수 = 게시글의 개수 / 한페이지당 보여줄 게시글 +1
 			int pageTotalCount = 0;
