@@ -37,7 +37,8 @@ public class QnaController extends HttpServlet {
 		try {
 			if(uri.equals("/list.qna")) {
 
-
+				String id = (String) request.getSession().getAttribute("loginID");
+				String nickname = (String) request.getSession().getAttribute("loginNickname");
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 
 				String navi = QnaDAO.getInstance().getPageNavi(cpage);
@@ -46,7 +47,7 @@ public class QnaController extends HttpServlet {
 				//List<QnaDTO> list = dao.selectAll();
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
 				
-				String id = (String) request.getSession().getAttribute("loginID");
+				
 				boolean isInBlacklist = MembersDAO.getInstance().isInBlacklist(id);
 
 				request.setAttribute("list", list);
@@ -59,19 +60,12 @@ public class QnaController extends HttpServlet {
 			}else if(uri.equals("/write.qna")) {
 
 				try {
-					QnaDAO dao = QnaDAO.getInstance();
-					MembersDAO dao1 = MembersDAO.getInstance();
 					String qna_writer = (String)request.getSession().getAttribute("loginID");
+					String qna_nickname = (String)request.getSession().getAttribute("loginNickname");
 					String qna_title = request.getParameter("qna_title");
 					String qna_contents = request.getParameter("qna_contents");
-					
-					String qna_nickname = request.getParameter("qna_nickname");
-					
-			
-					
-					MemberDTO dto1 = dao1.selectById(qna_writer);
-					
-					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0,qna_nickname,0);
+					QnaDAO dao = QnaDAO.getInstance();
+					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0, qna_nickname,0);
 					dao.write(dto);
 
 					response.sendRedirect("/list.qna?cpage=1");
@@ -80,20 +74,15 @@ public class QnaController extends HttpServlet {
 					response.sendRedirect("/error.jsp");
 				}
 
-
-
 				//게시판 1페이지로 이동
 
 			}else if(uri.equals("/detail.qna")) {
-
 
 				QnaDAO dao = QnaDAO.getInstance();
 				int seq = Integer.parseInt(request.getParameter("qna_seq"));
 				String id = (String) request.getSession().getAttribute("loginID");
 				
 				List<QnaCommentsDTO> list = QnaCommentsDAO.getInstance().selectAll(seq);
-				
-
 				
 				QnaDTO dto = dao.selectBySeq(seq);
 				QnaDAO.getInstance().addViewCount(seq);
