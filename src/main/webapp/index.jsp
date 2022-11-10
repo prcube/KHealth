@@ -81,23 +81,16 @@
                      href="/list.market?cpage=1">Market</a></li>
                   <li class="nav-item"><a class="nav-link"
                      href="/list.qna?cpage=1">Q&A</a></li>
-
-
-
-                  <li class="nav-item dropdown"><a
-                     class="nav-link dropdown-toggle" href="#" role="button"
-                     data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li class="nav-item"><a class="nav-link"
+                     <li class="nav-item"><a class="nav-link"
                            href="login/LoginDummy.jsp">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="/mypage.mem">Mypage</a></li>
                         <li class="nav-item"><a class="nav-link"
                            href="login/SigninDummy.jsp">Signin</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
 
 
-               
-                     </ul></li>
+
+                  </li>
 
 
                </ul>
