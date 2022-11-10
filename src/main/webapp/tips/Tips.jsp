@@ -28,6 +28,16 @@
 	border-radius: 0.5rem;
 	background: #fff;
 }
+a {
+	text-decoration: none;
+	color: black;
+}
+/* tr { */
+/* 	border-color: transparent; */
+/* } */
+.table {
+	border-radius: 0.5rem;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
@@ -72,15 +82,20 @@
 			</c:choose>
 		</nav>
 
+
+
+		<!-- 		게시판부분 -->
 		<div class="container board-border">
 			<table class="table align-middle mb-0 bg-white">
-				<thead class="bg-light">
+				<thead class="">
+					<!-- 				<thead class="bg-light"> -->
+
 					<tr>
-						<th>Name</th>
-						<th>Title</th>
-						<th>Status</th>
-						<th>Position</th>
-						<th>view count</th>
+						<th>글번호</th>
+						<th>제목</th>
+						<th>아이디</th>
+						<th>작성시간</th>
+						<th>조회수</th>
 					</tr>
 				</thead>
 				<c:choose>
@@ -97,7 +112,8 @@
 									</td>
 									<td>
 										<p class="fw-normal mb-1">
-											<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+											<a href="/detail.tips?tips_seq=${i.tips_seq }"
+												style="color: darkblue; text-decoration: none;">${i.tips_title }</a>
 										</p>
 										<p class="text-muted mb-0"></p>
 									</td>
@@ -109,23 +125,15 @@
 						</c:forEach>
 					</c:when>
 				</c:choose>
-
 			</table>
-
 		</div>
 
-		<div class="row mb-3">
-			<div class="col" text align="center">
-				${navi }
-				<button type="button" class="btn btn-secondary" style="float: right"
-					name="tipswrite" id="tipswrite">작성하기</button>
-			</div>
+		<button type="button" class="btn btn-secondary" style="float: right"
+			name="tipswrite" id="tipswrite">작성하기</button>
 
 
 
-
-
-			<script>
+		<script>
 			$("#tipswrite").hide();
 			console.log(${member_role});
 			if (${member_role}) {
@@ -136,9 +144,11 @@
 				location.href = "/tips/tipswrite.jsp?cpage=1"
 			})
 		</script>
-		</div>
-	</main>
 
+	</main>
+	<div class="row mb-3">
+		<div class="col" style="text-align: center;">${navi }</div>
+	</div>
 
 
 

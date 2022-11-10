@@ -1984,9 +1984,9 @@ progress {
 .table > thead {
   vertical-align: bottom;
 }
-.table > :not(:first-child) {
-  border-top: 2px solid currentColor;
-}
+/* .table > :not(:first-child) { */
+/*   border-top: 2px solid currentColor; */
+/* } */
 
 .caption-top {
   caption-side: top;
