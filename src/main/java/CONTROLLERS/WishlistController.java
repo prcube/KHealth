@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.MarketDAO;
 import DAO.WishlistDAO;
+import DTO.ProductDTO;
 import DTO.WishlistDTO;
 
 
@@ -28,11 +29,9 @@ public class WishlistController extends HttpServlet {
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				String navi = WishlistDAO.getInstance().getPageNavi(cpage);
 				
-				List<WishlistDTO> wishlist = WishlistDAO.getInstance().selectByRange(cpage*4-3, cpage*4);
-				
+				List<WishlistDTO> wishlist = WishlistDAO.getInstance().selectById(id);
 				
 				request.setAttribute("wishlist", wishlist);
-				
 				
 				request.getRequestDispatcher("/market/wishlist.jsp").forward(request, response);
 			}catch(Exception e) {
@@ -60,7 +59,7 @@ public class WishlistController extends HttpServlet {
 					WishlistDAO.getInstance().insert(wishlist_seq,product_name,product_price,amount,id);
 				}
 				
-
+				System.out.println("삽입 완료");
 				response.sendRedirect("/list.wish?cpage=1");
 
 			}catch(Exception e) {

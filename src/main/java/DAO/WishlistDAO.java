@@ -119,6 +119,37 @@ public class WishlistDAO {
 		}
 	}
 	
+	public List<WishlistDTO> selectById(String id) throws Exception{
+
+		String sql = "select * from wishlist where product_wish_user = ?";
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			List<WishlistDTO> result = new ArrayList<>();
+			pstat.setString(1, id);
+
+			try(ResultSet rs =pstat.executeQuery();){	
+
+				while(rs.next()) {
+
+					int wishlist_seq = rs.getInt("wishlist_seq");
+
+					String product_name =rs.getString("product_name");	
+					String product_price = rs.getString("product_price");
+					int product_wish_count = rs.getInt("product_wish_count");
+					String product_wish_user = rs.getString("product_wish_user");
+					
+					WishlistDTO dto = new WishlistDTO(wishlist_seq, product_name, product_price, product_wish_count,product_wish_user);
+					result.add(dto);
+
+				}
+				return result;
+			}
+
+		}
+	}
+	
 	public boolean isProductExist(String id, String product_name) throws Exception {
 		String sql = "select * from wishlist where product_wish_user=? and product_name=?";
 
