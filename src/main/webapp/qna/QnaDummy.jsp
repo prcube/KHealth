@@ -87,16 +87,16 @@ a {
 				</c:when>
 			</c:choose>
 		</nav>
-	</main>
 	
 	
-<div class="container board-border">
+	
+<div class="container board-border ">
 	<table class="table align-middle mb-0 bg-white">
 <!-- 		<thead class="bg-light"> -->
 		<thead class="bg-light">
 			<tr>
 				<th>글 번호</th>
-				<th>제목</th>
+				<th>제 목</th>
 				<th>아이디</th>
 				<th>날짜</th>
 				<th>조회수</th>
@@ -146,7 +146,7 @@ a {
 
 
 
-
+</main>
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
 		<div class="container px-5 ">
