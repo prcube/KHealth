@@ -77,7 +77,6 @@
 
 
 		<form action="/write.qna" method="post">
-
 			<div class="container board-border px-3">
 				<div class="row">
 					<div class="col-5 mt-4 mb-5">
@@ -119,13 +118,7 @@
                </textarea>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
-				<div class="row">
-					<div class="btn-group right" role="group"
-						aria-label="Basic example">
-						<button type="submit" class="btn btn-primary" id="write">글쓰기</button>
-						<button type="button" class="btn btn-primary" id="back">목록으로</button>
-					</div>
-				</div>
+
 			</div>
 		</form>
 
