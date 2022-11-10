@@ -71,6 +71,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
+
                   <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
                   <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
                   <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
@@ -80,37 +81,35 @@
                      href="/list.market?cpage=1">Market</a></li>
                   <li class="nav-item"><a class="nav-link"
                      href="/list.qna?cpage=1">Q&A</a></li>
-
-
-                  <li class="nav-item dropdown"><a
-                     class="nav-link dropdown-toggle" href="#" role="button"
-                     data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li class="nav-item"><a class="nav-link"
+                     <li class="nav-item"><a class="nav-link"
                            href="login/LoginDummy.jsp">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="/mypage.mem">Mypage</a></li>
                         <li class="nav-item"><a class="nav-link"
                            href="login/SigninDummy.jsp">Signin</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <c:choose>
-                           <c:when test="${loginID != null}">
-                              <!-- 로그인을 한 사용자 -->
-                              <li class="nav-item"><a class="nav-link" style="color: white">${loginID }님 <br> 안녕하세요?</a></li>
-                              <input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt" value="로그아웃">
-                           </c:when>
-                           <c:when test="${loginID == null}">
-                              <!-- 로그인을 한 사용자 -->
-                              <a style="color: white"></a>
-                           </c:when>
-                        </c:choose>
-                     </ul></li>
+                        <li>
 
 
 
-
+                  </li>
 
 
                </ul>
+                              
+               <c:choose>
+                     <c:when test="${loginID != null}">
+                        <!-- 로그인을 한 사용자 -->
+                        <li class="nav-item"><a class="nav-link"
+                           style="color: white">${loginID }님 <br> 안녕하세요?
+                        </a></li>
+                        
+                        <input type="button" id="logout"
+                           style="WIDTH: 60pt; HEIGHT: 20pt; margin-top:27px" value="로그아웃">
+                     </c:when>
+                     <c:when test="${loginID == null}">
+                        <!-- 로그인을 한 사용자 -->
+                        <a style="color: white"></a>
+                     </c:when>
+                  </c:choose>
             </div>
          </div>
       </nav>
@@ -473,7 +472,6 @@
                <div class="small m-0 text-white">Copyright &copy; K-Health
                   Corp. All rights reserved.</div>
                <div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
-
                <img src="/image/instagram.png" height="20px"> <span
                   class="text-white mx-1">&middot;</span> <img
                   src="/image/facebook.png" height="20px"> <span
@@ -490,54 +488,39 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
    <script src="js/scripts.js"></script>
+               <img src="/image/instagram.png" height="20px"><span
+                  class="text-white mx-1">&middot;</span><img
+                  src="/image/facebook.png" height="20px"><span
+                  class="text-white mx-1">&middot;</span><img
+                  src="/image/youtube.png" height="20px"><span
+                  class="/image/text-white mx-1"></span><img
+                  src="/image/twitter.png" height="20px">
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- Bootstrap core JS-->
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
+   <script src="js/scripts.js"></script>
 </body>
-
-
-<%
-String clientId = "_5b0QUYbnHTk93odBRsA";//애플리케이션 클라이언트 아이디값";
-String clientSecret = "VA5gRXY82n";//애플리케이션 클라이언트 시크릿값";
-String code = request.getParameter("code");
-String state = request.getParameter("state");
-String redirectURI = URLEncoder.encode("http://127.0.0.1/index.jsp", "UTF-8");
-String apiURL;
-apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
-apiURL += "client_id=" + clientId;
-apiURL += "&client_secret=" + clientSecret;
-apiURL += "&redirect_uri=" + redirectURI;
-apiURL += "&code=" + code;
-apiURL += "&state=" + state;
-String access_token = "";
-String refresh_token = "";
-System.out.println("apiURL=" + apiURL);
-try {
-   URL url = new URL(apiURL);
-   HttpURLConnection con = (HttpURLConnection) url.openConnection();
-   con.setRequestMethod("GET");
-   int responseCode = con.getResponseCode();
-   BufferedReader br;
-   System.out.print("responseCode=" + responseCode);
-   if (responseCode == 200) { // 정상 호출
-      br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-   } else { // 에러 발생
-      br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-   }
-   String inputLine;
-   StringBuffer res = new StringBuffer();
-   while ((inputLine = br.readLine()) != null) {
-      res.append(inputLine);
-   }
-   br.close();
-   if (responseCode == 200) {
-      out.println(res.toString());
-   }
-} catch (Exception e) {
-   System.out.println(e);
-}
-%>
 </body>
-
-
-
+<!-- 네이버 로그인 callback -->
+<script type="text/javascript">
+  var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://127.0.0.1/");
+  // 접근 토큰 값 출력
+  //alert(naver_id_login.oauthParams.access_token);
+  // 네이버 사용자 프로필 조회
+  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+  function naverSignInCallback() {
+   //alert(naver_id_login.getProfileData('name'));
+      //alert(naver_id_login.getProfileData('email'));
+     //alert(naver_id_login.getProfileData('nickname'));
+      //alert(naver_id_login.getProfileData('mobile'));
+  }
+</script>
 <script>
    //@@@@@@@@TOP 스크롤 버튼스크립트
    //Get the button

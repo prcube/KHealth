@@ -19,7 +19,18 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
 </head>
+<style>
+.board-border {
+	border: 1px solid #212529;
+	padding: 0%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	border-radius: 0.5rem;
+	background: #fff;
+}
+</style>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
@@ -51,72 +62,71 @@
 				</div>
 			</div>
 		</nav>
+
+
+
+
+
+		<!--write  -->
+		<form action="/insert.tips" method="post">
+			<div class="container board-border px-3">
+				<div class="row">
+					<div class="col-5 mt-4 mb-5">
+						<h1>게시판 글쓰기</h1>
+					</div>
+					<div class="col-5 mt-4 mb-5 ">
+						<button type="submit" class="btn btn-secondary" id="tipsinsert">글쓰기</button>
+						<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
+					</div>
+				</div>
+
+				<div class="row">
+					<select class="form-select" aria-label="Default select example"  name="tips_bullet" id="tips_bullet">
+						<option selected>Open this select menu</option>
+						<option value="가슴">가슴</option>
+						<option value="등">등</option>
+						<option value="하체">하체</option>
+						<option value="어깨">어깨</option>
+					</select>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-sm">
+						<input name="tips_title" id="tips_title"
+							class="form-control-plaintext" type="text"
+							placeholder="제목을 입력하세요.">
+					</div>
+				</div>
+
+				<div class="form-group">
+
+					<textarea class="form-control" name="tips_contents"
+						id="tips_contents" id="exampleFormControlTextarea1" rows="10"
+						placeholder="내용을 입력하세요."></textarea>
+					<!-- <input type = file multiple name = "file"><br> -->
+				</div>
+			</div>
+		</form>
+
+
+
+
+		<script>
+			$("#tipsback").on("click", function() {
+				location.href = "/list.tips?cpage=1"
+			})
+			
+		</script>
+
+
+
+
+
+
+
+
+
 	</main>
-
-
-
-
-	<!--write  -->
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<form action="/insert.tips" method="post">
-		<div class="container">
-
-			<div class="form-group row">
-				<div class="col-sm-10">
-					<input type="text" disabled class="form-control-plaintext"
-						id="header" value="tips 게시판 글쓰기">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<div class="col-sm">
-					<input name="tips_title" id="tips_title"
-						class="form-control-plaintext" type="text"
-						placeholder="제목을 입력하세요.">
-				</div>
-			</div>
-
-			<div class="form-group">
-
-				<textarea class="form-control" name="tips_contents" id="tips_contents"
-					id="exampleFormControlTextarea1" rows="10" placeholder="내용을 입력하세요."></textarea>
-
-
-				<!-- <input type = file multiple name = "file"><br> -->
-
-
-			</div>
-
-
-
-			<div class="row">
-				<div class="btn-group right" role="group" aria-label="Basic example">
-					<button type="submit" class="btn btn-secondary" id="tipsinsert">글쓰기</button>
-					<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
-				</div>
-			</div>
-
-		</div>
-	</form>
-	<script>
-		$("#tipsback").on("click",function(){
-			location.href = "/list.tips?cpage=1"
-		})
-	</script>
-
-
-
-
-
-
-
-
-
-
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
 		<div class="container px-5 ">

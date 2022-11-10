@@ -175,7 +175,7 @@
       
     </nav>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
@@ -218,6 +218,7 @@
               <a href="/mypage/MypageBoard.jsp">작성한 글</a><br />
               <a href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
               <p>Order</p>
+             
               <a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br/>
               
             </div>
@@ -276,7 +277,7 @@
 
 
 
-
+</main>
     <!-- Footer-->
     <footer class="bg-dark py-4 mt-auto ">
       <div class="container px-5 ">

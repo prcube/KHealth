@@ -18,6 +18,28 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
+
+<style>
+.board-border {
+	border: 2px solid #212529;
+	padding: 0%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	border-radius: 0.5rem;
+	background: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+/* tr { */
+/* 	border-color: transparent; */
+/* } */
+.table {
+	border-radius: 0.5rem;
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
@@ -60,54 +82,230 @@
 				</c:when>
 			</c:choose>
 		</nav>
-	</main>
 
-	<table class="table align-middle mb-0 bg-white">
-		<thead class="bg-light">
-			<tr>
-				<th>Name</th>
-				<th>Title</th>
-				<th>Status</th>
-				<th>Position</th>
-				<th>view count</th>
-			</tr>
-		</thead>
-		<c:choose>
-			<c:when test="${not empty list}">
-				<c:forEach var="i" items="${list}">
-					<tbody>
-						<tr>
-							<td>
-								<div class="d-flex align-items-center">
-									<div class="ms-3">
-										<p class="fw-bold mb-1">${i.tips_seq }</p>
-									</div>
-								</div>
-							</td>
-							<td>
-								<p class="fw-normal mb-1">
-									<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
-								</p>
-								<p class="text-muted mb-0"></p>
-							</td>
-							<td>${i.tips_writer }</td>
-							<td>${i.tips_write_date }</td>
-							<td>${i.tips_view_count }</td>
-						</tr>
-					</tbody>
-				</c:forEach>
-			</c:when>
-		</c:choose>
 
-	</table>
+		<ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+					data-bs-target="#home-tab-pane" type="button" role="tab"
+					aria-controls="home-tab-pane" aria-selected="true">가슴 운동</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+					data-bs-target="#profile-tab-pane" type="button" role="tab"
+					aria-controls="profile-tab-pane" aria-selected="false">등 운동</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+					data-bs-target="#contact-tab-pane" type="button" role="tab"
+					aria-controls="contact-tab-pane" aria-selected="false">하체 운동</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="disabled-tab" data-bs-toggle="tab"
+					data-bs-target="#disabled-tab-pane" type="button" role="tab"
+					aria-controls="disabled-tab-pane" aria-selected="false">어깨 운동</button>
+			</li>
+		</ul>
 
-	<div class="row">
-		<div class="col" text align="center">
-			${navi }
-			<button type="button" class="btn btn-secondary" style="float: right"
-				name="tipswrite" id="tipswrite">작성하기</button>
 
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="home-tab-pane"
+				role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+				<div class="container board-border">
+					<table class="table align-middle  mb-0 bg-white">
+						<thead class="bg-light">
+							<tr>
+								<th>Name</th>
+								<th>Bullet Point</th>
+								<th>Title</th>
+								<th>Status</th>
+								<th>Position</th>
+								<th>view count</th>
+							</tr>
+						</thead>
+						<c:choose>
+							<c:when test="${not empty list1}">
+								<c:forEach var="i" items="${list1}">
+									<tbody>
+										<tr>
+											<td>
+												<div class="d-flex align-items-center">
+													<div class="ms-3">
+														<p class="fw-bold mb-1">${i.rn }</p>
+													</div>
+												</div>
+											</td>
+											<td>${i.tips_bullet }</td>
+											<td>
+												<p class="fw-normal mb-1">
+													<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+												</p>
+												<p class="text-muted mb-0"></p>
+											</td>
+											<td>${i.tips_nickname }</td>
+											<td>${i.formedDate }</td>
+											<td>${i.tips_view_count }</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</c:when>
+						</c:choose>
+
+					</table>
+
+				</div>
+
+
+			</div>
+			<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
+				aria-labelledby="profile-tab" tabindex="0">
+				<div class="container board-border">
+					<table class="table align-middle mb-0 bg-white">
+						<thead class="bg-light">
+							<tr>
+								<th>Name</th>
+								<th>Bullet Point</th>
+								<th>Title</th>
+								<th>Status</th>
+								<th>Position</th>
+								<th>view count</th>
+							</tr>
+						</thead>
+						<c:choose>
+							<c:when test="${not empty list2}">
+								<c:forEach var="i" items="${list2}">
+									<tbody>
+										<tr>
+											<td>
+												<div class="d-flex align-items-center">
+													<div class="ms-3">
+														<p class="fw-bold mb-1">${i.rn }</p>
+													</div>
+												</div>
+											</td>
+											<td>${i.tips_bullet }</td>
+											<td>
+												<p class="fw-normal mb-1">
+													<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+												</p>
+												<p class="text-muted mb-0"></p>
+											</td>
+											<td>${i.tips_nickname }</td>
+											<td>${i.formedDate }</td>
+											<td>${i.tips_view_count }</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</c:when>
+						</c:choose>
+
+					</table>
+
+				</div>
+			</div>
+			<div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
+				aria-labelledby="contact-tab" tabindex="0">
+				<div class="container board-border">
+					<table class="table align-middle mb-0 bg-white">
+						<thead class="bg-light">
+							<tr>
+								<th>Name</th>
+								<th>Bullet Point</th>
+								<th>Title</th>
+								<th>Status</th>
+								<th>Position</th>
+								<th>view count</th>
+							</tr>
+						</thead>
+						<c:choose>
+							<c:when test="${not empty list3}">
+								<c:forEach var="i" items="${list3}">
+									<tbody>
+										<tr>
+											<td>
+												<div class="d-flex align-items-center">
+													<div class="ms-3">
+														<p class="fw-bold mb-1">${i.rn }</p>
+													</div>
+												</div>
+											</td>
+											<td>${i.tips_bullet }</td>
+											<td>
+												<p class="fw-normal mb-1">
+													<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+												</p>
+												<p class="text-muted mb-0"></p>
+											</td>
+											<td>${i.tips_nickname }</td>
+											<td>${i.formedDate }</td>
+											<td>${i.tips_view_count }</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</c:when>
+						</c:choose>
+
+					</table>
+
+				</div>
+			</div>
+			<div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel"
+				aria-labelledby="disabled-tab" tabindex="0">
+				<div class="container board-border">
+					<table class="table align-middle mb-0 bg-white">
+						<thead class="bg-light">
+							<tr>
+								<th>Name</th>
+								<th>Bullet Point</th>
+								<th>Title</th>
+								<th>Status</th>
+								<th>Position</th>
+								<th>view count</th>
+							</tr>
+						</thead>
+						<c:choose>
+							<c:when test="${not empty list4}">
+								<c:forEach var="i" items="${list4}">
+									<tbody>
+										<tr>
+											<td>
+												<div class="d-flex align-items-center">
+													<div class="ms-3">
+														<p class="fw-bold mb-1">${i.rn }</p>
+													</div>
+												</div>
+											</td>
+											<td>${i.tips_bullet }</td>
+											<td>
+												<p class="fw-normal mb-1">
+													<a href="/detail.tips?tips_seq=${i.tips_seq }">${i.tips_title }</a>
+												</p>
+												<p class="text-muted mb-0"></p>
+											</td>
+											<td>${i.tips_nickname }</td>
+											<td>${i.formedDate }</td>
+											<td>${i.tips_view_count }</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</c:when>
+						</c:choose>
+
+					</table>
+
+				</div>
+
+			</div>
 		</div>
+
+		<button type="button" class="btn btn-secondary" style="float: right"
+			name="tipswrite" id="tipswrite">작성하기</button>
+
+
+
+	<div class="row mb-3">
+		<div class="col" style="text-align: center;">${navi }</div>
+	</div>
 
 		<script>
 			$("#tipswrite").hide();
@@ -120,11 +318,10 @@
 				location.href = "/tips/tipswrite.jsp?cpage=1"
 			})
 		</script>
-	</div>
 
+	
 
-
-
+</main>
 
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">

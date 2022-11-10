@@ -41,12 +41,7 @@ public class MypageController extends HttpServlet {
 				request.getRequestDispatcher("/mypage/MypageOrderlist.jsp").forward(request, response);
 
 			}
-			
-			
-			
-			
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		    response.setContentType("text/html; charset=UTF-8");

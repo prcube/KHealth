@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.MembersDAO;
 import DAO.TipsDAO;
-
 import DTO.TipsDTO;
 
 @WebServlet("*.tips")
@@ -37,8 +36,9 @@ public class TIpsController extends HttpServlet {
 				String tips_writer =(String)(request.getSession().getAttribute("loginID")); 
 				String tips_title = request.getParameter("tips_title");
 				String tips_contents = request.getParameter("tips_contents");
+				String tips_bullet = request.getParameter("tips_bullet");
 				
-				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"");
+				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"",0,tips_bullet);
 				
 				
 				dao.insert(dto);
@@ -53,13 +53,21 @@ public class TIpsController extends HttpServlet {
 				//List<TipsDTO> list = dao.selectAll();
 				String id = (String) request.getSession().getAttribute("loginID");
 				boolean member_role = MembersDAO.getInstance().isYouTeacher(id);
-				System.out.println(id);
 				
 				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
+				List<TipsDTO> list1 = TipsDAO.getInstance().selectBybullet1(cpage*10-9,cpage*10, null);
+				List<TipsDTO> list2 = TipsDAO.getInstance().selectBybullet2(cpage*10-9,cpage*10, null);
+				List<TipsDTO> list3 = TipsDAO.getInstance().selectBybullet3(cpage*10-9,cpage*10, null);
+				List<TipsDTO> list4 = TipsDAO.getInstance().selectBybullet4(cpage*10-9,cpage*10, null);
+				
 				
 				String navi = TipsDAO.getInstance().getPageNavi(cpage);
 				request.setAttribute("navi", navi);
 				request.setAttribute("list", list);
+				request.setAttribute("list1", list1);
+				request.setAttribute("list2", list2);
+				request.setAttribute("list3", list3);
+				request.setAttribute("list4", list4);
 				request.setAttribute("member_role", member_role);
 				
 				request.getRequestDispatcher("/tips/Tips.jsp").forward(request, response);

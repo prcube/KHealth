@@ -23,23 +23,12 @@
 </script>
 </head>
 <style>
-a {
-	text-decoration: none;
-	color: black;
-}
 
-.board-border {
-	border: 2px solid #212529;
-	padding: 0%;
-	margin-top: 3%;
-	margin-bottom: 3%;
-	border-radius: 0.5rem;
-	background: #fff;
-}
+	a {
+		text-decoration:none;
+		color : black;
+	}
 
-.table {
-	border-radius: 0.5rem;
-}
 </style>
 <body class="d-flex flex-column h-100">
 
@@ -87,61 +76,71 @@ a {
 				</c:when>
 			</c:choose>
 		</nav>
-
-
-		<div class="container">
-			<div class="row mt-5">
-				<div class="search ">
-					<form action="/search.qna" style="float: right">
-						<div class="input-group">
-							<input type=text class="form-control" name=qna_title
-								placeholder="검색">
-							<button class="btn btn-secondary btn-sm">검색</button>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="container board-border ">
-				<table class="table align-middle mb-0 bg-white">
-					<!-- 		<thead class="bg-light"> -->
-					<thead class="bg-light">
-						<tr>
-							<th>글 번호</th>
-							<th>제목</th>
-							<th>닉네임</th>
-							<th>날짜</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="i" items="${list }">
-							<tr>
-								<td>${i.qna_seq }</td>
-								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
-								<td>${i.qna_nickname }</td>
-								<td>${i.formedDate }</td>
-								<td>${i.qna_view_count }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-
-			<div class="row mb-5">
-				<div class="col">
-					<button type="button" class="btn btn-secondary"
-						style="float: right" id="write">작성하기</button>
-				</div>
-			</div>
-		</div>
-		<div class="row mb-5">
-			<div style="text-align: center;">${navi }</div>
-		</div>
-
-
-
 	</main>
+
+	<table class="table align-middle mb-0 bg-white">
+		<thead class="bg-light">
+			<tr>
+				<th>글 번호</th>
+				<th>제목</th>
+				<th>아이디</th>
+				<th>날짜</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="i" items="${list }">
+				<tr>
+					<td>${i.qna_seq }</td>
+					<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+					<td>${i.qna_writer }</td>
+					<td>${i.formedDate }</td>
+					<td>${i.qna_view_count }</td>
+				</tr>
+			</c:forEach>
+
+
+
+
+
+
+		</tbody>
+	</table>
+
+
+
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="text-align: center;">${navi }</div>
+	
+	<div class = "search">
+		<form action = "/search.qna">
+			<input type=text name = qna_title placeholder = "검색">
+			<button>검색</button>
+		
+		</form>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
 		<div class="container px-5 ">
@@ -168,9 +167,14 @@ a {
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="col">
+				<button type="button" class="btn btn-primary" style="float: right"
+					id="write">작성하기</button>
 
+			</div>
 
-		<script>
+			<script>
 			console.log("${loginID}");
 			console.log(${isInBlacklist});
 				$("#write").on("click", function() {
@@ -193,7 +197,6 @@ a {
 					
 				})
 			</script>
-
 	</footer>
 	<!-- Bootstrap core JS-->
 	<script
