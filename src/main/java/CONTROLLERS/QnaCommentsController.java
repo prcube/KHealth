@@ -50,7 +50,8 @@ public class QnaCommentsController extends HttpServlet {
 				int qnaCms_seq = Integer.parseInt(request.getParameter("qnaCms_seq"));
 				
 				int result = QnaCommentsDAO.getInstance().delete(qnaCms_seq);
-				response.sendRedirect("/list.qna?cpage=1");
+				response.sendRedirect("/detail.qna?qna_seq=");
+				
 			}else if(uri.equals("/update.comments")) {
 				try {
 					
@@ -61,7 +62,7 @@ public class QnaCommentsController extends HttpServlet {
 
 					int result = QnaCommentsDAO.getInstance().update(qnaCms_contents, qnaCms_seq);
 
-					response.sendRedirect("/list.qna?cpage=1");
+					response.sendRedirect("/detail.qna");
 				}catch (Exception e) {
 					e.printStackTrace();
 					

@@ -402,6 +402,7 @@
 									<div class="col-md-3">
 										<label>Name</label>
 									</div>
+									
 									<div class="col-md-9">
 										<p>${dto.name }</p>
 									</div>

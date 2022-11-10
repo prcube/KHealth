@@ -74,7 +74,7 @@ public class QnaController extends HttpServlet {
 					response.sendRedirect("/error.jsp");
 				}
 
-				//게시판 1페이지로 이동
+
 
 			}else if(uri.equals("/detail.qna")) {
 
