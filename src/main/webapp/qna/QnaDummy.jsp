@@ -23,12 +23,23 @@
 </script>
 </head>
 <style>
+a {
+	text-decoration: none;
+	color: black;
+}
 
-	a {
-		text-decoration:none;
-		color : black;
-	}
+.board-border {
+	border: 2px solid #212529;
+	padding: 0%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	border-radius: 0.5rem;
+	background: #fff;
+}
 
+.table {
+	border-radius: 0.5rem;
+}
 </style>
 <body class="d-flex flex-column h-100">
 
@@ -76,13 +87,16 @@
 				</c:when>
 			</c:choose>
 		</nav>
-	</main>
-
+	
+	
+	
+<div class="container board-border ">
 	<table class="table align-middle mb-0 bg-white">
+<!-- 		<thead class="bg-light"> -->
 		<thead class="bg-light">
 			<tr>
 				<th>글 번호</th>
-				<th>제목</th>
+				<th>제 목</th>
 				<th>아이디</th>
 				<th>날짜</th>
 				<th>조회수</th>
@@ -106,9 +120,17 @@
 
 		</tbody>
 	</table>
+	</div>
 
 
 
+
+	<div class="row">
+		<div class="col">
+			<button type="button" class="btn btn-primary" style="float: right"
+				id="write">작성하기</button>
+		</div>
+	</div>
 
 
 
@@ -141,6 +163,8 @@
 
 
 
+
+</main>
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">
 		<div class="container px-5 ">
@@ -167,14 +191,9 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col">
-				<button type="button" class="btn btn-primary" style="float: right"
-					id="write">작성하기</button>
 
-			</div>
 
-			<script>
+		<script>
 			console.log("${loginID}");
 			console.log(${isInBlacklist});
 				$("#write").on("click", function() {
@@ -197,6 +216,7 @@
 					
 				})
 			</script>
+
 	</footer>
 	<!-- Bootstrap core JS-->
 	<script

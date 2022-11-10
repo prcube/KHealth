@@ -36,7 +36,7 @@ public class TipsDAO {
 	}
 	//insert
 	public int insert(TipsDTO dto) throws Exception {
-		String sql = "insert into tips values (tips_seq.nextval,?,?,?,sysdate,?,0)";
+		String sql = "insert into tips values (tips_seq.nextval,?,?,?,sysdate,?,0,?)";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			//pstat.setInt(1, dto.getTips_seq());
@@ -44,6 +44,7 @@ public class TipsDAO {
 			pstat.setString(2, dto.getTips_writer());
 			pstat.setString(3, dto.getTips_contents());
 			pstat.setInt(4, dto.getTips_view_count());
+			pstat.setString(5, dto.getTips_bullet());
 			//pstat.setString(5, dto.getTips_nickname());
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -68,6 +69,7 @@ public class TipsDAO {
 				dto.setTips_write_date(rs.getTimestamp("tips_write_date"));
 				dto.setTips_view_count(rs.getInt("tips_view_count"));
 				dto.setTips_nickname("tips_nickname");
+				dto.setTips_bullet(rs.getString("tips_bullet"));
 				list.add(dto);
 			}
 			return list;
@@ -87,7 +89,8 @@ public class TipsDAO {
 				dto.setTips_contents(rs.getString("tips_contents"));
 				dto.setTips_write_date(rs.getTimestamp("tips_write_date"));
 				dto.setTips_view_count(rs.getInt("tips_view_count"));
-				dto.setTips_nickname("tips_nickname");
+				dto.setTips_nickname(rs.getString("tips_nickname"));
+				dto.setTips_bullet(rs.getString("tips_bullet"));
 				return dto;
 			}
 		}

@@ -218,6 +218,7 @@
               <a href="/mypage/MypageBoard.jsp">작성한 글</a><br />
               <a href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
               <p>Order</p>
+             
               <a href="/mypage/MypageOrderlist.jsp">구매 내역</a><br/>
               
             </div>

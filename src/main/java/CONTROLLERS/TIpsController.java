@@ -37,8 +37,9 @@ public class TIpsController extends HttpServlet {
 				String tips_writer =(String)(request.getSession().getAttribute("loginID")); 
 				String tips_title = request.getParameter("tips_title");
 				String tips_contents = request.getParameter("tips_contents");
+				String tips_bullet = request.getParameter("tips_bullet");
 				
-				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"",0);
+				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"",0,tips_bullet);
 				
 				
 				dao.insert(dto);
