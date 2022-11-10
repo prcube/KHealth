@@ -38,7 +38,7 @@ public class TIpsController extends HttpServlet {
 				String tips_contents = request.getParameter("tips_contents");
 				String tips_bullet = request.getParameter("tips_bullet");
 				
-				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"",0,tips_bullet);
+				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"",0,tips_bullet,0);
 				
 				
 				dao.insert(dto);
@@ -87,6 +87,16 @@ public class TIpsController extends HttpServlet {
 				request.setAttribute("loginID", id);
 				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/tips/tipsDetail.jsp").forward(request, response);
+			}
+			else if (uri.equals("/thumbsup.tips")) {
+				TipsDAO dao = TipsDAO.getInstance();
+				
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
+				
+				TipsDAO.getInstance().addthumbsupCount(tips_seq);
+				
+				request.getRequestDispatcher("/list.tips").forward(request, response);
 			}
 
 			else if(uri.equals("/delete.tips")) {
