@@ -44,7 +44,7 @@ public class MarketController extends HttpServlet {
 				request.setAttribute("imagelist", imagesList);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
-
+				request.setAttribute("loginID", id);
 
 				request.getRequestDispatcher("/market/MarketDummy.jsp").forward(request, response);
 				System.out.println("b");

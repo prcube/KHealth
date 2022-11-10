@@ -48,9 +48,15 @@ public class WishlistController extends HttpServlet {
 
 				String product_name = request.getParameter("product_nameForWishlist");
 				String product_price = request.getParameter("product_priceForWishlist");
-
-
-				WishlistDAO.getInstance().insert(wishlist_seq,product_name,product_price,amount,id);
+				
+				boolean result = WishlistDAO.getInstance().isProductExist(id, product_name);
+				
+				if(result) {
+					WishlistDAO.getInstance().addupdate(amount, product_name, id);
+				}else {
+					WishlistDAO.getInstance().insert(wishlist_seq,product_name,product_price,amount,id);
+				}
+				
 
 				response.sendRedirect("/list.wish?cpage=1");
 

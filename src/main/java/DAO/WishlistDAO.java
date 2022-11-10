@@ -71,6 +71,22 @@ public class WishlistDAO {
 		}
 	}
 	
+	public int addupdate(int amount, String product_name, String id) throws Exception {
+		String sql = "update wishlist set product_wish_count=product_wish_count+? where product_name=? and product_wish_user=?";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			
+			pstat.setInt(1, amount);
+			pstat.setString(2, product_name);
+			pstat.setString(3, id);
+			
+			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
+			con.close();
+			return result;
+		}
+	}
+	
 	public List<WishlistDTO> selectByRange(int start, int end) throws Exception{
 
 		String sql = "select * from (select wishlist.*, row_number() over(order by wishlist_seq desc) rn from product) where rn between ? and ?";
@@ -100,6 +116,18 @@ public class WishlistDAO {
 				return result;
 			}
 
+		}
+	}
+	
+	public boolean isProductExist(String id, String product_name) throws Exception {
+		String sql = "select * from wishlist where product_wish_user=? and product_name=?";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			pstat.setString(2, product_name);
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
 		}
 	}
 	
