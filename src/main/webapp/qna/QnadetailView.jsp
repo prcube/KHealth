@@ -83,7 +83,7 @@
 
 
 		<!-- Page Content-->
-		
+
 		<form action="" id="detailFrm" method="post">
 			<section class="py-5">
 				<div class="container px-5 my-5">
@@ -96,8 +96,7 @@
 									<input type=hidden value=${dto.qna_seq } style="display: none;"
 										name=qna_seq> <input type=hidden
 										value=${dto.qna_title } style="display: none;" name=qna_title>
-									<input type=hidden 
-										style="display: none;" name=qna_contents>
+									<input type=hidden style="display: none;" name=qna_contents>
 									<div class="fw-bold">${dto.qna_writer }</div>
 									<div class="text-muted">News, Business</div>
 								</div>
@@ -117,11 +116,15 @@
 									<div class="text-muted fst-italic mb-2">${dto.qna_write_date }</div>
 									<!-- Post categories-->
 									<button type="button" class="btn btn-secondary" id="back">목록으로</button>
+
 									<button type="button" id ="qnathumbsup" class = "btn-secondary">
 									<i class="bi bi-hand-thumbs-up"></i></button>
+
+									<button type="button" class="btn btn-secondary" id="update">수정</button>
+
 									<button type="button" class="btn btn-secondary" id="delete"
-										name="seq">삭제하기</button>
-									<button type="button" class="btn btn-secondary" id="update">수정하기</button>
+										name="seq">삭제</button>
+									
 								</header>
 								<!-- Preview image figure-->
 								<figure class="mb-4">
@@ -163,15 +166,14 @@
 														${list.qnaCms_write_date }</div>
 													<div class=QnaCmsArea name=qnaCms_contents>${list.qnaCms_contents }</div>
 													<c:if test="${loginID == list.qnaCms_writer }">
-														<button type=button class="deleteComments"
-															qnaCms_seq=${list.qnaCms_seq }>삭제</button>
-														<button type=button class="modifyComments"
-															id="modifyComments">수정하기</button>
+														<button type=button class="modifyComments" id="modifyComments">수정</button>
+														<button type=button class="deleteComments" qnaCms_seq=${list.qnaCms_seq }>삭제</button>
+
 													</c:if>
 												</div>
 											</div>
 										</c:forEach>
-										
+
 
 
 
@@ -186,8 +188,7 @@
 													<!-- Comment form-->
 													<form class="mb">
 														<textarea class="form-control" rows="3"
-															placeholder="Join the discussion and leave a comment!"
-															id=comments name=comments></textarea>
+															placeholder="댓글을 작성해주세요!" id=comments name=comments></textarea>
 													</form>
 													<br>
 													<button type="button" class="btn btn-secondary"
@@ -240,7 +241,7 @@
 	<script>
 	
 	
-	
+	//삭제하기
 	$(".deleteComments").on("click",function(){
 		let target = $(this).attr("qnaCms_seq");
 		location.href = "/delete.comments?qnaCms_seq="+target;

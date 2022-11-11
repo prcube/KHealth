@@ -40,6 +40,7 @@ public class MypageAjaxController extends HttpServlet {
 			total.addProperty("navi",new Gson().toJson(navi));
 			total.addProperty("list",new Gson().toJson(list));
 			total.addProperty("list2",new Gson().toJson(list2));
+			
 			response.setContentType("text/html;charset=utf8");
 			
 			response.getWriter().append(total.toString());
