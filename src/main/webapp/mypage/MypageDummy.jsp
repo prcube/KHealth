@@ -389,7 +389,7 @@
                      location.href = "/mypage.mem"
                   })
                   $("#orderlistBtn").on("click", function () {
-                     location.href = "/orderhistory.mypage?cpage=1"
+                     location.href = "/mypage.mem"
                   })
                </script>
 
