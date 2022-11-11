@@ -53,6 +53,7 @@ public class ProductReviewController extends HttpServlet {
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("product_seq", productseq);
 				request.setAttribute("cpage", cpage);
+				
 //				request.getRequestDispatcher("/detail.market?cpage=1&product_seq="+productseq).forward(request, response);
 				request.getRequestDispatcher("/detail.market").forward(request, response);
 

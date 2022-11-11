@@ -176,6 +176,11 @@
                                              <i class="far fa-thumbs-up mx-2 fa-xs text-black"
                                                 style="margin-top: -0.16rem;"></i>
                                              <p class="small text-muted mb-0">3</p>
+                                             
+                                             		<c:if test="${loginID == list.pr_writer}">
+							<button type="button" class="modifyCommentsBtn">댓글수정</button>
+							<button type="button" class="deleteCommentsBtn">댓글삭제</button>
+						</c:if>
                                           </div>
                                        </div>
                                     </div>
