@@ -50,9 +50,9 @@ public class ProductReviewDAO {
 			
 			
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
 			con.close();
-			con.setAutoCommit(false);
 			return result;
 		}
 	}
@@ -85,12 +85,13 @@ public class ProductReviewDAO {
 		
 	}
 	
-	public boolean selectBySeq(int product_seq) throws Exception{
-		String sql = "select * from product_review where productreview_seq =?";
+	public boolean selectBySeqAndId(int product_seq, String id) throws Exception{
+		String sql = "select * from product_review where productreview_seq =? and productreview_writerid=?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				){
 			pstat.setInt(1, product_seq);
+			pstat.setString(2, id);
 			
 			try(ResultSet rs = pstat.executeQuery();){
 

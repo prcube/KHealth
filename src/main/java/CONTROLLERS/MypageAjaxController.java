@@ -1,6 +1,7 @@
 package CONTROLLERS;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import DAO.MypageAjaxDAO;
 import DTO.QnaCommentsDTO;
@@ -53,30 +52,29 @@ public class MypageAjaxController extends HttpServlet {
 		if(uri.equals("/wishlist.ajax")) {
 			
 			Gson g = new Gson();
+			
 			String amount = request.getParameter("amount");
 			String price = request.getParameter("price");
 			
-			System.out.println(amount);
-			System.out.println(price);
-//			System.out.println(amount);
-//			System.out.println(price);
-//
-//			amount = amount.replace("\"", "");
-//			amount = amount.replace("[", "");
-//			amount = amount.replace("]", "");
-//			System.out.println(amount);
-//			
-//			List<String> amountList = new ArrayList<String>(Arrays.asList(amount.split(",")));
-//			
-//			System.out.println(amountList);  
 			
-//			Gson g = new Gson();
-//			JsonParser parser = new JsonParser();
-//
-//			
-//			JsonArray arr = (JsonArray) parser.parse(amount);
-//			System.out.println(arr.get);	
-			response.getWriter().append("clear");
+			@SuppressWarnings("unchecked")
+			List<Integer> amountarr = (List<Integer>)g.fromJson(amount, ArrayList.class);
+			
+			@SuppressWarnings("unchecked")
+			List<Integer> pricearr = (List<Integer>)g.fromJson(price, ArrayList.class);
+			
+		
+			String json_amountarr = g.toJson(amountarr);
+			String json_pricearr = g.toJson(pricearr);
+			
+			JsonObject total = new JsonObject();
+			
+			total.addProperty("amountarr", json_amountarr);
+			total.addProperty("pricearr", json_pricearr);
+			
+			response.setContentType("text/html;charset+utf8");
+			System.out.println(total);
+			response.getWriter().append(total.toString());
 		}
 		
 		}catch(Exception e) {

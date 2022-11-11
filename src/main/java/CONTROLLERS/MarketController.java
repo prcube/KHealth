@@ -58,18 +58,13 @@ public class MarketController extends HttpServlet {
 				
 				try {
 					int product_seq = Integer.parseInt(request.getParameter("product_seq"));
-					
-					
-					
+
 					List<ProductReviewDTO> list = ProductReviewDAO.getInstance().selectAll(product_seq);
 
-
 					ProductDTO dto = MarketDAO.getInstance().detail(product_seq);
-
-					
+			
 					MembersDAO dao2 = MembersDAO.getInstance();
-					
-					
+								
 					int cpage = Integer.parseInt(request.getParameter("cpage"));
 					String oriName = ImagesDAO.getInstance().getImageOriName(product_seq);
 

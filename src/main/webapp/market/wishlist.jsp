@@ -299,11 +299,15 @@
 					 			"amount" : jsonamountarr,
 					 			"price" : jsonpricearr
 					 	   },
+					 	  dataType : "json",
 				 		 success : function(resp){
 							console.log(resp);
+							console.log(resp.amountarr);
+							console.log(resp.pricearr);
+						
 				 		 },
 				 		 error : function(resp){
-				 			 alert("에러 발생!");
+				 			 alert("에러 발생!"); 
 				 		 },
 				 	   })
 		});
