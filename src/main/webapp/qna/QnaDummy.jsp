@@ -122,15 +122,20 @@ a {
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="i" items="${list }">
+						<c:forEach var="i" items="${list }" varStatus="status">
 							<tr>
 								<td>${i.qna_seq }</td>
-								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+								
+								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }&nbsp&nbsp&nbsp[${list1[status.index].numberOfComment}]</a></td>
+								
 								<td>${i.qna_nickname }</td>
 								<td>${i.formedDate }</td>
 								<td>${i.qna_view_count }</td>
+								
 							</tr>
 						</c:forEach>
+						
+				
 					</tbody>
 				</table>
 			</div>
