@@ -83,7 +83,7 @@
 
 
 		<!-- Page Content-->
-		
+
 		<form action="" id="detailFrm" method="post">
 			<section class="py-5">
 				<div class="container px-5 my-5">
@@ -96,8 +96,7 @@
 									<input type=hidden value=${dto.qna_seq } style="display: none;"
 										name=qna_seq> <input type=hidden
 										value=${dto.qna_title } style="display: none;" name=qna_title>
-									<input type=hidden 
-										style="display: none;" name=qna_contents>
+									<input type=hidden style="display: none;" name=qna_contents>
 									<div class="fw-bold">${dto.qna_writer }</div>
 									<div class="text-muted">News, Business</div>
 								</div>
@@ -169,7 +168,7 @@
 												</div>
 											</div>
 										</c:forEach>
-										
+
 
 
 
@@ -184,8 +183,7 @@
 													<!-- Comment form-->
 													<form class="mb">
 														<textarea class="form-control" rows="3"
-															placeholder="댓글을 작성해주세요!"
-															id=comments name=comments></textarea>
+															placeholder="댓글을 작성해주세요!" id=comments name=comments></textarea>
 													</form>
 													<br>
 													<button type="button" class="btn btn-secondary"
