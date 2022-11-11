@@ -73,7 +73,7 @@
    border-radius: 1.5rem;
    width: 70%;
    padding: 2%;
-   font-weight: 600;
+    
    color: #6c757d;
    cursor: pointer;
 }
@@ -87,7 +87,7 @@
 .proile-rating span {
    color: #495057;
    font-size: 15px;
-   font-weight: 600;
+    
 }
 
 .profile-head .nav-tabs {
@@ -95,7 +95,7 @@
 }
 
 .profile-head .nav-tabs .nav-link {
-   font-weight: 600;
+    
    border: none;
 }
 
@@ -112,14 +112,14 @@
 .profile-work p {
    font-size: 12px;
    color: #818182;
-   font-weight: 600;
+    
    margin-top: 10%;
 }
 
 .profile-work a {
    text-decoration: none;
    color: #495057;
-   font-weight: 600;
+    
    font-size: 14px;
 }
 
@@ -128,11 +128,11 @@
 }
 
 .profile-tab label {
-   font-weight: 600;
+   
 }
 
 .profile-tab p {
-   font-weight: 600;
+    
    color: #0062cc;
 }
 

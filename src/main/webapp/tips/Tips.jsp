@@ -21,12 +21,13 @@
 
 <style>
 .board-border {
-   border: 2px solid #212529;
+   border: 1px solid #212529;
    padding: 0%;
    margin-top: 3%;
    margin-bottom: 3%;
-   border-radius: 0.5rem;
+/*    border-radius: 0.5rem; */
    background: #fff;
+   
 }
 
 a {
@@ -115,7 +116,7 @@ a {
       <div class="tab-content" id="myTabContent">
          <div class="tab-pane fade show active" id="home-tab-pane"
             role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            <div class="container board-border">
+            <div class="container board-border border-start-0 border-end-0">
                <table class="table align-middle  mb-0 bg-white">
                   <thead class="bg-light">
                      <tr>
@@ -165,7 +166,7 @@ a {
          </div>
          <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
             aria-labelledby="profile-tab" tabindex="0">
-            <div class="container board-border">
+            <div class="container board-border border-start-0 border-end-0">
                <table class="table align-middle mb-0 bg-white">
                   <thead class="bg-light">
                      <tr>
@@ -213,7 +214,7 @@ a {
          </div>
          <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
             aria-labelledby="contact-tab" tabindex="0">
-            <div class="container board-border">
+            <div class="container board-border border-start-0 border-end-0">
                <table class="table align-middle mb-0 bg-white">
                   <thead class="bg-light">
                      <tr>
@@ -261,7 +262,7 @@ a {
          </div>
          <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel"
             aria-labelledby="disabled-tab" tabindex="0">
-            <div class="container board-border">
+            <div class="container board-border border-start-0 border-end-0">
                <table class="table align-middle mb-0 bg-white">
                   <thead class="bg-light">
                      <tr>
@@ -308,10 +309,13 @@ a {
             </div>
 
          </div>
+		 <div class="container ">
+			<button type="button" class="btn btn-secondary" style="float: right"
+			name="tipswrite" id="tipswrite">작성하기</button>
+		</div>
       </div>
 
-      <button type="button" class="btn btn-secondary" style="float: right"
-         name="tipswrite" id="tipswrite">작성하기</button>
+      
 
 
 

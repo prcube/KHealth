@@ -184,7 +184,7 @@
 													<!-- Comment form-->
 													<form class="mb">
 														<textarea class="form-control" rows="3"
-															placeholder="Join the discussion and leave a comment!"
+															placeholder="댓글을 작성해주세요!"
 															id=comments name=comments></textarea>
 													</form>
 													<br>
