@@ -94,7 +94,7 @@ body {
 											<input type="text" id="ID" name="ID"
 												class="form-control form-control-lg"
 												placeholder="아이디를 입력해 주세요" />
->>>>>>> 791d289e522afa0c4790e4cb7ea3acdd4f44c896
+
 
 										</div>
 
