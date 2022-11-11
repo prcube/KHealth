@@ -55,7 +55,6 @@ public class QnaCommentsController extends HttpServlet {
 			}else if(uri.equals("/update.comments")) {
 				try {
 					
-					
 					String qnaCms_writer = (String)(request.getSession().getAttribute("loginID"));
 					int qnaCms_seq = Integer.parseInt(request.getParameter("qnaCms_seq"));
 					String qnaCms_contents = request.getParameter("contentsComments");
@@ -67,14 +66,7 @@ public class QnaCommentsController extends HttpServlet {
 					e.printStackTrace();
 					
 				}
-				
-				
-				
-				
-				
-				
-				
-				
+		
 			}
 			
 			

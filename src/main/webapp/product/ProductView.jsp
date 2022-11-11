@@ -39,7 +39,7 @@
 
 <body class="d-flex flex-column h-100">
    <main class="flex-shrink-0">
-      <form id="buyFrm" method="post" id="productFrm">
+      <form id="buyFrm" method="post" >
          <!-- Navigation-->
          <nav
             class="navbar navbar-expand-lg navbar-dark bg-dark position: fixed; top: 0px;">
@@ -85,6 +85,7 @@
 
 
          <!-- Product section-->
+         <input type = "hidden" value = "${dto.product_seq }" name="product_seqForWishlist">
 		<input type = "hidden" value = "${dto.product_name }" name="product_nameForWishlist">
 		<input type = "hidden" value = "${dto.product_price }" name="product_priceForWishlist">
          <section class="py-5">
@@ -247,8 +248,10 @@
     		  }
     		  
     	  }else{
-        	  $("#productFrm").attr("action", "/add.wish");
-        	  $("#productFrm").submit();
+    		  
+        	  $("#buyFrm").attr("action", "/add.wish");
+        	  $("#buyFrm").submit();
+        	  
     	  }
 
       })

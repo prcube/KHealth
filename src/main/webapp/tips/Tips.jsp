@@ -88,22 +88,22 @@ a {
 			<li class="nav-item" role="presentation">
 				<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
 					data-bs-target="#home-tab-pane" type="button" role="tab"
-					aria-controls="home-tab-pane" aria-selected="true">가슴</button>
+					aria-controls="home-tab-pane" aria-selected="true">가슴 운동</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="profile-tab" data-bs-toggle="tab"
 					data-bs-target="#profile-tab-pane" type="button" role="tab"
-					aria-controls="profile-tab-pane" aria-selected="false">등</button>
+					aria-controls="profile-tab-pane" aria-selected="false">등 운동</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="contact-tab" data-bs-toggle="tab"
 					data-bs-target="#contact-tab-pane" type="button" role="tab"
-					aria-controls="contact-tab-pane" aria-selected="false">하체</button>
+					aria-controls="contact-tab-pane" aria-selected="false">하체 운동</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="disabled-tab" data-bs-toggle="tab"
 					data-bs-target="#disabled-tab-pane" type="button" role="tab"
-					aria-controls="disabled-tab-pane" aria-selected="false">어깨</button>
+					aria-controls="disabled-tab-pane" aria-selected="false">어깨 운동</button>
 			</li>
 		</ul>
 
@@ -124,8 +124,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list1}">
+								<c:forEach var="i" items="${list1}">
 									<tbody>
 										<tr>
 											<td>
@@ -172,8 +172,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list2}">
+								<c:forEach var="i" items="${list2}">
 									<tbody>
 										<tr>
 											<td>
@@ -218,8 +218,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list3}">
+								<c:forEach var="i" items="${list3}">
 									<tbody>
 										<tr>
 											<td>
@@ -264,8 +264,8 @@ a {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${not empty list}">
-								<c:forEach var="i" items="${list}">
+							<c:when test="${not empty list4}">
+								<c:forEach var="i" items="${list4}">
 									<tbody>
 										<tr>
 											<td>
@@ -303,7 +303,9 @@ a {
 
 
 
-
+	<div class="row mb-3">
+		<div class="col" style="text-align: center;">${navi }</div>
+	</div>
 
 		<script>
 			$("#tipswrite").hide();
@@ -317,11 +319,9 @@ a {
 			})
 		</script>
 
-	</main>
-	<div class="row mb-3">
-		<div class="col" style="text-align: center;">${navi }</div>
-	</div>
+	
 
+</main>
 
 	<!-- Footer-->
 	<footer class="bg-dark py-4 mt-auto ">

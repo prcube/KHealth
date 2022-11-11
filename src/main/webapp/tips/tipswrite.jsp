@@ -81,12 +81,12 @@
 				</div>
 
 				<div class="row">
-					<select class="form-select" aria-label="Default select example">
+					<select class="form-select" aria-label="Default select example"  name="tips_bullet" id="tips_bullet">
 						<option selected>Open this select menu</option>
-						<option value="1">한호</option>
-						<option value="2">화</option>
-						<option value="3">이</option>
-						<option value="4">팅</option>
+						<option value="가슴">가슴</option>
+						<option value="등">등</option>
+						<option value="하체">하체</option>
+						<option value="어깨">어깨</option>
 					</select>
 				</div>
 
