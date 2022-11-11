@@ -19,6 +19,11 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 </head>
 <style>
@@ -81,7 +86,8 @@
 				</div>
 
 				<div class="row">
-					<select class="form-select" aria-label="Default select example"  name="tips_bullet" id="tips_bullet">
+					<select class="form-select" aria-label="Default select example"
+						name="tips_bullet" id="tips_bullet">
 						<option selected>Open this select menu</option>
 						<option value="가슴">가슴</option>
 						<option value="등">등</option>
@@ -97,12 +103,16 @@
 							placeholder="제목을 입력하세요.">
 					</div>
 				</div>
-
+				<textarea class="form-control" name="tips_contents"
+					id="tips_contents" id="exampleFormControlTextarea1" rows="10"
+					placeholder="내용을 입력하세요.">
+               </textarea>
+				<div class="row mt-3 ">
+					<form>
+						<input type=file>
+					</form>
+				</div>
 				<div class="form-group">
-
-					<textarea class="form-control" name="tips_contents"
-						id="tips_contents" id="exampleFormControlTextarea1" rows="10"
-						placeholder="내용을 입력하세요."></textarea>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
 			</div>
@@ -115,14 +125,61 @@
 			$("#tipsback").on("click", function() {
 				location.href = "/list.tips?cpage=1"
 			})
-			
+
+			$('#tips_contents')
+					.summernote(
+							{
+								callbacks : {
+									onImageUpload : function(files, editor) {
+										//에디터 이미지 업로드 기능
+										console.log(files);
+
+										var data = new FormData();
+										// 
+										data.append('imgFile', files[0]);
+										$.ajax({
+											url : 'upload.file',
+											type : 'post',
+											data : data,
+											enctype : 'multipart/form-data',
+											contentType : false, // 
+											processData : false
+										// 
+										}).done(
+												function(resp) {
+
+													var imgNode = $("<img>");
+													imgNode.attr("src", resp);
+
+													$(".note-editable").append(
+															imgNode);
+												}).fail(function(a, b, c) {
+											console.log(a);
+											console.log(b);
+											console.log(c);
+										});
+									}
+								},
+
+								placeholder : '내용을 입력하세요.',
+								tabsize : 2,
+								height : 400,
+								toolbar : [
+										[ 'style', [ 'style' ] ],
+										[
+												'font',
+												[ 'bold', 'undeerline', 'clear' ] ],
+										[ 'color', [ 'color' ] ],
+										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+										[ 'table', [ 'table' ] ],
+										[ 'insert',
+												[ 'link', 'picture', 'video' ] ],
+										[
+												'view',
+												[ 'fullscreen', 'codeview',
+														'help' ] ] ]
+							});
 		</script>
-
-
-
-
-
-
 
 
 
