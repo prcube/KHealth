@@ -29,11 +29,10 @@ a {
 }
 
 .board-border {
-	border: 2px solid #212529;
+	border: 1px solid #212529;
 	padding: 0%;
 	margin-top: 3%;
 	margin-bottom: 3%;
-	border-radius: 0.5rem;
 	background: #fff;
 }
 
@@ -105,7 +104,7 @@ a {
 			
 			<hr class="mb-4">
 
-			<div class="container board-border ">
+			<div class="container board-border border-start-0 border-end-0">
 				<table class="table align-middle mb-0 bg-white">
 					<!-- 		<thead class="bg-light"> -->
 					<thead class="bg-light">

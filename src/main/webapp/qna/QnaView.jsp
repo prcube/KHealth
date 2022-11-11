@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
@@ -38,7 +39,20 @@
 	border-radius: 0.5rem;
 	background: #fff;
 }
+
+.title {
+	display: block;
+	width: 100%;
+	padding: 0.75rem 0;;
+	margin-bottom: 0;
+	line-height: 1.5;
+	color: black;
+	background-color: transparent;
+	border: solid transparent;
+	border-width: 1px 0;
+}
 </style>
+
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
@@ -73,8 +87,7 @@
 		</nav>
 
 
-		<!--write  -->
-		<br> <br> <br> <br>
+
 
 		<form action="/write.qna" method="post">
 
@@ -82,42 +95,34 @@
 
 			<div class="container board-border px-3">
 				<div class="row">
-					<div class=" mt-4 mb-5">
-						<h1>게시판 글쓰기</h1>
-						
+					<div class=" mt-4 mb-2">
+						<h1>QNA 글쓰기</h1>
 						<hr class="mb-4">
 					</div>
-
 				</div>
 
-				<div class="row">
-					<select class="form-select" aria-label="Default select example">
-						<option selected>Open this select menu</option>
-						<option value="1">한호</option>
-						<option value="2">화</option>
-						<option value="3">이</option>
-						<option value="4">팅</option>
-					</select>
-				</div>
-
-
-
-
-				<div class="form-group row">
+				<div class="form-group row py-3 ">
 					<div class="col-sm">
-						<input type="text" id="qna_title" class="form-control-plaintext"
-							name="qna_title" placeholder="제목을 입력하세요."> <input
-							type="hidden" id="qna_write_date" name="qna_write_date">
+						<input type="text" id="qna_title" class="title" name="qna_title"
+							placeholder="   제목을 입력하세요."
+							style="border: solid 1px; border-color: gray; border-radius: 0.5rem;">
+						<input type="hidden" id="qna_write_date" name="qna_write_date">
 					</div>
 				</div>
-				<div class="form-group">
-					<form>
-						<input type=file>
-					</form>
+				<div class="form-group ">
+
+
+
+
 					<textarea class="form-control" name="qna_contents"
 						id="qna_contents" id="exampleFormControlTextarea1" rows="10"
 						placeholder="내용을 입력하세요.">
                </textarea>
+					<div class="row mt-3 ">
+						<form>
+							<input type=file>
+						</form>
+					</div>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
 				<div class="mt-3 mb-3 d-flex justify-content-end">
@@ -125,21 +130,21 @@
 					<button type="button" class="btn btn-secondary" id="back">목록으로</button>
 				</div>
 			</div>
-			
-			
+
+
 		</form>
 
 
 		<script>
-			$("#back").on("click", function() {
-				location.href = "QnaDummy.jsp"
-			})
-			//서머노트 
-			$('#qna_contents')
-					.summernote(
+					$("#back").on("click", function () {
+						location.href = "QnaDummy.jsp"
+					})
+					//서머노트 
+					$('#qna_contents')
+						.summernote(
 							{
-								callbacks : {
-									onImageUpload : function(files, editor) {
+								callbacks: {
+									onImageUpload: function (files, editor) {
 										//에디터 이미지 업로드 기능
 										console.log(files);
 
@@ -147,48 +152,48 @@
 										// 
 										data.append('imgFile', files[0]);
 										$.ajax({
-											url : 'upload.file',
-											type : 'post',
-											data : data,
-											enctype : 'multipart/form-data',
-											contentType : false, // 
-											processData : false
-										// 
+											url: 'upload.file',
+											type: 'post',
+											data: data,
+											enctype: 'multipart/form-data',
+											contentType: false, // 
+											processData: false
+											// 
 										}).done(
-												function(resp) {
+											function (resp) {
 
-													var imgNode = $("<img>");
-													imgNode.attr("src", resp);
+												var imgNode = $("<img>");
+												imgNode.attr("src", resp);
 
-													$(".note-editable").append(
-															imgNode);
-												}).fail(function(a, b, c) {
-											console.log(a);
-											console.log(b);
-											console.log(c);
-										});
+												$(".note-editable").append(
+													imgNode);
+											}).fail(function (a, b, c) {
+												console.log(a);
+												console.log(b);
+												console.log(c);
+											});
 									}
 								},
 
-								placeholder : '내용을 입력하세요.',
-								tabsize : 2,
-								height : 400,
-								toolbar : [
-										[ 'style', [ 'style' ] ],
-										[
-												'font',
-												[ 'bold', 'undeerline', 'clear' ] ],
-										[ 'color', [ 'color' ] ],
-										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-										[ 'table', [ 'table' ] ],
-										[ 'insert',
-												[ 'link', 'picture', 'video' ] ],
-										[
-												'view',
-												[ 'fullscreen', 'codeview',
-														'help' ] ] ]
+								placeholder: '내용을 입력하세요.',
+								tabsize: 2,
+								height: 400,
+								toolbar: [
+									['style', ['style']],
+									[
+										'font',
+										['bold', 'undeerline', 'clear']],
+									['color', ['color']],
+									['para', ['ul', 'ol', 'paragraph']],
+									['table', ['table']],
+									['insert',
+										['link', 'picture', 'video']],
+									[
+										'view',
+										['fullscreen', 'codeview',
+											'help']]]
 							});
-		</script>
+				</script>
 
 	</main>
 
@@ -225,4 +230,5 @@
 	<script src="/js/scripts.js"></script>
 
 </body>
+
 </html>
