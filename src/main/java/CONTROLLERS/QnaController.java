@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import DAO.MembersDAO;
+import DAO.MypageAjaxDAO;
 import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
 import DTO.MemberDTO;
@@ -74,7 +78,7 @@ public class QnaController extends HttpServlet {
 					response.sendRedirect("/error.jsp");
 				}
 
-				//게시판 1페이지로 이동
+
 
 			}else if(uri.equals("/detail.qna")) {
 
@@ -122,29 +126,23 @@ public class QnaController extends HttpServlet {
 
 				response.sendRedirect("/list.qna?cpage=1");	
 
-				//         }else if(uri.equals("/detail.board")) {
-				//
-				//            int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
-				//            QnaDTO dto = QnaDAO.getInstance().selectBySeq(qna_seq);
-				//
-				//            QnaDAO.getInstance().addViewCount(qna_seq);
-				//            //조회수를 증가시키는 기능
-				//            
-				////            List<CommentsDTO> list = CommentsDAO.getInstance().selectByParentSeq(qna_seq);
-				//            //DB에서 comments 데이터를 가져오는 것
-				//            //댓글이 여러개 일 수 있으니 List를 사용하자
-				//            
-				//            request.setAttribute("dto", dto);
-				////            request.setAttribute("comments", list);
-				//            request.getRequestDispatcher("/qna/detailView.jsp").forward(request, response);   
-			}else if(uri.equals("/search.qna")) {
+   
+			}else if(uri.equals("/searchAjax.qna")) {
 				
-				String qna_title = request.getParameter("qna_title");
-				System.out.println(qna_title);
-				List<QnaDTO> list = QnaDAO.getInstance().search(qna_title);
+				JsonObject total = new JsonObject();
 				
-				request.setAttribute("list", list);
-				request.getRequestDispatcher("/qna/QnaSearch.jsp").forward(request, response);
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				String loginID = (String)request.getSession().getAttribute("loginID");
+
+				List<QnaCommentsDTO> list = MypageAjaxDAO.getInstance().selectByRange(loginID,cpage*10-9,cpage*10);
+				//List<QnaDTO> list = QnaDAO.getInstance().search(qna_title);
+				String navi = MypageAjaxDAO.getInstance().getPageNavi(cpage);
+
+				total.addProperty("navi",new Gson().toJson(navi));
+				total.addProperty("list",new Gson().toJson(list));
+				response.setContentType("text/html;charset=utf8");
+				
+				response.getWriter().append(total.toString());
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
