@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>K-Health</title>
@@ -14,31 +14,30 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet" />
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+   rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js">
-	
+   
 </script>
 </head>
 <style>
 a {
-	text-decoration: none;
-	color: black;
+   text-decoration: none;
+   color: black;
 }
 
 .board-border {
-	border: 2px solid #212529;
+	border: 1px solid #212529;
 	padding: 0%;
 	margin-top: 3%;
 	margin-bottom: 3%;
-	border-radius: 0.5rem;
 	background: #fff;
 }
 
 .table {
-	border-radius: 0.5rem;
+   border-radius: 0.5rem;
 }
 </style>
 <body class="d-flex flex-column h-100">
@@ -88,21 +87,29 @@ a {
 			</c:choose>
 		</nav>
 
-
 		<div class="container">
 			<div class="row mt-5">
+			<h1>QNA 게시판</h1>
 				<div class="search ">
-					<form action="/search.qna" style="float: right">
+					<form action="" style="float: right">
 						<div class="input-group">
-							<input type=text class="form-control" name=qna_title
+							<input type=text class="form-control" id = searchTitle name = searchTitle
 								placeholder="검색">
-							<button class="btn btn-secondary btn-sm">검색</button>
+							<button class="btn btn-secondary btn-sm" type=button id="searchBtn">검색</button>
 						</div>
 					</form>
+					<script>
+						$("#searchBtn").on("click",function(){
+							$(this).parent().parent().parent().parent().next("div").find("tbody").css("display","none")
+
+							})
+					</script>
 				</div>
 			</div>
+			
+			<hr class="mb-4">
 
-			<div class="container board-border ">
+			<div class="container board-border border-start-0 border-end-0">
 				<table class="table align-middle mb-0 bg-white">
 					<!-- 		<thead class="bg-light"> -->
 					<thead class="bg-light">
@@ -115,15 +122,20 @@ a {
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="i" items="${list }">
+						<c:forEach var="i" items="${list }" varStatus="status">
 							<tr>
 								<td>${i.qna_seq }</td>
-								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }</a></td>
+								
+								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }&nbsp&nbsp&nbsp[${list1[status.index].numberOfComment}]</a></td>
+								
 								<td>${i.qna_nickname }</td>
 								<td>${i.formedDate }</td>
 								<td>${i.qna_view_count }</td>
+								
 							</tr>
 						</c:forEach>
+						
+				
 					</tbody>
 				</table>
 			</div>
@@ -200,8 +212,6 @@ a {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
-
-
 
 </body>
 
