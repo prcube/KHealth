@@ -20,12 +20,14 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+<script src="https://code.jquery.com/jquery-3.6.1.js">
+	
+</script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
 	integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
 	crossorigin="anonymous"></script>
 <script>
-  Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
+	Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
@@ -33,6 +35,13 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
+<style>
+body {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("/image/loginbg.jpg");
+	background-size: cover;
+}
+</style>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
@@ -66,143 +75,143 @@
 				</div>
 			</div>
 		</nav>
-		
-<!-- 로그인 파트 -->
-		<form action="/login.mem" method=post>
-			<section class="vh-100">
-				<div class="container py-5 h-100">
-					<div
-						class="row d-flex justify-content-center align-items-center h-100">
-						<div class="col-12 col-md-8 col-lg-6 col-xl-5">
-							<div class="card shadow-2-strong" style="border-radius: 1rem;">
-								<div class="card-body p-5 text-center">
 
-									<h3 class="mb-5">로그인</h3>
+		<!-- 로그인 파트 -->
+		<div class=container>
+			<form action="/login.mem" method=post>
+				<section class="">
+					<div class="container py-5 h-100">
+						<div
+							class="row d-flex justify-content-center align-items-center h-100">
+							<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+								<div class="card shadow-2-strong" style="border-radius: 1rem;">
+									<div class="card-body p-5 text-center">
 
-									<div class="form-outline mb-4">
-										<input type="text" id="ID" name="ID"
-											class="form-control form-control-lg"
-											placeholder="아이디를 입력해 주세요" />
+										<h3 class="mb-5">로그인</h3>
 
-									</div>
+										<div class="form-outline mb-4">
+											<input type="text" id="ID" name="ID"
+												class="form-control form-control-lg"
+												placeholder="아이디를 입력해 주세요" />
 
-									<div class="form-outline mb-4">
-										<input type="password" id="passwd" name="passwd"
-											class="form-control form-control-lg"
-											placeholder="패스워드를 입력해 주세요" />
-									</div>
+										</div>
 
-									<!-- Checkbox -->
-									<div class="form-check d-flex justify-content-start mb-4">
-										<label class="form-check-label" for="form1Example3">암호
-											기억하기 </label>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <input
-											class="form-check-input" type="checkbox" value=""
-											id="form1Example3" />
-									</div>
+										<div class="form-outline mb-4">
+											<input type="password" id="passwd" name="passwd"
+												class="form-control form-control-lg"
+												placeholder="패스워드를 입력해 주세요" />
+										</div>
 
-									<button class="btn btn-primary btn-lg btn-block" type="submit"
-										style="width: 100%;">로그인</button>
-									<br> <br>
-									<div>
-										<a href="SigninDummy.jsp">
-											<button type="button" class="btn text-secondary">회원가입</button>
+										<!-- Checkbox -->
+										<div class="form-check d-flex justify-content-start mb-4">
+											<label class="form-check-label" for="form1Example3">암호
+												기억하기 </label>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <input
+												class="form-check-input" type="checkbox" value=""
+												id="form1Example3" />
+										</div>
+
+										<button class="btn btn-primary btn-lg btn-block" type="submit"
+											id="logcheck" style="width: 100%;">로그인</button>
+										<br> <br>
+										<div>
+											<a href="SigninDummy.jsp">
+												<button type="button" class="btn text-secondary">회원가입</button>
+											</a>
+
+											<button type="button" class="btn text-secondary">아이디
+												찾기</button>
+										</div>
+
+										<hr class="my-4">
+
+										<a id="kakao-login-btn" href="javascript:loginWithKakao();" style="width:100%">
+											<img
+											src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+											width="222" alt="카카오 로그인 버튼" />
 										</a>
-
-										<button type="button" class="btn text-secondary">아이디
-											찾기</button>
+										<p id="token-result"></p>
+										<div id="naver_id_login"></div>
 									</div>
-
-									<hr class="my-4">
-									
-									<a id="kakao-login-btn" href="javascript:loginWithKakao();">
-										<img
-										src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-										width="222" alt="카카오 로그인 버튼" />
-									</a>
-									<p id="token-result"></p>
-									<div id="naver_id_login"></div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
-		</form>
-
-<!-- NaverLogin -->
-<script type="text/javascript">
-  	var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA", "http://127.0.0.1/");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("green", 3,40);
-  	naver_id_login.setDomain("http://localhost/login/LoginDummy.jsp");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-  </script>
-
-
-
-		<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
-			integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
-			crossorigin="anonymous"></script>
-		<script>
-  Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
-</script>
-
-		<script>
-// 		let target = $("#token-result").val();
-// 		$.ajax({
-// 			url : '/KakaoLoginAjaxController',
-// 			data : "target="+target+"",
-// 			dataType : "json" 
-// 		})
-
- function loginWithKakao() {
-    Kakao.Auth.authorize({
-      redirectUri: 'http://127.0.0.1/test.jsp',
-      state: 'userme',
-    });
-  }
-
-  // 아래는 데모를 위한 UI 코드입니다.
-  displayToken()
-  function displayToken() {
-    var token = getCookie('authorize-access-token');
-
-    if(token) {
-      Kakao.Auth.setAccessToken(token);
-      document.querySelector('#token-result').innerText = 'login success, ready to request API';
-      document.querySelector('button.api-btn').style.visibility = 'visible';
-    }
-  }
-    
-  function getCookie(name) {
-    var parts = document.cookie.split(name + '=');
-    if (parts.length === 2) { return parts[1].split(';')[0]; }
-  }
-  
-  
-//   Kakao.API.request({
-//   	  url: '/v2/user/me',
-//   	  data: {
-//   	    property_keys: ['kakao_account.email', 'profile_nickname'],
-//   	  },
-//   	})
-//   	  .then(function(response) {
-//   		  console.log("난 살아있다..");
-//   	    console.log(response);
-//   	  })
-//   	  .catch(function(error) {
-//   		console.log("나도 살아있다..");
-//   	    console.log(error);
-//   	  });
-  
- 
-
-
-</script>
-
+				</section>
+			</form>
+		</div>
 	</main>
+	<!-- NaverLogin -->
+	<script type="text/javascript">
+		var naver_id_login = new naver_id_login("_5b0QUYbnHTk93odBRsA",
+				"http://127.0.0.1/");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("green", 3, 40);
+		naver_id_login.setDomain("http://localhost/login/LoginDummy.jsp");
+		naver_id_login.setState(state);
+		naver_id_login.setPopup();
+		naver_id_login.init_naver_id_login();
+	</script>
+
+
+
+	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
+		integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
+		crossorigin="anonymous"></script>
+	<script>
+		Kakao.init('2644b324a18137f288c55737e196f4ac'); // 사용하려는 앱의 JavaScript 키 입력
+	</script>
+
+	<script>
+		// 		let target = $("#token-result").val();
+		// 		$.ajax({
+		// 			url : '/KakaoLoginAjaxController',
+		// 			data : "target="+target+"",
+		// 			dataType : "json" 
+		// 		})
+
+		function loginWithKakao() {
+			Kakao.Auth.authorize({
+				redirectUri : 'http://127.0.0.1/test.jsp',
+				state : 'userme',
+			});
+		}
+
+		// 아래는 데모를 위한 UI 코드입니다.
+		displayToken()
+		function displayToken() {
+			var token = getCookie('authorize-access-token');
+
+			if (token) {
+				Kakao.Auth.setAccessToken(token);
+				document.querySelector('#token-result').innerText = 'login success, ready to request API';
+				document.querySelector('button.api-btn').style.visibility = 'visible';
+			}
+		}
+
+		function getCookie(name) {
+			var parts = document.cookie.split(name + '=');
+			if (parts.length === 2) {
+				return parts[1].split(';')[0];
+			}
+		}
+
+		//   Kakao.API.request({
+		//   	  url: '/v2/user/me',
+		//   	  data: {
+		//   	    property_keys: ['kakao_account.email', 'profile_nickname'],
+		//   	  },
+		//   	})
+		//   	  .then(function(response) {
+		//   		  console.log("난 살아있다..");
+		//   	    console.log(response);
+		//   	  })
+		//   	  .catch(function(error) {
+		//   		console.log("나도 살아있다..");
+		//   	    console.log(error);
+		//   	  });
+	</script>
+
+
 
 
 

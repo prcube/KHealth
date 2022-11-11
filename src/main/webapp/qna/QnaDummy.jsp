@@ -29,12 +29,11 @@ a {
 }
 
 .board-border {
-   border: 2px solid #212529;
-   padding: 0%;
-   margin-top: 3%;
-   margin-bottom: 3%;
-   border-radius: 0.5rem;
-   background: #fff;
+	border: 1px solid #212529;
+	padding: 0%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	background: #fff;
 }
 
 .table {
@@ -90,6 +89,7 @@ a {
 
 		<div class="container">
 			<div class="row mt-5">
+			<h1>QNA 게시판</h1>
 				<div class="search ">
 					<form action="" style="float: right">
 						<div class="input-group">
@@ -106,8 +106,10 @@ a {
 					</script>
 				</div>
 			</div>
+			
+			<hr class="mb-4">
 
-			<div class="container board-border ">
+			<div class="container board-border border-start-0 border-end-0">
 				<table class="table align-middle mb-0 bg-white">
 					<!-- 		<thead class="bg-light"> -->
 					<thead class="bg-light">
