@@ -49,7 +49,7 @@ public class QnaController extends HttpServlet {
 				QnaDAO dao = QnaDAO.getInstance();
 				//List<QnaDTO> list = dao.selectAll();
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
-				List<QnaDTO> list1 = dao.replycount();
+				List<QnaDTO> list1 = dao.replycount(cpage*10-9,cpage*10);
 				System.out.println(list1);
 			
 				
@@ -70,7 +70,7 @@ public class QnaController extends HttpServlet {
 					String qna_title = request.getParameter("qna_title");
 					String qna_contents = request.getParameter("qna_contents");
 					QnaDAO dao = QnaDAO.getInstance();
-					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0, qna_nickname,0,0);
+					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0, qna_nickname,0,0,0);
 					dao.write(dto);
 
 					response.sendRedirect("/list.qna?cpage=1");

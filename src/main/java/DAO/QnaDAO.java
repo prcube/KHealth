@@ -84,7 +84,7 @@ public class QnaDAO {
             int qna_view_count = rs.getInt("qna_view_count");
             String qna_nickname = rs.getString("qna_nickname");
             int qna_thumbsup = rs.getInt("qna_thumbsup");
-           QnaDTO dto = new QnaDTO(qna_seq, qna_title, qna_writer,qna_contents,qna_write_date,qna_view_count,qna_nickname,0,qna_thumbsup); 
+           QnaDTO dto = new QnaDTO(qna_seq, qna_title, qna_writer,qna_contents,qna_write_date,qna_view_count,qna_nickname,0,qna_thumbsup,0); 
             
            return dto;
          }
@@ -273,12 +273,20 @@ public class QnaDAO {
 		con.commit();
 		return result;
 	}
-}public List<QnaDTO> replycount() throws Exception {
-    String sql = "select q.*,(select count(*) from qnaComments r where r.qnaCms_parent_seq = q.qna_seq) as replyCount from qna q";
+}public List<QnaDTO> replycount(int start , int end) throws Exception {
+    String sql = "select * from \r\n"
+    		+ "(select \r\n"
+    		+ "    qna.*, \r\n"
+    		+ "    row_number() over(order by qna_seq desc) rn, \r\n"
+    		+ "    (select count(*) from qnacomments where qnacms_parent_seq=qna_seq) replycount\r\n"
+    		+ "from qna) \r\n"
+    		+ "where rn between ? and ?";
     
     
     try(Connection con = this.getConnection();
           PreparedStatement pstat = con.prepareStatement(sql);) {
+        pstat.setInt(1, start);
+        pstat.setInt(2, end);
        ResultSet rs = pstat.executeQuery();
        List<QnaDTO> list1 = new ArrayList<>();
        while(rs.next()) {
@@ -298,7 +306,7 @@ public class QnaDAO {
           
          // System.out.println(dto.getQna_seq());
          // System.out.println(dto.getQna_title());
-          //System.out.println(rs.getInt("replycount"));
+          System.out.println(rs.getInt("replycount"));
        }
        return list1;
     }
