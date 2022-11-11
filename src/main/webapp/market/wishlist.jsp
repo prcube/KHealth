@@ -265,32 +265,46 @@
 	<script>
 		$(function() {
 			
-			let amount = document.getElementsByClassName("totalAmount");
-			let price = document.getElementsByClassName("totalPrice");
+			//let amount = document.getElementsByClassName("totalAmount");
+			//let price = document.getElementsByClassName("totalPrice");
+						let amount = $(".totalAmount");
+			let price = $(".totalPrice");
 			
+			let amountarr = [];
+			let pricearr = [];
 			
+			for(let i=0;i<amount.length;i++){
+				console.log(amount[i].value);
+				amountarr[i] = amount[i].value
+			}
 			
-			let target = amount[0].value
-			console.log(amount[0].value);
-			console.log(amount[1].value);
+		
 			
-				 	   
-			let jsonamount = JSON.stringfy(amount);
+			for(let j=0;j<price.length;j++){
+				console.log(price[j].innerText);
+				pricearr[j] = price[j].innerText;
+			}
+			
+			console.log(amountarr);
+			console.log(pricearr);
+			console.log("+++++++")
+			
+			let jsonamountarr = JSON.stringify(amountarr);
+			let jsonpricearr = JSON.stringify(pricearr); 
 			
 				 	   $.ajax({
 				 		 type:"post",
 				 		 url:"/wishlist.ajax",
 				 		 data : {
-					 			"amount" : jsonamount,
-					 			"price" : price
+					 			"amount" : jsonamountarr,
+					 			"price" : jsonpricearr
 					 	   },
-				 		 dataType:"json",
 				 		 success : function(resp){
 							console.log(resp);
 				 		 },
 				 		 error : function(resp){
 				 			 alert("에러 발생!");
-				 		 }
+				 		 },
 				 	   })
 		});
 	</script>

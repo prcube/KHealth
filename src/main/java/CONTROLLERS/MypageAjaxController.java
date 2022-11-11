@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import DAO.MypageAjaxDAO;
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
+
 
 @WebServlet("*.ajax")
 public class MypageAjaxController extends HttpServlet {
@@ -47,13 +50,31 @@ public class MypageAjaxController extends HttpServlet {
 		}
 		
 		if(uri.equals("/wishlist.ajax")) {
-			System.out.println("aa");
+			
+			Gson g = new Gson();
 			String amount = request.getParameter("amount");
 			String price = request.getParameter("price");
 			
 			System.out.println(amount);
 			System.out.println(price);
+//			System.out.println(amount);
+//			System.out.println(price);
+//
+//			amount = amount.replace("\"", "");
+//			amount = amount.replace("[", "");
+//			amount = amount.replace("]", "");
+//			System.out.println(amount);
+//			
+//			List<String> amountList = new ArrayList<String>(Arrays.asList(amount.split(",")));
+//			
+//			System.out.println(amountList);  
 			
+//			Gson g = new Gson();
+//			JsonParser parser = new JsonParser();
+//
+//			
+//			JsonArray arr = (JsonArray) parser.parse(amount);
+//			System.out.println(arr.get);	
 			response.getWriter().append("clear");
 		}
 		
