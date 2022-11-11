@@ -162,9 +162,9 @@ a {
 					</table>
 
 				</div>
-
-
-
+				<div class="row mb-3">
+					<div class="col" style="text-align: center;">${navi }</div>
+				</div>
 			</div>
 			<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
 				aria-labelledby="profile-tab" tabindex="0">
@@ -209,11 +209,10 @@ a {
 								</c:forEach>
 							</c:when>
 						</c:choose>
-
-
 					</table>
-
-
+				</div>
+				<div class="row mb-3">
+					<div class="col" style="text-align: center;">${navi }</div>
 				</div>
 			</div>
 			<div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
@@ -259,11 +258,10 @@ a {
 								</c:forEach>
 							</c:when>
 						</c:choose>
-
-
 					</table>
-
-
+				</div>
+				<div class="row mb-3">
+					<div class="col" style="text-align: center;">${navi }</div>
 				</div>
 			</div>
 			<div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel"
@@ -309,23 +307,18 @@ a {
 								</c:forEach>
 							</c:when>
 						</c:choose>
-
-
 					</table>
-
 				</div>
-
-
+				<div class="row mb-3">
+					<div class="col" style="text-align: center;">${navi }</div>
+				</div>
 			</div>
-		<div class="row mb-3">
-			<div class="col" style="text-align: center;">${navi }</div>
-		</div>
-		<div class="container ">
-			<button type="button" class="btn btn-secondary" style="float: right"
-				name="tipswrite" id="tipswrite">작성하기</button>
-		</div>
+			<div class="container ">
+				<button type="button" class="btn btn-secondary" style="float: right"
+					name="tipswrite" id="tipswrite">작성하기</button>
+			</div>
 
-		<script>
+			<script>
 			$("#tipswrite").hide();
 			console.log(${member_role});
 			if (${member_role}) {
@@ -336,9 +329,6 @@ a {
 				location.href = "/tips/tipswrite.jsp?cpage=1"
 			})
 		</script>
-
-
-
 	</main>
 
 	<!-- Footer-->
