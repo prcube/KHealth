@@ -317,13 +317,12 @@ a {
 
 
 			</div>
-			<div class="container ">
-				<button type="button" class="btn btn-secondary" style="float: right"
-					name="tipswrite" id="tipswrite">작성하기</button>
-			</div>
-		</div>
 		<div class="row mb-3">
 			<div class="col" style="text-align: center;">${navi }</div>
+		</div>
+		<div class="container ">
+			<button type="button" class="btn btn-secondary" style="float: right"
+				name="tipswrite" id="tipswrite">작성하기</button>
 		</div>
 
 		<script>
