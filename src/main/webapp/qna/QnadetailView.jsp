@@ -116,9 +116,15 @@
 									<div class="text-muted fst-italic mb-2">${dto.qna_write_date }</div>
 									<!-- Post categories-->
 									<button type="button" class="btn btn-secondary" id="back">목록으로</button>
+
+									<button type="button" id ="qnathumbsup" class = "btn-secondary">
+									<i class="bi bi-hand-thumbs-up"></i></button>
+
+									<button type="button" class="btn btn-secondary" id="update">수정</button>
+
 									<button type="button" class="btn btn-secondary" id="delete"
-										name="seq">삭제하기</button>
-									<button type="button" class="btn btn-secondary" id="update">수정하기</button>
+										name="seq">삭제</button>
+									
 								</header>
 								<!-- Preview image figure-->
 								<figure class="mb-4">
@@ -160,10 +166,9 @@
 														${list.qnaCms_write_date }</div>
 													<div class=QnaCmsArea name=qnaCms_contents>${list.qnaCms_contents }</div>
 													<c:if test="${loginID == list.qnaCms_writer }">
-														<button type=button class="deleteComments"
-															qnaCms_seq=${list.qnaCms_seq }>삭제</button>
-														<button type=button class="modifyComments"
-															id="modifyComments">수정하기</button>
+														<button type=button class="modifyComments" id="modifyComments">수정</button>
+														<button type=button class="deleteComments" qnaCms_seq=${list.qnaCms_seq }>삭제</button>
+
 													</c:if>
 												</div>
 											</div>
@@ -236,7 +241,7 @@
 	<script>
 	
 	
-	
+	//삭제하기
 	$(".deleteComments").on("click",function(){
 		let target = $(this).attr("qnaCms_seq");
 		location.href = "/delete.comments?qnaCms_seq="+target;
@@ -296,6 +301,10 @@
             	
             	$("#detailFrm").attr("action","/write.comments");
             	$("#detailFrm").submit();
+            })
+            
+            $("#qnathumbsup").on("click",function(){
+            	location.href = "/thumbsup.qna?cpage=1&qna_seq="+${dto.qna_seq}+""
             })
         
         </script>
