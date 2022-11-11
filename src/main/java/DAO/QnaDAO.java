@@ -45,6 +45,7 @@ public class QnaDAO {
           pstat.setInt(4,dto.getQna_view_count());
           pstat.setString(5, dto.getQna_nickname());         
           int result = pstat.executeUpdate();
+          con.setAutoCommit(false);
           con.commit();
           con.close();
           return result;
@@ -94,6 +95,7 @@ public class QnaDAO {
          pstat.setInt(1,qna_seq);
          
          int result = pstat.executeUpdate();
+         con.setAutoCommit(false);
          con.commit();
          
          return result;
@@ -106,6 +108,7 @@ public class QnaDAO {
          pstat.setString(2, qna_contents);
          pstat.setInt(3, qna_seq);
          int result = pstat.executeUpdate();
+         con.setAutoCommit(false);
          con.commit();
          return result;
       }
@@ -115,7 +118,9 @@ public class QnaDAO {
             PreparedStatement pstat = con.prepareStatement(sql);) {
          pstat.setInt(1, qna_seq);
          int result = pstat.executeUpdate();
+         con.setAutoCommit(false);
          con.commit();
+    
          return result;
          
       }

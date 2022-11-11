@@ -91,7 +91,7 @@ body {
 										<input type="text" id="ID" name="ID"
 											class="form-control form-control-lg"
 											placeholder="아이디를 입력해 주세요" />
-
+									
 									</div>
 
 									<div class="form-outline mb-4">
