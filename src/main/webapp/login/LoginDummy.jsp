@@ -87,12 +87,14 @@ body {
 								<div class="card shadow-2-strong" style="border-radius: 1rem;">
 									<div class="card-body p-5 text-center">
 
+
 										<h3 class="mb-5">로그인</h3>
 
 										<div class="form-outline mb-4">
 											<input type="text" id="ID" name="ID"
 												class="form-control form-control-lg"
 												placeholder="아이디를 입력해 주세요" />
+>>>>>>> 791d289e522afa0c4790e4cb7ea3acdd4f44c896
 
 										</div>
 

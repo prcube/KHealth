@@ -52,6 +52,7 @@ public class ProductReviewDAO {
 			int result = pstat.executeUpdate();
 			con.commit();
 			con.close();
+			con.setAutoCommit(false);
 			return result;
 		}
 	}
