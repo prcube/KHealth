@@ -87,6 +87,16 @@ public class QnaDTO {
 			return "방금 전";
 		}else if(gapTime < 300) {
 			return "5분 전";
+		}else if(gapTime < 360) {
+			return "6분 전";
+		}else if(gapTime < 420) {
+			return "7분 전";
+		}else if(gapTime < 480) {
+			return "8분 전";
+		}else if(gapTime < 540) {
+			return "9분 전";
+		}else if(gapTime < 600) {
+			return "10분 전";
 		}else if(gapTime < 3600) {
 			return "1시간 전";
 		}else if(gapTime < 7200) {

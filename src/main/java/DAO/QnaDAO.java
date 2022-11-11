@@ -237,29 +237,31 @@ public class QnaDAO {
          con.commit();
          return qna_seq;
    }
-}public List<QnaDTO> search(String qna_title) throws Exception {
-	String sql = "select * from qna where qna_title like ?";
-	try(Connection con = this.getConnection();
-			PreparedStatement pstat = con.prepareStatement(sql);){
-		pstat.setString(1, "%"+qna_title+"%");
-		try(ResultSet rs = pstat.executeQuery();){
-			List<QnaDTO> list = new ArrayList<>();
-			while(rs.next()) {
-				QnaDTO dto = new QnaDTO();
-				dto.setQna_seq(rs.getInt("qna_seq"));
-				dto.setQna_title(rs.getString("qna_title"));
-				dto.setQna_writer(rs.getString("qna_writer"));
-				dto.setQna_contents(rs.getString("qna_contents"));
-				dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
-				dto.setQna_view_count(rs.getInt("qna_view_count"));
-				dto.setQna_nickname(rs.getString("qna_nickname"));
-				list.add(dto);
-				
-			}
-			return list;
-		}
-	}
 }
+
+//   public List<QnaDTO> search(String title) throws Exception {
+//	   String sql = "select * from qna where qna_title like ?";
+//	   try(Connection con = this.getConnection();
+//			   PreparedStatement pstat = con.prepareStatement(sql);){
+//		   pstat.setString(1, "%"+qna_title+"%");
+//		   try(ResultSet rs = pstat.executeQuery();){
+//			   List<QnaDTO> list = new ArrayList<>();
+//			   while(rs.next()) {
+//				   QnaDTO dto = new QnaDTO();
+//				   dto.setQna_seq(rs.getInt("qna_seq"));
+//				   dto.setQna_title(rs.getString("qna_title"));
+//				   dto.setQna_writer(rs.getString("qna_writer"));
+//				   dto.setQna_contents(rs.getString("qna_contents"));
+//				   dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
+//				   dto.setQna_view_count(rs.getInt("qna_view_count"));
+//				   dto.setQna_nickname(rs.getString("qna_nickname"));
+//				   list.add(dto);
+//
+//			   }
+//			   return list;
+//		   }
+//	   }
+//   }
    
    
    
