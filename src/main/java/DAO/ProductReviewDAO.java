@@ -83,5 +83,24 @@ public class ProductReviewDAO {
 		}
 		
 	}
+	
+	public boolean selectBySeq(int product_seq) throws Exception{
+		String sql = "select * from product_review where productreview_seq =?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			pstat.setInt(1, product_seq);
+			
+			try(ResultSet rs = pstat.executeQuery();){
 
+				return rs.next();
+					
+				
+			}
+			
+
+			
+		}
+		
+	}
 }

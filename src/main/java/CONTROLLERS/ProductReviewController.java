@@ -44,6 +44,7 @@ public class ProductReviewController extends HttpServlet {
 				
 				int productseq = Integer.parseInt(request.getParameter("product_seq"));
 				
+				boolean isCommentAlreadyExist = dao.selectBySeq(productseq);
 				MemberDTO dto = dao2.selectById(writerid); 
 				String writercharacter = dto.getNickname();
 				
