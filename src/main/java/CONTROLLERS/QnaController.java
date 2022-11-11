@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.MembersDAO;
 import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
-import DTO.MemberDTO;
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
 
@@ -46,14 +45,16 @@ public class QnaController extends HttpServlet {
 				QnaDAO dao = QnaDAO.getInstance();
 				//List<QnaDTO> list = dao.selectAll();
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
-				
+				List<QnaDTO> list1 = dao.replycount();
+				System.out.println(list1);
+			
 				
 				boolean isInBlacklist = MembersDAO.getInstance().isInBlacklist(id);
 
 				request.setAttribute("list", list);
 				request.setAttribute("navi", navi);
 				request.setAttribute("isInBlacklist", isInBlacklist);
-
+				request.setAttribute("list1", list1);
 				request.getRequestDispatcher("/qna/QnaDummy.jsp").forward(request, response);
 
 
@@ -65,7 +66,7 @@ public class QnaController extends HttpServlet {
 					String qna_title = request.getParameter("qna_title");
 					String qna_contents = request.getParameter("qna_contents");
 					QnaDAO dao = QnaDAO.getInstance();
-					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0, qna_nickname,0);
+					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0, qna_nickname,0,0);
 					dao.write(dto);
 
 					response.sendRedirect("/list.qna?cpage=1");
@@ -145,6 +146,17 @@ public class QnaController extends HttpServlet {
 				
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/qna/QnaSearch.jsp").forward(request, response);
+			}else if (uri.equals("/thumbsup.qna")) {
+				QnaDAO dao = QnaDAO.getInstance();
+				
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				
+				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
+				
+				QnaDAO.getInstance().addthumbsupCount(qna_seq);
+				
+				request.getRequestDispatcher("/list.qna").forward(request, response);
+				
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

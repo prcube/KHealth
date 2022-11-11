@@ -12,12 +12,14 @@ public class QnaDTO {
    private int qna_view_count;
    private String qna_nickname;
    private int rn;
+   private int qna_thumbsup;
+   private int numberOfComment;
    
 
 
    public QnaDTO() {}
    public QnaDTO(int qna_seq, String qna_title, String qna_writer, String qna_contents, Timestamp qna_write_date,
-         int qna_view_count, String qna_nickname, int rn) {
+         int qna_view_count, String qna_nickname, int rn,int qna_thumbsup) {
       super();
       this.qna_seq = qna_seq;
       this.qna_title = qna_title;
@@ -27,6 +29,7 @@ public class QnaDTO {
       this.qna_view_count = qna_view_count;
       this.qna_nickname = qna_nickname;
       this.rn = rn;
+      this.qna_thumbsup = qna_thumbsup;
    }
    public int getQna_seq() {
       return qna_seq;
@@ -76,6 +79,19 @@ public class QnaDTO {
    public void setRn(int rn) {
 	   this.rn =rn;
    }
+   public int getQna_thumbsup() {
+	   return qna_thumbsup;
+   }
+   public void setQna_thumbsup(int qna_thumbsup) {
+	   this.qna_thumbsup = qna_thumbsup;
+   }
+   public int getNumberOfComment() {
+	   return numberOfComment;
+   }
+   public void setNumberOfComment(int numberOfComment) {
+	   this.numberOfComment = numberOfComment;
+   }
+   
    public String getFormedDate() {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
       long qna_writer_date = this.qna_write_date.getTime();
