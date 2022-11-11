@@ -74,10 +74,13 @@
 					<div class="col-5 mt-4 mb-5">
 						<h1>게시판 글쓰기</h1>
 					</div>
-					
+					<div class="col-5 mt-4 mb-5 ">
+						<button type="submit" class="btn btn-secondary" id="tipsinsert">글쓰기</button>
+						<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
+					</div>
 				</div>
 
-				<div class="COL">
+				<div class="row">
 					<select class="form-select" aria-label="Default select example"  name="tips_bullet" id="tips_bullet">
 						<option selected>Open this select menu</option>
 						<option value="가슴">가슴</option>
@@ -87,11 +90,11 @@
 					</select>
 				</div>
 
-				<div class="form-group row ">
-					<div class="col-sm py-3">
+				<div class="form-group row">
+					<div class="col-sm">
 						<input name="tips_title" id="tips_title"
 							class="form-control-plaintext" type="text"
-							placeholder="  제목을 입력하세요." style="border: solid 1px; border-color: gray; border-radius: 0.25rem;">
+							placeholder="제목을 입력하세요.">
 					</div>
 				</div>
 
@@ -101,10 +104,6 @@
 						id="tips_contents" id="exampleFormControlTextarea1" rows="10"
 						placeholder="내용을 입력하세요."></textarea>
 					<!-- <input type = file multiple name = "file"><br> -->
-				<div class="mt-3 mb-3 d-flex justify-content-end">
-						<button type="submit" class="btn btn-secondary me-2" id="tipsinsert">글쓰기</button>
-						<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
-					</div>
 				</div>
 			</div>
 		</form>
