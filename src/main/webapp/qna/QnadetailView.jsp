@@ -116,7 +116,12 @@
 									<div class="text-muted fst-italic mb-2">${dto.qna_write_date }</div>
 									<!-- Post categories-->
 									<button type="button" class="btn btn-secondary" id="back">목록으로</button>
+
+									<button type="button" id ="qnathumbsup" class = "btn-secondary">
+									<i class="bi bi-hand-thumbs-up"></i></button>
+
 									<button type="button" class="btn btn-secondary" id="update">수정</button>
+
 									<button type="button" class="btn btn-secondary" id="delete"
 										name="seq">삭제</button>
 									
@@ -296,6 +301,10 @@
             	
             	$("#detailFrm").attr("action","/write.comments");
             	$("#detailFrm").submit();
+            })
+            
+            $("#qnathumbsup").on("click",function(){
+            	location.href = "/thumbsup.qna?cpage=1&qna_seq="+${dto.qna_seq}+""
             })
         
         </script>
