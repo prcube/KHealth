@@ -35,6 +35,13 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 
+<style>
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+</style>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -112,24 +119,22 @@
 
 								<div class="row mb-2">
 									<div class="col">
-										<input type="number" name="amount" style="max-width: 3rem"
-											value="1" min="0">
-
-										<!-- 											<input type="button" value="+" -->
-										<!-- 											onClick="javascript:this.form.amount.value++;"> <input -->
-										<!-- 											type="button" value="-" onClick="javascript:this.form.amount.value--;"> -->
+										<input type="number" name="amount" id="amount"
+											onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+											style="max-width: 3rem" value="1" min="0">
 
 
 
-										<!--                         <button class="btn btn-outline-dark flex-shrink-0 me-1" type="button"  -->
-										<!--                           onClick="javascript:this.form.amount.value++;"> -->
-										<!--                           <i class="bi bi-plus-lg"></i> -->
-										<!--                         </button> -->
+										<button class="btn btn-outline-dark flex-shrink-0 me-1"
+											type="button" onClick="javascript:this.form.amount.value++;">
+											<i class="bi bi-plus-lg"></i>
+										</button>
 
-										<!--                           <button class="btn btn-outline-dark flex-shrink-0 me-1" type="button"  -->
-										<!--                             onClick="javascript:this.form.amount.value--;"> -->
-										<!--                             <i class="bi bi-dash-lg"></i> -->
-										<!--                           </button> -->
+										<button class="btn btn-outline-dark flex-shrink-0 me-1"
+											type="button"
+											onClick="javascript:isUnderZero();this.form.amount.value--;">
+											<i class="bi bi-dash-lg"></i>
+										</button>
 									</div>
 								</div>
 
@@ -278,11 +283,17 @@
             let loginplz = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.");
             if (loginplz) {
               location.href = "/login/LoginDummy.jsp";
-            } else {
+            }
+
+            else {
               return;
             }
 
-          } else {
+          }else if($("#amount").val()<=1){
+      		alert("수량을 확인해주세요.");
+    		return false;
+    	} 
+        else {
 
             $("#buyFrm").attr("action", "/add.wish");
             $("#buyFrm").submit();
@@ -297,30 +308,33 @@
             let loginplz = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.");
             if (loginplz) {
               location.href = "/login/LoginDummy.jsp";
-            } else {
+            }
+            else {
               return;
             }
 
-          } else {
+          }
+          else if($("#amount").val()==""){
+      		alert("수량을 확인해주세요.");
+      		return false;
+      	}          
+          else {
             $("#buyFrm").attr("action", "/item.buy?product_seq=" + ${ dto.product_seq } + "");
             $("#buyFrm").submit();
           }
         })
         
-        function minusAmount(){
+		function isUnderZero(){
+        	if($("#amount").val()<=1){
+        		alert("수량을 확인해주세요.");
+        		$("#amount").val()=2;
+        	}else{
+        		return;
+        	}
         	
-        	let target = $("input[name=amount]").val();
-        	console.log(target);
-        	target=target-1;
-        	
-//         	if(target==0){
-//         		continue;
-//         	}else{
-//         	target--;
-//         	}
-        	
-        	//this.form.amount.value--;
         }
+        
+
       </script>
 
 </body>

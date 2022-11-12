@@ -47,6 +47,12 @@
 .table {
 	border-radius: 0.5rem;
 }
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
@@ -129,17 +135,20 @@
 																<h6 class="text-black mb-0">${i.product_name }</h6>
 															</div>
 															<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-																<button class="btn btn-link px-2"
-																	onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-																	<i class="fas fa-minus"></i>
-																</button>
 
 																<input class="form1 totalAmount" min="0" name="quantity"
 																	value="${i.product_wish_count }" type="number"
 																	class="form-control form-control-sm" />
 
-																<button class="btn btn-link px-2"
-																	onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+																<button class="btn btn-link px-2 amountMinusBtn"
+																	style="background-color: red"
+																	onclick="this.parentNode.querySelector('input[type=number]').stepDown();javascript:refresh();">
+																	<i class="fas fa-minus"></i>
+																</button>
+
+																<button class="btn btn-link px-2 amountPlusBtn"
+																	style="background-color: blue"
+																	onclick="this.parentNode.querySelector('input[type=number]').stepUp();javascript:refresh();">
 																	<i class="fas fa-plus"></i>
 																</button>
 															</div>
@@ -167,8 +176,9 @@
 
 											<div class="pt-5">
 												<h6 class="mb-0">
-													<a href="#!" class="text-body"><i
-														class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
+													<a href="javascript:deleteAll();" class="text-body"><i
+														class="fas fa-long-arrow-alt-left me-2"
+														></i>장바구니 초기화</a>
 												</h6>
 											</div>
 										</div>
@@ -209,7 +219,7 @@
 
 											<div class="d-flex justify-content-between mb-5">
 												<h5 class="text-uppercase">Total price</h5>
-												<h5>€ 137.00</h5>
+												<h5 id="totalPriceArea">22</h5>
 											</div>
 
 											<button type="button" class="btn btn-dark btn-block btn-lg"
@@ -264,53 +274,155 @@
 
 	<script>
 		$(function() {
-			
+
 			//let amount = document.getElementsByClassName("totalAmount");
 			//let price = document.getElementsByClassName("totalPrice");
-						let amount = $(".totalAmount");
+			let amount = $(".totalAmount");
 			let price = $(".totalPrice");
-			
+
 			let amountarr = [];
 			let pricearr = [];
-			
-			for(let i=0;i<amount.length;i++){
+
+			for (let i = 0; i < amount.length; i++) {
 				console.log(amount[i].value);
 				amountarr[i] = amount[i].value
 			}
-			
-		
-			
-			for(let j=0;j<price.length;j++){
+
+			for (let j = 0; j < price.length; j++) {
 				console.log(price[j].innerText);
 				pricearr[j] = price[j].innerText;
 			}
-			
+
 			console.log(amountarr);
 			console.log(pricearr);
 			console.log("+++++++")
-			
+
 			let jsonamountarr = JSON.stringify(amountarr);
-			let jsonpricearr = JSON.stringify(pricearr); 
-			
-				 	   $.ajax({
-				 		 type:"post",
-				 		 url:"/wishlist.ajax",
-				 		 data : {
-					 			"amount" : jsonamountarr,
-					 			"price" : jsonpricearr
-					 	   },
-					 	  dataType : "json",
-				 		 success : function(resp){
-							console.log(resp);
-							console.log(resp.amountarr);
-							console.log(resp.pricearr);
-						
-				 		 },
-				 		 error : function(resp){
-				 			 alert("에러 발생!"); 
-				 		 },
-				 	   })
+			let jsonpricearr = JSON.stringify(pricearr);
+
+			$.ajax({
+				type : "post",
+				url : "/wishlist.ajax",
+				data : {
+					"amount" : jsonamountarr,
+					"price" : jsonpricearr
+				},
+				dataType : "json",
+				success : function(resp) {
+					let targetamountarr = JSON.parse(resp.amountarr);
+					let targetpricearr = JSON.parse(resp.pricearr);
+
+					let priceSum = 0;
+
+					for (let i = 0; i < targetamountarr.length; i++) {
+
+						priceSum += parseInt(targetamountarr[i].replace(/\,/g,
+								''), 10)
+								* parseInt(
+										targetpricearr[i].replace(/\,/g, ''),
+										10);
+						console.log(priceSum);
+					}
+
+					// 							for(let i=0;i<targetpricearr.length;i++){
+					// 								console.log(targetpricearr[i]);
+					// 							}
+
+					console.log("_---------");
+
+					//let sum0 = parseInt(targetamountarr[1].replace(/\,/g,''), 10)*parseInt(targetpricearr[1].replace(/\,/g,''), 10);
+
+					//console.log(sum0);	
+					let priceResult = priceSum.toString().replace(
+							/\B(?=(\d{3})+(?!\d))/g, ',');
+					$("#totalPriceArea").text(priceResult + " 원");
+				},
+				error : function(resp) {
+					alert("에러 발생!");
+				},
+			})
 		});
+
+
+		function refresh(){
+			console.log("refresh");
+			
+			let amount = $(".totalAmount");
+			let price = $(".totalPrice");
+
+			let amountarr = [];
+			let pricearr = [];
+
+			for (let i = 0; i < amount.length; i++) {
+				console.log(amount[i].value);
+				amountarr[i] = amount[i].value
+			}
+
+			for (let j = 0; j < price.length; j++) {
+				console.log(price[j].innerText);
+				pricearr[j] = price[j].innerText;
+			}
+
+			console.log(amountarr);
+			console.log(pricearr);
+			console.log("+++++++")
+
+			let jsonamountarr = JSON.stringify(amountarr);
+			let jsonpricearr = JSON.stringify(pricearr);
+			
+			$.ajax({
+				type : "post",
+				url : "/wishlist.ajax",
+				data : {
+					"amount" : jsonamountarr,
+					"price" : jsonpricearr
+				},
+				dataType : "json",
+				success : function(resp) {
+					let targetamountarr = JSON.parse(resp.amountarr);
+					let targetpricearr = JSON.parse(resp.pricearr);
+
+					let priceSum = 0;
+
+					for (let i = 0; i < targetamountarr.length; i++) {
+
+						priceSum += parseInt(targetamountarr[i].replace(/\,/g,
+								''), 10)
+								* parseInt(
+										targetpricearr[i].replace(/\,/g, ''),
+										10);
+						console.log(priceSum);
+					}
+
+					// 							for(let i=0;i<targetpricearr.length;i++){
+					// 								console.log(targetpricearr[i]);
+					// 							}
+
+					console.log("_---------");
+
+					//let sum0 = parseInt(targetamountarr[1].replace(/\,/g,''), 10)*parseInt(targetpricearr[1].replace(/\,/g,''), 10);
+
+					//console.log(sum0);	
+					let priceResult = priceSum.toString().replace(
+							/\B(?=(\d{3})+(?!\d))/g, ',');
+					$("#totalPriceArea").text(priceResult + " 원");
+				},
+				error : function(resp) {
+					alert("에러 발생!");
+				},
+			})
+		}
+		
+		function deleteAll(){
+			
+			let reallyDelete = confirm("정말로 장바구니 목록을 비우시겠습니까?");
+			
+			if(reallyDelete){
+				location.href = "/deleteall.wish";
+			}else{
+				return;
+			}
+		}
 	</script>
 </body>
 </html>
