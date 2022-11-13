@@ -473,10 +473,7 @@
                   src="/image/youtube.png" height="20px"> <span
                   class="/image/text-white mx-1">&middot;</span> <img
                   src="/image/twitter.png" height="20px">
-            </div>
-         </div>
-      </div>
-   </footer>
+
    <!-- Bootstrap core JS-->
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
