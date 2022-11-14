@@ -1,6 +1,8 @@
 package CONTROLLERS;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,9 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import DAO.ImagesDAO;
 import DAO.MembersDAO;
 import DAO.TipsDAO;
+import DAO.Tips_imagesDAO;
+import DTO.ImagesDTO;
 import DTO.TipsDTO;
+import DTO.Tips_imagesDTO;
 
 @WebServlet("*.tips")
 public class TIpsController extends HttpServlet {
@@ -28,15 +37,51 @@ public class TIpsController extends HttpServlet {
 		try {
 			
 			if(uri.equals("/insert.tips")) {
+				//여기부터 파일 업로드 하는 코드 
+				int maxSize = 1024 * 1024 * 10; // 업로드 하는 파일의 최대 사이즈
+
+				// 파일을 저장하는 경로는 절대경로인 getRealPath에 tips_images 라는 곳에다 저장하겠다 라는 것
+				String savePath = request.getServletContext().getRealPath("/tips_images"); // (webapp) 웹 앱 폴더를 말하는 것이다.
+
+				// 파일을 저장히기 위한 디렉토리(폴더)를 만드는 코드
+				File fileSavePath = new File(savePath);
+				System.out.println(savePath);
+				if (!fileSavePath.exists()) {
+					fileSavePath.mkdir(); // mkdir = make directory 파일을 만드는 명령어
+				}
+
+				// 멀티파트 폼 데이터로 넘어온 파일을 MultipartRequest로 업그레이드 시켜주는 코드
+				// 멀티 파트로 업그레이트 시킨다음에는 request.getparameter로 값을 꺼내는것이 아니라 multi.getparameter로
+				// 꺼내야한다.
+				
+				//바로 순서대로 저장한다는 코드
+				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8",
+						new DefaultFileRenamePolicy());
+
+				Enumeration<String> e = multi.getFileNames();
+
+				while(e.hasMoreElements()) { //rs.next()와 유사
+					String name = e.nextElement();
+					System.out.println(name);
+
+					String oriName = multi.getOriginalFileName(name);
+					if(oriName == null) {continue;}
+					String sysName = multi.getFilesystemName(name);
+					Tips_imagesDAO.getInstance().insert(new Tips_imagesDTO(0,oriName, sysName, 0));
+				}
+
+				
+				//여기부터가 원래 있던 코드
 				TipsDAO dao = TipsDAO.getInstance();
+				
 				
 				//List<TipsDTO> list = dao.selectAll();
 				//System.out.println(list);
 				
 				String tips_writer =(String)(request.getSession().getAttribute("loginID")); 
-				String tips_title = request.getParameter("tips_title");
-				String tips_contents = request.getParameter("tips_contents");
-				String tips_bullet = request.getParameter("tips_bullet");
+				String tips_title = multi.getParameter("tips_title");
+				String tips_contents = multi.getParameter("tips_contents");
+				String tips_bullet = multi.getParameter("tips_bullet");
 				
 				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"",0,tips_bullet,0);
 				
