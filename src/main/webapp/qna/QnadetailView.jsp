@@ -114,7 +114,7 @@
 								<header class="mb-4">
 									<!-- Post title-->
 									<div readonly id="qna_title">
-										<h1 class="fw-bolder mb-1" id="title">"${dto.qna_title}"
+										<h1 class="fw-bolder mb-1" id="title" >"${dto.qna_title}"
 										</h1>
 									</div>
 									<!-- Post meta content-->
