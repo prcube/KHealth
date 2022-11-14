@@ -258,7 +258,11 @@ a {
 								</c:forEach>
 							</c:when>
 						</c:choose>
+
+
 					</table>
+
+
 				</div>
 				<div class="row mb-3">
 					<div class="col" style="text-align: center;">${navi }</div>
@@ -307,11 +311,15 @@ a {
 								</c:forEach>
 							</c:when>
 						</c:choose>
+
+
 					</table>
+
 				</div>
 				<div class="row mb-3">
 					<div class="col" style="text-align: center;">${navi }</div>
 				</div>
+
 			</div>
 			<div class="container ">
 				<button type="button" class="btn btn-secondary" style="float: right"
