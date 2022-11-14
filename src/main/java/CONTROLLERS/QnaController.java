@@ -104,9 +104,9 @@ public class QnaController extends HttpServlet {
 				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
 				String qna_title = request.getParameter("qna_title");
 				String qna_contents = request.getParameter("qna_contents");
-
+				
 				dao.updateBySeq(qna_title, qna_contents, qna_seq);
-
+				request.setAttribute("dto", dao);
 
 
 
@@ -115,6 +115,8 @@ public class QnaController extends HttpServlet {
 
 			}else if(uri.equals("/gomodify.qna")) {
 				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
+				String qna_title = request.getParameter("qna_title");
+				String qna_contents = request.getParameter("qna_contents");
 				request.setAttribute("qna_seq", qna_seq);
 				request.getRequestDispatcher("/qna/QnaModify.jsp").forward(request, response);
 

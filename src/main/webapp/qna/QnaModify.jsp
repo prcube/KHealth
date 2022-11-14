@@ -92,9 +92,10 @@
 
          <div class="form-group row">
             <div class="col-sm">
-               <input name="qna_title" id="qna_title"
+               <input name="qna_title" id="qna_title" 
+              
                   class="form-control-plaintext" type="text"
-                  placeholder="제목을 입력하세요.">
+                 >${dto.qna_title }
             </div>
          </div>
 
@@ -102,7 +103,7 @@
 
             <textarea class="form-control" name="qna_contents"
                id="qna_contents" id="exampleFormControlTextarea1" rows="10"
-               placeholder="내용을 입력하세요."></textarea>
+               placeholder="내용을 입력하세요.">${dto.qna_contents }</textarea>
 
 
             <!-- <input type = file multiple name = "file"><br> -->
