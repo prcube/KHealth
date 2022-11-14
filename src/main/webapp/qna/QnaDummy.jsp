@@ -125,7 +125,7 @@ a {
 					<tbody>
 						<c:forEach var="i" items="${list }" varStatus="status">
 							<tr>
-								<td>${i.qna_seq }</td>
+								<td>${i.rn  }</td>
 
 								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }&nbsp&nbsp&nbsp[${list1[status.index].numberOfComment}]</a></td>
 
@@ -134,6 +134,8 @@ a {
 								<td>${i.qna_view_count }</td>
 
 							</tr>
+							
+							
 						</c:forEach>
 
 

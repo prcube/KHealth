@@ -225,6 +225,8 @@ public class QnaDAO {
                dto.setQna_view_count(rs.getInt("qna_view_count"));
                dto.setQna_nickname(rs.getString("qna_nickname"));
                dto.setQna_thumbsup(rs.getInt("qna_thumbsup"));
+//               rn셋팅
+               dto.setRn(rs.getInt("rn"));
                list.add(dto);
             }
             return list;

@@ -92,18 +92,18 @@
 
          <div class="form-group row">
             <div class="col-sm">
-               <input name="qna_title" id="qna_title" 
+               <input name="qna_title" id="qna_title" value="${qna_title }"
               
-                  class="form-control-plaintext" type="text"
-                 >${dto.qna_title }
+                  class="form-control-plaintext" type="text" 
+                 >"${dto.qna_title }"
             </div>
          </div>
 
          <div class="form-group">
 
             <textarea class="form-control" name="qna_contents"
-               id="qna_contents" id="exampleFormControlTextarea1" rows="10"
-               placeholder="내용을 입력하세요.">${dto.qna_contents }</textarea>
+               id="qna_contents" id="exampleFormControlTextarea1" rows="10" 
+               placeholder="내용을 입력하세요.">"${dto.qna_contents }"</textarea>
 
 
             <!-- <input type = file multiple name = "file"><br> -->

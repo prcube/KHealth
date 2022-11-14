@@ -115,6 +115,9 @@ public class QnaController extends HttpServlet {
 
 
 			}else if(uri.equals("/gomodify.qna")) {
+				
+				
+				
 				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
 				String qna_title = request.getParameter("qna_title");
 				String qna_contents = request.getParameter("qna_contents");
