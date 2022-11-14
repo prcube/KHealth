@@ -22,7 +22,7 @@
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
-</script>
+</script> 	
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
 	integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
 	crossorigin="anonymous"></script>
@@ -94,7 +94,7 @@ body {
 											<input type="text" id="ID" name="ID"
 												class="form-control form-control-lg"
 												placeholder="아이디를 입력해 주세요" />
->>>>>>> 791d289e522afa0c4790e4cb7ea3acdd4f44c896
+
 
 										</div>
 

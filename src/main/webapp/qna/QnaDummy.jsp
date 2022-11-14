@@ -100,17 +100,58 @@ a {
 						</div>
 					</form>
 					<script>
-						$("#searchBtn").on("click",function(){
-							$(this).parent().parent().parent().parent().next("div").find("tbody").css("display","none")
 
-							})
+						$("#searchBtn").on("click", function () {
+							
+							//$(this).parent().parent().parent().parent().parent().find(".tableSch").find("table").find("tbody").css("display", "none");
+					       
+							$("#asd").empty();
+					        
+							let searchTitle = $("#searchTitle").val();
+					
+					        $.ajax({
+					           url: "/searchAjax.qna?cpage=1",
+					           type: "post",
+					           data: {
+					              "searchTitle": searchTitle
+					           },
+					           dataType: "json"
+					        }).done(function (data) {
+					       					            
+					       	let result = JSON.parse(data.list);
+					        for (let i = 0; i < result.length; i++) {
+					      		let tr = $("<tr>");
+					            	
+					            let tdSeq = $("<td>");
+					            tdSeq.append(result[i].qna_seq);
+									
+					            let tdTitle = $("<td>");
+					            tdTitle.append(result[i].qna_title);
+					
+				 	            let tdFormedDate = $("<td>");
+					            tdFormedDate.append(result[i].qna_formedDate);
+					
+					            let tdView_count = $("<td>");
+					            tdView_count.append(result[i].qna_view_count);
+					                
+					            tr.append(tdSeq);
+					            tr.append(tdTitle);
+					            tr.append(tdFormedDate);
+					            tr.append(tdView_count);
+					            $("#asd").append(tr);
+					                
+					            
+					        }
+					      	})
+					   })
+					   
 					</script>
 				</div>
 			</div>
 
 			<hr class="mb-4">
 
-			<div class="container board-border border-start-0 border-end-0">
+			<div class="container board-border border-start-0 border-end-0 tableSch">
 				<table class="table align-middle mb-0 bg-white">
 					<!-- 		<thead class="bg-light"> -->
 					<thead class="bg-light">
@@ -122,7 +163,7 @@ a {
 							<th>조회수</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="asd">
 						<c:forEach var="i" items="${list }" varStatus="status">
 							<tr>
 								<td>${i.rn  }</td>
@@ -137,8 +178,6 @@ a {
 							
 							
 						</c:forEach>
-
-
 					</tbody>
 				</table>
 			</div>
