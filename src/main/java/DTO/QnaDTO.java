@@ -19,7 +19,7 @@ public class QnaDTO {
 
    public QnaDTO() {}
    public QnaDTO(int qna_seq, String qna_title, String qna_writer, String qna_contents, Timestamp qna_write_date,
-         int qna_view_count, String qna_nickname, int rn,int qna_thumbsup) {
+         int qna_view_count, String qna_nickname, int rn,int qna_thumbsup ,int numberOfComment) {
       super();
       this.qna_seq = qna_seq;
       this.qna_title = qna_title;
@@ -30,6 +30,7 @@ public class QnaDTO {
       this.qna_nickname = qna_nickname;
       this.rn = rn;
       this.qna_thumbsup = qna_thumbsup;
+      this.numberOfComment = numberOfComment;
    }
    public int getQna_seq() {
       return qna_seq;

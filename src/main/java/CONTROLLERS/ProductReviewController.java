@@ -1,6 +1,7 @@
 package CONTROLLERS;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,10 +28,7 @@ public class ProductReviewController extends HttpServlet {
 			if(uri.equals("/list.review")) {
 //				String id = (String) request.getSession().getAttribute("loginID");
 //				int pr_seq = request.getParameter("")
-				
-				
-				
-				
+
 				
 			}
 			
@@ -44,17 +42,37 @@ public class ProductReviewController extends HttpServlet {
 				
 				int productseq = Integer.parseInt(request.getParameter("product_seq"));
 				
-				MemberDTO dto = dao2.selectById(writerid); 
-				String writercharacter = dto.getNickname();
+				Boolean isCommentAlreadyExist = dao.selectBySeqAndId(productseq, writerid);
 				
-				ProductReviewDTO dto2 = new ProductReviewDTO(0,productseq,contents,writercharacter,writerid);
-				dao.insert(dto2);
+				if(isCommentAlreadyExist) {
+					
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('상품에 대한 리뷰는 1번만 작성할 수 있습니다.'); history.go(-1);</script>");
+					out.flush();
+					response.flushBuffer();
+					out.close();
+					
+				}else {
+
+					MemberDTO dto = dao2.selectById(writerid); 
+					String writercharacter = dto.getNickname();
+					
+					
+					ProductReviewDTO dto2 = new ProductReviewDTO(0,productseq,contents,writercharacter,writerid);
+					dao.insert(dto2);
+					
+					int cpage = Integer.parseInt(request.getParameter("cpage"));
+					request.setAttribute("product_seq", productseq);
+					request.setAttribute("cpage", cpage);
+					
+					
+					request.getRequestDispatcher("/detail.market").forward(request, response);
+				}
 				
-				int cpage = Integer.parseInt(request.getParameter("cpage"));
-				request.setAttribute("product_seq", productseq);
-				request.setAttribute("cpage", cpage);
-//				request.getRequestDispatcher("/detail.market?cpage=1&product_seq="+productseq).forward(request, response);
-				request.getRequestDispatcher("/detail.market").forward(request, response);
+
+				
+
 
 				
 			}

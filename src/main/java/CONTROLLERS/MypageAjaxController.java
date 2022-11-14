@@ -1,6 +1,7 @@
 package CONTROLLERS;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import com.google.gson.JsonObject;
 import DAO.MypageAjaxDAO;
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
+
 
 @WebServlet("*.ajax")
 public class MypageAjaxController extends HttpServlet {
@@ -45,6 +47,34 @@ public class MypageAjaxController extends HttpServlet {
 			
 			response.getWriter().append(total.toString());
 			
+		}
+		
+		if(uri.equals("/wishlist.ajax")) {
+			
+			Gson g = new Gson();
+			
+			String amount = request.getParameter("amount");
+			String price = request.getParameter("price");
+			
+			
+			@SuppressWarnings("unchecked")
+			List<Integer> amountarr = (List<Integer>)g.fromJson(amount, ArrayList.class);
+			
+			@SuppressWarnings("unchecked")
+			List<Integer> pricearr = (List<Integer>)g.fromJson(price, ArrayList.class);
+			
+		
+			String json_amountarr = g.toJson(amountarr);
+			String json_pricearr = g.toJson(pricearr);
+			
+			JsonObject total = new JsonObject();
+			
+			total.addProperty("amountarr", json_amountarr);
+			total.addProperty("pricearr", json_pricearr);
+			
+			response.setContentType("text/html;charset+utf8");
+			System.out.println(total);
+			response.getWriter().append(total.toString());
 		}
 		
 		}catch(Exception e) {
