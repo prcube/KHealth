@@ -61,61 +61,62 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<c:choose>
-					<c:when test="${loginID != null}">
-						<!-- 로그인을 한 사용자 -->
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/list.tips?cpage=1">Tips</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/list.market?cpage=1">Market</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/list.qna?cpage=1">Q&A</a></li>
+						<c:when test="${loginID != null}">
+							<!-- 로그인을 한 사용자 -->
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+									<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/list.tips?cpage=1">Tips</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/list.market?cpage=1">Market</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/list.qna?cpage=1">Q&A</a></li>
 
 
-								<!-- dropdown -->
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" style="color: white" href="#"
-									role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										${loginID }님 </a>
-									<ul class="dropdown-menu dropdown-menu-dark">
-										<li class="dropdown-item"><a href="/mypage.mem"
-											style="color: white; text-decoration: none;">Mypage</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">장바구니</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">뭐 넣지</a></li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><input type="button" class="btn btn-link" id="logout"
-											style="color: white; text-decoration: none;" value="로그아웃"></li>
-									</ul></li>
-							</ul>
-						</div>
+									<!-- dropdown -->
+									<li class="nav-item dropdown"><a
+										class="nav-link dropdown-toggle" style="color: white" href="#"
+										role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											${loginID }님 </a>
+										<ul class="dropdown-menu dropdown-menu-dark">
+											<li class="dropdown-item"><a href="/mypage.mem"
+												style="color: white; text-decoration: none;">Mypage</a></li>
+											<li><a class="dropdown-item" style="color: white;"
+												href="#">장바구니</a></li>
+											<li><a class="dropdown-item" style="color: white;"
+												href="#">뭐 넣지</a></li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<li><input type="button" class="btn btn-link"
+												id="logout" style="color: white; text-decoration: none;"
+												value="로그아웃"></li>
+										</ul></li>
+								</ul>
+							</div>
 
-					</c:when>
-					<c:when test="${loginID == null}">
-						<!-- 로그인을 안한 사용자 -->
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/list.tips?cpage=1">Tips</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/list.market?cpage=1">Market</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/list.qna?cpage=1">Q&A</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="login/LoginDummy.jsp">Login</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="login/SigninDummy.jsp">Signin</a></li>
-								<li></li>
-							</ul>
-						</div>
-					</c:when>
-				</c:choose>
+						</c:when>
+						<c:when test="${loginID == null}">
+							<!-- 로그인을 안한 사용자 -->
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+									<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/list.tips?cpage=1">Tips</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/list.market?cpage=1">Market</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/list.qna?cpage=1">Q&A</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="login/LoginDummy.jsp">Login</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="login/SigninDummy.jsp">Signin</a></li>
+									<li></li>
+								</ul>
+							</div>
+						</c:when>
+					</c:choose>
 				</div>
 			</nav>
 
@@ -186,8 +187,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 								</div>
 							</div>
 						</div>
-						</div>
-						</div>
+					</div>
+				</div>
 			</section>
 		</form>
 
@@ -207,8 +208,19 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 										name="product_name"> <input type=hidden
 										value="${dto.product_seq }" name="product_seq"> <input
 										type="text" id="addANote" name="productreview_contents"
-										class="form-control" placeholder="Type comment..." />
-									<button type=button class="insertReview" id="insertReview">리뷰작성</button>
+										class="form-control mb-2" placeholder="Type comment..." />
+								
+
+									<div class="row mb-5 ">
+										<div class="col">
+											<button type=button class="insertReview" id="insertReview"
+											style="float: right">리뷰작성</button>
+										</div>
+										
+										
+									</div>
+
+
 								</div>
 
 
