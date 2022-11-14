@@ -30,6 +30,14 @@
                            src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
                         <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+                        <!-- dropdown 해결해준 script -->
+                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+                           integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+                           crossorigin="anonymous"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+                           integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+                           crossorigin="anonymous"></script>
+
                      </head>
 
                      <style>
@@ -41,10 +49,9 @@
                         }
 
                         .videoleft {
-                           transform: translateX(-50%);
+                           transform: translateX(-5%);
                            opacity: 0;
                            transition: .8s;
-
                         }
 
                         .videoleft.active {
@@ -53,15 +60,63 @@
                         }
 
                         .videoright {
-                           transform: translateX(+50%);
+                           transform: translateX(+5%);
                            opacity: 0;
                            transition: .8s;
-
                         }
 
                         .videoright.active {
                            transform: translateX(0);
                            opacity: 1;
+                        }
+
+                        .card1 {
+                           transform: translateX(-50%);
+                           opacity: 0;
+                           transition: .8s;
+                        }
+
+                        .card1.active {
+                           transform: translateX(0);
+                           opacity: 1;
+                        }
+
+                        .card2 {
+                           /* transform: translateX(-50%); */
+                           opacity: 0;
+                           transition: .8s;
+                        }
+
+                        .card2.active {
+                           transform: translateX(0);
+                           opacity: 1;
+                        }
+
+                        .card3 {
+                           transform: translateX(+50%);
+                           opacity: 0;
+                           transition: .8s;
+                        }
+
+                        .card3.active {
+                           transform: translateX(0);
+                           opacity: 1;
+                        }
+
+                        .card4 {
+                           transform: translateY(+50%);
+                           opacity: 0;
+                           transition: .8s;
+                        }
+
+                        .card4.active {
+                           transform: translateY(0);
+                           opacity: 1;
+                        }
+
+                        .scroll-container{
+                           scroll-behavior: smooth;
+                           overflow-y: scroll;
                         }
                      </style>
 
@@ -82,42 +137,68 @@
                                     aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                  </button>
-                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                                 <c:choose>
+                                    <c:when test="${loginID != null}">
+                                       <!-- 로그인을 한 사용자 -->
+                                       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                             <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="#indexcontact">Contact</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a>
+                                             </li>
+                                             <li class="nav-item"><a class="nav-link"
+                                                   href="/list.market?cpage=1">Market</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a>
+                                             </li>
+
+                                          
+                                          <!-- dropdown -->
+                                          <li class="nav-item dropdown">
+                                             <a class="nav-link dropdown-toggle" style="color: white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                ${loginID }님
+                                             </a>
+                                             <ul class="dropdown-menu dropdown-menu-dark" >
+                                                <li class="dropdown-item"><a href="/mypage.mem" style="color:white; text-decoration: none;">Mypage</a></li>
+                                                <li><a class="dropdown-item" style="color: white;" href="#">장바구니</a></li>
+                                                <li><a class="dropdown-item" style="color: white;" href="#">뭐 넣지</a></li>
+                                                <li>
+                                                   <hr class="dropdown-divider">
+                                                </li>
+                                                <li><input type="button" class="btn btn-link" id="logout" style="color:white; text-decoration: none;" value="로그아웃"></li>
+                                             </ul>
+                                          </li>
+                                          </ul>
 
 
-                                       <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-                                       <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
-                                       <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-                                       <li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a></li>
-                                       <li class="nav-item"><a class="nav-link" href="/list.market?cpage=1">Market</a>
-                                       </li>
-                                       <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>
-                                       <li class="nav-item"><a class="nav-link" href="login/LoginDummy.jsp">Login</a>
-                                       </li>
-                                       <li class="nav-item"><a class="nav-link" href="/mypage.mem">Mypage</a></li>
-                                       <li class="nav-item"><a class="nav-link" href="login/SigninDummy.jsp">Signin</a>
-                                       </li>
-                                       <li>
-                                       </li>
-                                    </ul>
+                                        
 
-                                    <c:choose>
-                                       <c:when test="${loginID != null}">
-                                          <!-- 로그인을 한 사용자 -->
-                                          <li class="nav-item"><a class="nav-link" style="color: white">${loginID }님
-                                                <br> 안녕하세요?
-                                             </a></li>
 
-                                          <input type="button" id="logout"
-                                             style="WIDTH: 60pt; HEIGHT: 20pt; margin-top:27px" value="로그아웃">
-                                       </c:when>
-                                       <c:when test="${loginID == null}">
-                                          <!-- 로그인을 한 사용자 -->
-                                          <a style="color: white"></a>
-                                       </c:when>
-                                    </c:choose>
-                                 </div>
+                                          
+                                       </div>
+                                    </c:when>
+                                    <c:when test="${loginID == null}">
+                                       <!-- 로그인을 안한 사용자 -->
+                                       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                             <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="#indexcontact">Contact</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a>
+                                             </li>
+                                             <li class="nav-item"><a class="nav-link"
+                                                   href="/list.market?cpage=1">Market</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a>
+                                             </li>
+                                             <li class="nav-item"><a class="nav-link"
+                                                   href="login/LoginDummy.jsp">Login</a></li>
+                                             <li class="nav-item"><a class="nav-link"
+                                                   href="login/SigninDummy.jsp">Signin</a></li>
+                                             <li></li>
+                                          </ul>
+                                       </div>
+                                    </c:when>
+                                 </c:choose>
+
                               </div>
                            </nav>
 
@@ -349,12 +430,13 @@
                                     </div>
                                  </div>
                                  <div class="row gx-5">
-                                    <div class="col-lg-4 mb-5">
+                                    <div class="card1 col-lg-4 mb-5">
                                        <div class="card h-100 shadow border-0">
                                           <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d"
                                              alt="..." />
                                           <div class="card-body p-4">
-                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">어깨 전문</div>
+                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">어깨
+                                                전문</div>
                                              <a class="text-decoration-none link-dark stretched-link" href="#!">
                                                 <h5 class="card-title mb-3">임근혁</h5>
                                              </a>
@@ -376,15 +458,17 @@
                                        </div>
                                     </div>
                                     <div class="col-lg-4 mb-5">
-                                       <div class="card h-100 shadow border-0">
+                                       <div class="card2 h-100 shadow border-0">
                                           <img class="card-img-top" src="https://dummyimage.com/600x350/adb5bd/495057"
                                              alt="..." />
                                           <div class="card-body p-4">
-                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">하체 전문</div>
+                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">하체
+                                                전문</div>
                                              <a class="text-decoration-none link-dark stretched-link" href="#!">
                                                 <h5 class="card-title mb-3">권준구</h5>
                                              </a>
-                                             <p class="card-text mb-0">가장 효율적인 하체근육 키우는 법, 과학적인 효율적인 하체운동!</p>
+                                             <p class="card-text mb-0">가장 효율적인 하체근육 키우는 법, 과학적인 효율적인
+                                                하체운동!</p>
                                           </div>
                                           <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                                              <div class="d-flex align-items-end justify-content-between">
@@ -402,11 +486,12 @@
                                        </div>
                                     </div>
                                     <div class="col-lg-4 mb-5">
-                                       <div class="card h-100 shadow border-0">
+                                       <div class="card3 h-100 shadow border-0">
                                           <img class="card-img-top" src="https://dummyimage.com/600x350/6c757d/343a40"
                                              alt="..." />
                                           <div class="card-body p-4">
-                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">등 전문</div>
+                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">등
+                                                전문</div>
                                              <a class="text-decoration-none link-dark stretched-link" href="#!">
                                                 <h5 class="card-title mb-3">유한호</h5>
                                              </a>
@@ -428,6 +513,121 @@
                                        </div>
                                     </div>
                                  </div>
+                                 <div class="row gx-5">
+                                    <div class="col-lg-4 mb-5">
+                                       <div class="card4 h-100 shadow border-0">
+                                          <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d"
+                                             alt="..." />
+                                          <div class="card-body p-4">
+                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">어깨
+                                                전문</div>
+                                             <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                                <h5 class="card-title mb-3">윤성민</h5>
+                                             </a>
+                                             <p class="card-text mb-0">불균형한 어깨를 완벽하게 대칭으로 만들 수 있는 꿀팁!</p>
+                                          </div>
+                                          <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                             <div class="d-flex align-items-end justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                   <img class="rounded-circle me-3"
+                                                      src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                                   <div class="small">
+                                                      <div class="fw-bold">Kelly Rowan</div>
+                                                      <div class="text-muted">March 12, 2022 &middot; 6 min
+                                                         read</div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-4 mb-5">
+                                       <div class="card4 h-100 shadow border-0">
+                                          <img class="card-img-top" src="https://dummyimage.com/600x350/adb5bd/495057"
+                                             alt="..." />
+                                          <div class="card-body p-4">
+                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">하체
+                                                전문</div>
+                                             <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                                <h5 class="card-title mb-3">이진혁</h5>
+                                             </a>
+                                             <p class="card-text mb-0">가장 효율적인 하체근육 키우는 법, 과학적인 효율적인
+                                                하체운동!</p>
+                                          </div>
+                                          <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                             <div class="d-flex align-items-end justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                   <img class="rounded-circle me-3"
+                                                      src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                                   <div class="small">
+                                                      <div class="fw-bold">Josiah Barclay</div>
+                                                      <div class="text-muted">March 23, 2022 &middot; 4 min
+                                                         read</div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-4 mb-5">
+                                       <div class="card4 h-100 shadow border-0">
+                                          <img class="card-img-top" src="https://dummyimage.com/600x350/6c757d/343a40"
+                                             alt="..." />
+                                          <div class="card-body p-4">
+                                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">등
+                                                전문</div>
+                                             <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                                <h5 class="card-title mb-3">이승택</h5>
+                                             </a>
+                                             <p class="card-text mb-0">완벽한 뒤태를 만들기 위한 효과적인 등 운동!</p>
+                                          </div>
+                                          <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                             <div class="d-flex align-items-end justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                   <img class="rounded-circle me-3"
+                                                      src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                                   <div class="small">
+                                                      <div class="fw-bold">Evelyn Martinez</div>
+                                                      <div class="text-muted">April 2, 2022 &middot; 10 min
+                                                         read</div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <script>
+                                    const option2 = {
+                                       root: null, // viewport
+                                       rootMargin: "0px",
+                                       threshold: .5,  // 50%가 viewport에 들어와 있어야 callback 실행
+                                    }
+
+                                    const observer2 = new IntersectionObserver(entries => {
+                                       entries.forEach(entry => {
+                                          console.log(entry.isIntersecting);
+                                          if (entry.isIntersecting) {
+                                             entry.target.classList.add("active");
+                                          } else {
+                                             entry.target.classList.remove("active");
+                                          }
+                                       });
+                                    }, option2);
+
+                                    const card1 = document.querySelectorAll('.card1');
+                                    const card2 = document.querySelectorAll('.card2');
+                                    const card3 = document.querySelectorAll('.card3');
+                                    const card4 = document.querySelectorAll('.card4');
+
+
+                                    // 반복문을 돌려 모든 DOM에 적용
+                                    card1.forEach(el => observer.observe(el));
+                                    card2.forEach(el => observer.observe(el));
+                                    card3.forEach(el => observer.observe(el));
+                                    card4.forEach(el => observer.observe(el));
+
+                                 </script>
 
 
 
@@ -437,7 +637,8 @@
 
 
                                  <!-- 카카오지도 카카오지도-->
-                                 <section class="py-5" id="features">
+                                 <div class="scroll=container" id="indexcontact"></div>
+                                 <section class="py-5 mt-5" id="features">
                                     <div class="container px-4 py-4 my-5 bg-light">
                                        <div class="row gx-5">
                                           <div class="col-lg-7 mb-5 mb-lg-0">
