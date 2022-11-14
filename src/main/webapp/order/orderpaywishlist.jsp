@@ -126,6 +126,7 @@
 													<td class="col-md-2" style="text-align: center">
 
 														${i.product_wish_count }</td>
+														
 														<input type="hidden" value="${i.product_wish_count }" name="amount">
 														
 													<td class="col-md-2 text-center">${i.product_price }
