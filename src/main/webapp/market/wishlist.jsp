@@ -73,28 +73,63 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Tips</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/qna/QnaDummy.jsp">Q&A</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/login/LoginDummy.jsp">Login</a></li>
-					</ul>
+				<c:choose>
+					<c:when test="${loginID != null}">
+						<!-- 로그인을 한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+
+
+								<!-- dropdown -->
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" style="color: white" href="#"
+									role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }님 </a>
+									<ul class="dropdown-menu dropdown-menu-dark">
+										<li class="dropdown-item"><a href="/mypage.mem"
+											style="color: white; text-decoration: none;">Mypage</a></li>
+										<li><a class="dropdown-item" style="color: white;"
+											href="#">장바구니</a></li>
+										<li><a class="dropdown-item" style="color: white;"
+											href="#">뭐 넣지</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><input type="button" class="btn btn-link" id="logout"
+											style="color: white; text-decoration: none;" value="로그아웃"></li>
+									</ul></li>
+							</ul>
+						</div>
+
+					</c:when>
+					<c:when test="${loginID == null}">
+						<!-- 로그인을 안한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/LoginDummy.jsp">Login</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/SigninDummy.jsp">Signin</a></li>
+								<li></li>
+							</ul>
+						</div>
+					</c:when>
+				</c:choose>
 				</div>
-			</div>
-			<c:choose>
-				<c:when test="${loginID != null}">
-					<!-- 로그인을 한 사용자 -->
-					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
-						&nbsp;</a>
-				</c:when>
-			</c:choose>
 		</nav>
 
 
@@ -132,7 +167,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 															</div>
 															<div class="col-md-3 col-lg-3 col-xl-3">
 
-																<h6 class="text-black mb-0">${i.product_name }</h6>
+																<h6 class="text-black mb-0 product_name">${i.product_name }</h6>
 															</div>
 															<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
 
@@ -188,10 +223,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 											<h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
 											<hr class="my-4">
 
-											<div class="d-flex justify-content-between mb-4">
-												<h5 class="text-uppercase">items 3</h5>
-												<h5>€ 132.00</h5>
-											</div>
+<!-- 											<div class="d-flex justify-content-between mb-4"> -->
+<!-- 												<h5 class="text-uppercase">items 3</h5> -->
+<!-- 												<h5>€ 132.00</h5> -->
+<!-- 											</div> -->
 
 											<h5 class="text-uppercase mb-3">Shipping</h5>
 
@@ -223,7 +258,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 											</div>
 
 											<button type="button" class="btn btn-dark btn-block btn-lg"
-												data-mdb-ripple-color="dark">Register</button>
+												data-mdb-ripple-color="dark" id="buyBtn">구매하기</button>
 
 										</div>
 									</div>
@@ -273,39 +308,50 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script src="/js/scripts.js"></script>
 
 	<script>
+	
+		$("#buyBtn").on("click",function(){
+			location.href="/buy.wish";
+		})
+	
 		$(function() {
 
 			//let amount = document.getElementsByClassName("totalAmount");
 			//let price = document.getElementsByClassName("totalPrice");
 			let amount = $(".totalAmount");
 			let price = $(".totalPrice");
-
+			let name = $(".product_name");
+			
 			let amountarr = [];
 			let pricearr = [];
-
+			let namearr = [];
+			
 			for (let i = 0; i < amount.length; i++) {
-				console.log(amount[i].value);
+				
 				amountarr[i] = amount[i].value
+				namearr[i] = name[i].innerText;
 			}
 
 			for (let j = 0; j < price.length; j++) {
-				console.log(price[j].innerText);
+				
 				pricearr[j] = price[j].innerText;
 			}
 
 			console.log(amountarr);
 			console.log(pricearr);
+			console.log(namearr);
 			console.log("+++++++")
 
 			let jsonamountarr = JSON.stringify(amountarr);
 			let jsonpricearr = JSON.stringify(pricearr);
-
+			let jsonnamearr = JSON.stringify(namearr);
+			
 			$.ajax({
 				type : "post",
 				url : "/wishlist.ajax",
 				data : {
 					"amount" : jsonamountarr,
-					"price" : jsonpricearr
+					"price" : jsonpricearr,
+					"name" : jsonnamearr
 				},
 				dataType : "json",
 				success : function(resp) {
@@ -349,33 +395,39 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			
 			let amount = $(".totalAmount");
 			let price = $(".totalPrice");
-
+			let name = $(".product_name");
+			
 			let amountarr = [];
 			let pricearr = [];
-
+			let namearr = [];
+			
 			for (let i = 0; i < amount.length; i++) {
-				console.log(amount[i].value);
-				amountarr[i] = amount[i].value
+				
+				amountarr[i] = amount[i].value;
+				namearr[i] = name[i].innerText;
 			}
 
 			for (let j = 0; j < price.length; j++) {
-				console.log(price[j].innerText);
+				
 				pricearr[j] = price[j].innerText;
+				namearr[j] = name[j].innerText;
 			}
-
+			console.log(namearr);
 			console.log(amountarr);
 			console.log(pricearr);
 			console.log("+++++++")
 
 			let jsonamountarr = JSON.stringify(amountarr);
 			let jsonpricearr = JSON.stringify(pricearr);
+			let jsonnamearr = JSON.stringify(namearr);
 			
 			$.ajax({
 				type : "post",
 				url : "/wishlist.ajax",
 				data : {
 					"amount" : jsonamountarr,
-					"price" : jsonpricearr
+					"price" : jsonpricearr,
+					"name" : jsonnamearr
 				},
 				dataType : "json",
 				success : function(resp) {
@@ -413,6 +465,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			})
 		}
 		
+
+
+		
 		function deleteAll(){
 			
 			let reallyDelete = confirm("정말로 장바구니 목록을 비우시겠습니까?");
@@ -423,6 +478,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				return;
 			}
 		}
+		
+
+		$("#logout").on("click", function () {
+            location.href = "/logout.mem";
+         })
+
 	</script>
 </body>
 </html>

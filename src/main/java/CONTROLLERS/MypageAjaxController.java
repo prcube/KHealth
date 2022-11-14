@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import DAO.MypageAjaxDAO;
+import DAO.WishlistDAO;
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
 
@@ -52,28 +53,36 @@ public class MypageAjaxController extends HttpServlet {
 		if(uri.equals("/wishlist.ajax")) {
 			
 			Gson g = new Gson();
-			
+			String id = (String) request.getSession().getAttribute("loginID");
 			String amount = request.getParameter("amount");
 			String price = request.getParameter("price");
-			
+			String name = request.getParameter("name");
 			
 			@SuppressWarnings("unchecked")
-			List<Integer> amountarr = (List<Integer>)g.fromJson(amount, ArrayList.class);
+			List<String> amountarr = (List<String>)g.fromJson(amount, ArrayList.class);
 			
 			@SuppressWarnings("unchecked")
 			List<Integer> pricearr = (List<Integer>)g.fromJson(price, ArrayList.class);
 			
+			@SuppressWarnings("unchecked")
+			List<String> namearr = (List<String>)g.fromJson(name, ArrayList.class);
+			
+			System.out.println(namearr);
+			System.out.println(amountarr);
+			System.out.println(pricearr);
+			
+			WishlistDAO.getInstance().updateByWishlist(amountarr, namearr, id);
 		
 			String json_amountarr = g.toJson(amountarr);
 			String json_pricearr = g.toJson(pricearr);
-			
+
 			JsonObject total = new JsonObject();
 			
 			total.addProperty("amountarr", json_amountarr);
 			total.addProperty("pricearr", json_pricearr);
 			
 			response.setContentType("text/html;charset+utf8");
-			System.out.println(total);
+			
 			response.getWriter().append(total.toString());
 		}
 		

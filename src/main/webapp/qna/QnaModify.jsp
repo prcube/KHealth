@@ -52,21 +52,63 @@
                aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="">Intro</a></li>
-                  <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-                  <li class="nav-item"><a class="nav-link"
-                     href="/list.tips?cpage=1">Tips</a></li>
-                  <li class="nav-item"><a class="nav-link"
-                     href="/market/MarketDummy.jsp">Market</a></li>
-                  <li class="nav-item"><a class="nav-link"
-                     href="/list.qna?cpage=1"">Q&A</a></li>
-                  <li class="nav-item"><a class="nav-link" href="">Login</a></li>
-               </ul>
-            </div>
-         </div>
+            <c:choose>
+					<c:when test="${loginID != null}">
+						<!-- 로그인을 한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+
+
+								<!-- dropdown -->
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" style="color: white" href="#"
+									role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }님 </a>
+									<ul class="dropdown-menu dropdown-menu-dark">
+										<li class="dropdown-item"><a href="/mypage.mem"
+											style="color: white; text-decoration: none;">Mypage</a></li>
+										<li><a class="dropdown-item" style="color: white;"
+											href="#">장바구니</a></li>
+										<li><a class="dropdown-item" style="color: white;"
+											href="#">뭐 넣지</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><input type="button" class="btn btn-link" id="logout"
+											style="color: white; text-decoration: none;" value="로그아웃"></li>
+									</ul></li>
+							</ul>
+						</div>
+
+					</c:when>
+					<c:when test="${loginID == null}">
+						<!-- 로그인을 안한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/LoginDummy.jsp">Login</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/SigninDummy.jsp">Signin</a></li>
+								<li></li>
+							</ul>
+						</div>
+					</c:when>
+				</c:choose>
+</div>
       </nav>
 
 
@@ -92,16 +134,18 @@
 
          <div class="form-group row">
             <div class="col-sm">
-               <input name="qna_title" id="qna_title"
-                  class="form-control-plaintext" type="text"
-                  placeholder="제목을 입력하세요.">
+               <input name="qna_title" id="qna_title" value="${dto.qna_title }"
+         
+              
+                  class="form-control-plaintext" type="text" 
+                 >
             </div>
          </div>
 
          <div class="form-group">
 
-            <textarea class="form-control" name="qna_contents"
-               id="qna_contents" id="exampleFormControlTextarea1" rows="10"
+            <textarea class="form-control" name="qna_contents" 
+               id="qna_contents"   id="exampleFormControlTextarea1" rows="10" 
                placeholder="내용을 입력하세요."></textarea>
 
 
@@ -134,6 +178,7 @@
 	      });
       
       console.log("gg");
+      
    </script>
 
 
@@ -171,6 +216,11 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
    <script src="/js/scripts.js"></script>
+   <script>
+   $("#logout").on("click", function () {
+       location.href = "/logout.mem";
+    })
+    </script>
 
 </body>
 

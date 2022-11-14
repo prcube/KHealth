@@ -114,7 +114,37 @@ public class QnaDTO {
 			return "9분 전";
 		}else if(gapTime < 600) {
 			return "10분 전";
-		}else if(gapTime < 3600) {
+		}else if(gapTime < 660) {
+			return "11분 전";
+		}else if(gapTime < 720) {
+			return "12분 전";
+		}else if(gapTime < 780) {
+			return "13분 전";
+		}else if(gapTime < 840) {
+			return "14분 전";
+		}else if(gapTime < 900) {
+			return "15분 전";
+		}else if(gapTime < 960) {
+			return "16분 전";
+		}else if(gapTime < 1020) {
+			return "17분 전";
+		}else if(gapTime < 1080) {
+			return "18분 전";
+		}else if(gapTime < 1140) {
+			return "19분 전";
+		}else if(gapTime < 1200) {
+			return "20분 전";
+		}else if(gapTime < 1260) {
+			return "21분 전";
+		}else if(gapTime < 1320) {
+			return "22분 전";
+		}else if(gapTime < 1380) {
+			return "23분 전";
+		}else if(gapTime < 1440) {
+			return "24분 전";
+		}else if(gapTime < 1500) {
+			return "25분 전";
+		}else if(gapTime < 1560) {
 			return "1시간 전";
 		}else if(gapTime < 7200) {
 			return "2시간 전";
