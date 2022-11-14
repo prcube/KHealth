@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ImagesDAO;
 import DAO.MarketDAO;
+import DAO.MembersDAO;
 import DAO.WishlistDAO;
 import DTO.ImagesDTO;
+import DTO.MemberDTO;
 import DTO.ProductDTO;
 import DTO.WishlistDTO;
 
@@ -87,6 +89,8 @@ public class WishlistController extends HttpServlet {
 			
 			
 		}
+		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -132,7 +132,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 															</div>
 															<div class="col-md-3 col-lg-3 col-xl-3">
 
-																<h6 class="text-black mb-0">${i.product_name }</h6>
+																<h6 class="text-black mb-0 product_name">${i.product_name }</h6>
 															</div>
 															<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
 
@@ -223,7 +223,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 											</div>
 
 											<button type="button" class="btn btn-dark btn-block btn-lg"
-												data-mdb-ripple-color="dark">Register</button>
+												data-mdb-ripple-color="dark" id="buyBtn">구매하기</button>
 
 										</div>
 									</div>
@@ -279,22 +279,26 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			//let price = document.getElementsByClassName("totalPrice");
 			let amount = $(".totalAmount");
 			let price = $(".totalPrice");
-
+			let name = $(".product_name");
+			
 			let amountarr = [];
 			let pricearr = [];
-
+			let namearr = [];
+			
 			for (let i = 0; i < amount.length; i++) {
-				console.log(amount[i].value);
+				
 				amountarr[i] = amount[i].value
+				namearr[i] = name[i].innerText;
 			}
 
 			for (let j = 0; j < price.length; j++) {
-				console.log(price[j].innerText);
+				
 				pricearr[j] = price[j].innerText;
 			}
 
 			console.log(amountarr);
 			console.log(pricearr);
+			console.log(namearr);
 			console.log("+++++++")
 
 			let jsonamountarr = JSON.stringify(amountarr);
@@ -349,18 +353,22 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			
 			let amount = $(".totalAmount");
 			let price = $(".totalPrice");
-
+			let name = $(".product_name");
+			
 			let amountarr = [];
 			let pricearr = [];
-
+			let namearr = [];
+			
 			for (let i = 0; i < amount.length; i++) {
-				console.log(amount[i].value);
-				amountarr[i] = amount[i].value
+				
+				amountarr[i] = amount[i].value;
+				namearr[i] = name[i].innerText;
 			}
 
 			for (let j = 0; j < price.length; j++) {
-				console.log(price[j].innerText);
+				
 				pricearr[j] = price[j].innerText;
+				namearr[j] = name[j].innerText;
 			}
 
 			console.log(amountarr);
@@ -375,7 +383,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				url : "/wishlist.ajax",
 				data : {
 					"amount" : jsonamountarr,
-					"price" : jsonpricearr
+					"price" : jsonpricearr,
+					"name" : namearr
 				},
 				dataType : "json",
 				success : function(resp) {
@@ -413,6 +422,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			})
 		}
 		
+
+
+		
 		function deleteAll(){
 			
 			let reallyDelete = confirm("정말로 장바구니 목록을 비우시겠습니까?");
@@ -423,6 +435,29 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				return;
 			}
 		}
+		
+
+		
+// 		function amountMinus() {
+// 			let amount1 = $(".totalAmount");
+			
+// 			for(let i=;i<$(this).length;i++){
+// 				amount1[i].value--;
+// 			}
+// 		}
+
+		
+		
+// 			function amountPlus(){
+// 			let amount1 = $(".totalAmount");
+			
+// 			for(let i=;i<$(this).length;i++){
+// 				$(".totalAmount")[i].value++;
+// 			}
+		
+// 		}
+
+
 	</script>
 </body>
 </html>

@@ -63,17 +63,21 @@ public class MypageAjaxController extends HttpServlet {
 			@SuppressWarnings("unchecked")
 			List<Integer> pricearr = (List<Integer>)g.fromJson(price, ArrayList.class);
 			
+			for(int i=0;i<amountarr.size();i++) {
+				System.out.println(amountarr.get(i));
+			}
+			
 		
 			String json_amountarr = g.toJson(amountarr);
 			String json_pricearr = g.toJson(pricearr);
-			
+
 			JsonObject total = new JsonObject();
 			
 			total.addProperty("amountarr", json_amountarr);
 			total.addProperty("pricearr", json_pricearr);
 			
 			response.setContentType("text/html;charset+utf8");
-			System.out.println(total);
+			
 			response.getWriter().append(total.toString());
 		}
 		
