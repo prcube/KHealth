@@ -78,7 +78,7 @@
 		<script
 			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!------ Include the above in your HEAD tag ---------->
-
+<form action="/completed.buy" name="formgo" method="post">
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 mt-5">
 				<div
@@ -121,10 +121,13 @@
 												<tr>
 													<td class="col-md-7"><h4>
 															<em> </em> ${i.product_name }
+															<input type="hidden" value="${i.product_name }" name="name">
 														</h4></td>
 													<td class="col-md-2" style="text-align: center">
 
 														${i.product_wish_count }</td>
+														<input type="hidden" value="${i.product_wish_count }" name="amount">
+														
 													<td class="col-md-2 text-center">${i.product_price }
 														원</td>
 													<td class="col-md-1 text-center"></td>
@@ -134,12 +137,13 @@
 
 													<td><script>
 										//콤마 제거
-										const numberStr = "${dto.product_price }";
+										const numberStr = "${i.product_price }";
 										const number = numberStr.replace(/,/g, "");
-										var result = number * ${amount };
+										var result = number * ${i.product_wish_count };
 										// 수량과 금액 곱한 후 결과 값에 콤마 다시 추가
-										var sum = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-										document.write(sum.toString());
+										var sum = result.toString().replace(
+												/\B(?=(\d{3})+(?!\d))/g, ',');
+										document.write(sum.toString()) + "원"; 
 										
 										</script>원</td>
 												</tr>
@@ -165,9 +169,9 @@
 									</tr>
 								</tbody>
 							</table>
-							<form action="/completed.buy" name="formgo" method="post">
-								<input type="hidden" value="${dto.product_name }" name="name">
-								<input type="hidden" value="${amount }" name="amount"> <input
+							
+								
+								 <input
 									type="hidden" value="${loginID }" name="ID"> <input
 									type="hidden" value="${dao.nickname }" name="nickname">
 							</form>
