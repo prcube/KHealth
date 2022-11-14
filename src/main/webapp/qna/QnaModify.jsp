@@ -134,16 +134,18 @@
 
          <div class="form-group row">
             <div class="col-sm">
-               <input name="qna_title" id="qna_title"
-                  class="form-control-plaintext" type="text"
-                  placeholder="제목을 입력하세요.">
+               <input name="qna_title" id="qna_title" value="${dto.qna_title }"
+         
+              
+                  class="form-control-plaintext" type="text" 
+                 >
             </div>
          </div>
 
          <div class="form-group">
 
-            <textarea class="form-control" name="qna_contents"
-               id="qna_contents" id="exampleFormControlTextarea1" rows="10"
+            <textarea class="form-control" name="qna_contents" 
+               id="qna_contents"   id="exampleFormControlTextarea1" rows="10" 
                placeholder="내용을 입력하세요."></textarea>
 
 
@@ -176,6 +178,7 @@
 	      });
       
       console.log("gg");
+      
    </script>
 
 

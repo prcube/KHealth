@@ -16,6 +16,7 @@ import DAO.MembersDAO;
 import DAO.MypageAjaxDAO;
 import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
+import DTO.MemberDTO;
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
 
@@ -47,11 +48,11 @@ public class QnaController extends HttpServlet {
 				String navi = QnaDAO.getInstance().getPageNavi(cpage);
 				
 				QnaDAO dao = QnaDAO.getInstance();
-				//List<QnaDTO> list = dao.selectAll();
+
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
+
 				List<QnaDTO> list1 = dao.replycount(cpage*10-9,cpage*10);
 				System.out.println(list1);
-			
 				
 				boolean isInBlacklist = MembersDAO.getInstance().isInBlacklist(id);
 
@@ -59,6 +60,7 @@ public class QnaController extends HttpServlet {
 				request.setAttribute("navi", navi);
 				request.setAttribute("isInBlacklist", isInBlacklist);
 				request.setAttribute("list1", list1);
+
 				request.getRequestDispatcher("/qna/QnaDummy.jsp").forward(request, response);
 
 
@@ -105,9 +107,9 @@ public class QnaController extends HttpServlet {
 				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
 				String qna_title = request.getParameter("qna_title");
 				String qna_contents = request.getParameter("qna_contents");
-
+				
 				dao.updateBySeq(qna_title, qna_contents, qna_seq);
-
+				request.setAttribute("dto", dao);
 
 
 
@@ -115,7 +117,12 @@ public class QnaController extends HttpServlet {
 
 
 			}else if(uri.equals("/gomodify.qna")) {
+				
+				
+				 
 				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
+				String qna_title = request.getParameter("qna_title");
+				String qna_contents = request.getParameter("qna_contents");
 				request.setAttribute("qna_seq", qna_seq);
 				request.getRequestDispatcher("/qna/QnaModify.jsp").forward(request, response);
 
@@ -130,24 +137,21 @@ public class QnaController extends HttpServlet {
 
    
 			}else if(uri.equals("/searchAjax.qna")) {
-				
+				Gson g = new Gson();
 				JsonObject total = new JsonObject();
-				
 
+				String searchTitle = request.getParameter("searchTitle");			
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				String loginID = (String)request.getSession().getAttribute("loginID");
 				
-				request.getRequestDispatcher("/qna/QnaSearch.jsp").forward(request, response);
-			}else if (uri.equals("/thumbsup.qna")) {
-				QnaDAO dao = QnaDAO.getInstance();
+				List<QnaDTO> list = QnaDAO.getInstance().search(searchTitle);
 				
-				String id = (String) (request.getSession().getAttribute("loginID"));
+				total.addProperty("list",new Gson().toJson(list));
+				response.setContentType("text/html;charset=utf8");
 				
-				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
-				
-				QnaDAO.getInstance().addthumbsupCount(qna_seq);
-				
-				request.getRequestDispatcher("/list.qna").forward(request, response);				
-				
+				response.getWriter().append(total.toString());
 			}
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("/error.jsp");

@@ -192,6 +192,28 @@ public class WishlistDAO {
 		
 	}
 	
+	public void updateByWishlist(List<String> amountarr,List<String> namearr,String id) throws Exception{
+		String sql = "update wishlist set product_wish_count=? where product_wish_user=? and product_name=?";
+		
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			
+			for(int i=0;i<amountarr.size();i++) {
+				
+				pstat.setString(1, amountarr.get(i));
+				pstat.setString(2, id);
+				pstat.setString(3, namearr.get(i));
+				pstat.executeUpdate();
+				con.commit();
+			}
+
+			con.close();
+			
+			
+			
+		}
+	}
+	
 	public String getPageNavi(int currentPage) throws Exception{
 
 		int recordTotalCount = this.getRecordCount(); // board table에 글이 총 144개 있다고 가정
