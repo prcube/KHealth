@@ -35,6 +35,20 @@
 	border-radius: 0.5rem;
 	background: #fff;
 }
+
+.form-control-plaintext {
+	display: block;
+	width: 100%;
+	padding: 0.75rem 0;;
+	margin-bottom: 0;
+	line-height: 1.5;
+	color: black;
+	background-color: transparent;
+	border: solid transparent;
+	border-width: 1px 0;
+}
+
+
 </style>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -76,16 +90,13 @@
 		<form action="/insert.tips" method="post">
 			<div class="container board-border px-3">
 				<div class="row">
-					<div class="col-5 mt-4 mb-5">
+					<div class="mt-4 mb-5">
 						<h1>게시판 글쓰기</h1>
-					</div>
-					<div class="col-5 mt-4 mb-5 ">
-						<button type="submit" class="btn btn-secondary" id="tipsinsert">글쓰기</button>
-						<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
+						<hr class="mb-4">
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="bulletdiv row px-3 ">
 					<select class="form-select" aria-label="Default select example"
 						name="tips_bullet" id="tips_bullet">
 						<option selected>Open this select menu</option>
@@ -96,11 +107,11 @@
 					</select>
 				</div>
 
-				<div class="form-group row">
+				<div class="form-group row py-3">
 					<div class="col-sm">
 						<input name="tips_title" id="tips_title"
 							class="form-control-plaintext" type="text"
-							placeholder="제목을 입력하세요.">
+							placeholder="   제목을 입력하세요." style="border: solid 1px; border-color: gray; border-radius: 0.5rem;">
 					</div>
 				</div>
 				<textarea class="form-control" name="tips_contents"
@@ -113,6 +124,10 @@
 					</form>
 				</div>
 				<div class="form-group">
+					<div class="mt-3 mb-3 d-flex justify-content-end">
+						<button type="submit" class="btn btn-secondary me-2" id="tipsinsert">글쓰기</button>
+						<button type="button" class="btn btn-secondary" id="tipsback">목록으로</button>
+					</div>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
 			</div>

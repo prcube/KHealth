@@ -744,12 +744,7 @@
                                        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
                                     <!-- Core theme JS-->
                                     <script src="js/scripts.js"></script>
-                                    <img src="/image/instagram.png" height="20px"><span
-                                       class="text-white mx-1">&middot;</span><img src="/image/facebook.png"
-                                       height="20px"><span class="text-white mx-1">&middot;</span><img
-                                       src="/image/youtube.png" height="20px"><span
-                                       class="/image/text-white mx-1"></span><img src="/image/twitter.png"
-                                       height="20px">
+                                 
                                  </div>
                               </div>
                            </div>

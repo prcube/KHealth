@@ -43,7 +43,7 @@
 .title {
 	display: block;
 	width: 100%;
-	padding: 0.75rem 0;;
+	padding: 0.75rem 0;
 	margin-bottom: 0;
 	line-height: 1.5;
 	color: black;
@@ -136,15 +136,15 @@
 
 
 		<script>
-					$("#back").on("click", function () {
-						location.href = "QnaDummy.jsp"
-					})
-					//서머노트 
-					$('#qna_contents')
-						.summernote(
+			$("#back").on("click", function() {
+				location.href = "QnaDummy.jsp"
+			})
+			//서머노트 
+			$('#qna_contents')
+					.summernote(
 							{
-								callbacks: {
-									onImageUpload: function (files, editor) {
+								callbacks : {
+									onImageUpload : function(files, editor) {
 										//에디터 이미지 업로드 기능
 										console.log(files);
 
@@ -152,48 +152,48 @@
 										// 
 										data.append('imgFile', files[0]);
 										$.ajax({
-											url: 'upload.file',
-											type: 'post',
-											data: data,
-											enctype: 'multipart/form-data',
-											contentType: false, // 
-											processData: false
-											// 
+											url : 'upload.file',
+											type : 'post',
+											data : data,
+											enctype : 'multipart/form-data',
+											contentType : false, // 
+											processData : false
+										// 
 										}).done(
-											function (resp) {
+												function(resp) {
 
-												var imgNode = $("<img>");
-												imgNode.attr("src", resp);
+													var imgNode = $("<img>");
+													imgNode.attr("src", resp);
 
-												$(".note-editable").append(
-													imgNode);
-											}).fail(function (a, b, c) {
-												console.log(a);
-												console.log(b);
-												console.log(c);
-											});
+													$(".note-editable").append(
+															imgNode);
+												}).fail(function(a, b, c) {
+											console.log(a);
+											console.log(b);
+											console.log(c);
+										});
 									}
 								},
 
-								placeholder: '내용을 입력하세요.',
-								tabsize: 2,
-								height: 400,
-								toolbar: [
-									['style', ['style']],
-									[
-										'font',
-										['bold', 'undeerline', 'clear']],
-									['color', ['color']],
-									['para', ['ul', 'ol', 'paragraph']],
-									['table', ['table']],
-									['insert',
-										['link', 'picture', 'video']],
-									[
-										'view',
-										['fullscreen', 'codeview',
-											'help']]]
+								placeholder : '내용을 입력하세요.',
+								tabsize : 2,
+								height : 400,
+								toolbar : [
+										[ 'style', [ 'style' ] ],
+										[
+												'font',
+												[ 'bold', 'undeerline', 'clear' ] ],
+										[ 'color', [ 'color' ] ],
+										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+										[ 'table', [ 'table' ] ],
+										[ 'insert',
+												[ 'link', 'picture', 'video' ] ],
+										[
+												'view',
+												[ 'fullscreen', 'codeview',
+														'help' ] ] ]
 							});
-				</script>
+		</script>
 
 	</main>
 
