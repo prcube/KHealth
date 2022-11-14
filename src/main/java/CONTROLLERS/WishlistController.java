@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ImagesDAO;
 import DAO.MarketDAO;
+import DAO.MembersDAO;
 import DAO.WishlistDAO;
-import DTO.ImagesDTO;
+import DTO.MemberDTO;
 import DTO.ProductDTO;
 import DTO.WishlistDTO;
 
@@ -87,6 +88,25 @@ public class WishlistController extends HttpServlet {
 			
 			
 		}
+		
+		if(uri.equals("/buy.wish")) {
+			String id = (String) request.getSession().getAttribute("loginID");
+			
+			try {
+				List<WishlistDTO> list = WishlistDAO.getInstance().selectById(id);
+				
+				MemberDTO dao = MembersDAO.getInstance().selectById(id);
+				
+				request.setAttribute("dao", dao);
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/order/orderpaywishlist.jsp").forward(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

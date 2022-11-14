@@ -43,7 +43,7 @@
 .title {
 	display: block;
 	width: 100%;
-	padding: 0.75rem 0;;
+	padding: 0.75rem 0;
 	margin-bottom: 0;
 	line-height: 1.5;
 	color: black;
@@ -68,21 +68,62 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/list.tips?cpage=1">Tips</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/list.qna?cpage=1">Q&A</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/login/LoginDummy.jsp">Login</a></li>
-					</ul>
-				</div>
+				<c:choose>
+					<c:when test="${loginID != null}">
+						<!-- 로그인을 한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+
+
+								<!-- dropdown -->
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" style="color: white" href="#"
+									role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }님 </a>
+									<ul class="dropdown-menu dropdown-menu-dark">
+										<li class="dropdown-item"><a href="/mypage.mem"
+											style="color: white; text-decoration: none;">Mypage</a></li>
+										<li><a class="dropdown-item" style="color: white;"
+											href="#">장바구니</a></li>
+										<li><a class="dropdown-item" style="color: white;"
+											href="#">뭐 넣지</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><input type="button" class="btn btn-link" id="logout"
+											style="color: white; text-decoration: none;" value="로그아웃"></li>
+									</ul></li>
+							</ul>
+						</div>
+
+					</c:when>
+					<c:when test="${loginID == null}">
+						<!-- 로그인을 안한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/LoginDummy.jsp">Login</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/SigninDummy.jsp">Signin</a></li>
+								<li></li>
+							</ul>
+						</div>
+					</c:when>
+				</c:choose>
 			</div>
 		</nav>
 
@@ -136,15 +177,15 @@
 
 
 		<script>
-					$("#back").on("click", function () {
-						location.href = "QnaDummy.jsp"
-					})
-					//서머노트 
-					$('#qna_contents')
-						.summernote(
+			$("#back").on("click", function() {
+				location.href = "QnaDummy.jsp"
+			})
+			//서머노트 
+			$('#qna_contents')
+					.summernote(
 							{
-								callbacks: {
-									onImageUpload: function (files, editor) {
+								callbacks : {
+									onImageUpload : function(files, editor) {
 										//에디터 이미지 업로드 기능
 										console.log(files);
 
@@ -152,48 +193,48 @@
 										// 
 										data.append('imgFile', files[0]);
 										$.ajax({
-											url: 'upload.file',
-											type: 'post',
-											data: data,
-											enctype: 'multipart/form-data',
-											contentType: false, // 
-											processData: false
-											// 
+											url : 'upload.file',
+											type : 'post',
+											data : data,
+											enctype : 'multipart/form-data',
+											contentType : false, // 
+											processData : false
+										// 
 										}).done(
-											function (resp) {
+												function(resp) {
 
-												var imgNode = $("<img>");
-												imgNode.attr("src", resp);
+													var imgNode = $("<img>");
+													imgNode.attr("src", resp);
 
-												$(".note-editable").append(
-													imgNode);
-											}).fail(function (a, b, c) {
-												console.log(a);
-												console.log(b);
-												console.log(c);
-											});
+													$(".note-editable").append(
+															imgNode);
+												}).fail(function(a, b, c) {
+											console.log(a);
+											console.log(b);
+											console.log(c);
+										});
 									}
 								},
 
-								placeholder: '내용을 입력하세요.',
-								tabsize: 2,
-								height: 400,
-								toolbar: [
-									['style', ['style']],
-									[
-										'font',
-										['bold', 'undeerline', 'clear']],
-									['color', ['color']],
-									['para', ['ul', 'ol', 'paragraph']],
-									['table', ['table']],
-									['insert',
-										['link', 'picture', 'video']],
-									[
-										'view',
-										['fullscreen', 'codeview',
-											'help']]]
+								placeholder : '내용을 입력하세요.',
+								tabsize : 2,
+								height : 400,
+								toolbar : [
+										[ 'style', [ 'style' ] ],
+										[
+												'font',
+												[ 'bold', 'undeerline', 'clear' ] ],
+										[ 'color', [ 'color' ] ],
+										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+										[ 'table', [ 'table' ] ],
+										[ 'insert',
+												[ 'link', 'picture', 'video' ] ],
+										[
+												'view',
+												[ 'fullscreen', 'codeview',
+														'help' ] ] ]
 							});
-				</script>
+		</script>
 
 	</main>
 
@@ -228,6 +269,11 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="/js/scripts.js"></script>
+	<script>
+		$("#logout").on("click", function() {
+			location.href = "/logout.mem";
+		})
+	</script>
 
 </body>
 
