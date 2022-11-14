@@ -14,11 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import DAO.ImagesDAO;
 import DAO.MembersDAO;
 import DAO.TipsDAO;
 import DAO.Tips_imagesDAO;
-import DTO.ImagesDTO;
 import DTO.TipsDTO;
 import DTO.Tips_imagesDTO;
 
@@ -27,17 +25,15 @@ public class TIpsController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
 
 		String uri = request.getRequestURI();
 
 		request.setCharacterEncoding("utf8");
 
 		try {
-			
-			if(uri.equals("/insert.tips")) {
-				//여기부터 파일 업로드 하는 코드 
+
+			if (uri.equals("/insert.tips")) {
+				// 여기부터 파일 업로드 하는 코드
 				int maxSize = 1024 * 1024 * 10; // 업로드 하는 파일의 최대 사이즈
 
 				// 파일을 저장하는 경로는 절대경로인 getRealPath에 tips_images 라는 곳에다 저장하겠다 라는 것
@@ -53,59 +49,59 @@ public class TIpsController extends HttpServlet {
 				// 멀티파트 폼 데이터로 넘어온 파일을 MultipartRequest로 업그레이드 시켜주는 코드
 				// 멀티 파트로 업그레이트 시킨다음에는 request.getparameter로 값을 꺼내는것이 아니라 multi.getparameter로
 				// 꺼내야한다.
-				
-				//바로 순서대로 저장한다는 코드
+
+				// 바로 순서대로 저장한다는 코드
 				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8",
 						new DefaultFileRenamePolicy());
 
+				int seq = Tips_imagesDAO.getInstance().getnextval();
+
 				Enumeration<String> e = multi.getFileNames();
 
-				while(e.hasMoreElements()) { //rs.next()와 유사
+				while (e.hasMoreElements()) { // rs.next()와 유사
 					String name = e.nextElement();
 					System.out.println(name);
 
 					String oriName = multi.getOriginalFileName(name);
-					if(oriName == null) {continue;}
+					if (oriName == null) {
+						continue;
+					}
 					String sysName = multi.getFilesystemName(name);
-					Tips_imagesDAO.getInstance().insert(new Tips_imagesDTO(0,oriName, sysName, 0));
+					Tips_imagesDAO.getInstance().insert(new Tips_imagesDTO(0, oriName, sysName, seq));
 				}
 
-				
-				//여기부터가 원래 있던 코드
+				// 여기부터가 원래 있던 코드
 				TipsDAO dao = TipsDAO.getInstance();
-				
-				
-				//List<TipsDTO> list = dao.selectAll();
-				//System.out.println(list);
-				
-				String tips_writer =(String)(request.getSession().getAttribute("loginID")); 
+
+				// List<TipsDTO> list = dao.selectAll();
+				// System.out.println(list);
+
+				String tips_writer = (String) (request.getSession().getAttribute("loginID"));
 				String tips_title = multi.getParameter("tips_title");
 				String tips_contents = multi.getParameter("tips_contents");
 				String tips_bullet = multi.getParameter("tips_bullet");
-				
-				TipsDTO dto = new TipsDTO(0,tips_title,tips_writer,tips_contents,null,0,"",0,tips_bullet,0);
-				
-				
+
+				TipsDTO dto = new TipsDTO(0, tips_title, tips_writer, tips_contents, null, 0, "", 0, tips_bullet, 0);
+
 				dao.insert(dto);
-				//request.setAttribute("list", list);
+				// request.setAttribute("list", list);
 				response.sendRedirect("/list.tips?cpage=1");
-				//request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request, response);
-			}
-			else if(uri.equals("/list.tips")) {
-				
+				// request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request,
+				// response);
+			} else if (uri.equals("/list.tips")) {
+
 				TipsDAO dao = TipsDAO.getInstance();
-				int cpage =Integer.parseInt(request.getParameter("cpage"));
-				//List<TipsDTO> list = dao.selectAll();
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				// List<TipsDTO> list = dao.selectAll();
 				String id = (String) request.getSession().getAttribute("loginID");
 				boolean member_role = MembersDAO.getInstance().isYouTeacher(id);
-				
-				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
-				List<TipsDTO> list1 = TipsDAO.getInstance().selectBybullet1(cpage*10-9,cpage*10, null);
-				List<TipsDTO> list2 = TipsDAO.getInstance().selectBybullet2(cpage*10-9,cpage*10, null);
-				List<TipsDTO> list3 = TipsDAO.getInstance().selectBybullet3(cpage*10-9,cpage*10, null);
-				List<TipsDTO> list4 = TipsDAO.getInstance().selectBybullet4(cpage*10-9,cpage*10, null);
-				
-				
+
+				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage * 10 - 9, cpage * 10);
+				List<TipsDTO> list1 = TipsDAO.getInstance().selectBybullet1(cpage * 10 - 9, cpage * 10, null);
+				List<TipsDTO> list2 = TipsDAO.getInstance().selectBybullet2(cpage * 10 - 9, cpage * 10, null);
+				List<TipsDTO> list3 = TipsDAO.getInstance().selectBybullet3(cpage * 10 - 9, cpage * 10, null);
+				List<TipsDTO> list4 = TipsDAO.getInstance().selectBybullet4(cpage * 10 - 9, cpage * 10, null);
+
 				String navi = TipsDAO.getInstance().getPageNavi(cpage);
 				request.setAttribute("navi", navi);
 				request.setAttribute("list", list);
@@ -114,17 +110,17 @@ public class TIpsController extends HttpServlet {
 				request.setAttribute("list3", list3);
 				request.setAttribute("list4", list4);
 				request.setAttribute("member_role", member_role);
-				
+
 				request.getRequestDispatcher("/tips/Tips.jsp").forward(request, response);
 			}
-			
-			else if(uri.equals("/detail.tips")) {
+
+			else if (uri.equals("/detail.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
-				//숨긴 tips_seq를 가져와서 TipsDTO dto = dao.detail(tips_seq) 이렇게 넣어야함
-				
+				// 숨긴 tips_seq를 가져와서 TipsDTO dto = dao.detail(tips_seq) 이렇게 넣어야함
+
 				String id = (String) (request.getSession().getAttribute("loginID"));
 				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
-				
+
 				TipsDTO dto = dao.detail(tips_seq);
 				TipsDAO.getInstance().addViewCount(tips_seq);
 				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
@@ -132,62 +128,52 @@ public class TIpsController extends HttpServlet {
 				request.setAttribute("loginID", id);
 				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/tips/tipsDetail.jsp").forward(request, response);
-			}
-			else if (uri.equals("/thumbsup.tips")) {
+			} else if (uri.equals("/thumbsup.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
-				
+
 				String id = (String) (request.getSession().getAttribute("loginID"));
 				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
-				
+
 				TipsDAO.getInstance().addthumbsupCount(tips_seq);
-				
+
 				request.getRequestDispatcher("/list.tips").forward(request, response);
 			}
 
-			else if(uri.equals("/delete.tips")) {
+			else if (uri.equals("/delete.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
-				
+
 				String id = (String) (request.getSession().getAttribute("loginID"));
 				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
-				
+
 				dao.delete(tips_seq);
-				
+
 				request.getRequestDispatcher("/list.tips").forward(request, response);
 			}
-			
-			else if(uri.equals("/gomodify.tips")) {
+
+			else if (uri.equals("/gomodify.tips")) {
 				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
-				
+
 				request.setAttribute("tips_seq", tips_seq);
-				
+
 				request.getRequestDispatcher("/tips/tipsModify.jsp").forward(request, response);
 			}
-			
-			
-			else if(uri.equals("/update.tips")) {
+
+			else if (uri.equals("/update.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
-				
+
 				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
 				String tips_title = request.getParameter("tips_title");
 				String tips_contents = request.getParameter("tips_contents");
-				
+
 				dao.update(tips_title, tips_contents, tips_seq);
-				
-				request.getRequestDispatcher("/detail.tips?tips_seq="+tips_seq).forward(request, response);
-				//response.sendRedirect("/detail.jsp?tips_seq="+tips_seq);
-				//please
-				//please
-				
+
+				request.getRequestDispatcher("/detail.tips?tips_seq=" + tips_seq).forward(request, response);
+				// response.sendRedirect("/detail.jsp?tips_seq="+tips_seq);
+				// please
+				// please
+
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

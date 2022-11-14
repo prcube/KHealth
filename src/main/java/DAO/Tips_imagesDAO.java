@@ -34,12 +34,28 @@ public class Tips_imagesDAO {
 		return ds.getConnection();
 	}
 
+	// tips_seq 랑 같은 숫자로 올라가게 하는 코드
+	public int getnextval() throws Exception {
 
-	public int insert(Tips_imagesDTO dto) throws Exception{
+		String sql = "select tips_seq.nextval from dual";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+
+			try (ResultSet rs = pstat.executeQuery();) {
+
+				rs.next();
+
+				int seq = rs.getInt("nextval");
+				return seq;
+			}
+
+		}
+
+	}
+
+	public int insert(Tips_imagesDTO dto) throws Exception {
 		String sql = "insert into tips_images values(tips_images_seq.nextval,?,?,?)";
-		try(Connection con = this.getConnection();
-			PreparedStatement pstat = con.prepareStatement(sql);)
-		{
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, dto.getOriName());
 			pstat.setString(2, dto.getSysName());
 			pstat.setInt(3, dto.getParent_seq());
@@ -48,25 +64,23 @@ public class Tips_imagesDAO {
 			return result;
 		}
 	}
-	public List<Tips_imagesDTO> selectAll() throws Exception{
+
+	public List<Tips_imagesDTO> selectAll() throws Exception {
 
 		String sql = "select * from tips_images";
 
-		try(Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);
-				){
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			List<Tips_imagesDTO> result = new ArrayList<>();
 
+			try (ResultSet rs = pstat.executeQuery();) {
 
-			try(ResultSet rs =pstat.executeQuery();){
-
-				while(rs.next()) {
+				while (rs.next()) {
 
 					int images_seq = rs.getInt("images_seq");
 					String oriName = rs.getString("oriname");
 					String sysName = rs.getString("sysname");
 					int parent_seq = rs.getInt("parent_seq");
-					
+
 					Tips_imagesDTO dto = new Tips_imagesDTO(images_seq, oriName, sysName, parent_seq);
 					result.add(dto);
 
@@ -76,23 +90,18 @@ public class Tips_imagesDAO {
 
 		}
 	}
-	
-	
-	
-	public int getimage(int product_seq) throws Exception{
-		
+
+	public int getimage(int tips_seq) throws Exception {
+
 		String sql = "select * from tips_images where parent_seq=?";
-		
-		try(Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);
-				){
-			
-			pstat.setInt(1, product_seq);
-			
 
-			try(ResultSet rs =pstat.executeQuery();){
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
-				while(rs.next()) {
+			pstat.setInt(1, tips_seq);
+
+			try (ResultSet rs = pstat.executeQuery();) {
+
+				while (rs.next()) {
 
 					String oriName = rs.getString("oriname");
 
@@ -103,31 +112,26 @@ public class Tips_imagesDAO {
 
 		}
 	}
-	
-	public String getImageOriName(int product_seq) throws Exception{
-		
-		String sql = "select * from tips_images where parent_seq=?";
-		
-		try(Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);
-				){
-			
-			pstat.setInt(1, product_seq);
-			
 
-			try(ResultSet rs =pstat.executeQuery();){
+	public String getImageOriName(int tips_seq) throws Exception {
+
+		String sql = "select * from tips_images where parent_seq=?";
+
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+
+			pstat.setInt(1, tips_seq);
+
+			try (ResultSet rs = pstat.executeQuery();) {
 
 				rs.next();
 
-					String oriName = rs.getString("oriname");
+				String oriName = rs.getString("oriname");
 
-				
 				int result = pstat.executeUpdate();
 				return oriName;
 			}
 
 		}
 	}
-	
-	
+
 }
