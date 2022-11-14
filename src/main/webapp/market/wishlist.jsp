@@ -188,10 +188,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 											<h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
 											<hr class="my-4">
 
-											<div class="d-flex justify-content-between mb-4">
-												<h5 class="text-uppercase">items 3</h5>
-												<h5>€ 132.00</h5>
-											</div>
+<!-- 											<div class="d-flex justify-content-between mb-4"> -->
+<!-- 												<h5 class="text-uppercase">items 3</h5> -->
+<!-- 												<h5>€ 132.00</h5> -->
+<!-- 											</div> -->
 
 											<h5 class="text-uppercase mb-3">Shipping</h5>
 
