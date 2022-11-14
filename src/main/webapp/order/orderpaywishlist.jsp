@@ -19,7 +19,8 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
@@ -88,8 +89,8 @@
 							<div class="col-xs-6 col-sm-6 col-md-6">
 								<address>
 									<strong>배송지 정보</strong> <br> ${dao.zip } <br>
-									${dao.address1 }<br> ${dao.address2 }  <br> <abbr title="Phone">Phone:</abbr>
-									${dao.number }
+									${dao.address1 }<br> ${dao.address2 } <br> <abbr
+										title="Phone">Phone:</abbr> ${dao.number }
 								</address>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -112,25 +113,26 @@
 										<th class="text-center">합</th>
 									</tr>
 								</thead>
-	
+
 								<tbody>
-									<tr>
-										<td class="col-md-7"><h4><em>
-										</em>
-										${dto.product_name }
-											</h4></td>
-										<td class="col-md-2" style="text-align: center">
-										
-										${amount }</td>
-										<td class="col-md-2 text-center">${dto.product_price } 원</td>
-										<td class="col-md-1 text-center">
-										</td>
-										
-									
-										
-										
-										<td>
-										<script>
+									<c:choose>
+										<c:when test="${not empty list}">
+											<c:forEach var="i" items="${list }">
+												<tr>
+													<td class="col-md-7"><h4>
+															<em> </em> ${i.product_name }
+														</h4></td>
+													<td class="col-md-2" style="text-align: center">
+
+														${i.product_wish_count }</td>
+													<td class="col-md-2 text-center">${i.product_price }
+														원</td>
+													<td class="col-md-1 text-center"></td>
+
+
+
+
+													<td><script>
 										//콤마 제거
 										const numberStr = "${dto.product_price }";
 										const number = numberStr.replace(/,/g, "");
@@ -139,40 +141,42 @@
 										var sum = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 										document.write(sum.toString());
 										
-										</script>원
-										</td>
-									</tr>
-								
+										</script>원</td>
+												</tr>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<div>출력할 내용이 없습니다.</div>
+										</c:otherwise>
+									</c:choose>
 									<tr>
 
 										<td class="text-center"><h4>
 												<strong>결제금액: </strong>
 											</h4></td>
 										<td class="text-center text-danger"><h4>
-										<strong>₩</strong>
-											<strong>
-												<script>
+												<strong>₩</strong> <strong> <script>
 										document.write(sum.toString()); 
 										</script>
-										</strong><strong>원</strong>
+												</strong><strong>원</strong>
 											</h4></td>
 										<td> </td>
 										<td> </td>
 									</tr>
 								</tbody>
 							</table>
-						<form action ="/completed.buy" name ="formgo" method="post">
-						<input type = "hidden" value="${dto.product_name }" name = "name">
-						<input type = "hidden" value="${amount }" name = "amount">
-						<input type = "hidden" value="${loginID }" name = "ID">
-						<input type = "hidden" value="${dao.nickname }" name = "nickname">
-						</form>
-				
-							<input type="submit" value="결제하기" onclick="requestPay()" class="btn btn-success btn-lg btn-block">
-							
-							<span class="glyphicon glyphicon-chevron-right"></span>
-							
-					<script>
+							<form action="/completed.buy" name="formgo" method="post">
+								<input type="hidden" value="${dto.product_name }" name="name">
+								<input type="hidden" value="${amount }" name="amount"> <input
+									type="hidden" value="${loginID }" name="ID"> <input
+									type="hidden" value="${dao.nickname }" name="nickname">
+							</form>
+
+							<input type="submit" value="결제하기" onclick="requestPay()"
+								class="btn btn-success btn-lg btn-block"> <span
+								class="glyphicon glyphicon-chevron-right"></span>
+
+							<script>
 					var buyer  = "${dao.name }";
 					var name = "${dto.product_name }";
 					const numberStr2 = "${dto.product_price }";
@@ -204,49 +208,48 @@
 					          }
 					      });
 					    }
-  				</script>	
-							
+  				</script>
+
 						</div>
 					</div>
 				</div>
-			
+
 			</div>
 		</section>
 
 
 
 
-	<!-- Footer-->
-	<footer class="bg-dark py-4 mt-auto ">
-		<div class="container px-5 ">
-			<div
-				class="row align-items-center justify-content-between flex-column flex-sm-row ">
-				<div class="text-center">
-					<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자
-						: 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
-					<div class="small m-0 text-white"></div>
-					<div class="small m-0 text-white">케이헬스 주식회사
-						(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
-					<div class="small m-0 text-white">Copyright &copy; K-Health
-						Corp. All rights reserved.</div>
-					<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
+		<!-- Footer-->
+		<footer class="bg-dark py-4 mt-auto ">
+			<div class="container px-5 ">
+				<div
+					class="row align-items-center justify-content-between flex-column flex-sm-row ">
+					<div class="text-center">
+						<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 |
+							책임자 : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
+						<div class="small m-0 text-white"></div>
+						<div class="small m-0 text-white">케이헬스 주식회사
+							(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
+						<div class="small m-0 text-white">Copyright &copy; K-Health
+							Corp. All rights reserved.</div>
+						<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
 
-					<img src="/image/instagram.png" height="20px"> <span
-						class="text-white mx-1">&middot;</span> <img
-						src="/image/facebook.png" height="20px"> <span
-						class="text-white mx-1">&middot;</span> <img
-						src="/image/youtube.png" height="20px"> <span
-						class="/image/text-white mx-1">&middot;</span> <img
-						src="/image/twitter.png" height="20px">
+						<img src="/image/instagram.png" height="20px"> <span
+							class="text-white mx-1">&middot;</span> <img
+							src="/image/facebook.png" height="20px"> <span
+							class="text-white mx-1">&middot;</span> <img
+							src="/image/youtube.png" height="20px"> <span
+							class="/image/text-white mx-1">&middot;</span> <img
+							src="/image/twitter.png" height="20px">
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
-	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="/js/scripts.js"></script>
-
+		</footer>
+		<!-- Bootstrap core JS-->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Core theme JS-->
+		<script src="/js/scripts.js"></script>
 </body>
 </html>

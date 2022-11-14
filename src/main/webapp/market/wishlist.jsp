@@ -273,6 +273,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script src="/js/scripts.js"></script>
 
 	<script>
+	
+		$("#buyBtn").on("click",function(){
+			location.href="/buy.wish";
+		})
+	
 		$(function() {
 
 			//let amount = document.getElementsByClassName("totalAmount");
@@ -303,13 +308,15 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 			let jsonamountarr = JSON.stringify(amountarr);
 			let jsonpricearr = JSON.stringify(pricearr);
-
+			let jsonnamearr = JSON.stringify(namearr);
+			
 			$.ajax({
 				type : "post",
 				url : "/wishlist.ajax",
 				data : {
 					"amount" : jsonamountarr,
-					"price" : jsonpricearr
+					"price" : jsonpricearr,
+					"name" : jsonnamearr
 				},
 				dataType : "json",
 				success : function(resp) {
@@ -370,13 +377,14 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				pricearr[j] = price[j].innerText;
 				namearr[j] = name[j].innerText;
 			}
-
+			console.log(namearr);
 			console.log(amountarr);
 			console.log(pricearr);
 			console.log("+++++++")
 
 			let jsonamountarr = JSON.stringify(amountarr);
 			let jsonpricearr = JSON.stringify(pricearr);
+			let jsonnamearr = JSON.stringify(namearr);
 			
 			$.ajax({
 				type : "post",
@@ -384,7 +392,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				data : {
 					"amount" : jsonamountarr,
 					"price" : jsonpricearr,
-					"name" : namearr
+					"name" : jsonnamearr
 				},
 				dataType : "json",
 				success : function(resp) {
@@ -438,24 +446,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		
 
 		
-// 		function amountMinus() {
-// 			let amount1 = $(".totalAmount");
-			
-// 			for(let i=;i<$(this).length;i++){
-// 				amount1[i].value--;
-// 			}
-// 		}
 
-		
-		
-// 			function amountPlus(){
-// 			let amount1 = $(".totalAmount");
-			
-// 			for(let i=;i<$(this).length;i++){
-// 				$(".totalAmount")[i].value++;
-// 			}
-		
-// 		}
 
 
 	</script>
