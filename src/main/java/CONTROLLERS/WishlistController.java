@@ -75,7 +75,18 @@ public class WishlistController extends HttpServlet {
 
 		}
 		
-		
+		if(uri.equals("/deleteall.wish")) {
+			String id = (String) request.getSession().getAttribute("loginID");
+			
+			try {
+				WishlistDAO.getInstance().deleteById(id);
+				response.sendRedirect("/list.wish?cpage=1");
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
