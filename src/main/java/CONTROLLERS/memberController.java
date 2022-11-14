@@ -40,7 +40,10 @@ public class memberController extends HttpServlet {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 				String launch_date = format.format(System.currentTimeMillis());
 				MembersDAO dao = MembersDAO.getInstance();
-				int result = dao.insert(id, passwd, name, launch_date, nickname, 0, mail, number, zipcode, post1,
+				PasswdSha sha = new PasswdSha();
+				String cryptopw = sha.encrypt(passwd);
+				System.out.println(cryptopw);
+				int result = dao.insert(id, cryptopw, name, launch_date, nickname, 0, mail, number, zipcode, post1,
 						post2);
 				response.sendRedirect("/");
 			} else if (uri.equals("/login.mem")) {
