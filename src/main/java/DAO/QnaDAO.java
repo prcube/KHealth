@@ -46,6 +46,7 @@ public class QnaDAO {
 			pstat.setString(5, dto.getQna_nickname());   
 			pstat.setInt(6, dto.getQna_thumbsup());
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
 			con.close();
 			return result;
@@ -84,7 +85,7 @@ public class QnaDAO {
 				int qna_view_count = rs.getInt("qna_view_count");
 				String qna_nickname = rs.getString("qna_nickname");
 				int qna_thumbsup = rs.getInt("qna_thumbsup");
-				QnaDTO dto = new QnaDTO(qna_seq, qna_title, qna_writer,qna_contents,qna_write_date,qna_view_count,qna_nickname,0,qna_thumbsup); 
+				QnaDTO dto = new QnaDTO(qna_seq, qna_title, qna_writer,qna_contents,qna_write_date,qna_view_count,qna_nickname,0,qna_thumbsup,0); 
 
 				return dto;
 			}
@@ -96,6 +97,7 @@ public class QnaDAO {
 			pstat.setInt(1,qna_seq);
 
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
 
 			return result;
@@ -108,6 +110,7 @@ public class QnaDAO {
 			pstat.setString(2, qna_contents);
 			pstat.setInt(3, qna_seq);
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
 			return result;
 		}
@@ -117,7 +120,9 @@ public class QnaDAO {
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, qna_seq);
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
+
 			return result;
 
 		}
@@ -166,6 +171,10 @@ public class QnaDAO {
 			endNavi = pageTotalCount;
 		}
 
+		//      System.out.println("현재페이지 : " + currentPage);
+		//      System.out.println("네비게이터 시작 : "+ startNavi);
+		//      System.out.println("네비게이터 끝 : " + endNavi);
+
 		boolean needPrev = true;
 		boolean needNext = true;
 
@@ -205,6 +214,7 @@ public class QnaDAO {
 			pstat.setInt(2, end);
 			try(ResultSet rs = pstat.executeQuery()){
 				List<QnaDTO> list = new ArrayList<>();
+
 				while(rs.next()) {
 					QnaDTO dto = new QnaDTO();
 					dto.setQna_seq(rs.getInt("qna_seq"));
@@ -215,7 +225,9 @@ public class QnaDAO {
 					dto.setQna_view_count(rs.getInt("qna_view_count"));
 					dto.setQna_nickname(rs.getString("qna_nickname"));
 					dto.setQna_thumbsup(rs.getInt("qna_thumbsup"));
-					list.add(dto);     
+					//               rn셋팅
+					dto.setRn(rs.getInt("rn"));
+					list.add(dto);
 				}
 				return list;
 
@@ -223,9 +235,7 @@ public class QnaDAO {
 			}
 
 		}
-	}
-	
-	public int getnextval() throws Exception {
+	}public int getnextval() throws Exception {
 		//      다음 시퀀스값을 가져온다.
 		String sql  = "select qna_seq.nextval from dual";
 
@@ -237,8 +247,56 @@ public class QnaDAO {
 			con.commit();
 			return qna_seq;
 		}
+
+	}public int addthumbsupCount(int qna_seq) throws Exception {
+
+		String sql = "update qna set qna_thumbsup = qna_thumbsup +1 where qna_seq = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, qna_seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}public List<QnaDTO> replycount(int start , int end) throws Exception {
+		String sql = "select * from \r\n"
+				+ "(select \r\n"
+				+ "    qna.*, \r\n"
+				+ "    row_number() over(order by qna_seq desc) rn, \r\n"
+				+ "    (select count(*) from qnacomments where qnacms_parent_seq=qna_seq) replycount\r\n"
+				+ "from qna) \r\n"
+				+ "where rn between ? and ?";
+
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setInt(1, start);
+			pstat.setInt(2, end);
+			ResultSet rs = pstat.executeQuery();
+			List<QnaDTO> list1 = new ArrayList<>();
+			while(rs.next()) {
+				QnaDTO dto = new QnaDTO();
+				dto.setQna_seq(rs.getInt("qna_seq"));
+				dto.setQna_title(rs.getString("qna_title"));
+				dto.setQna_writer(rs.getString("qna_writer"));
+				dto.setQna_contents(rs.getString("qna_contents"));
+				dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
+				dto.setQna_view_count(rs.getInt("qna_view_count"));
+				dto.setQna_nickname(rs.getString("qna_nickname"));
+				dto.setQna_thumbsup(rs.getInt("qna_thumbsup"));
+				dto.setNumberOfComment(rs.getInt("replycount"));
+				list1.add(dto);
+
+
+
+				// System.out.println(dto.getQna_seq());
+				// System.out.println(dto.getQna_title());
+				System.out.println(rs.getInt("replycount"));
+			}
+			return list1;
+		}
 	}
-	
+
 	public List<QnaDTO> search(String searchTitle) throws Exception {
 		String sql = "select * from qna where qna_title like ?";
 		try(Connection con = this.getConnection();
@@ -256,51 +314,38 @@ public class QnaDAO {
 					dto.setQna_view_count(rs.getInt("qna_view_count"));
 					dto.setQna_nickname(rs.getString("qna_nickname"));
 					list.add(dto);
-
+					System.out.println(rs.getInt("qna_seq") +" : "+ rs.getString("qna_title"));
 				}
 				return list;
-			}
+				}
 		}
 	}
-	
-	public int addthumbsupCount(int qna_seq) throws Exception {
-
-		String sql = "update qna set qna_thumbsup = qna_thumbsup +1 where qna_seq = ?";
-		try(Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);){
-			pstat.setInt(1, qna_seq);
-			int result = pstat.executeUpdate();
-			con.commit();
-			return result;
-		}
-	}
-	
-	public List<QnaDTO> replycount() throws Exception {
-		String sql = "select q.*,(select count(*) from qnaComments r where r.qnaCms_parent_seq = q.qna_seq) as replyCount from qna q";
-
-
-		try(Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);) {
-			ResultSet rs = pstat.executeQuery();
-			List<QnaDTO> list1 = new ArrayList<>();
-			while(rs.next()) {
-				QnaDTO dto = new QnaDTO();
-				dto.setQna_seq(rs.getInt("qna_seq"));
-				dto.setQna_title(rs.getString("qna_title"));
-				dto.setQna_writer(rs.getString("qna_writer"));
-				dto.setQna_contents(rs.getString("qna_contents"));
-				dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
-				dto.setQna_view_count(rs.getInt("qna_view_count"));
-				dto.setQna_nickname(rs.getString("qna_nickname"));
-				dto.setQna_thumbsup(rs.getInt("qna_thumbsup"));
-				dto.setNumberOfComment(rs.getInt("replycount"));
-				list1.add(dto);
-			}
-			return list1;
-		}
-	}
-
 }
+
+//   public List<QnaDTO> search(String title) throws Exception {
+//      String sql = "select * from qna where qna_title like ?";
+//      try(Connection con = this.getConnection();
+//            PreparedStatement pstat = con.prepareStatement(sql);){
+//         pstat.setString(1, "%"+qna_title+"%");
+//         try(ResultSet rs = pstat.executeQuery();){
+//            List<QnaDTO> list = new ArrayList<>();
+//            while(rs.next()) {
+//               QnaDTO dto = new QnaDTO();
+//               dto.setQna_seq(rs.getInt("qna_seq"));
+//               dto.setQna_title(rs.getString("qna_title"));
+//               dto.setQna_writer(rs.getString("qna_writer"));
+//               dto.setQna_contents(rs.getString("qna_contents"));
+//               dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
+//               dto.setQna_view_count(rs.getInt("qna_view_count"));
+//               dto.setQna_nickname(rs.getString("qna_nickname"));
+//               list.add(dto);
+//
+//            }
+//            return list;
+//         }
+//      }
+//   }
+
 
 
 

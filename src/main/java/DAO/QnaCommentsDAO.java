@@ -42,6 +42,7 @@ private static QnaCommentsDAO instance = null;
 			pstat.setString(3, dto.getQnaCms_contents());
 			
 			int result = pstat.executeUpdate();
+			con.setAutoCommit(false);
 			con.commit();
 			con.close();
 			return result;
@@ -62,7 +63,7 @@ private static QnaCommentsDAO instance = null;
 				dto.setQnaCms_nincname(rs.getString("qnaCms_nickname"));
 				dto.setQnaCms_write_date(rs.getTimestamp("qnaCms_write_date"));
 				list.add(dto);
-				
+				con.setAutoCommit(false);
 				
 			}
 			return list;

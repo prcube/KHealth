@@ -178,6 +178,20 @@ public class WishlistDAO {
 		}
 	}
 	
+	public int deleteById(String id) throws Exception{
+		String sql = "delete from wishlist where product_wish_user=?";
+		
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, id);
+			
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+		
+	}
+	
 	public String getPageNavi(int currentPage) throws Exception{
 
 		int recordTotalCount = this.getRecordCount(); // board table에 글이 총 144개 있다고 가정

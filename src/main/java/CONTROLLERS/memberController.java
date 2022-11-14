@@ -2,7 +2,6 @@ package CONTROLLERS;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -10,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.MembersDAO;
 import DTO.MemberDTO;
+
 
 
 @WebServlet("*.mem")
@@ -44,30 +45,47 @@ public class memberController extends HttpServlet {
 						post2);
 				response.sendRedirect("/");
 			} else if (uri.equals("/login.mem")) {
+	
 				String id = request.getParameter("ID");
 				String pwd = request.getParameter("passwd");
 				String name = request.getParameter("nama");
 				MembersDAO dao = MembersDAO.getInstance();
-				System.out.println(id + pwd + name);
+				LoginManager logmanager = LoginManager.getInstance();
+				System.out.println(id + ":" + pwd);
 				boolean result = dao.login(id, pwd);
-				boolean result2 = dao.checkIDExist(id);
-				System.out.println(result2);
-				
-				if (result) {
+				HttpSession session = request.getSession();
+				boolean checklog = logmanager.isUsing(id);
+				System.out.println(checklog);
+
+				if (checklog == true) {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('이미 사용중인 아이디 입니다.'); location.href='/login/LoginDummy.jsp'; </script>");
+					out.flush();
+					response.flushBuffer();
+					out.close();
+				}
+				else if (result) {
 					System.out.println("로그인 성공!");
 					String nickName = MembersDAO.getInstance().getNickname(id);
 					request.getSession().setAttribute("loginID", id);
 					request.getSession().setAttribute("loginname", name);
 					request.getSession().setAttribute("loginNickname", nickName);
+
+					logmanager.setSession(session, id);
+
 					response.sendRedirect("/");
-				}else {
-				    response.setContentType("text/html; charset=UTF-8");
-				    PrintWriter out = response.getWriter();
-				    out.println("<script>alert('아이디 및 패스워드를 확인해 주세요.'); history.go(-1);</script>");
-				    out.flush();
-				    response.flushBuffer();
-				    out.close();
 				}
+
+				else {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('아이디 및 패스워드를 확인해 주세요.'); history.go(-1);</script>");
+					out.flush();
+					response.flushBuffer();
+					out.close();
+				}
+				
 			} else if (uri.equals("/login/duplCheck.mem")) {
 				String id = request.getParameter("id");
 				MembersDAO dao = MembersDAO.getInstance();
@@ -75,45 +93,49 @@ public class memberController extends HttpServlet {
 				System.out.println(id);
 				response.getWriter().append(String.valueOf(result));
 
-			}else if (uri.equals("/login/nickCheck.mem")) {
+			} else if (uri.equals("/login/nickCheck.mem")) {
 				String nick = request.getParameter("nickname");
 				MembersDAO dao = MembersDAO.getInstance();
 				boolean result = dao.isNickExist(nick);
 				System.out.println(nick);
 				response.getWriter().append(String.valueOf(result));
 			}
-			
+
 			else if (uri.equals("/logout.mem")) {
 				request.getSession().invalidate();
-				response.sendRedirect("/");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('로그아웃 되었습니다.'); location.href='/index.jsp'; </script>");
+				out.flush();
+				response.flushBuffer();
+				out.close();
 
-				
-			}else if(uri.equals("/mypage.mem")) {
-				String id = (String)request.getSession().getAttribute("loginID");
-				//String nickname = (String)(request.getSession().getAttribute("nickname"));
-				
+			} else if (uri.equals("/mypage.mem")) {
+				String id = (String) request.getSession().getAttribute("loginID");
+				// String nickname = (String)(request.getSession().getAttribute("nickname"));
+
 				MemberDTO dto = MembersDAO.getInstance().selectById(id);
 				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
-				
+
 				request.setAttribute("dto", dto);
 				request.setAttribute("member_role", member_role);
-				
+
 				request.getRequestDispatcher("/mypage/MypageDummy.jsp").forward(request, response);
-				
-			}else if(uri.equals("/update.mem")) {
-				String loginID=(String)request.getSession().getAttribute("loginID");
+
+			} else if (uri.equals("/update.mem")) {
+				String loginID = (String) request.getSession().getAttribute("loginID");
 				String nickname = request.getParameter("modify_nickname");
 				String mail = request.getParameter("modify_mail");
 				String number = request.getParameter("modify_number");
 				String address1 = request.getParameter("modify_address1");
 				System.out.println(nickname);
-				MemberDTO dto = new MemberDTO(0,null,null,nickname,mail,number,null,address1,null,null,0);
-				
-				int result = MembersDAO.getInstance().mypageUpdate(dto,loginID);
-				
+				MemberDTO dto = new MemberDTO(0, null, null, nickname, mail, number, null, address1, null, null, 0);
+
+				int result = MembersDAO.getInstance().mypageUpdate(dto, loginID);
+
 				System.out.println(result);
-				
-				if(result>0) {
+
+				if (result > 0) {
 					response.sendRedirect("/mypage.mem");
 				}
 			}
