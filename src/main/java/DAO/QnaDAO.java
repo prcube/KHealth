@@ -69,6 +69,7 @@ public class QnaDAO {
 				dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
 				dto.setQna_view_count(rs.getInt("qna_view_count"));
 				dto.setQna_nickname(rs.getString("qna_nickname"));
+				dto.setQna_thumbsup(rs.getInt("qna_thumbsup"));
 				list.add(dto);
 			}
 			return list;
@@ -293,7 +294,7 @@ public class QnaDAO {
 
 				// System.out.println(dto.getQna_seq());
 				// System.out.println(dto.getQna_title());
-				System.out.println(rs.getInt("replycount"));
+				
 			}
 			return list1;
 		}

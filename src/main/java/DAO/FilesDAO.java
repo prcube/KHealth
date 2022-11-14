@@ -35,11 +35,12 @@ private static FilesDAO instance = null;
 			
 			String sql  = "insert into files values(files_seq.nextval,?,?,?)";
 			try(Connection con = this.getConnection();
-					PreparedStatement pstat = con.prepareStatement(sql)){
-				pstat.setString(1, dto.getOriName());
-				pstat.setString(2, dto.getSysName());
+					PreparedStatement pstat = con.prepareStatement(sql);){
+				pstat.setString(1, dto.getSysName());
+				pstat.setString(2, dto.getOriName());
 				pstat.setInt(3, dto.getParent_seq());
 				int result = pstat.executeUpdate();
+	
 				con.commit();
 				return result;
 			}

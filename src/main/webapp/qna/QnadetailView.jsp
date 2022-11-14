@@ -198,6 +198,7 @@
 									</div>
 								</section>
 							</article>
+							
 
 							<!-- Comments section-->
 
@@ -363,6 +364,7 @@
             
             $("#qnathumbsup").on("click",function(){
             	location.href = "/thumbsup.qna?cpage=1&qna_seq="+${dto.qna_seq}+""
+            			
             })
             
             $("#logout").on("click", function () {
