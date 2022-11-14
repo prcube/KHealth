@@ -100,16 +100,50 @@ a {
 					</form>
 					<script>
 						$("#searchBtn").on("click",function(){
-							$(this).parent().parent().parent().parent().next("div").find("tbody").css("display","none")
-
+							$(this).parent().parent().parent().parent().parent().find(".tableSch").find("table").find("tbody").css("display","none");
+							console.log("a");
+							let searchTitle = $("#searchTitle").val();
+							console.log(searchTitle);
+							console.log("b");
+							$.ajax({
+								url : "/searchAjax.qna",
+								type : "post",
+								data : {
+									"searchTitle" : searchTitle
+								}
+							}).done(function(data){
+								let result = JSON.parse(data);
+								console.log(result);
+								for(let i = 0; i < result.length; i++){
+									let tbody = $("<tbody>");
+									
+									let tdSeq = $("<td>");
+									tdSeq.append(result[i].qna_seq);
+									
+									let tdTitle = $("<td>");
+									tdTitle.append(result[i].qna_title);
+									
+									let tdFormedDate = $("<td>");
+									tdFormedDate.append(result[i].qna_formedDate);
+									
+									let tdView_count = $("<td>");
+									tdView_count.append(result[i].qna_view_count);
+									
+									tbody.append(tdSeq);
+									tbody.append(tdTitle);
+									tbody.append(tdFormedDate);
+									tbody.append(tdView_count);
+									$("#asd").append(tbody);
+								}
 							})
+						})
 					</script>
 				</div>
 			</div>
 			
 			<hr class="mb-4">
 
-			<div class="container board-border border-start-0 border-end-0">
+			<div class="container board-border border-start-0 border-end-0 tableSch">
 				<table class="table align-middle mb-0 bg-white">
 					<!-- 		<thead class="bg-light"> -->
 					<thead class="bg-light">
@@ -122,6 +156,7 @@ a {
 						</tr>
 					</thead>
 					<tbody>
+						<div id="asd">
 						<c:forEach var="i" items="${list }" varStatus="status">
 							<tr>
 								<td>${i.qna_seq }</td>
@@ -134,8 +169,7 @@ a {
 								
 							</tr>
 						</c:forEach>
-						
-				
+						</div>
 					</tbody>
 				</table>
 			</div>
@@ -147,6 +181,8 @@ a {
 				</div>
 			</div>
 		</div>
+		
+		
 		<div class="row mb-5">
 			<div style="text-align: center;">${navi }</div>
 		</div>

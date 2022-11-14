@@ -55,8 +55,10 @@ public class memberController extends HttpServlet {
 				
 				if (result) {
 					System.out.println("로그인 성공!");
+					String nickName = MembersDAO.getInstance().getNickname(id);
 					request.getSession().setAttribute("loginID", id);
 					request.getSession().setAttribute("loginname", name);
+					request.getSession().setAttribute("loginNickname", nickName);
 					response.sendRedirect("/");
 				}else {
 				    response.setContentType("text/html; charset=UTF-8");
