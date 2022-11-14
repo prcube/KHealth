@@ -113,6 +113,11 @@
                            transform: translateY(0);
                            opacity: 1;
                         }
+
+                        .scroll-container{
+                           scroll-behavior: smooth;
+                           overflow-y: scroll;
+                        }
                      </style>
 
                      <body class="d-flex flex-column h-100">
@@ -139,7 +144,7 @@
                                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                              <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-                                             <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="#indexcontact">Contact</a></li>
                                              <li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a>
                                              </li>
                                              <li class="nav-item"><a class="nav-link"
@@ -153,14 +158,14 @@
                                              <a class="nav-link dropdown-toggle" style="color: white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 ${loginID }님
                                              </a>
-                                             <ul class="dropdown-menu">
-                                                <li class="dropdown-item"><a href="/mypage.mem" style="color: black; text-decoration: none;">Mypage</a></li>
-                                                <li><a class="dropdown-item" href="#">장바구니</a></li>
-                                                <li><a class="dropdown-item" href="#">뭐 넣지</a></li>
+                                             <ul class="dropdown-menu dropdown-menu-dark" >
+                                                <li class="dropdown-item"><a href="/mypage.mem" style="color:white; text-decoration: none;">Mypage</a></li>
+                                                <li><a class="dropdown-item" style="color: white;" href="#">장바구니</a></li>
+                                                <li><a class="dropdown-item" style="color: white;" href="#">뭐 넣지</a></li>
                                                 <li>
                                                    <hr class="dropdown-divider">
                                                 </li>
-                                                <li><input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt; margin-top: 27px" value="로그아웃"></li>
+                                                <li><input type="button" class="btn btn-link" id="logout" style="color:white; text-decoration: none;" value="로그아웃"></li>
                                              </ul>
                                           </li>
                                           </ul>
@@ -177,7 +182,7 @@
                                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                              <li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-                                             <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                                             <li class="nav-item"><a class="nav-link" href="#indexcontact">Contact</a></li>
                                              <li class="nav-item"><a class="nav-link" href="/list.tips?cpage=1">Tips</a>
                                              </li>
                                              <li class="nav-item"><a class="nav-link"
@@ -632,7 +637,8 @@
 
 
                                  <!-- 카카오지도 카카오지도-->
-                                 <section class="py-5" id="features">
+                                 <div class="scroll=container" id="indexcontact"></div>
+                                 <section class="py-5 mt-5" id="features">
                                     <div class="container px-4 py-4 my-5 bg-light">
                                        <div class="row gx-5">
                                           <div class="col-lg-7 mb-5 mb-lg-0">
