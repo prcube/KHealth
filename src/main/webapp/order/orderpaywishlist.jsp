@@ -110,7 +110,7 @@
 										<th>상품</th>
 										<th>수량</th>
 										<th class="text-center">가격</th>
-										<th class="text-center">합</th>
+									
 									</tr>
 								</thead>
 
@@ -121,7 +121,7 @@
 												<tr>
 													<td class="col-md-7"><h4>
 															<em> </em> ${i.product_name }
-															<input type="hidden" value="${i.product_name }" name="name">
+															<input type="hidden" value="${i.product_name }" name="name" class="product_name_class"> 
 														</h4></td>
 													<td class="col-md-2" style="text-align: center">
 
@@ -136,17 +136,7 @@
 
 
 
-													<td><script>
-										//콤마 제거
-										const numberStr = "${i.product_price }";
-										const number = numberStr.replace(/,/g, "");
-										var result = number * ${i.product_wish_count };
-										// 수량과 금액 곱한 후 결과 값에 콤마 다시 추가
-										var sum = result.toString().replace(
-												/\B(?=(\d{3})+(?!\d))/g, ',');
-										document.write(sum.toString()) + "원"; 
-										
-										</script>원</td>
+							
 												</tr>
 											</c:forEach>
 										</c:when>
@@ -161,7 +151,8 @@
 											</h4></td>
 										<td class="text-center text-danger"><h4>
 												<strong>₩</strong> <strong> <script>
-										document.write(sum.toString()); 
+										//document.write(sum.toString());
+										document.write("${totalPrice}");
 										</script>
 												</strong><strong>원</strong>
 											</h4></td>
@@ -177,16 +168,16 @@
 									type="hidden" value="${dao.nickname }" name="nickname">
 							</form>
 
-							<input type="submit" value="결제하기" onclick="requestPay()"
+							<input type="button" value="결제하기" onclick="requestPay()"
 								class="btn btn-success btn-lg btn-block"> <span
 								class="glyphicon glyphicon-chevron-right"></span>
 
 							<script>
 					var buyer  = "${dao.name }";
-					var name = "${dto.product_name }";
-					const numberStr2 = "${dto.product_price }";
+					var name = $(".product_name_class").val();
+					const numberStr = "${totalPrice}";
 					const number2 = numberStr.replace(/,/g, "");
-					var result2 = number2 * ${amount };
+					
 					    function requestPay() {
 					    	var form = document.formgo;
 					      // IMP.request_pay(param, callback) 결제창 호출
@@ -198,7 +189,7 @@
 					          /* merchant_uid: "ORD20180131-0000011", */
 					          name: name,
 					          /* amount: result2, */
-					          amount: 100,
+					          amount: number2,
 					          buyer_email: "",
 					          buyer_name: buyer ,
 				          	  buyer_tel: ""

@@ -254,7 +254,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 											<div class="d-flex justify-content-between mb-5">
 												<h5 class="text-uppercase">Total price</h5>
-												<h5 id="totalPriceArea">22</h5>
+												<h5 id="totalPriceArea"></h5>
+												<h5>원</h5>
+												<input type="hidden" id=hiddenPriceArea> 
+												
 											</div>
 
 											<button type="button" class="btn btn-dark btn-block btn-lg"
@@ -310,7 +313,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script>
 	
 		$("#buyBtn").on("click",function(){
-			location.href="/buy.wish";
+			let abc = $("#totalPriceArea").text();
+			//console.log(abc);
+			location.href="/buy.wish?totalPrice="+abc+"";
 		})
 	
 		$(function() {
@@ -381,7 +386,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					//console.log(sum0);	
 					let priceResult = priceSum.toString().replace(
 							/\B(?=(\d{3})+(?!\d))/g, ',');
-					$("#totalPriceArea").text(priceResult + " 원");
+					$("#totalPriceArea").text(priceResult);
+					
 				},
 				error : function(resp) {
 					alert("에러 발생!");
@@ -457,7 +463,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					//console.log(sum0);	
 					let priceResult = priceSum.toString().replace(
 							/\B(?=(\d{3})+(?!\d))/g, ',');
-					$("#totalPriceArea").text(priceResult + " 원");
+					$("#totalPriceArea").text(priceResult);
 				},
 				error : function(resp) {
 					alert("에러 발생!");

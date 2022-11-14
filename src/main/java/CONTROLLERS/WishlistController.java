@@ -97,8 +97,14 @@ public class WishlistController extends HttpServlet {
 				
 				MemberDTO dao = MembersDAO.getInstance().selectById(id);
 				
+				String totalPrice = request.getParameter("totalPrice");
+				
+				request.setAttribute("totalPrice", totalPrice);
 				request.setAttribute("dao", dao);
 				request.setAttribute("list", list);
+				System.out.println(id);
+				System.out.println(totalPrice);
+				
 				request.getRequestDispatcher("/order/orderpaywishlist.jsp").forward(request, response);
 			}catch(Exception e) {
 				e.printStackTrace();
