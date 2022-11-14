@@ -93,6 +93,7 @@ public class QnaController extends HttpServlet {
 				QnaDAO.getInstance().addViewCount(seq);
 				
 				boolean member_role = MembersDAO.getInstance().isInBlacklist(id);
+	
 				
 				request.setAttribute("list", list);
 				request.setAttribute("dto", dto);
