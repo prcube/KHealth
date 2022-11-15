@@ -91,7 +91,7 @@ public class AdminController extends HttpServlet {
 			String member_nickname = request.getParameter("member_nickname");
 
 			try {AdminDAO.getInstance().insertBlackList(member_nickname);
-			response.sendRedirect("/admin/admindummy.jsp");
+			response.sendRedirect("/showblacklist.admin");
 
 			}catch(Exception e) {
 				e.printStackTrace();

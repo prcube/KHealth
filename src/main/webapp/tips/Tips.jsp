@@ -347,7 +347,7 @@
 
 			</div>
 			<div class="container ">
-				<button type="button" class="btn btn-secondary" style="float: right"
+				<button type="button" class="btn btn-secondary mb-2" style="float: right"
 					name="tipswrite" id="tipswrite">작성하기</button>
 			</div>
 
