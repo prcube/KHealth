@@ -143,7 +143,7 @@
 
 									<input type=hidden value=${dto.qna_seq } name=qna_seq>
 									<input type=hidden value=${dto.qna_title } name=qna_title>
-									<input type=hidden value=${dto.qna_contents } name=qna_contents>
+									<input type=hidden  name=qna_contents>
 
 									<div class="fw-bold">${dto.qna_writer }</div>
 									<div class="text-muted">News, Business</div>

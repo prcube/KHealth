@@ -199,12 +199,14 @@
 										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
 										[ 'table', [ 'table' ] ],
 										[ 'insert',
-												[ 'link', 'video' ] ],
+												[ 'link',  'video' ] ],
 										[
 												'view',
 												[ 'fullscreen', 'codeview',
 														'help' ] ] ]
 							});
+			
+		
 			
 		
 			
