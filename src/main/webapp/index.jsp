@@ -689,9 +689,9 @@
                      <div class="input-group mb-2">
                         <input class="form-control" type="text"
                            placeholder="Email address..." aria-label="Email address..."
-                           aria-describedby="button-newsletter" />
-                        <button class="btn btn-outline-light" id="button-newsletter"
-                           type="button" href="">Sign up</button>
+                           aria-describedby="button-newsletter" /><a href="/index.jsp"><button class="btn btn-outline-light " id="button-newsletter"
+                           type="button" >Submit</button></a>
+                        
                      </div>
                      <div class="small text-white-50">We care about privacy, and
                         will never share your data.</div>
