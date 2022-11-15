@@ -174,7 +174,7 @@
 
 							<script>
 					var buyer  = "${dao.name }";
-					var name = $(".product_name_class").val();
+					var name = $(".product_name_class").val() + " 외"+(${size}-1)+" 종" ;
 					const numberStr = "${totalPrice}";
 					const number2 = numberStr.replace(/,/g, "");
 					

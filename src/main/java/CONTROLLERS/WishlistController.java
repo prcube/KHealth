@@ -99,6 +99,7 @@ public class WishlistController extends HttpServlet {
 				
 				String totalPrice = request.getParameter("totalPrice");
 				
+				request.setAttribute("size", list.size());
 				request.setAttribute("totalPrice", totalPrice);
 				request.setAttribute("dao", dao);
 				request.setAttribute("list", list);
