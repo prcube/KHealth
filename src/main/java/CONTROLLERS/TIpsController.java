@@ -33,7 +33,7 @@ public class TIpsController extends HttpServlet {
 		try {
 
 			if (uri.equals("/insert.tips")) {
-				// 여기부터 파일 업로드 하는 코드
+				
 				int maxSize = 1024 * 1024 * 10; // 업로드 하는 파일의 최대 사이즈
 
 				// 파일을 저장하는 경로는 절대경로인 getRealPath에 tips_images 라는 곳에다 저장하겠다 라는 것
@@ -53,8 +53,27 @@ public class TIpsController extends HttpServlet {
 				// 바로 순서대로 저장한다는 코드
 				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8",
 						new DefaultFileRenamePolicy());
+				
+				// 여기부터가 원래 있던 코드
+				TipsDAO dao = TipsDAO.getInstance();
 
-				int seq = Tips_imagesDAO.getInstance().getnextval();
+				// List<TipsDTO> list = dao.selectAll();
+				// System.out.println(list);
+
+				String tips_writer = (String) (request.getSession().getAttribute("loginID"));
+				String tips_title = multi.getParameter("tips_title");
+				System.out.println(tips_title);
+				String tips_contents = multi.getParameter("tips_contents");
+				String tips_bullet = multi.getParameter("tips_bullet");
+
+				int seq = TipsDAO.getInstance().getnextval();
+				
+				TipsDTO dto = new TipsDTO(seq, tips_title, tips_writer, tips_contents, null, 0, "", 0, tips_bullet, 0);
+
+				dao.insert(dto);
+
+				// 여기부터 파일 업로드 하는 코드
+				
 
 				Enumeration<String> e = multi.getFileNames();
 
@@ -67,23 +86,9 @@ public class TIpsController extends HttpServlet {
 						continue;
 					}
 					String sysName = multi.getFilesystemName(name);
-					Tips_imagesDAO.getInstance().insert(new Tips_imagesDTO(0, oriName, sysName, seq));
+					int seq1 = Tips_imagesDAO.getInstance().getnextval();
+					Tips_imagesDAO.getInstance().insert(new Tips_imagesDTO(seq1, oriName, sysName, seq));
 				}
-
-				// 여기부터가 원래 있던 코드
-				TipsDAO dao = TipsDAO.getInstance();
-
-				// List<TipsDTO> list = dao.selectAll();
-				// System.out.println(list);
-
-				String tips_writer = (String) (request.getSession().getAttribute("loginID"));
-				String tips_title = multi.getParameter("tips_title");
-				String tips_contents = multi.getParameter("tips_contents");
-				String tips_bullet = multi.getParameter("tips_bullet");
-
-				TipsDTO dto = new TipsDTO(0, tips_title, tips_writer, tips_contents, null, 0, "", 0, tips_bullet, 0);
-
-				dao.insert(dto);
 				// request.setAttribute("list", list);
 				response.sendRedirect("/list.tips?cpage=1");
 				// request.getRequestDispatcher("/tips/TipsDummy.jsp").forward(request,
@@ -115,25 +120,23 @@ public class TIpsController extends HttpServlet {
 			}
 
 			else if (uri.equals("/detail.tips")) {
-				
+
 				TipsDAO dao = TipsDAO.getInstance();
 				Tips_imagesDAO dao1 = Tips_imagesDAO.getInstance();
 				// 숨긴 tips_seq를 가져와서 TipsDTO dto = dao.detail(tips_seq) 이렇게 넣어야함
 
 				String id = (String) (request.getSession().getAttribute("loginID"));
 				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
-				
-				Tips_imagesDAO.getInstance().getimage(tips_seq);
+
 				TipsDTO dto = dao.detail(tips_seq);
 				TipsDAO.getInstance().addViewCount(tips_seq);
 				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
+				request.setAttribute("oriName", dao1.getImageOriName(tips_seq));
 				request.setAttribute("dto", dto);
 				request.setAttribute("loginID", id);
 				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/tips/tipsDetail.jsp").forward(request, response);
-				
-				
-				
+
 			} else if (uri.equals("/thumbsup.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
 

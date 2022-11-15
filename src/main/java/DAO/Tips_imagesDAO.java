@@ -54,11 +54,12 @@ public class Tips_imagesDAO {
 	}
 
 	public int insert(Tips_imagesDTO dto) throws Exception {
-		String sql = "insert into tips_images values(tips_images_seq.nextval,?,?,?)";
+		String sql = "insert into tips_images values(?,?,?,?)";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
-			pstat.setString(1, dto.getOriName());
-			pstat.setString(2, dto.getSysName());
-			pstat.setInt(3, dto.getParent_seq());
+			pstat.setInt(1, dto.getImages_seq());
+			pstat.setString(2, dto.getOriName());
+			pstat.setString(3, dto.getSysName());
+			pstat.setInt(4, dto.getParent_seq());
 			int result = pstat.executeUpdate();
 			con.commit();
 			return result;
@@ -120,12 +121,12 @@ public class Tips_imagesDAO {
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			pstat.setInt(1, tips_seq);
-
+			System.out.println(tips_seq);
 			try (ResultSet rs = pstat.executeQuery();) {
 
 				rs.next();
 
-				String oriName = rs.getString("oriname");
+				String oriName = rs.getString("ORINAME");
 
 				int result = pstat.executeUpdate();
 				return oriName;

@@ -158,7 +158,7 @@
 								</header>
 								<figure class="mb-4">
 									<img class="img-fluid rounded"
-										src="/tips_images/${origin }"
+										src="/tips_images/${oriName }"
 										alt="..." />
 								</figure>
 								<section class="mb-5">
