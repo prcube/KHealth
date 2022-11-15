@@ -134,7 +134,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 
 
-		<section class="h-100 h-custom" style="background-color: #f6ffdc;">
+		<section class="h-100 h-custom" style="background-color: white;">
 			<div class="container py-5 mb-5 h-100">
 				<div
 					class="row d-flex justify-content-center align-items-center h-100">
@@ -148,7 +148,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 											<div
 												class="d-flex justify-content-between align-items-center mb-5">
 												<h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-												<h6 class="mb-0 text-muted">3 items</h6>
+												
 											</div>
 											<hr class="my-4">
 
@@ -176,24 +176,21 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 																	class="form-control form-control-sm" />
 
 																<button class="btn btn-link px-2 amountMinusBtn"
-																	style="background-color: red"
+																	
 																	onclick="this.parentNode.querySelector('input[type=number]').stepDown();javascript:refresh();">
-																	<i class="fas fa-minus"></i>
+																	<i class="bi bi-dash-lg"></i>
 																</button>
 
 																<button class="btn btn-link px-2 amountPlusBtn"
-																	style="background-color: blue"
+															
 																	onclick="this.parentNode.querySelector('input[type=number]').stepUp();javascript:refresh();">
-																	<i class="fas fa-plus"></i>
+																	<i class="bi bi-plus-lg"></i>
 																</button>
 															</div>
 															<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
 																<h6 class="mb-0 totalPrice">${i.product_price }</h6>
 															</div>
-															<div class="col-md-1 col-lg-1 col-xl-1 text-end">
-																<a href="#!" class="text-muted"><i
-																	class="fas fa-times"></i></a>
-															</div>
+
 														</div>
 													</c:forEach>
 												</c:when>
@@ -228,14 +225,13 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 <!-- 												<h5>€ 132.00</h5> -->
 <!-- 											</div> -->
 
-											<h5 class="text-uppercase mb-3">Shipping</h5>
+											<h5 class="text-uppercase mb-3">Coupon</h5>
 
 											<div class="mb-4 pb-2">
 												<select class="select">
-													<option value="1">Standard-Delivery- €5.00</option>
-													<option value="2">Two</option>
-													<option value="3">Three</option>
-													<option value="4">Four</option>
+													<option value="1">선택</option>
+													<option value="2">사용할 수 있는 쿠폰이 없습니다.</option>
+
 												</select>
 											</div>
 

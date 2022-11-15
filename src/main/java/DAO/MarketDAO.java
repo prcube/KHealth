@@ -134,7 +134,7 @@ public class MarketDAO {
 					String product_price = rs.getString("product_price");
 					int product_count = rs.getInt("product_count");
 					
-					ProductDTO dto2 = new ProductDTO(product_seq, product_name, product_price, product_count);
+					ProductDTO dto2 = new ProductDTO(product_seq, product_name, product_price, product_count,null);
 					result.add(dto2);
 
 				}
@@ -158,7 +158,8 @@ public class MarketDAO {
 					String product_name =rs.getString("product_name");	
 					String product_price = rs.getString("product_price");
 					int product_count = rs.getInt("product_count");
-					ProductDTO dto2 = new ProductDTO(product_seq2, product_name, product_price, product_count);
+					String product_explain = rs.getString("product_explain");
+					ProductDTO dto2 = new ProductDTO(product_seq2, product_name, product_price, product_count,product_explain);
 				return dto2;
 			}
 

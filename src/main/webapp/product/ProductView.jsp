@@ -141,10 +141,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							<div class="fs-5 mb-5">
 								<span>${dto.product_price } 원</span>
 							</div>
-							<p class="lead">Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi
-								consequatur obcaecati excepturi alias magni, accusamus eius
-								blanditiis delectus ipsam minima ea iste laborum vero?</p>
+							<p class="lead">${dto.product_explain }</p>
 							<div>
 
 								<div class="row mb-2">

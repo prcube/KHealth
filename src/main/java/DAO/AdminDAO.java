@@ -61,7 +61,7 @@ public class AdminDAO {
 	}
 
 	public int insertProduct(ProductDTO dto) throws Exception{
-		String sql = "insert into product values(?,?,?,?)";
+		String sql = "insert into product values(?,?,?,?,?)";
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){ 
@@ -70,7 +70,7 @@ public class AdminDAO {
 			pstat.setString(2, dto.getProduct_name());
 			pstat.setString(3, dto.getProduct_price());
 			pstat.setInt(4, dto.getProduct_count());
-
+			pstat.setString(5, dto.getProduct_explain());
 
 			int result = pstat.executeUpdate();
 			return result;
