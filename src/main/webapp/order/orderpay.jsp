@@ -222,7 +222,7 @@
 										/* merchant_uid: "ORD20180131-0000011", */
 										name : name,
 										/* amount: result2, */
-										amount : 100,
+										amount 100: ,
 										buyer_email : "",
 										buyer_name : buyer,
 										buyer_tel : ""

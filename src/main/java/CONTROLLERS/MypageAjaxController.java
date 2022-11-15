@@ -86,6 +86,34 @@ public class MypageAjaxController extends HttpServlet {
 			response.getWriter().append(total.toString());
 		}
 		
+		if(uri.equals("/addwish.ajax")) {
+			System.out.println("step1");
+			String id = (String) request.getSession().getAttribute("loginID");
+			int amount = Integer.parseInt(request.getParameter("amount"));
+			int product_seq = Integer.parseInt(request.getParameter("product_seq"));
+			String oriName = request.getParameter("oriName");
+			String name = request.getParameter("name");
+			String price = request.getParameter("price");
+			
+			System.out.println(id);
+			System.out.println(amount);
+			System.out.println(product_seq);
+			System.out.println(oriName);
+			System.out.println(name);
+			System.out.println(price);
+			
+			int nextval = WishlistDAO.getInstance().getnextval();
+			boolean result = WishlistDAO.getInstance().isProductExist(id,name);
+			
+			if(result) {
+				WishlistDAO.getInstance().addupdate(amount,name, id);
+			}else {
+				WishlistDAO.getInstance().insert(nextval,name, product_seq,price,amount,id, oriName);
+			}
+			
+			
+		}
+		
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("/error.jsp");
