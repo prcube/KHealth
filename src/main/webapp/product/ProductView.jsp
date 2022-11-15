@@ -398,7 +398,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
         			"product_seq": "${ dto.product_seq }",
         			"oriName":"${oriName}",
         			"name":"${dto.product_name}",
-        			"price":"${dtp.prodcut_price}"
+        			"price":"${dto.product_price}"
         		},
         		success : function(resp) {
         			let wantToGoWishlist = confirm("상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
