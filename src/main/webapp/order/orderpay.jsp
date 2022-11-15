@@ -155,36 +155,32 @@
 
 
 
-										<td><script>
-											//콤마 제거
-											const numberStr = "${dto.product_price }";
-											const number = numberStr.replace(
-													/,/g, "");
-											var result = number * $
-											{
-												amount
-											};
-											// 수량과 금액 곱한 후 결과 값에 콤마 다시 추가
-											var sum = result
-													.toString()
-													.replace(
-															/\B(?=(\d{3})+(?!\d))/g,
-															',');
-											document.write(sum.toString());
-										</script>원</td>
+										<td>
+																				<script>
+										//콤마 제거
+										const numberStr = "${dto.product_price }";
+										const number = numberStr.replace(/,/g, "");
+										var result = number * ${amount };
+										// 수량과 금액 곱한 후 결과 값에 콤마 다시 추가
+										var sum = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+										document.write(sum.toString());
+										
+										</script>원
+										</td>
 									</tr>
-
+								
 									<tr>
 
 										<td class="text-center"><h4>
 												<strong>결제금액: </strong>
 											</h4></td>
 										<td class="text-center text-danger"><h4>
-												<strong>₩</strong> <strong> <script>
-													document.write(sum
-															.toString());
-												</script>
-												</strong><strong>원</strong>
+										<strong>₩</strong>
+											<strong>
+												<script>
+										document.write(sum.toString()); 
+										</script>
+										</strong><strong>원</strong>
 											</h4></td>
 										<td> </td>
 										<td> </td>
