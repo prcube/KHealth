@@ -133,7 +133,7 @@ a {
 							
 							//$(this).parent().parent().parent().parent().parent().find(".tableSch").find("table").find("tbody").css("display", "none");
 					       
-							$("#asd").empty();
+							$("#searchResultArea").empty();
 					        
 							let searchTitle = $("#searchTitle").val();
 					
@@ -155,18 +155,22 @@ a {
 									
 					            let tdTitle = $("<td>");
 					            tdTitle.append(result[i].qna_title);
+					            
+					            let tdNickname = $("<td>");
+					            tdNickname.append(result[i].qna_nickname);
 					
 				 	            let tdFormedDate = $("<td>");
-					            tdFormedDate.append(result[i].qna_formedDate);
+				 	           	tdFormedDate.append(result[i].qna_write_date);
 					
 					            let tdView_count = $("<td>");
 					            tdView_count.append(result[i].qna_view_count);
 					                
 					            tr.append(tdSeq);
 					            tr.append(tdTitle);
+					            tr.append(tdNickname);
 					            tr.append(tdFormedDate);
 					            tr.append(tdView_count);
-					            $("#asd").append(tr);
+					            $("#searchResultArea").append(tr);
 					                
 					            
 					        }
@@ -191,7 +195,7 @@ a {
 							<th>조회수</th>
 						</tr>
 					</thead>
-					<tbody id="asd">
+					<tbody id="searchResultArea">
 						<c:forEach var="i" items="${list }" varStatus="status">
 							<tr>
 								<td>${i.rn  }</td>
