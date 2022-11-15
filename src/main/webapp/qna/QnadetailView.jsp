@@ -354,7 +354,7 @@
                      modifyCommentsCancel.attr("type","button");
                      modifyCommentsCancel.html("취소");
                      modifyCommentsCancel.on("click",function(){
-                        location.reload();
+                    	 location.href = "/detail.qna?qna_seq="+${dto.qna_seq }+""
                      })
                      
                 $(this).before(modifyCommentsOk);
@@ -392,6 +392,9 @@
             		return;
             	}else if(${loginID == null}){
             		alert("회원가입 이후 작성 가능합니다.")
+            		return;
+            	}else if($("#comments").val() == ""){
+            		alert("내용을 입력해주세요.")
             		return;
             	}
             	
