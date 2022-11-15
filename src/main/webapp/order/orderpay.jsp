@@ -194,7 +194,7 @@
 									type="hidden" value="${dao.nickname }" name="nickname">
 							</form>
 
-							<input type="submit" value="결제하기" onclick="requestPay()"
+							<input type="button" value="결제하기" onclick="requestPay();"
 								class="btn btn-success btn-lg btn-block"> <span
 								class="glyphicon glyphicon-chevron-right"></span>
 
@@ -207,6 +207,7 @@
 								{
 									amount
 								};
+								
 								function requestPay() {
 									var form = document.formgo;
 									// IMP.request_pay(param, callback) 결제창 호출
