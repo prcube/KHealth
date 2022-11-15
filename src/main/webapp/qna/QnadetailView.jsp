@@ -393,6 +393,9 @@
             	}else if(${loginID == null}){
             		alert("회원가입 이후 작성 가능합니다.")
             		return;
+            	}else if($("#comments").val() == ""){
+            		alert("내용을 입력해주세요.")
+            		return;
             	}
             	
             	$("#detailFrm").attr("action","/write.comments");

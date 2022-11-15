@@ -60,7 +60,7 @@ public class QnaCommentsController extends HttpServlet {
 					String qnaCms_contents = request.getParameter("contentsComments");
 
 					int result = QnaCommentsDAO.getInstance().update(qnaCms_contents, qnaCms_seq);
-
+					
 					response.sendRedirect("/list.qna?cpage=1");
 				}catch (Exception e) {
 					e.printStackTrace();
