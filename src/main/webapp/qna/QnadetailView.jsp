@@ -35,8 +35,9 @@
 <script>
 	$(function(){
 		$("#update,#delete").hide();
-		console.log("${dto.qna_writer}")
 		if("${dto.qna_writer}" == "${loginID}") {
+			$("#update,#delete").show();
+		}else if("${loginID}"=="admin33"){
 			$("#update,#delete").show();
 		}
 	})
@@ -145,7 +146,7 @@
 									<input type=hidden value=${dto.qna_title } name=qna_title>
 									<input type=hidden value=${dto.qna_contents } name=qna_contents>
 
-									<div class="fw-bold">${dto.qna_writer }</div>
+									<div class="fw-bold">${dto.qna_nickname }</div>
 									<div class="text-muted">News, Business</div>
 								</div>
 							</div>
@@ -238,7 +239,7 @@
 												</div>
 												<div class="ms-3">
 
-													<div class="fw-bold" class="updComment">${list.qnaCms_writer }
+													<div class="fw-bold" class="updComment">${list.qnaCms_nincname }
 														${list.qnaCms_write_date }</div>
 													<div class=QnaCmsArea name=qnaCms_contents>${list.qnaCms_contents }</div>
 													<c:if test="${loginID == list.qnaCms_writer }">
@@ -321,8 +322,15 @@
 	
 	//삭제하기
 	$(".deleteComments").on("click",function(){
-		let target = $(this).attr("qnaCms_seq");
-		location.href = "/delete.comments?qnaCms_seq="+target;
+		let reallydel = confirm("정말로 삭제하시겠습니까?");
+		
+		if(reallydel){
+			let target = $(this).attr("qnaCms_seq");
+			location.href = "/delete.comments?qnaCms_seq="+target;
+		}else{
+			return;
+		}
+
 	})
                     //댓글 수정하기
                   $(".modifyComments").on("click",function(){
@@ -361,8 +369,16 @@
          history.back(); //뒤로가기기능이랑 동일.
          })
            $("#delete").on("click",function(){
-              $("#detailFrm").attr("action","/delete.qna")
-              $("#detailFrm").submit();
+        	   let reallydel = confirm("정말로 삭제하시겠습니까?");
+        	   
+        	   if(reallydel){
+                   $("#detailFrm").attr("action","/delete.qna")
+                   $("#detailFrm").submit();
+        	   }else{
+        		   return;
+        	   }
+        	   
+
            })
        	$("#update").on("click", function() {
 			$("#detailFrm").attr("action","/gomodify.qna?qna_seq="+ ${dto.qna_seq});
@@ -373,6 +389,9 @@
             	console.log(${member_role});
             	if(${member_role}){
             		alert("회원님은 블랙리스트에 등록되어 댓글을 작성할 수 없습니다.");
+            		return;
+            	}else if(${loginID == null}){
+            		alert("회원가입 이후 작성 가능합니다.")
             		return;
             	}
             	

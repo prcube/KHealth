@@ -35,10 +35,10 @@ public class QnaCommentsController extends HttpServlet {
 				String qnaCms_contents = request.getParameter("comments");
 				
 				String qnaCms_writer = (String)(request.getSession().getAttribute("loginID"));
-				
+				String qnaCms_nickname = (String)(request.getSession().getAttribute("loginNickname"));
 				int qnaCms_parent_seq = Integer.parseInt(request.getParameter("qna_seq"));
 				
-				QnaCommentsDTO dto = new QnaCommentsDTO(0,qnaCms_parent_seq,qnaCms_writer,qnaCms_contents,"",null);
+				QnaCommentsDTO dto = new QnaCommentsDTO(0,qnaCms_parent_seq,qnaCms_writer,qnaCms_contents,qnaCms_nickname,null);
 				
 				dao.write(dto);
 				
