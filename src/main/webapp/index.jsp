@@ -24,6 +24,8 @@
    rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
+<!-- 폰트어썸 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <script type="text/javascript"
    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75fab7aa29c4b6b3c0b3ade35a4bd975"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
@@ -283,11 +285,12 @@
                      <div class="col-2">
                         <div
                            class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                           <i class="bi bi-toggles2"></i>
+                           
+                           <i class="fa-solid fa-dumbbell"></i>
                         </div>
                      </div>
                      <div class="col-10">
-                        <h2 class="h5">video1</h2>
+                        <h1 class="h3 mt-2">4 Science-Based Steps</h1>
                      </div>
                   </div>
                   <div class="row-12" style="height: 400px;">
@@ -305,11 +308,11 @@
                      <div class="col-2">
                         <div
                            class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                           <i class="bi bi-toggles2"></i>
+                           <i class="fa-solid fa-fire-flame-curved"></i>
                         </div>
                      </div>
                      <div class="col-10">
-                        <h2 class="h5">video2</h2>
+                        <h1 class="h3 mt-2">Squat Rack Beginner's Guide</h1>
                      </div>
                   </div>
                   <div class="row" style="height: 400px;">
@@ -330,11 +333,11 @@
                      <div class="col-2">
                         <div
                            class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                           <i class="bi bi-toggles2"></i>
+                           <i class="fa-sharp fa-solid fa-heart-pulse"></i>
                         </div>
                      </div>
                      <div class="col-10">
-                        <h2 class="h5">video3</h2>
+                        <h2 class="h3 mt-2">Bench Press Routine</h2>
                      </div>
                   </div>
                   <div class="row" style="height: 400px;">
@@ -352,11 +355,11 @@
                      <div class="col-2">
                         <div
                            class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                           <i class="bi bi-toggles2"></i>
+                           <i class="fa-solid fa-bolt"></i>
                         </div>
                      </div>
                      <div class="col-10">
-                        <h2 class="h5">video4</h2>
+                        <h2 class="h3 mt-2">Build A V-Tapered Back</h2>
                      </div>
                   </div>
                   <div class="row" style="height: 400px;">
@@ -413,8 +416,7 @@
                         헬스에서 제공해 드리며<br> 고객 여러분께 성심성의를 다해 도와드립니다."
                      </div>
                      <div class="d-flex align-items-center justify-content-center">
-                        <img class="rounded-circle me-3"
-                           src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                        
                         <div class="fw-bold">
                            임근혁 <span class="fw-bold text-primary mx-1">/</span> CEO,
                            K-Health
@@ -433,8 +435,8 @@
             <div class="row gx-5 justify-content-center">
                <div class="col-lg-8 col-xl-6">
                   <div class="text-center">
-                     <h2 class="fw-bolder">K-HEALTH 강사진 소개</h2>
-                     <p class="lead fw-normal text-muted mb-5">최고의 강사진이 여러분의 건강을
+                     <h2 class="fw-bolder">K-HEALTH 스태프 소개</h2>
+                     <p class="lead fw-normal text-muted mb-5">최고의 코칭 스태프들이 여러분의 건강을
                         책임지겠습니다.</p>
                   </div>
                </div>
@@ -443,26 +445,21 @@
                <div class="card1 col-lg-4 mb-5">
                   <div class="card h-100 shadow border-0">
                      <img class="card-img-top"
-                        src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                        src="/image/p4.png" alt="..." />
                      <div class="card-body p-4">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">어깨
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
-                           <h5 class="card-title mb-3">임근혁</h5>
+                           <h5 class="card-title mb-3">Dwayne Johnson</h5>
                         </a>
                         <p class="card-text mb-0">불균형한 어깨를 완벽하게 대칭으로 만들 수 있는 꿀팁!</p>
                      </div>
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                            <div class="d-flex align-items-center">
-                              <img class="rounded-circle me-3"
-                                 src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                              <div class="small">
-                                 <div class="fw-bold">Kelly Rowan</div>
-                                 <div class="text-muted">March 12, 2022 &middot; 6 min
-                                    read</div>
-                              </div>
+                              
+                              
                            </div>
                         </div>
                      </div>
@@ -471,13 +468,13 @@
                <div class="col-lg-4 mb-5">
                   <div class="card2 h-100 shadow border-0">
                      <img class="card-img-top"
-                        src="https://dummyimage.com/600x350/adb5bd/495057" alt="..." />
+                        src="/image/p2.png" alt="..." />
                      <div class="card-body p-4">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">하체
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
-                           <h5 class="card-title mb-3">권준구</h5>
+                           <h5 class="card-title mb-3">Agatha Collins</h5>
                         </a>
                         <p class="card-text mb-0">가장 효율적인 하체근육 키우는 법, 과학적인 효율적인
                            하체운동!</p>
@@ -485,13 +482,7 @@
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                            <div class="d-flex align-items-center">
-                              <img class="rounded-circle me-3"
-                                 src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                              <div class="small">
-                                 <div class="fw-bold">Josiah Barclay</div>
-                                 <div class="text-muted">March 23, 2022 &middot; 4 min
-                                    read</div>
-                              </div>
+                              
                            </div>
                         </div>
                      </div>
@@ -500,26 +491,19 @@
                <div class="col-lg-4 mb-5">
                   <div class="card3 h-100 shadow border-0">
                      <img class="card-img-top"
-                        src="https://dummyimage.com/600x350/6c757d/343a40" alt="..." />
+                        src="/image/p3.png" alt="..." />
                      <div class="card-body p-4">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">등
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
-                           <h5 class="card-title mb-3">유한호</h5>
+                           <h5 class="card-title mb-3">Dorothy Bell</h5>
                         </a>
                         <p class="card-text mb-0">완벽한 뒤태를 만들기 위한 효과적인 등 운동!</p>
                      </div>
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                            <div class="d-flex align-items-center">
-                              <img class="rounded-circle me-3"
-                                 src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                              <div class="small">
-                                 <div class="fw-bold">Evelyn Martinez</div>
-                                 <div class="text-muted">April 2, 2022 &middot; 10 min
-                                    read</div>
-                              </div>
                            </div>
                         </div>
                      </div>
@@ -530,26 +514,20 @@
                <div class="col-lg-4 mb-5">
                   <div class="card4 h-100 shadow border-0">
                      <img class="card-img-top"
-                        src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                        src="/image/p1.png" alt="..." />
                      <div class="card-body p-4">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">어깨
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
-                           <h5 class="card-title mb-3">윤성민</h5>
+                           <h5 class="card-title mb-3">Andrew Kim</h5>
                         </a>
                         <p class="card-text mb-0">불균형한 어깨를 완벽하게 대칭으로 만들 수 있는 꿀팁!</p>
                      </div>
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                            <div class="d-flex align-items-center">
-                              <img class="rounded-circle me-3"
-                                 src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                              <div class="small">
-                                 <div class="fw-bold">Kelly Rowan</div>
-                                 <div class="text-muted">March 12, 2022 &middot; 6 min
-                                    read</div>
-                              </div>
+                              
                            </div>
                         </div>
                      </div>
@@ -558,13 +536,13 @@
                <div class="col-lg-4 mb-5">
                   <div class="card4 h-100 shadow border-0">
                      <img class="card-img-top"
-                        src="https://dummyimage.com/600x350/adb5bd/495057" alt="..." />
+                        src="/image/p5.png" alt="..." />
                      <div class="card-body p-4">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">하체
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
-                           <h5 class="card-title mb-3">이진혁</h5>
+                           <h5 class="card-title mb-3">Benjamin Barclay</h5>
                         </a>
                         <p class="card-text mb-0">가장 효율적인 하체근육 키우는 법, 과학적인 효율적인
                            하체운동!</p>
@@ -572,13 +550,7 @@
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                            <div class="d-flex align-items-center">
-                              <img class="rounded-circle me-3"
-                                 src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                              <div class="small">
-                                 <div class="fw-bold">Josiah Barclay</div>
-                                 <div class="text-muted">March 23, 2022 &middot; 4 min
-                                    read</div>
-                              </div>
+                              
                            </div>
                         </div>
                      </div>
@@ -587,26 +559,20 @@
                <div class="col-lg-4 mb-5">
                   <div class="card4 h-100 shadow border-0">
                      <img class="card-img-top"
-                        src="https://dummyimage.com/600x350/6c757d/343a40" alt="..." />
+                        src="/image/p6.png" alt="..." />
                      <div class="card-body p-4">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">등
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
-                           <h5 class="card-title mb-3">이승택</h5>
+                           <h5 class="card-title mb-3">DeMar DeRozan</h5>
                         </a>
                         <p class="card-text mb-0">완벽한 뒤태를 만들기 위한 효과적인 등 운동!</p>
                      </div>
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                            <div class="d-flex align-items-center">
-                              <img class="rounded-circle me-3"
-                                 src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                              <div class="small">
-                                 <div class="fw-bold">Evelyn Martinez</div>
-                                 <div class="text-muted">April 2, 2022 &middot; 10 min
-                                    read</div>
-                              </div>
+                              
                            </div>
                         </div>
                      </div>
@@ -689,8 +655,10 @@
                                  <i class="bi bi-map"></i>
                               </div>
                               <h2 class="h5">오시는길</h2>
-                              <p class="mb-0">Paragraph of text beneath the heading to
-                                 explain the heading. Here is just a bit more text.</p>
+                              <p class="mb-0">서울특별시 중구 남대문로 120 대일빌딩 2F, 3F<br><br>
+                              지하철 2호선 을지로입구역 3번출구 100M<br>1호선 종각역 4번, 5번 출구 200M
+                           
+                              </p>
                            </div>
                         </div>
                         <div class="row gx-5 row-cols-1 row-cols-md-1">
@@ -700,8 +668,7 @@
                                  <i class="bi bi-telephone"></i>
                               </div>
                               <h2 class="h5">전화 문의</h2>
-                              <p class="mb-0">Paragraph of text beneath the heading to
-                                 explain the heading. Here is just a bit more text.</p>
+                              <p class="mb-0">1544-9970 | 02-722-0858</p>
                            </div>
 
                         </div>
