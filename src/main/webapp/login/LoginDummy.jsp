@@ -68,7 +68,7 @@ body {
 						<li class="nav-item"><a class="nav-link"
 							href="/market/MarketDummy.jsp">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/qna/QnaDummy.jsp">Q&A</a></li>
+							href="/list.qna?cpage=1">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
 					</ul>
 

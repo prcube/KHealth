@@ -20,7 +20,9 @@ import DAO.FilesDAO;
 import DAO.MembersDAO;
 import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
+
 import DTO.FilesDTO;
+
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
 
@@ -56,7 +58,6 @@ public class QnaController extends HttpServlet {
 				List<QnaDTO> list = QnaDAO.getInstance().selectByRange(cpage*10-9,cpage*10);
 
 				List<QnaDTO> list1 = dao.replycount(cpage*10-9,cpage*10);
-				System.out.println(list1);
 				
 				boolean isInBlacklist = MembersDAO.getInstance().isInBlacklist(id);
 
@@ -142,29 +143,20 @@ public class QnaController extends HttpServlet {
 				request.getRequestDispatcher("/qna/QnadetailView.jsp").forward(request, response);
 
 			}else if(uri.equals("/update.qna")) {
-				QnaDAO dao = QnaDAO.getInstance();
 				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
 				String qna_title = request.getParameter("qna_title");
 				String qna_contents = request.getParameter("qna_contents");
 				
-				dao.updateBySeq(qna_title, qna_contents, qna_seq);
-				request.setAttribute("dto", dao);
-
-
-
-				request.getRequestDispatcher("/detail.qna?qna_seq="+qna_seq).forward(request, response);
-
+				int result = QnaDAO.getInstance().updateBySeq(qna_title, qna_contents, qna_seq);
+				
+				response.sendRedirect("/list.qna?cpage=1");	
 
 			}else if(uri.equals("/gomodify.qna")) {
-				
-				
-				 
 				int qna_seq = Integer.parseInt(request.getParameter("qna_seq"));
-				String qna_title = request.getParameter("qna_title");
-				String qna_contents = request.getParameter("qna_contents");
-				request.setAttribute("qna_seq", qna_seq);
+				System.out.println(qna_seq);
+				QnaDTO dto = QnaDAO.getInstance().selectBySeq(qna_seq);
+				request.setAttribute("dto", dto);
 				request.getRequestDispatcher("/qna/QnaModify.jsp").forward(request, response);
-
 
 			}else if(uri.equals("/delete.qna")) {
 
@@ -182,8 +174,9 @@ public class QnaController extends HttpServlet {
 				String searchTitle = request.getParameter("searchTitle");			
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				String loginID = (String)request.getSession().getAttribute("loginID");
+				String loginNickname = (String)request.getSession().getAttribute("loginNickname");
 				
-				List<QnaDTO> list = QnaDAO.getInstance().search(searchTitle);
+				List<QnaDTO> list = QnaDAO.getInstance().search(searchTitle,loginNickname);
 				
 				total.addProperty("list",new Gson().toJson(list));
 				response.setContentType("text/html;charset=utf8");

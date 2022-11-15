@@ -238,6 +238,33 @@ public class QnaDAO {
 			}
 
 		}
+		
+//		public QnaDTO selectByRange(int seq) throws Exception {
+//			String sql = "select * from qna where qna_seq = ?";
+//
+//			try(Connection con = this.getConnection();
+//				PreparedStatement pstat = con.prepareStatement(sql)){
+//				pstat.setInt(1, seq);
+//
+//				try(ResultSet rs = pstat.executeQuery()){
+//
+//					rs.next();
+//					QnaDTO dto = new QnaDTO();
+//					dto.setQna_seq(rs.getInt("qna_seq"));
+//					dto.setQna_title(rs.getString("qna_title"));
+//					dto.setQna_writer(rs.getString("qna_writer"));
+//					dto.setQna_contents(rs.getString("qna_contents"));
+//					dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
+//					dto.setQna_view_count(rs.getInt("qna_view_count"));
+//					dto.setQna_nickname(rs.getString("qna_nickname"));
+//					dto.setQna_thumbsup(rs.getInt("qna_thumbsup"));
+//						//               rn셋팅
+//					dto.setRn(rs.getInt("rn"));
+//					return dto;
+//				}
+//			}
+//		}
+			
 	}public int getnextval() throws Exception {
 		//      다음 시퀀스값을 가져온다.
 		String sql  = "select qna_seq.nextval from dual";
@@ -300,7 +327,7 @@ public class QnaDAO {
 		}
 	}
 
-	public List<QnaDTO> search(String searchTitle) throws Exception {
+	public List<QnaDTO> search(String searchTitle,String loginNickname) throws Exception {
 		String sql = "select * from qna where qna_title like ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
@@ -315,9 +342,9 @@ public class QnaDAO {
 					dto.setQna_contents(rs.getString("qna_contents"));
 					dto.setQna_write_date(rs.getTimestamp("qna_write_date"));
 					dto.setQna_view_count(rs.getInt("qna_view_count"));
-					dto.setQna_nickname(rs.getString("qna_nickname"));
+					dto.setQna_nickname(loginNickname);
+					System.out.println(rs.getString("qna_nickname"));
 					list.add(dto);
-					System.out.println(rs.getInt("qna_seq") +" : "+ rs.getString("qna_title"));
 				}
 				return list;
 				}
