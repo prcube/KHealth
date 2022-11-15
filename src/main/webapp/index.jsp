@@ -127,6 +127,10 @@
    scroll-behavior: smooth;
    overflow-y: scroll;
 }
+
+#seq70:hover{
+	cursor:pointer;
+}
 </style>
 
 <body class="d-flex flex-column h-100">
@@ -244,7 +248,8 @@
                   </div>
                   <div class="carousel-item">
                      <img src="/image/c4.png" style="border-radius: 15px;"
-                        class="d-block w-100" alt="...">
+                        class="d-block w-100" alt="..." id="seq70" onclick="javascript:toseq70();">
+                        
                      <div class="carousel-caption d-none d-md-block">
                         
                      </div>
@@ -682,18 +687,16 @@
                <div
                   class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                   <div class="mb-4 mb-xl-0">
-                     <div class="fs-3 fw-bold text-white">New products,
-                        delivered to you.</div>
-                     <div class="text-white-50">Sign up for our newsletter for
-                        the latest updates.</div>
+                     <div class="fs-3  text-white">Sign up for Email to Enjoy Shopping</div>
+                     <div class="text-white-50">Receive weekly Sales from K-Health</div>
                   </div>
                   <div class="ms-xl-4">
                      <div class="input-group mb-2">
                         <input class="form-control" type="text"
                            placeholder="Email address..." aria-label="Email address..."
-                           aria-describedby="button-newsletter" />
-                        <button class="btn btn-outline-light" id="button-newsletter"
-                           type="button">Sign up</button>
+                           aria-describedby="button-newsletter" /><a href="/index.jsp"><button class="btn btn-outline-light " id="button-newsletter"
+                           type="button" >Submit</button></a>
+                        
                      </div>
                      <div class="small text-white-50">We care about privacy, and
                         will never share your data.</div>
@@ -786,6 +789,10 @@
                         $("#logout").on("click", function () {
                            location.href = "/logout.mem";
                         })
+                        
+                        function toseq70(){
+                        	location.href = "/detail.market?cpage=1&product_seq=70"
+                        }
                      </script>
 
 </html>

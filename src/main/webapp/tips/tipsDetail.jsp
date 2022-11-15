@@ -115,15 +115,13 @@
 
 		<!-- Page Content-->
 		<form action="">
-			<input type=hidden name="tips_seq" value="${i.tips_seq}">
-			<input type=hidden name="tips_seq" value="${i.formedDate }">
+			<input type=hidden name="tips_seq" value="${i.tips_seq}"> <input
+				type=hidden name="tips_seq" value="${i.formedDate }">
 			<section class="py-5">
 				<div class="container px-5 my-5">
 					<div class="row gx-5">
 						<div class="col-lg-3">
 							<div class="d-flex align-items-center mt-lg-5 mb-4">
-								<img class="img-fluid rounded-circle"
-									src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
 								<div class="ms-3">
 									<div class="fw-bold">${dto.tips_nickname}</div>
 									<div class="text-muted">trainer</div>
@@ -157,8 +155,7 @@
 									</button>
 								</header>
 								<figure class="mb-4">
-									<img class="img-fluid rounded"
-										src="/tips_images/${oriName }"
+									<img class="img-fluid rounded" src="/tips_images/${oriName }"
 										alt="..." />
 								</figure>
 								<section class="mb-5">
@@ -212,6 +209,26 @@
 			$("#logout").on("click", function () {
                            location.href = "/logout.mem";
                         })
+                        
+                        
+                        
+                 $("#tipsthumbsup").on("click",function(){
+            	
+            	if("${loginID}"==""){
+            		let loginplz = confirm("로그인 후 이용이 가능합니다.")
+            		if(loginplz){
+            			location.href = "login/LoginDummy.jsp";
+            		
+            	
+            		}else{
+            		return;
+            	}
+            	}
+            	else{
+            	location.href = "/thumbsup.tips?cpage=1&tips_seq="+${dto.tips_seq}+""
+            	}
+            	
+            })
 			</script>
 
 
