@@ -151,11 +151,14 @@ a {
 					      		let tr = $("<tr>");
 					            	
 					            let tdSeq = $("<td>");
-					            tdSeq.append(result[i].qna_seq);
-									
+					            tdSeq.append(i+1);
+								
 					            let tdTitle = $("<td>");
-					            tdTitle.append(result[i].qna_title);
-					            
+					            let Anchor = $("<a>");
+					            Anchor.html(result[i].qna_title);
+					            Anchor.attr("href","/detail.qna?qna_seq="+result[i].qna_seq+"");
+					            tdTitle.append(Anchor);
+
 					            let tdNickname = $("<td>");
 					            tdNickname.append(result[i].qna_nickname);
 					

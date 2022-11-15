@@ -144,6 +144,7 @@
 #imform {
    display: none;
 }
+
 </style>
 
 <script>
@@ -318,13 +319,18 @@
                                     let tr = $("<tr>");
    
                                     let tdSeq = $("<td>");
-                                    tdSeq.append(target[i].qnaCms_seq);
+                                    tdSeq.append(i+1);
    
                                     let tdBoard = $("<td>");
-                                    tdBoard.append(target[i].qnaCms_parent_seq);
+                                    tdBoard.append("QnA");
    
                                     let tdContents = $("<td>");
-                                    tdContents.append(target[i].qnaCms_contents);
+                                    let Anchor = $("<a>");
+                                    Anchor.html(target[i].qnaCms_contents);
+                                    Anchor.attr("href","/detail.qna?qna_seq="+target[i].qnaCms_parent_seq+"");
+                                    Anchor.css("text-decoration","none");
+                                    Anchor.css("color","black");
+                                    tdContents.append(Anchor);
    
                                     let tdWriter = $("<td>");
                                     tdWriter.append(target[i].qnaCms_writer);
@@ -360,13 +366,21 @@
                                        let tr = $("<tr>");
 
                                        let tdSeq = $("<td>");
-                                       tdSeq.append(target[i].qna_seq);
+                                       tdSeq.append(i+1);
 
                                        let tdTitle = $("<td>");
-                                       tdTitle.append(target[i].qna_title);
-
+                                       let Anchor1 = $("<a>");
+                                       Anchor1.html(target[i].qna_title);
+                                       Anchor1.attr("href","/detail.qna?qna_seq="+target[i].qna_seq+"")
+                                       Anchor1.css("text-decoration","none").css("color","black");
+                                       tdTitle.append(Anchor1);
+                                       
                                        let tdContents = $("<td>");
-                                       tdContents.append(target[i].qna_contents);
+                                       let Anchor2 = $("<a>");
+                                       Anchor2.html(target[i].qna_contents);
+                                       Anchor2.attr("href","/detail.qna?qna_seq="+target[i].qna_seq+"")
+                                       Anchor2.css("text-decoration","none").css("color","black");
+                                       tdContents.append(Anchor2);
 
                                        let tdWriter = $("<td>");
                                        tdWriter.append(target[i].qna_writer);

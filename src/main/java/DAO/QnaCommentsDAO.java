@@ -34,13 +34,13 @@ private static QnaCommentsDAO instance = null;
 	}
 	
 	public int write(QnaCommentsDTO dto)throws Exception{
-		String sql = "insert into QnaComments values(QnaComments_seq.nextval,?,?,?,0,sysdate)";
+		String sql = "insert into QnaComments values(QnaComments_seq.nextval,?,?,?,?,sysdate)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, dto.getQnaCms_parent_seq());
 			pstat.setString(2, dto.getQnaCms_writer());
 			pstat.setString(3, dto.getQnaCms_contents());
-			
+			pstat.setString(4, dto.getQnaCms_nincname());
 			int result = pstat.executeUpdate();
 			con.setAutoCommit(false);
 			con.commit();

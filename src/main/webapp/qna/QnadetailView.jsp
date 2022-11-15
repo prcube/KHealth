@@ -35,7 +35,6 @@
 <script>
 	$(function(){
 		$("#update,#delete").hide();
-		console.log("${dto.qna_writer}")
 		if("${dto.qna_writer}" == "${loginID}") {
 			$("#update,#delete").show();
 		}
@@ -145,7 +144,7 @@
 									<input type=hidden value=${dto.qna_title } name=qna_title>
 									<input type=hidden value=${dto.qna_contents } name=qna_contents>
 
-									<div class="fw-bold">${dto.qna_writer }</div>
+									<div class="fw-bold">${dto.qna_nickname }</div>
 									<div class="text-muted">News, Business</div>
 								</div>
 							</div>
@@ -221,7 +220,7 @@
 												</div>
 												<div class="ms-3">
 
-													<div class="fw-bold" class="updComment">${list.qnaCms_writer }
+													<div class="fw-bold" class="updComment">${list.qnaCms_nincname }
 														${list.qnaCms_write_date }</div>
 													<div class=QnaCmsArea name=qnaCms_contents>${list.qnaCms_contents }</div>
 													<c:if test="${loginID == list.qnaCms_writer }">
@@ -356,6 +355,9 @@
             	console.log(${member_role});
             	if(${member_role}){
             		alert("회원님은 블랙리스트에 등록되어 댓글을 작성할 수 없습니다.");
+            		return;
+            	}else if(${loginID == null}){
+            		alert("회원가입 이후 작성 가능합니다.")
             		return;
             	}
             	
