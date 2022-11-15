@@ -48,7 +48,7 @@ private static QnaCommentsDAO instance = null;
 			return result;
 		}
 	}public List<QnaCommentsDTO>selectAll(int qnaCms_seq) throws Exception {
-		String sql = "select * from qnaComments where qnacms_parent_seq = ? order by qnacms_write_date desc ";
+		String sql = "select * from qnaComments where qnacms_parent_seq = ? order by qnacms_write_date desc";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, qnaCms_seq);
