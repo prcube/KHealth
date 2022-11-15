@@ -153,8 +153,6 @@
 										<td class="col-md-1 text-center"></td>
 
 
-
-
 										<td><script>
 											//콤마 제거
 											const numberStr = "${dto.product_price }";

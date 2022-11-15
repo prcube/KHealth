@@ -444,8 +444,9 @@
                   $("#commentBtn").on("click", function () {
                      location.href = "/mypage.mem"
                   })
+                  <!-- 수정금지! -->
                   $("#orderlistBtn").on("click", function () {
-                     location.href = "/mypage.mem"
+                     location.href = "/orderhistory.mypage?cpage=1"
                   })
                </script>
 
