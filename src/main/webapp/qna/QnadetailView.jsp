@@ -212,6 +212,8 @@
 												value="${list.qnaCms_seq }">
 											<input type=hidden name="contentsComments"
 												id="input_contentsComments">
+												<input type=hidden name =qnaCms_parent_seq"
+												value="${list.qnaCms_parent_seq }">
 											<div class="d-flex mb-4 mt-4">
 												<!-- Parent comment-->
 												<div class="flex-shrink-0">
