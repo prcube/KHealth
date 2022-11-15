@@ -22,6 +22,12 @@
    
 </script>
 </head>
+<style>
+a {
+	text-decoration: none;
+	color: black;
+}
+</style>
 <body class="d-flex flex-column h-100">
 
 
@@ -106,10 +112,8 @@
 				<div class="row gx-5 justify-content-center">
 					<div class="col-lg-8 col-xl-6">
 						<div class="text-center">
-							<h2 class="fw-bolder">From our blog</h2>
-							<p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor
-								sit amet consectetur adipisicing elit. Eaque fugit ratione dicta
-								mollitia. Officiis ad.</p>
+							<h2 class="fw-bolder">K-Health Market</h2>
+							<p class="lead fw-normal text-muted mb-5">100% 정품 보장! 가품일시 500% 보장!</p>
 						</div>
 					</div>
 				</div>

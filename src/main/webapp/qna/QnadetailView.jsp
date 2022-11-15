@@ -147,7 +147,7 @@
 									<input type=hidden value=${dto.qna_contents } name=qna_contents>
 
 									<div class="fw-bold">${dto.qna_nickname }</div>
-									<div class="text-muted">News, Business</div>
+									<div class="text-muted"></div>
 								</div>
 							</div>
 						</div>
@@ -430,11 +430,11 @@
 </html>
 
 
-<div class="container">
-	<div class="form-group row">
-		<div class="col-sm-10">
-			<input type="text" readonly class="form-control-plaintext"
-				id="header" value="">
-		</div>
-	</div>
-</div>
+<!-- <div class="container"> -->
+<!-- 	<div class="form-group row"> -->
+<!-- 		<div class="col-sm-10"> -->
+<!-- 			<input type="text" readonly class="form-control-plaintext" -->
+<!-- 				id="header" value=""> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
