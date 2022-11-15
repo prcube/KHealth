@@ -36,7 +36,7 @@ public class TipsDAO {
 
 	// insert
 	public int insert(TipsDTO dto) throws Exception {
-		String sql = "insert into tips values (?,?,?,?,sysdate,?,0,?,0)";
+		String sql = "insert into tips values (?,?,?,?,sysdate,?,0,?,0,null)";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			// pstat.setInt(1, dto.getTips_seq());
@@ -72,6 +72,7 @@ public class TipsDAO {
 				dto.setTips_view_count(rs.getInt("tips_view_count"));
 				dto.setTips_nickname("tips_nickname");
 				dto.setTips_bullet(rs.getString("tips_bullet"));
+				dto.setTips_video("tips_video");
 				list.add(dto);
 			}
 			return list;
@@ -95,6 +96,7 @@ public class TipsDAO {
 
 				dto.setTips_nickname(rs.getString("tips_nickname"));
 				dto.setTips_bullet(rs.getString("tips_bullet"));
+				dto.setTips_video(rs.getString("tips_video"));
 				con.setAutoCommit(false);
 				return dto;
 			}
@@ -258,6 +260,7 @@ public class TipsDAO {
 				dto1.setRn(rs.getInt("rn"));
 				dto1.setTips_bullet(rs.getString("tips_bullet"));
 				dto1.setTips_thumbsup(rs.getInt("tips_thumbsup"));
+				dto1.setTips_video(rs.getString("tips_video"));
 				list.add(dto1);
 
 			}
@@ -286,6 +289,7 @@ public class TipsDAO {
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
 				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
+				dto2.setTips_video(rs.getString("tips_video"));
 				list1.add(dto2);
 
 			}
@@ -314,6 +318,7 @@ public class TipsDAO {
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
 				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
+				dto2.setTips_video(rs.getString("tips_video"));
 				list2.add(dto2);
 
 			}
@@ -342,6 +347,7 @@ public class TipsDAO {
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
 				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
+				dto2.setTips_video(rs.getString("tips_video"));
 				list3.add(dto2);
 
 			}
@@ -370,6 +376,7 @@ public class TipsDAO {
 				dto2.setRn(rs.getInt("rn"));
 				dto2.setTips_bullet(rs.getString("tips_bullet"));
 				dto2.setTips_thumbsup(rs.getInt("tips_thumbsup"));
+				dto2.setTips_video(rs.getString("tips_video"));
 				list4.add(dto2);
 
 			}

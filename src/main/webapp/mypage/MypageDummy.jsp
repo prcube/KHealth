@@ -237,6 +237,7 @@
       </nav>
 
       
+<!--       <div id=btnArea></div> -->
 
       <!-- 왼쪽위에 있는 별명과 사진 공간 -->
       <div class="container emp-profile">
@@ -520,9 +521,13 @@
          </form>
       </div>
 
-
-      <!-- 수정완료 버튼이 나오는 곳 -->
-      <div id=btnArea></div>
+<!-- 수정완료 버튼이 나오는 곳 -->
+      <div class="container mb-5">
+      <button id=btnArea>
+      관리자 페이지로 이동
+      </button>
+      </div>
+      
 
 
       <!-- 수정버튼 -->
