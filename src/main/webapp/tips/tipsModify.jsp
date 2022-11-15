@@ -56,6 +56,7 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/list.tips?cpage=1">Tips</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -72,10 +73,9 @@
 									<ul class="dropdown-menu dropdown-menu-dark">
 										<li class="dropdown-item"><a href="/mypage.mem"
 											style="color: white; text-decoration: none;">Mypage</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">장바구니</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">뭐 넣지</a></li>
+										<li><a class="dropdown-item" style="color: white;" href="/list.wish?cpage=1">장바구니</a></li>
+<!-- 										<li><a class="dropdown-item" style="color: white;" -->
+<!-- 											href="#">뭐 넣지</a></li> -->
 										<li>
 											<hr class="dropdown-divider">
 										</li>
@@ -91,6 +91,7 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/list.tips?cpage=1">Tips</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -115,13 +116,12 @@
 
 
 
-	</main>
 
 
 
 
 	<form action="/update.tips" method="post">
-		<div class="container">
+		<div class="container px-3 py-3">
 			<input type=hidden name="tips_seq" id="tips_seq" value="${tips_seq }">
 			<div class="form-group row">
 				<div class="col-sm-10">
@@ -169,6 +169,7 @@
 
 		console.log("gg");
 	</script>
+	</main>
 
 
 
