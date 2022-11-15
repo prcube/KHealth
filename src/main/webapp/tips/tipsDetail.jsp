@@ -163,6 +163,7 @@
 								</figure>
 								<section class="mb-5">
 									<h2 class="fw-bolder mb-4 mt-5">${dto.tips_title}</h2>
+
 									<p class="fs-5 mb-4">${dto.tips_contents}</p>
 								</section>
 							</article>
