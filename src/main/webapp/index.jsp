@@ -127,6 +127,10 @@
    scroll-behavior: smooth;
    overflow-y: scroll;
 }
+
+#seq70:hover{
+	cursor:pointer;
+}
 </style>
 
 <body class="d-flex flex-column h-100">
@@ -244,7 +248,8 @@
                   </div>
                   <div class="carousel-item">
                      <img src="/image/c4.png" style="border-radius: 15px;"
-                        class="d-block w-100" alt="...">
+                        class="d-block w-100" alt="..." id="seq70" onclick="javascript:toseq70();">
+                        
                      <div class="carousel-caption d-none d-md-block">
                         
                      </div>
@@ -786,6 +791,10 @@
                         $("#logout").on("click", function () {
                            location.href = "/logout.mem";
                         })
+                        
+                        function toseq70(){
+                        	location.href = "/detail.market?cpage=1&product_seq=70"
+                        }
                      </script>
 
 </html>
