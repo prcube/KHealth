@@ -12,6 +12,6 @@
 
 <br><br><br>
 <a href = "/showblacklist.admin">블랙리스트 관리</a>
-<a href = "/admin/product.jsp">판매상품 관리</a> 
+<a href = "/admin/product.jsp">신규상품 등록</a> 
 </body>
 </html>
