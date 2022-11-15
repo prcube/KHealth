@@ -112,19 +112,11 @@
       </nav>
 
 
-
-
-
-
-
    </main>
 
-
-
-
-   <form action="/update.qna"  method="post">
+   <form action=""  method="post" id="modifyFrm">
       <div class="container">
-         <input type=hidden name="qna_seq" id="qna_seq" value="${qna_seq }">
+
          <div class="form-group row">
             <div class="col-sm-10">
                <input type="text" disabled class="form-control-plaintext"
@@ -134,56 +126,39 @@
 
          <div class="form-group row">
             <div class="col-sm">
-               <input name="qna_title" id="qna_title" value="${dto.qna_title }"
-         
-              
-                  class="form-control-plaintext" type="text" 
-                 >
+            	<input type=hidden id="qna_seq" name="qna_seq" value="${dto.qna_seq}">
+               	<input name="qna_title" id="qna_title" value="${dto.qna_title }"
+                  class="form-control-plaintext" type="text">
             </div>
          </div>
 
          <div class="form-group">
 
-            <textarea class="form-control" name="qna_contents" 
-               id="qna_contents"   id="exampleFormControlTextarea1" rows="10" 
-               placeholder="내용을 입력하세요."></textarea>
+            <textarea class="form-control" name="qna_contents" id="qna_contents" rows="10">${dto.qna_contents }</textarea>
 
 
             <!-- <input type = file multiple name = "file"><br> -->
 
-
          </div>
-
-
 
          <div class="row">
             <div class="btn-group right" role="group" aria-label="Basic example">
                <button type="submit" class="btn btn-primary" id="qnaModify">수정하기</button>
-               <button type="button" class="btn btn-primary" id="qnaBack">
-                  게시판으로</button>
+               <button type="button" class="btn btn-primary" id="qnaBack">게시판으로</button>
             </div>
          </div>
-
+				<script>
+					$("#qnaModify").on("click",function(){
+						$("#modifyFrm").attr("action","/update.qna?qna_seq"+${dto.qna_seq});
+						$("#modifyFrm").submit();
+					})
+					
+					$("#qnaBack").on("click",function(){
+						location.href = "/list.qna?cpage=1";
+					})
+				</script>
       </div>
    </form>
-   <script>
-      $("#qnaBack").on("click", function() {
-         location.href = "/list.qna"
-      })
-      
-      $('#qna_contents').summernote({
-	        placeholder: '내용을 입력하세요.',
-	        tabsize: 2,
-	        height: 300
-	      });
-      
-      console.log("gg");
-      
-   </script>
-
-
-
-
 
    <!-- Footer-->
    <footer class="bg-dark py-4 mt-auto ">

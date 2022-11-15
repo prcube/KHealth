@@ -140,10 +140,9 @@
 								<img class="img-fluid rounded-circle"
 									src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
 								<div class="ms-3">
-									<input type=hidden value=${dto.qna_seq } style="display: none;"
-										name=qna_seq> <input type=hidden
-										value=${dto.qna_title } style="display: none;" name=qna_title>
-									<input type=hidden  style="display: none;" name=qna_contents>
+									<input type=hidden value=${dto.qna_seq } name=qna_seq>
+									<input type=hidden value=${dto.qna_title } name=qna_title>
+									<input type=hidden value=${dto.qna_contents } name=qna_contents>
 									<div class="fw-bold">${dto.qna_writer }</div>
 									<div class="text-muted">News, Business</div>
 								</div>
@@ -311,8 +310,6 @@
                       $(this).closest(".ms-3").find(".modifyComments").css("display", "none");
                       $(this).closest(".ms-3").find(".deleteComments").css("display", "none");
 
-
-                     
                      let modifyCommentsOk = $("<button>");
                      modifyCommentsOk.html("수정완료");
                      modifyCommentsOk.on("click",function(){
@@ -346,9 +343,10 @@
               $("#detailFrm").attr("action","/delete.qna")
               $("#detailFrm").submit();
            })
-       $("#update").on("click", function() {
-               location.href = "/gomodify.qna?qna_seq=${dto.qna_seq }"
-            })
+       	$("#update").on("click", function() {
+			$("#detailFrm").attr("action","/gomodify.qna?qna_seq="+ ${dto.qna_seq});
+			$("#detailFrm").submit();
+       })
         
             $("#commentsbutton").on("click",function(){
             	console.log(${member_role});
