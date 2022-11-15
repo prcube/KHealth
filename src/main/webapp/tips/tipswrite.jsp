@@ -127,7 +127,7 @@
 
 
 		<!--write  -->
-		<form action="/insert.tips" method="post">
+		<form action="/insert.tips" method="post" enctype="multipart/form-data">
 			<div class="container board-border px-3">
 				<div class="row">
 					<div class="mt-4 mb-5">
@@ -160,9 +160,9 @@
 					placeholder="내용을 입력하세요.">
                </textarea>
 				<div class="row mt-3 ">
-					<form>
-						<input type=file>
-					</form>
+				
+						<input type=file name="file">
+				
 				</div>
 				<div class="form-group">
 					<div class="mt-3 mb-3 d-flex justify-content-end">
@@ -174,6 +174,7 @@
 				</div>
 			</div>
 		</form>
+
 
 
 

@@ -193,6 +193,7 @@ a {
 							<th>닉네임</th>
 							<th>날짜</th>
 							<th>조회수</th>
+							<th>추천</th>
 						</tr>
 					</thead>
 					<tbody id="searchResultArea">
@@ -201,10 +202,11 @@ a {
 								<td>${i.rn  }</td>
 
 								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }&nbsp&nbsp&nbsp[${list1[status.index].numberOfComment}]</a></td>
-
+											
 								<td>${i.qna_nickname }</td>
 								<td>${i.formedDate }</td>
 								<td>${i.qna_view_count }</td>
+								<td>${i.qna_thumbsup}</td>
 
 							</tr>
 							

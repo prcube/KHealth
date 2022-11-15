@@ -23,7 +23,8 @@
 		<div>
 			<input type="text" placeholder="제품 최초 재고 수 입력" name="product_count">
 		</div>
-
+		
+		<textarea name="product_explain" placeholder="제품 설명 입력" style="min-width:1510px; min-height:100px	"></textarea>
 		<fieldset>
 			<legend>제품 이미지 파일 등록</legend>
 			<button id="fileAdd" type="button">+</button>
