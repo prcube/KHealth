@@ -345,7 +345,7 @@
                      modifyCommentsCancel.attr("type","button");
                      modifyCommentsCancel.html("취소");
                      modifyCommentsCancel.on("click",function(){
-                        location.reload();
+                    	 location.href = "/detail.qna?qna_seq="+${dto.qna_seq }+""
                      })
                      
                 $(this).before(modifyCommentsOk);
