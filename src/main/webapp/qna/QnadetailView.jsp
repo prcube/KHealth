@@ -196,11 +196,23 @@
 								<section class="mb-5">
 									<div readonly>
 										<p class="fs-5 mb-4" id="qna_contents">${dto.qna_contents }
+										
 										</p>
+										 <%-- <fieldset>
+											<legend>File List</legend>
+											<c:forEach var="filelist" items="${filelist }">
+												<div>${filelist.seq }.<a
+														href="/download.file?sysname=${filelist.sysName }&oriname=${filelist.oriName}">${filelist.oriName }</a>
+												</div>
+											</c:forEach>
+										</fieldset>  --%>
 
 									</div>
 								</section>
 							</article>
+							
+							
+
 							
 
 							<!-- Comments section-->
