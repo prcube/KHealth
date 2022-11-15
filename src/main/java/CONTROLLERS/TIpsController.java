@@ -115,12 +115,15 @@ public class TIpsController extends HttpServlet {
 			}
 
 			else if (uri.equals("/detail.tips")) {
+				
 				TipsDAO dao = TipsDAO.getInstance();
+				Tips_imagesDAO dao1 = Tips_imagesDAO.getInstance();
 				// 숨긴 tips_seq를 가져와서 TipsDTO dto = dao.detail(tips_seq) 이렇게 넣어야함
 
 				String id = (String) (request.getSession().getAttribute("loginID"));
 				int tips_seq = Integer.parseInt(request.getParameter("tips_seq"));
-
+				
+				Tips_imagesDAO.getInstance().getimage(tips_seq);
 				TipsDTO dto = dao.detail(tips_seq);
 				TipsDAO.getInstance().addViewCount(tips_seq);
 				boolean member_role = MembersDAO.getInstance().isYouAdmin(id);
@@ -128,6 +131,9 @@ public class TIpsController extends HttpServlet {
 				request.setAttribute("loginID", id);
 				request.setAttribute("member_role", member_role);
 				request.getRequestDispatcher("/tips/tipsDetail.jsp").forward(request, response);
+				
+				
+				
 			} else if (uri.equals("/thumbsup.tips")) {
 				TipsDAO dao = TipsDAO.getInstance();
 

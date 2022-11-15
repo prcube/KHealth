@@ -39,9 +39,11 @@ public class memberController extends HttpServlet {
 				String post2 = request.getParameter("address2");
 				SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 				String launch_date = format.format(System.currentTimeMillis());
-				System.out.println(launch_date);
 				MembersDAO dao = MembersDAO.getInstance();
-				int result = dao.insert(id, passwd, name, launch_date, nickname, 0, mail, number, zipcode, post1,
+				PasswdSha sha = new PasswdSha();
+				String cryptopw = sha.encrypt(passwd);
+				System.out.println(cryptopw);
+				int result = dao.insert(id, cryptopw, name, launch_date, nickname, 0, mail, number, zipcode, post1,
 						post2);
 				response.sendRedirect("/");
 			} else if (uri.equals("/login.mem")) {
@@ -52,10 +54,12 @@ public class memberController extends HttpServlet {
 				MembersDAO dao = MembersDAO.getInstance();
 				LoginManager logmanager = LoginManager.getInstance();
 				System.out.println(id + ":" + pwd);
+				PasswdSha sha = new PasswdSha();
+				String cryptopw = sha.encrypt(pwd);
 				boolean result = dao.login(id, pwd);
 				HttpSession session = request.getSession();
 				boolean checklog = logmanager.isUsing(id);
-				System.out.println(checklog);
+				System.out.println(cryptopw);
 
 				if (checklog == true) {
 					response.setContentType("text/html; charset=UTF-8");
