@@ -415,14 +415,14 @@
                <div class="col-lg-10 col-xl-7">
                   <div class="text-center">
                      <div class="fs-5 mb-4 fst-italic ">
-                        "고객 여러분들의 운동을 위해 전문적인 프로그램과 <br>회원 간 정보 교환 및 운동용품 구매를 <br>케이
-                        헬스에서 제공해 드리며<br> 고객 여러분께 성심성의를 다해 도와드립니다."
+                        "5000만 국민 건강을 위해 전문적인 프로그램과 <br>회원 간 정보 교환 및 최적의 상품 구매를 
+                        <br>K-Health에서 제공해 드리며,<br> 고객 여러분께 최고의 서비스를 약속 드립니다."
                      </div>
                      <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3"
                            src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                         <div class="fw-bold">
-                           임근혁 <span class="fw-bold text-primary mx-1">/</span> CEO,
+                           임근혁 <span class="fw-bold text-primary mx-1">/</span> 
                            K-Health
                         </div>
                      </div>

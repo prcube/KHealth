@@ -129,8 +129,7 @@
                 <!-- 섹션0-->
                 <section class="py-5" style="text-align: center;">
 
-                    <h1 class="display-4 fw-normal">회사소개</h1>
-                    <br>
+ 
 
                     <h2>
                         최고의 트레이너, 최적의 방법으로 <br /> 피트니스 혁신을 실현 합니다.
