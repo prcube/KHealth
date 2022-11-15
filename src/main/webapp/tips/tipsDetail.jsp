@@ -155,6 +155,13 @@
 									</button>
 								</header>
 								<figure class="mb-4">
+
+									<iframe class="rounded-3" width="100%" height="500px"
+										src="https://www.youtube.com/embed/${dto.tips_video }"
+										title="YouTube video player" frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen></iframe>
+
 									<img class="img-fluid rounded" src="/tips_images/${oriName }"
 										alt="..." />
 								</figure>

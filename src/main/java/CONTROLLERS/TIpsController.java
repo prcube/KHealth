@@ -68,7 +68,7 @@ public class TIpsController extends HttpServlet {
 
 				int seq = TipsDAO.getInstance().getnextval();
 				
-				TipsDTO dto = new TipsDTO(seq, tips_title, tips_writer, tips_contents, null, 0, "", 0, tips_bullet, 0);
+				TipsDTO dto = new TipsDTO(seq, tips_title, tips_writer, tips_contents, null, 0, "", 0, tips_bullet, 0, null);
 
 				dao.insert(dto);
 
