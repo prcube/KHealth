@@ -42,7 +42,7 @@
 	</table>
 	
 	<br><br><br><br>
-	<form action="/blacklist.admin" method="post">
+	<form action="" method="post" id=Frm>
 
 		<div>
 			<input type="text" placeholder="차단 대상 별명 입력" name="member_nickname">
@@ -60,6 +60,20 @@
 				location.href = "/removeblacklist.admin?removeBlacklist_seq="+target+"";
 			}
 		})	
+		
+		$("#addBlacklistBtn").on("click",function(){
+			
+			let reallyadd = confirm("정말 블랙리스트에 대상을 추가하시겠습니까?");
+			
+			if(reallyadd){
+				$("#Frm").attr("action","/blacklist.admin");
+				$("#Frm").submit();
+			}else{
+				return;
+			}
+			
+
+		})
 	</script>
 </body>
 </html>

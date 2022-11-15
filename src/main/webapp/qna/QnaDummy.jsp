@@ -151,11 +151,14 @@ a {
 					      		let tr = $("<tr>");
 					            	
 					            let tdSeq = $("<td>");
-					            tdSeq.append(result[i].qna_seq);
-									
+					            tdSeq.append(i+1);
+								
 					            let tdTitle = $("<td>");
-					            tdTitle.append(result[i].qna_title);
-					            
+					            let Anchor = $("<a>");
+					            Anchor.html(result[i].qna_title);
+					            Anchor.attr("href","/detail.qna?qna_seq="+result[i].qna_seq+"");
+					            tdTitle.append(Anchor);
+
 					            let tdNickname = $("<td>");
 					            tdNickname.append(result[i].qna_nickname);
 					
@@ -193,6 +196,7 @@ a {
 							<th>닉네임</th>
 							<th>날짜</th>
 							<th>조회수</th>
+							<th>추천</th>
 						</tr>
 					</thead>
 					<tbody id="searchResultArea">
@@ -201,10 +205,11 @@ a {
 								<td>${i.rn  }</td>
 
 								<td><a href="/detail.qna?qna_seq=${i.qna_seq}">${i.qna_title }&nbsp&nbsp&nbsp[${list1[status.index].numberOfComment}]</a></td>
-
+											
 								<td>${i.qna_nickname }</td>
 								<td>${i.formedDate }</td>
 								<td>${i.qna_view_count }</td>
+								<td>${i.qna_thumbsup}</td>
 
 							</tr>
 							

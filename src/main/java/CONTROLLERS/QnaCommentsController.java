@@ -35,10 +35,10 @@ public class QnaCommentsController extends HttpServlet {
 				String qnaCms_contents = request.getParameter("comments");
 				
 				String qnaCms_writer = (String)(request.getSession().getAttribute("loginID"));
-				
+				String qnaCms_nickname = (String)(request.getSession().getAttribute("loginNickname"));
 				int qnaCms_parent_seq = Integer.parseInt(request.getParameter("qna_seq"));
 				
-				QnaCommentsDTO dto = new QnaCommentsDTO(0,qnaCms_parent_seq,qnaCms_writer,qnaCms_contents,"",null);
+				QnaCommentsDTO dto = new QnaCommentsDTO(0,qnaCms_parent_seq,qnaCms_writer,qnaCms_contents,qnaCms_nickname,null);
 				
 				dao.write(dto);
 				
@@ -50,7 +50,7 @@ public class QnaCommentsController extends HttpServlet {
 				int qnaCms_seq = Integer.parseInt(request.getParameter("qnaCms_seq"));
 				
 				int result = QnaCommentsDAO.getInstance().delete(qnaCms_seq);
-				response.sendRedirect("/detail.qna?qna_seq=");
+				response.sendRedirect("/list.qna?cpage=1");
 				
 			}else if(uri.equals("/update.comments")) {
 				try {
@@ -61,7 +61,7 @@ public class QnaCommentsController extends HttpServlet {
 
 					int result = QnaCommentsDAO.getInstance().update(qnaCms_contents, qnaCms_seq);
 
-					response.sendRedirect("/detail.qna");
+					response.sendRedirect("/list.qna?cpage=1");
 				}catch (Exception e) {
 					e.printStackTrace();
 					

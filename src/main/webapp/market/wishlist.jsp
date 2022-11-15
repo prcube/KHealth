@@ -134,7 +134,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 
 
-		<section class="h-100 h-custom" style="background-color: white;">
+		<section class="py-5" style="background-color: white;">
 			<div class="container py-5 mb-5 h-100">
 				<div
 					class="row d-flex justify-content-center align-items-center h-100">
@@ -147,7 +147,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 										<div class="p-5">
 											<div
 												class="d-flex justify-content-between align-items-center mb-5">
-												<h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+												<h1 class="fw-bold mb-0 text-black">장바구니</h1>
 												
 											</div>
 											<hr class="my-4">
@@ -173,16 +173,14 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 																<input class="form1 totalAmount" min="0" name="quantity"
 																	value="${i.product_wish_count }" type="number"
-																	class="form-control form-control-sm" />
+																	class="form-control form-control-sm" style="width: 40px;" />
 
 																<button class="btn btn-link px-2 amountMinusBtn"
-																	
 																	onclick="this.parentNode.querySelector('input[type=number]').stepDown();javascript:refresh();">
 																	<i class="bi bi-dash-lg"></i>
 																</button>
 
 																<button class="btn btn-link px-2 amountPlusBtn"
-															
 																	onclick="this.parentNode.querySelector('input[type=number]').stepUp();javascript:refresh();">
 																	<i class="bi bi-plus-lg"></i>
 																</button>
@@ -209,15 +207,15 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 											<div class="pt-5">
 												<h6 class="mb-0">
 													<a href="javascript:deleteAll();" class="text-body"><i
-														class="fas fa-long-arrow-alt-left me-2"
-														></i>장바구니 초기화</a>
+														class="fas fa-long-arrow-alt-left me-2" 
+														></i>장바구니 비우기</a>
 												</h6>
 											</div>
 										</div>
 									</div>
 									<div class="col-lg-4 bg-grey">
 										<div class="p-5">
-											<h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+											<h3 class="fw-bold mb-5 mt-2 pt-1">결제정보</h3>
 											<hr class="my-4">
 
 <!-- 											<div class="d-flex justify-content-between mb-4"> -->
@@ -225,7 +223,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 <!-- 												<h5>€ 132.00</h5> -->
 <!-- 											</div> -->
 
-											<h5 class="text-uppercase mb-3">Coupon</h5>
+											<h5 class="text-uppercase mb-3">쿠폰</h5>
 
 											<div class="mb-4 pb-2">
 												<select class="select">
@@ -235,21 +233,20 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 												</select>
 											</div>
 
-											<h5 class="text-uppercase mb-3">Give code</h5>
+											<h5 class="text-uppercase mb-3">할인 코드</h5>
 
 											<div class="mb-5">
 												<div class="form-outline">
 													<input type="text" id="form3Examplea2"
 														class="form-control form-control-lg" /> <label
-														class="form-label" for="form3Examplea2">Enter your
-														code</label>
+														class="form-label" for="form3Examplea2">코드를 입력하세요</label>
 												</div>
 											</div>
 
 											<hr class="my-4">
 
 											<div class="d-flex justify-content-between mb-5">
-												<h5 class="text-uppercase">Total price</h5>
+												<h5 class="text-uppercase">최종 가격</h5>
 												<h5 id="totalPriceArea"></h5>
 												<h5>원</h5>
 												<input type="hidden" id=hiddenPriceArea> 

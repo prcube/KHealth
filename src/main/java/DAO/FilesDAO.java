@@ -35,11 +35,14 @@ private static FilesDAO instance = null;
 			
 			String sql  = "insert into files values(files_seq.nextval,?,?,?)";
 			try(Connection con = this.getConnection();
-					PreparedStatement pstat = con.prepareStatement(sql)){
-				pstat.setString(1, dto.getOriName());
-				pstat.setString(2, dto.getSysName());
-				pstat.setInt(3, dto.getParent_seq());
+					PreparedStatement pstat = con.prepareStatement(sql);){
+				pstat.setInt(1, dto.getParent_seq());
+				pstat.setString(2, dto.getOriName());
+				pstat.setString(3, dto.getSysName());
+				
+				
 				int result = pstat.executeUpdate();
+	
 				con.commit();
 				return result;
 			}
@@ -53,10 +56,10 @@ private static FilesDAO instance = null;
 				List<FilesDTO> list = new ArrayList<>();
 				while(rs.next()) {
 					FilesDTO dto  = new FilesDTO();
-					dto.setOriName(rs.getString("oriname"));
-					dto.setParent_seq(rs.getInt("parent_seq"));
 					dto.setSeq(rs.getInt("seq"));
 					dto.setSysName(rs.getString("sysname"));
+					dto.setOriName(rs.getString("oriname"));
+					dto.setParent_seq(rs.getInt("parent_seq"));
 					list.add(dto);
 					
 				}
