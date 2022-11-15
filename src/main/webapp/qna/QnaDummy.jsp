@@ -122,7 +122,7 @@ a {
 					<form action="" style="float: right">
 						<div class="input-group">
 							<input type=text class="form-control" id=searchTitle
-								name=searchTitle placeholder="검색">
+								name=searchTitle placeholder="제목을 입력하세요">
 							<button class="btn btn-secondary btn-sm" type=button
 								id="searchBtn">검색</button>
 						</div>
