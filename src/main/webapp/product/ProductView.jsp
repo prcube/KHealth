@@ -141,10 +141,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							<div class="fs-5 mb-5">
 								<span>${dto.product_price } 원</span>
 							</div>
-							<p class="lead">Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi
-								consequatur obcaecati excepturi alias magni, accusamus eius
-								blanditiis delectus ipsam minima ea iste laborum vero?</p>
+							<p class="lead">${dto.product_explain }</p>
 							<div>
 
 								<div class="row mb-2">
@@ -325,21 +322,28 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
           if ("${loginID }" == "") {
             let loginplz = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.");
             if (loginplz) {
-              location.href = "/login/LoginDummy.jsp";
+            	location.href = "/login/LoginDummy.jsp";
+            	
             }
 
             else {
               return;
             }
 
-          }else if($("#amount").val()<=1){
+          }else if($("#amount").val()<1){
       		alert("수량을 확인해주세요.");
     		return false;
     	} 
         else {
-
-            $("#buyFrm").attr("action", "/add.wish");
-            $("#buyFrm").submit();
+        	
+        	let wantadd = confirm("상품을 장바구니에 추가하시겠습니까?");
+        	if(wantadd){
+        		
+        		addwishajax();
+//         		$("#buyFrm").attr("action", "/add.wish");
+//                 $("#buyFrm").submit();
+        	}
+            
 
           }
 
@@ -368,7 +372,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
         })
         
 		function isUnderZero(){
-        	if($("#amount").val()<=1){
+        	if($("#amount").val()<1){
         		alert("수량을 확인해주세요.");
         		$("#amount").val()=2;
         	}else{
@@ -378,9 +382,34 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
         }
         
         $("#logout").on("click", function () {
-            location.href = "/logout.mem";
+        	console.log("${loginID}");
+            //location.href = "/logout.mem";
          })
         
+        function addwishajax(){
+        	
+        	$.ajax({
+        		url:"/addwish.ajax",
+        		data:{
+        			"amount": $("#amount").val(),
+        			"product_seq": "${ dto.product_seq }",
+        			"oriName":"${oriName}",
+        			"name":"${dto.product_name}",
+        			"price":"${dto.product_price}"
+        		},
+        		success : function(resp) {
+        			let wantToGoWishlist = confirm("상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+        			if(wantToGoWishlist){
+        				location.href="/list.wish?cpage=1";
+        			}
+        			
+        		},
+        		error : function(resp) {
+					alert("에러 발생!");
+				},
+        		
+        	})
+        }
 
       </script>
 

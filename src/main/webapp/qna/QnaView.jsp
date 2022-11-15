@@ -130,7 +130,7 @@
 
 
 
-		<form action="/write.qna" method="post">
+		<form action="/write.qna" method="post" enctype="multipart/form-data">
 
 
 
@@ -160,9 +160,10 @@
 						placeholder="내용을 입력하세요.">
                </textarea>
 					<div class="row mt-3 ">
-						<form>
-							<input type=file>
-						</form>
+						<fieldset>
+					<legend>파일목록</legend>
+						<button id = "fileAdd" type=button>+</button>
+				</fieldset>
 					</div>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
@@ -184,41 +185,11 @@
 			$('#qna_contents')
 					.summernote(
 							{
-								callbacks : {
-									onImageUpload : function(files, editor) {
-										//에디터 이미지 업로드 기능
-										console.log(files);
-
-										var data = new FormData();
-										// 
-										data.append('imgFile', files[0]);
-										$.ajax({
-											url : 'upload.file',
-											type : 'post',
-											data : data,
-											enctype : 'multipart/form-data',
-											contentType : false, // 
-											processData : false
-										// 
-										}).done(
-												function(resp) {
-
-													var imgNode = $("<img>");
-													imgNode.attr("src", resp);
-
-													$(".note-editable").append(
-															imgNode);
-												}).fail(function(a, b, c) {
-											console.log(a);
-											console.log(b);
-											console.log(c);
-										});
-									}
-								},
 
 								placeholder : '내용을 입력하세요.',
 								tabsize : 2,
 								height : 400,
+			
 								toolbar : [
 										[ 'style', [ 'style' ] ],
 										[
@@ -228,12 +199,49 @@
 										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
 										[ 'table', [ 'table' ] ],
 										[ 'insert',
-												[ 'link', 'picture', 'video' ] ],
+												[ 'link', 'video' ] ],
 										[
 												'view',
 												[ 'fullscreen', 'codeview',
 														'help' ] ] ]
 							});
+			
+		
+			
+			
+			let count =0;
+			$("#fileAdd").on("click",function(){
+				/* 파일 4개까지만 통제 */
+				if($("input[type=file]").length>4) {
+					alert("파일은 최대 5개까지만 업로드가 가능합니다.");
+					return;
+				}
+				let fileDiv = $("<div>");
+				
+				/* 누르면 input타입파일을 만듬. */
+				let inputFile = $("<input>");
+				inputFile.attr("type","file");
+				inputFile.attr("name","file"+ count++);
+				
+				
+				let delBtn = $("<a>");
+				delBtn.html("x");
+				delBtn.addClass("line-del");
+				delBtn.on("click",function(){
+					$(this).parent().remove();
+				});
+				
+				
+				
+				/* 파일지움.  */
+				fileDiv.append(inputFile);
+				fileDiv.append(delBtn);
+				
+				$("#fileAdd").parent().after(fileDiv);
+				
+			
+			});
+			
 		</script>
 
 	</main>

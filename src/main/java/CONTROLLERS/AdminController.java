@@ -52,12 +52,12 @@ public class AdminController extends HttpServlet {
 				String product_name = multi.getParameter("product_name");
 				String product_price = multi.getParameter("product_price");
 				int product_count = Integer.parseInt(multi.getParameter("product_count"));
-
+				String product_explain = multi.getParameter("product_explain");
 
 
 				int seq = AdminDAO.getInstance().getnextval();
 
-				AdminDAO.getInstance().insertProduct(new ProductDTO(seq, product_name, product_price, product_count));
+				AdminDAO.getInstance().insertProduct(new ProductDTO(seq, product_name, product_price, product_count,product_explain));
 
 				Enumeration<String> e = multi.getFileNames();
 

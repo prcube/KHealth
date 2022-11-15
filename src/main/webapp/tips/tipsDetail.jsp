@@ -116,6 +116,7 @@
 		<!-- Page Content-->
 		<form action="">
 			<input type=hidden name="tips_seq" value="${i.tips_seq}">
+			<input type=hidden name="tips_seq" value="${i.formedDate }">
 			<section class="py-5">
 				<div class="container px-5 my-5">
 					<div class="row gx-5">
@@ -124,8 +125,8 @@
 								<img class="img-fluid rounded-circle"
 									src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
 								<div class="ms-3">
-									<div class="fw-bold">${dto.tips_writer}</div>
-									<div class="text-muted">News, Business</div>
+									<div class="fw-bold">${dto.tips_nickname}</div>
+									<div class="text-muted">trainer</div>
 								</div>
 							</div>
 						</div>
@@ -137,7 +138,7 @@
 
 									<h1 class="fw-bolder mb-1">${dto.tips_title}</h1>
 
-									<div class="text-muted fst-italic mb-2">${dto.tips_write_date}</div>
+									<div class="text-muted fst-italic mb-2">${i.formedDate }</div>
 
 									<button type="button" id="golist" class="btn btn-secondary">목록으로</button>
 									<button type="button" id="tipsmodify" class="btn btn-secondary">수정</button>
@@ -157,7 +158,7 @@
 								</header>
 								<figure class="mb-4">
 									<img class="img-fluid rounded"
-										src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+										src="/tips_images/${oriName }"
 										alt="..." />
 								</figure>
 								<section class="mb-5">
@@ -165,7 +166,6 @@
 									<p class="fs-5 mb-4">${dto.tips_contents}</p>
 								</section>
 							</article>
-
 						</div>
 					</div>
 				</div>
