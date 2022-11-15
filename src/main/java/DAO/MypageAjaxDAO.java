@@ -76,6 +76,7 @@ public class MypageAjaxDAO {
 				while(rs.next()) {
 					QnaDTO dto = new QnaDTO();
 					dto.setQna_seq(rs.getInt("qna_seq"));
+					dto.setQna_title(rs.getString("qna_title"));
 					dto.setQna_writer(rs.getString("qna_writer"));
 					dto.setQna_contents(rs.getString("qna_contents"));
 					dto.setQna_nickname(rs.getString("qna_nickname"));
