@@ -228,7 +228,7 @@
          <div class="container px-5">
             <!-- <캐러셀캐러셀> -->
             <div id="carouselExampleCaptions"
-               class="carousel slide carousel-fade" data-bs-ride="false">
+               class="carousel slide carousel-fade" data-bs-ride="carousel">
                <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleCaptions"
                      data-bs-slide-to="0" class="active" aria-current="true"
