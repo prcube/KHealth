@@ -36,17 +36,20 @@ public class QnaDAO {
 	}
 
 	public int write(QnaDTO dto) throws Exception {
-		String sql = "insert into qna values (qna_seq.nextval,?,?,?,sysdate,?,?,?)";
+		String sql = "insert into qna values (?,?,?,?,sysdate,?,?,?)";
+//		첫번째칸에 nextval를 써서 이미지 번호가 하나씩 밀렸었음. ? 로 바꿔준다.
+		
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 
-			pstat.setString(1,dto.getQna_title());
-			pstat.setString(2, dto.getQna_writer());
-			pstat.setString(3, dto.getQna_contents());
-			pstat.setInt(4,dto.getQna_view_count());
-			pstat.setString(5, dto.getQna_nickname());   
-			pstat.setInt(6, dto.getQna_thumbsup());
+			pstat.setInt(1, dto.getQna_seq());
+			pstat.setString(2,dto.getQna_title());
+			pstat.setString(3, dto.getQna_writer());
+			pstat.setString(4, dto.getQna_contents());
+			pstat.setInt(5,dto.getQna_view_count());
+			pstat.setString(6, dto.getQna_nickname());   
+			pstat.setInt(7, dto.getQna_thumbsup());
 			int result = pstat.executeUpdate();
 			con.setAutoCommit(false);
 			con.commit();
@@ -273,9 +276,10 @@ public class QnaDAO {
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			ResultSet rs = pstat.executeQuery();
 			rs.next();
-			int qna_seq = rs.getInt("nextval");
-			con.commit();
-			return qna_seq;
+			
+			
+			System.out.println("미리 뽑은 번호표" + rs.getInt(1));
+			return rs.getInt(1);
 		}
 
 	}public int addthumbsupCount(int qna_seq) throws Exception {

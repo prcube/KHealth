@@ -188,8 +188,8 @@
 								<!-- Preview image figure-->
 								<figure class="mb-4">
 									<img class="img-fluid rounded"
-										src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
-										alt="..." />
+										src="/files/${oriName }"
+										alt="..."/>
 								</figure>
 								<!-- Post content-->
 								<section class="mb-5">
@@ -197,14 +197,7 @@
 										<p class="fs-5 mb-4" id="qna_contents">${dto.qna_contents }
 										
 										</p>
-										 <%-- <fieldset>
-											<legend>File List</legend>
-											<c:forEach var="filelist" items="${filelist }">
-												<div>${filelist.seq }.<a
-														href="/download.file?sysname=${filelist.sysName }&oriname=${filelist.oriName}">${filelist.oriName }</a>
-												</div>
-											</c:forEach>
-										</fieldset>  --%>
+										
 
 									</div>
 								</section>

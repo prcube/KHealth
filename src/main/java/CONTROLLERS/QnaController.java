@@ -20,11 +20,14 @@ import DAO.FilesDAO;
 import DAO.MembersDAO;
 import DAO.QnaCommentsDAO;
 import DAO.QnaDAO;
-
+import DAO.Qna_imagesDAO;
+import DAO.Tips_imagesDAO;
 import DTO.FilesDTO;
 
 import DTO.QnaCommentsDTO;
 import DTO.QnaDTO;
+import DTO.Qna_imagesDTO;
+import DTO.Tips_imagesDTO;
 
 
 
@@ -73,7 +76,7 @@ public class QnaController extends HttpServlet {
 
 				try {
 					int maxSize = 1024*1024*10;
-					
+					// files에 저장한다.
 					String savePath=request.getServletContext().getRealPath("/files");
 					System.out.println(savePath);
 					
@@ -84,35 +87,43 @@ public class QnaController extends HttpServlet {
 						fileSavePath.mkdir();
 					}
 					//기존 리퀘스트 객체 업그레이드
-					
+					QnaDAO dao = QnaDAO.getInstance();
 					MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,"UTF8",new DefaultFileRenamePolicy());
-					int seq = QnaDAO.getInstance().getnextval();
-					//업로드된 파일들의 이름부터 알아봐야함
-					//어레이리스트에 저장했다고 보면됨.
-					Enumeration<String> e = multi.getFileNames();
-					//ResultSet의 rs.next랑 비슷.
-					while(e.hasMoreElements()) {
-					
-					String name = e.nextElement();
-					//클라이언트가 업로드하는 원본 파일 이름.
-					String oriName = multi.getOriginalFileName(name);
-					//서버측에 저장되는 시스템 파일 이름.
-					
-					String sysName = multi.getFilesystemName(name);
-					//파일목록을 추가하고 파일을 안올리고 글작성을 누르는 경우.
-					if(oriName ==null) {continue;}
-					FilesDTO dto1 = new FilesDTO(0,oriName,sysName,seq);
-					FilesDAO.getInstacne().insert(dto1);
-					}
-					
-					
 					String qna_writer = (String)request.getSession().getAttribute("loginID");
 					String qna_nickname = (String)request.getSession().getAttribute("loginNickname");
 					String qna_title = multi.getParameter("qna_title");
 					String qna_contents = multi.getParameter("qna_contents");
-					QnaDAO dao = QnaDAO.getInstance();
-					QnaDTO dto = new QnaDTO(0, qna_title, qna_writer, qna_contents, null, 0, qna_nickname,0,0,0);
+					
+					int seq = QnaDAO.getInstance().getnextval();
+					QnaDTO dto = new QnaDTO(seq, qna_title, qna_writer, qna_contents, null, 0, qna_nickname,0,0,0);
 					dao.write(dto);
+					//업로드된 파일들의 이름부터 알아봐야함
+					//어레이리스트에 저장했다고 보면됨.
+					
+					
+					Enumeration<String> e = multi.getFileNames();
+					//ResultSet의 rs.next랑 비슷.
+					
+					while(e.hasMoreElements()) {
+						String name = e.nextElement();
+						//클라이언트가 업로드하는 원본 파일 이름.
+						String oriName = multi.getOriginalFileName(name);
+						if(oriName ==null) {continue;}
+						
+						//서버측에 저장되는 시스템 파일 이름.
+						String sysName = multi.getFilesystemName(name);
+						//파일목록을 추가하고 파일을 안올리고 글작성을 누르는 경우.
+						
+						int seq1 = Qna_imagesDAO.getInstance().getnextval();
+						Qna_imagesDAO.getInstance().insert(new Qna_imagesDTO(seq1, oriName, sysName, seq));
+						
+					
+					}
+					
+					
+					
+					
+					
 
 					response.sendRedirect("/list.qna?cpage=1");
 				}catch(Exception e) {
@@ -125,18 +136,21 @@ public class QnaController extends HttpServlet {
 			}else if(uri.equals("/detail.qna")) {
 
 				QnaDAO dao = QnaDAO.getInstance();
+				Qna_imagesDAO dao1 = Qna_imagesDAO.getInstance();
+				
 				int seq = Integer.parseInt(request.getParameter("qna_seq"));
+			
 				String id = (String) request.getSession().getAttribute("loginID");
-				List<FilesDTO> filelist = FilesDAO.getInstacne().selectAll();
-				request.setAttribute("filelist", filelist);
+
+				
 				List<QnaCommentsDTO> list = QnaCommentsDAO.getInstance().selectAll(seq);
 				
 				QnaDTO dto = dao.selectBySeq(seq);
 				QnaDAO.getInstance().addViewCount(seq);
 				
 				boolean member_role = MembersDAO.getInstance().isInBlacklist(id);
-	
-				
+				request.setAttribute("oriName", dao1.getImageOriName(seq));
+				System.out.println(dao1.getimage(seq));
 				request.setAttribute("list", list);
 				request.setAttribute("dto", dto);
 				request.setAttribute("member_role", member_role);

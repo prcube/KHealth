@@ -160,10 +160,10 @@
 						placeholder="내용을 입력하세요.">
                </textarea>
 					<div class="row mt-3 ">
-						<fieldset>
-					<legend>파일목록</legend>
-						<button id = "fileAdd" type=button>+</button>
-				</fieldset>
+				
+						<input type=file name="file">
+				
+				</div>
 					</div>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
