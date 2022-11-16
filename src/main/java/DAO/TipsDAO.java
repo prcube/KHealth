@@ -166,7 +166,7 @@ public class TipsDAO {
 
 		// 밑에 얘네들은 데이터 테이블에 넣고 관리해야한다.
 		int recordTotalCount = this.getRecordCount(); // 원래는 sql에서 데이터를 가져와야하는데 일단은 borad에 144개의 글이 있다고 가정
-		int recordCountPerPage = 10; // 게시판 한 페이지당 한개의 페이지에 10개의 글을 보여주기로 설정
+		int recordCountPerPage = 20; // 게시판 한 페이지당 한개의 페이지에 10개의 글을 보여주기로 설정
 		int naviCountPerPage = 10; // 게시판 하단의 Page Navigator 가 한번에 몇개씩 보여질지 설정
 
 		// 전체 페이지의 개수 = 게시글의 개수 / 한페이지당 보여줄 게시글 +1
@@ -241,7 +241,7 @@ public class TipsDAO {
 	}
 
 	public List<TipsDTO> selectByRange(int start, int end) throws Exception {
-		String sql = "select * from(select tips.*, row_number() over(order by tips_seq desc)as rn from tips) where rn between ? and ?";
+		String sql = "select * from(select tips.*, row_number() over(order by tips_seq asc)as rn from tips) where rn between ? and ?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
@@ -269,7 +269,7 @@ public class TipsDAO {
 	}
 
 	public List<TipsDTO> selectBybullet1(int start, int end, String tips_bullet) throws Exception {
-		String sql = "select * from(select tips.*, row_number() over(order by tips_seq desc)as rn from tips) where (rn between ? and ? ) and tips_bullet='가슴'order by tips_bullet desc";
+		String sql = "select * from(select tips.*, row_number() over(order by tips_seq asc)as rn from tips) where (rn between ? and ? ) and tips_bullet='가슴'order by tips_bullet desc";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
@@ -298,7 +298,7 @@ public class TipsDAO {
 	}
 
 	public List<TipsDTO> selectBybullet2(int start, int end, String tips_bullet) throws Exception {
-		String sql = "select * from(select tips.*, row_number() over(order by tips_seq desc)as rn from tips) where (rn between ? and ? ) and tips_bullet='등'order by tips_bullet desc";
+		String sql = "select * from(select tips.*, row_number() over(order by tips_seq asc)as rn from tips) where (rn between ? and ? ) and tips_bullet='등'order by tips_bullet desc";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
@@ -327,7 +327,7 @@ public class TipsDAO {
 	}
 
 	public List<TipsDTO> selectBybullet3(int start, int end, String tips_bullet) throws Exception {
-		String sql = "select * from(select tips.*, row_number() over(order by tips_seq desc)as rn from tips) where (rn between ? and ? ) and tips_bullet='하체'order by tips_bullet desc";
+		String sql = "select * from(select tips.*, row_number() over(order by tips_seq asc)as rn from tips) where (rn between ? and ? ) and tips_bullet='하체'order by tips_bullet desc";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
@@ -356,7 +356,7 @@ public class TipsDAO {
 	}
 
 	public List<TipsDTO> selectBybullet4(int start, int end, String tips_bullet) throws Exception {
-		String sql = "select * from(select tips.*, row_number() over(order by tips_seq desc)as rn from tips) where (rn between ? and ? ) and tips_bullet='어깨'order by tips_bullet desc";
+		String sql = "select * from(select tips.*, row_number() over(order by tips_seq asc)as rn from tips) where (rn between ? and ? ) and tips_bullet='어깨'order by tips_bullet desc";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
