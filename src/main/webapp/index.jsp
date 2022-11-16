@@ -521,13 +521,13 @@
                      <img class="card-img-top"
                         src="/image/p1.png" alt="..." />
                      <div class="card-body p-4">
-                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">어깨
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">재활
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
                            <h5 class="card-title mb-3">Andrew Kim</h5>
                         </a>
-                        <p class="card-text mb-0">불균형한 어깨를 완벽하게 대칭으로 만들 수 있는 꿀팁!</p>
+                        <p class="card-text mb-0">부상을 방지를 위한 필수 운동습관!</p>
                      </div>
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
@@ -543,14 +543,13 @@
                      <img class="card-img-top"
                         src="/image/p5.png" alt="..." />
                      <div class="card-body p-4">
-                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">하체
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">식단
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
                            <h5 class="card-title mb-3">Benjamin Barclay</h5>
                         </a>
-                        <p class="card-text mb-0">가장 효율적인 하체근육 키우는 법, 과학적인 효율적인
-                           하체운동!</p>
+                        <p class="card-text mb-0">다이어트 및 벌크업을 위한 고효율의 식단!</p>
                      </div>
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
@@ -566,13 +565,13 @@
                      <img class="card-img-top"
                         src="/image/p6.png" alt="..." />
                      <div class="card-body p-4">
-                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">등
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">체력
                            전문</div>
                         <a class="text-decoration-none link-dark stretched-link"
                            href="#!">
                            <h5 class="card-title mb-3">DeMar DeRozan</h5>
                         </a>
-                        <p class="card-text mb-0">완벽한 뒤태를 만들기 위한 효과적인 등 운동!</p>
+                        <p class="card-text mb-0">일상에 필요한 기초 체력과 개인에 맞는 정확한 운동법!</p>
                      </div>
                      <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
@@ -687,19 +686,18 @@
                <div
                   class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                   <div class="mb-4 mb-xl-0">
-                     <div class="fs-3  text-white">Sign up for Email to Enjoy Shopping</div>
-                     <div class="text-white-50">Receive weekly Sales from K-Health</div>
+                     <div class="fs-3  text-white">이메일을 입력하시고 최신 정보를 받아보세요!</div>
+                     <div class="text-white-50">K-Health의 특가정보를 보내드립니다.</div>
                   </div>
                   <div class="ms-xl-4">
                      <div class="input-group mb-2">
                         <input class="form-control" type="text"
-                           placeholder="Email address..." aria-label="Email address..."
+                           placeholder="Email" aria-label="Email address..."
                            aria-describedby="button-newsletter" /><a href="/index.jsp"><button class="btn btn-outline-light " id="button-newsletter"
-                           type="button" >Submit</button></a>
+                           type="button" >제출</button></a>
                         
                      </div>
-                     <div class="small text-white-50">We care about privacy, and
-                        will never share your data.</div>
+                     <div class="small text-white-50">개인정보는 안정하게, 데이터는 소중하게 보관합니다!</div>
                   </div>
                </div>
             </aside>
