@@ -58,6 +58,7 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/list.tips?cpage=1">Tips</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -74,10 +75,9 @@
 									<ul class="dropdown-menu dropdown-menu-dark">
 										<li class="dropdown-item"><a href="/mypage.mem"
 											style="color: white; text-decoration: none;">Mypage</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">장바구니</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">뭐 넣지</a></li>
+										<li><a class="dropdown-item" style="color: white;" href="/list.wish?cpage=1">장바구니</a></li>
+<!-- 										<li><a class="dropdown-item" style="color: white;" -->
+<!-- 											href="#">뭐 넣지</a></li> -->
 										<li>
 											<hr class="dropdown-divider">
 										</li>
@@ -93,6 +93,7 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/list.tips?cpage=1">Tips</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -112,10 +113,10 @@
       </nav>
 
 
-   </main>
+   
 
    <form action=""  method="post" id="modifyFrm">
-      <div class="container">
+      <div class="container px-3 py-3">
 
          <div class="form-group row">
             <div class="col-sm-10">
@@ -143,8 +144,8 @@
 
          <div class="row">
             <div class="btn-group right" role="group" aria-label="Basic example">
-               <button type="submit" class="btn btn-primary" id="qnaModify">수정하기</button>
-               <button type="button" class="btn btn-primary" id="qnaBack">게시판으로</button>
+               <button type="submit" class="btn btn-secondary" id="qnaModify">수정하기</button>
+               <button type="button" class="btn btn-secondary" id="qnaBack">게시판으로</button>
             </div>
          </div>
 				<script>
@@ -159,7 +160,7 @@
 				</script>
       </div>
    </form>
-
+</main>
    <!-- Footer-->
    <footer class="bg-dark py-4 mt-auto ">
       <div class="container px-5 ">

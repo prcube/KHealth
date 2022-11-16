@@ -182,7 +182,7 @@
                                              <ul class="dropdown-menu dropdown-menu-dark" >
                                                 <li class="dropdown-item"><a href="/mypage.mem" style="color:white; text-decoration: none;">Mypage</a></li>
                                                 <li><a class="dropdown-item" style="color: white;" href="/list.wish?cpage=1">장바구니</a></li>
-                                                <li><a class="dropdown-item" style="color: white;" href="#">뭐 넣지</a></li>
+<!--                                                 <li><a class="dropdown-item" style="color: white;" href="#">뭐 넣지</a></li> -->
                                                 <li>
                                                    <hr class="dropdown-divider">
                                                 </li>
@@ -725,7 +725,7 @@
                   src="/image/facebook.png" height="20px"> <span
                   class="text-white mx-1">&middot;</span> <img
                   src="/image/youtube.png" height="20px"> <span
-                  class="/image/text-white mx-1">&middot;</span> <img
+                  class="text-white mx-1">&middot;</span> <img
                   src="/image/twitter.png" height="20px">
 
                <!-- Bootstrap core JS-->

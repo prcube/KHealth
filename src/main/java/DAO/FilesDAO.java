@@ -39,33 +39,53 @@ private static FilesDAO instance = null;
 				pstat.setInt(1, dto.getParent_seq());
 				pstat.setString(2, dto.getOriName());
 				pstat.setString(3, dto.getSysName());
-				
+
 				
 				int result = pstat.executeUpdate();
-	
+				//System.out.println(dto.getParent_seq());
+				//System.out.println(dto.getOriName());
+				//System.out.println(dto.getSysName());
 				con.commit();
 				return result;
+				
+				
+				
+				
 			}
-		}public List<FilesDTO> selectAll() throws Exception {
-//			parent_seq값을 seq로 받아준다.
-			String sql  =  "select * from files";
+		}public List<FilesDTO> selectAll(int qna_seq) throws Exception {
+
+			List<FilesDTO> list = new ArrayList<>();
+			//parent_seq값을 seq로 받아준다.
+			String sql  =  "select * from files where parent_seq=?";
 			try(Connection con = this.getConnection();
-					PreparedStatement pstat = con.prepareStatement(sql);){
+				PreparedStatement pstat = con.prepareStatement(sql);){
+				pstat.setInt(1, qna_seq);
 				ResultSet rs = pstat.executeQuery();
 				
-				List<FilesDTO> list = new ArrayList<>();
 				while(rs.next()) {
-					FilesDTO dto  = new FilesDTO();
-					dto.setSeq(rs.getInt("seq"));
-					dto.setSysName(rs.getString("sysname"));
-					dto.setOriName(rs.getString("oriname"));
-					dto.setParent_seq(rs.getInt("parent_seq"));
-					list.add(dto);
-					
+					System.out.println(1);
+					int seq = rs.getInt("seq");
+					String oriName = rs.getString("oriName");
+					String sysName = rs.getString("sysName");
+					int parent_seq = rs.getInt("parent_seq");
+					list.add(new FilesDTO(seq,oriName,sysName,parent_seq));
+//					FilesDTO dto  = new FilesDTO();
+//					dto.setSeq(rs.getInt("seq"));
+//					dto.setSysName(rs.getString("oriName"));
+//					dto.setOriName(rs.getString("sysName"));
+//					dto.setParent_seq(rs.getInt("parent_seq"));
+//					System.out.println(rs.getInt("seq"));
+//					System.out.println(rs.getString("oriName"));
+//					System.out.println(rs.getString("sysName"));
+//					System.out.println(rs.getInt("parent_seq"));
+//					list.add(dto);
+					System.out.println(2);
 				}
-				System.out.println("FilesDAO : " + list.size());
 				return list;
+			
+				
 			}
 		}
-
 }
+
+

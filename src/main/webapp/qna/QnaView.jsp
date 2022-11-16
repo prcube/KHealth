@@ -74,6 +74,7 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/list.tips?cpage=1">Tips</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -90,10 +91,9 @@
 									<ul class="dropdown-menu dropdown-menu-dark">
 										<li class="dropdown-item"><a href="/mypage.mem"
 											style="color: white; text-decoration: none;">Mypage</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">장바구니</a></li>
-										<li><a class="dropdown-item" style="color: white;"
-											href="#">뭐 넣지</a></li>
+										<li><a class="dropdown-item" style="color: white;" href="/list.wish?cpage=1">장바구니</a></li>
+<!-- 										<li><a class="dropdown-item" style="color: white;" -->
+<!-- 											href="#">뭐 넣지</a></li> -->
 										<li>
 											<hr class="dropdown-divider">
 										</li>
@@ -109,6 +109,7 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/list.tips?cpage=1">Tips</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -160,10 +161,10 @@
 						placeholder="내용을 입력하세요.">
                </textarea>
 					<div class="row mt-3 ">
-						<fieldset>
-					<legend>파일목록</legend>
-						<button id = "fileAdd" type=button>+</button>
-				</fieldset>
+				
+						<input type=file name="file">
+				
+				</div>
 					</div>
 					<!-- <input type = file multiple name = "file"><br> -->
 				</div>
@@ -199,12 +200,14 @@
 										[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
 										[ 'table', [ 'table' ] ],
 										[ 'insert',
-												[ 'link', 'video' ] ],
+												[ 'link',  'video' ] ],
 										[
 												'view',
 												[ 'fullscreen', 'codeview',
 														'help' ] ] ]
 							});
+			
+		
 			
 		
 			
