@@ -137,7 +137,7 @@
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 text-right">
 								<p>
-									<em>주문번호 #: 34522677W</em>
+									<em>주문번호 : #${ran }</em>
 								</p>
 							</div>
 						</div>
@@ -149,8 +149,8 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>상품</th>
-										<th>수량</th>
+										<th class="text-center">상품</th>
+										<th class="text-center">수량</th>
 										<th class="text-center">가격</th>
 										<th class="text-center">합</th>
 									</tr>
@@ -158,21 +158,16 @@
 	
 								<tbody>
 									<tr>
-										<td class="col-md-7"><h4><em>
+										<td class="col-md-7" style="text-align: center"><h4><em>
 										</em>
 										${dto.product_name }
 											</h4></td>
 										<td class="col-md-2" style="text-align: center">
 										
 										${amount }</td>
-										<td class="col-md-2 text-center">${dto.product_price } 원</td>
+										<td class="col-md-1 text-center">${dto.product_price } 원</td>
+											
 										<td class="col-md-1 text-center">
-										</td>
-										
-									
-										
-										
-										<td>
 										<script>
 										//콤마 제거
 										const numberStr = "${dto.product_price }";
@@ -181,7 +176,6 @@
 										// 수량과 금액 곱한 후 결과 값에 콤마 다시 추가
 										var sum = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 										document.write(sum.toString());
-										
 										</script>원
 										</td>
 									</tr>
