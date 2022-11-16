@@ -18,14 +18,13 @@
 </script>
 </head>
 <body>
-
+<div class="container mt-5">
 	<table class="table align-middle mb-0 bg-white">
 		<thead class="bg-light">
 			<tr>
 				<th>번호</th>
 				<th>닉네임</th>
 				<th>등록일시</th>
-
 			</tr>
 		</thead>
 		<tbody>
@@ -40,15 +39,18 @@
 
 		</tbody>
 	</table>
-	
-	<br><br><br><br>
-	<form action="/blacklist.admin" method="post">
-
+	<br>
+	<br>
+	<form action="" method="post" id=Frm>
 		<div>
 			<input type="text" placeholder="차단 대상 별명 입력" name="member_nickname">
 			<button id="addBlacklistBtn">블랙리스트 등록</button>
 		</div>
 	</form>
+	</div>
+	
+	
+	
 
 	<script>
 		$(".removeBlacklistBtn").on("click",function(){
@@ -60,6 +62,20 @@
 				location.href = "/removeblacklist.admin?removeBlacklist_seq="+target+"";
 			}
 		})	
+		
+		$("#addBlacklistBtn").on("click",function(){
+			
+			let reallyadd = confirm("정말 블랙리스트에 대상을 추가하시겠습니까?");
+			
+			if(reallyadd){
+				$("#Frm").attr("action","/blacklist.admin");
+				$("#Frm").submit();
+			}else{
+				return;
+			}
+			
+
+		})
 	</script>
 </body>
 </html>

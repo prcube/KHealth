@@ -37,6 +37,8 @@
 		$("#update,#delete").hide();
 		if("${dto.qna_writer}" == "${loginID}") {
 			$("#update,#delete").show();
+		}else if("${loginID}"=="admin33"){
+			$("#update,#delete").show();
 		}
 	})
 
@@ -145,7 +147,7 @@
 									<input type=hidden  name=qna_contents>
 
 									<div class="fw-bold">${dto.qna_nickname }</div>
-									<div class="text-muted">News, Business</div>
+									<div class="text-muted"></div>
 								</div>
 							</div>
 						</div>
@@ -313,8 +315,15 @@
 	
 	//삭제하기
 	$(".deleteComments").on("click",function(){
-		let target = $(this).attr("qnaCms_seq");
-		location.href = "/delete.comments?qnaCms_seq="+target;
+		let reallydel = confirm("정말로 삭제하시겠습니까?");
+		
+		if(reallydel){
+			let target = $(this).attr("qnaCms_seq");
+			location.href = "/delete.comments?qnaCms_seq="+target;
+		}else{
+			return;
+		}
+
 	})
                     //댓글 수정하기
                   $(".modifyComments").on("click",function(){
@@ -338,7 +347,7 @@
                      modifyCommentsCancel.attr("type","button");
                      modifyCommentsCancel.html("취소");
                      modifyCommentsCancel.on("click",function(){
-                        location.reload();
+                    	 location.href = "/detail.qna?qna_seq="+${dto.qna_seq }+""
                      })
                      
                 $(this).before(modifyCommentsOk);
@@ -353,8 +362,16 @@
          history.back(); //뒤로가기기능이랑 동일.
          })
            $("#delete").on("click",function(){
-              $("#detailFrm").attr("action","/delete.qna")
-              $("#detailFrm").submit();
+        	   let reallydel = confirm("정말로 삭제하시겠습니까?");
+        	   
+        	   if(reallydel){
+                   $("#detailFrm").attr("action","/delete.qna")
+                   $("#detailFrm").submit();
+        	   }else{
+        		   return;
+        	   }
+        	   
+
            })
        	$("#update").on("click", function() {
 			$("#detailFrm").attr("action","/gomodify.qna?qna_seq="+ ${dto.qna_seq});
@@ -368,6 +385,9 @@
             		return;
             	}else if(${loginID == null}){
             		alert("회원가입 이후 작성 가능합니다.")
+            		return;
+            	}else if($("#comments").val() == ""){
+            		alert("내용을 입력해주세요.")
             		return;
             	}
             	
@@ -406,11 +426,11 @@
 </html>
 
 
-<div class="container">
-	<div class="form-group row">
-		<div class="col-sm-10">
-			<input type="text" readonly class="form-control-plaintext"
-				id="header" value="">
-		</div>
-	</div>
-</div>
+<!-- <div class="container"> -->
+<!-- 	<div class="form-group row"> -->
+<!-- 		<div class="col-sm-10"> -->
+<!-- 			<input type="text" readonly class="form-control-plaintext" -->
+<!-- 				id="header" value=""> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
