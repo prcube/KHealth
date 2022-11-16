@@ -41,20 +41,63 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Intro</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/tips/TipsDummy.jsp">Tips</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/market/MarketDummy.jsp">Market</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/qna/QnaDummy.jsp">Q&A</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
-					</ul>
-				</div>
+				<c:choose>
+					<c:when test="${loginID != null}">
+						<!-- 로그인을 한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+
+
+								<!-- dropdown -->
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" style="color: white" href="#"
+									role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }님 </a>
+									<ul class="dropdown-menu dropdown-menu-dark">
+										<li class="dropdown-item"><a href="/mypage.mem"
+											style="color: white; text-decoration: none;">Mypage</a></li>
+										<li><a class="dropdown-item" style="color: white;" href="/list.wish?cpage=1">장바구니</a></li>
+<!-- 										<li><a class="dropdown-item" style="color: white;" -->
+<!-- 											href="#">뭐 넣지</a></li> -->
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><input type="button" class="btn btn-link" id="logout"
+											style="color: white; text-decoration: none;" value="로그아웃"></li>
+									</ul></li>
+							</ul>
+						</div>
+
+					</c:when>
+					<c:when test="${loginID == null}">
+						<!-- 로그인을 안한 사용자 -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link" href="/index.jsp">Home</a></li>
+								<li class="nav-item"><a class="nav-link"href="/contact/contact.jsp">About us</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.tips?cpage=1">Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.market?cpage=1">Market</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/list.qna?cpage=1">Q&A</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/LoginDummy.jsp">Login</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="login/SigninDummy.jsp">Signin</a></li>
+								<li></li>
+							</ul>
+						</div>
+					</c:when>
+				</c:choose>
 			</div>
 			<c:choose>
 				<c:when test="${loginID != null}">
@@ -81,18 +124,18 @@
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 mt-5">
 				<div
-					class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					class="row gx-12 gx-lg-12 row-cols-12 row-cols-md-12 row-cols-xl-12 justify-content-center">
 					<div
-						class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+						class="well col-xs-12 col-sm-12 col-md-12 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
 						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="col-xs-12 col-sm-12 col-md-12">
 								<address>
 									<strong>배송지 정보</strong> <br> ${dao.zip } <br>
 									${dao.address1 }<br> ${dao.address2 }  <br> <abbr title="Phone">Phone:</abbr>
 									${dao.number }
 								</address>
 							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+							<div class="col-xs-12 col-sm-12 col-md-12 text-right">
 								<p>
 									<em>주문번호 #: 34522677W</em>
 								</p>
