@@ -101,11 +101,11 @@ public class TIpsController extends HttpServlet {
 				String id = (String) request.getSession().getAttribute("loginID");
 				boolean member_role = MembersDAO.getInstance().isYouTeacher(id);
 
-				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage * 10 - 9, cpage * 10);
-				List<TipsDTO> list1 = TipsDAO.getInstance().selectBybullet1(cpage * 10 - 9, cpage * 10, null);
-				List<TipsDTO> list2 = TipsDAO.getInstance().selectBybullet2(cpage * 10 - 9, cpage * 10, null);
-				List<TipsDTO> list3 = TipsDAO.getInstance().selectBybullet3(cpage * 10 - 9, cpage * 10, null);
-				List<TipsDTO> list4 = TipsDAO.getInstance().selectBybullet4(cpage * 10 - 9, cpage * 10, null);
+				List<TipsDTO> list = TipsDAO.getInstance().selectByRange(cpage * 21 - 20, cpage * 21);
+				List<TipsDTO> list1 = TipsDAO.getInstance().selectBybullet1(cpage * 21 - 20, cpage * 21, null);
+				List<TipsDTO> list2 = TipsDAO.getInstance().selectBybullet2(cpage * 21 - 20, cpage * 21, null);
+				List<TipsDTO> list3 = TipsDAO.getInstance().selectBybullet3(cpage * 21 - 20, cpage * 21, null);
+				List<TipsDTO> list4 = TipsDAO.getInstance().selectBybullet4(cpage * 21 - 20, cpage * 21, null);
 
 				String navi = TipsDAO.getInstance().getPageNavi(cpage);
 				request.setAttribute("navi", navi);
