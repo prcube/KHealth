@@ -31,9 +31,8 @@ public class MypageController extends HttpServlet {
 				List<MypageDTO> list = MypageDAO.getInstance().selectAll(id);
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				List<MypageDTO> list2 = MypageDAO.getInstance().selectByRange(cpage * 5 - 4, cpage * 5, id);
-				String navi = MypageDAO.getInstance().getPageNavi(cpage);
+				String navi = MypageDAO.getInstance().getPageNavi(cpage, id);
 				
-
 				request.setAttribute("list2", list2);
 				request.setAttribute("navi", navi);
 				request.setAttribute("list", list);
