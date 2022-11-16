@@ -156,8 +156,22 @@
 									</button>
 								</header>
 								<figure class="mb-4">
+									<br>
+									<br>
+									<br>
+
 									<img class="img-fluid rounded" src="/tips_images/${oriName }"
 										alt="..." />
+										<br>
+										<br>
+										<br>
+										<br>
+										<br>
+									<iframe class="rounded-3" width="100%" height="450px"
+										src="https://www.youtube.com/embed/${dto.tips_video }"
+										title="YouTube video player" frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen></iframe>
 								</figure>
 								<section class="mb-5">
 									<h2 class="fw-bolder mb-4 mt-5">${dto.tips_title}</h2>

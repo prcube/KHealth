@@ -19,8 +19,7 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
 	
 </script>
@@ -100,6 +99,19 @@
 					</c:when>
 				</c:choose>
 			</div>
+			<c:choose>
+				<c:when test="${loginID != null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white">${loginID }님 안녕하세요? &nbsp; &nbsp;
+						&nbsp;</a>
+					<input type="button" id="logout" style="WIDTH: 60pt; HEIGHT: 20pt"
+						value="로그아웃">
+				</c:when>
+				<c:when test="${loginID == null}">
+					<!-- 로그인을 한 사용자 -->
+					<a style="color: white"></a>
+				</c:when>
+			</c:choose>
 		</nav>
 
 
@@ -119,8 +131,8 @@
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<address>
 									<strong>배송지 정보</strong> <br> ${dao.zip } <br>
-									${dao.address1 }<br> ${dao.address2 } <br> <abbr
-										title="Phone">Phone:</abbr> ${dao.number }
+									${dao.address1 }<br> ${dao.address2 }  <br> <abbr title="Phone">Phone:</abbr>
+									${dao.number }
 								</address>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 text-right">
@@ -143,21 +155,25 @@
 										<th class="text-center">합</th>
 									</tr>
 								</thead>
-
+	
 								<tbody>
 									<tr>
-										<td class="col-md-7"><h4>
-												<em> </em> ${dto.product_name }
+										<td class="col-md-7"><h4><em>
+										</em>
+										${dto.product_name }
 											</h4></td>
-										<td class="col-md-2" style="text-align: center">${amount }</td>
-										<td class="col-md-2 text-center">${dto.product_price }원</td>
-										<td class="col-md-1 text-center"></td>
-
-
-
-
+										<td class="col-md-2" style="text-align: center">
+										
+										${amount }</td>
+										<td class="col-md-2 text-center">${dto.product_price } 원</td>
+										<td class="col-md-1 text-center">
+										</td>
+										
+									
+										
+										
 										<td>
-																				<script>
+										<script>
 										//콤마 제거
 										const numberStr = "${dto.product_price }";
 										const number = numberStr.replace(/,/g, "");
@@ -188,61 +204,58 @@
 									</tr>
 								</tbody>
 							</table>
-							<form action="/completed.buy" name="formgo" method="post">
-								<input type="hidden" value="${dto.product_name }" name="name">
-								<input type="hidden" value="${amount }" name="amount"> <input
-									type="hidden" value="${loginID }" name="ID"> <input
-									type="hidden" value="${dao.nickname }" name="nickname">
-							</form>
+						<form action ="/completed.buy" name ="formgo" method="post">
+						<input type = "hidden" value="${dto.product_name }" name = "name">
+						<input type = "hidden" value="${amount }" name = "amount">
+						<input type = "hidden" value="${loginID }" name = "ID">
+						<input type = "hidden" value="${dao.nickname }" name = "nickname">
+						</form>
+				
+							<input type="submit" value="결제하기" onclick="requestPay()" class="btn btn-success btn-lg btn-block">
+							
+							<span class="glyphicon glyphicon-chevron-right"></span>
+							
+					<script>
+					var buyer  = "${dao.name }";
+					var name = "${dto.product_name }";
+					const numberStr2 = "${dto.product_price }";
+					const number2 = numberStr.replace(/,/g, "");
+					var result2 = number2 * ${amount };
+					    function requestPay() {
+					    	var form = document.formgo;
+					      // IMP.request_pay(param, callback) 결제창 호출
+					        var IMP = window.IMP; // 생략 가능
+						    IMP.init("imp52470434"); // 예: imp00000000
+					      IMP.request_pay({ // param
+					          pg: "html5_inicis",
+					          pay_method: "card",
+					          /* merchant_uid: "ORD20180131-0000011", */
+					          name: name,
+					          /* amount: result2, */
+					          amount: 100,
+					          buyer_email: "",
+					          buyer_name: buyer ,
+				          	  buyer_tel: ""
 
-							<input type="submit" value="결제하기" onclick="requestPay()"
-								class="btn btn-success btn-lg btn-block"> <span
-								class="glyphicon glyphicon-chevron-right"></span>
-
-							<script>
-								var buyer = "${dao.name }";
-								var name = "${dto.product_name }";
-								const numberStr2 = "${dto.product_price }";
-								const number2 = numberStr.replace(/,/g, "");
-								var result2 = number2 * $
-								{
-									amount
-								};
-								function requestPay() {
-									var form = document.formgo;
-									// IMP.request_pay(param, callback) 결제창 호출
-									var IMP = window.IMP; // 생략 가능
-									IMP.init("imp52470434"); // 예: imp00000000
-									IMP.request_pay({ // param
-										pg : "html5_inicis",
-										pay_method : "card",
-										/* merchant_uid: "ORD20180131-0000011", */
-										name : name,
-										/* amount: result2, */
-										amount 100: ,
-										buyer_email : "",
-										buyer_name : buyer,
-										buyer_tel : ""
-
-									}, function(rsp) { // callback
-										if (rsp.success) {
-											form.submit();
-										} else {
-											var msg = '결제에 실패하였습니다.';
-											msg += '에러내용 : ' + rsp.error_msg;
-											alert(msg)
-										}
-									});
-								}
-							</script>
-
+					      }, function (rsp) { // callback
+					          if (rsp.success) {
+					            form.submit();
+					          } else {
+					        	  var msg = '결제에 실패하였습니다.';
+					              msg += '에러내용 : ' + rsp.error_msg;
+					              alert(msg)
+					          }
+					      });
+					    }
+  				</script>	
+							
 						</div>
 					</div>
 				</div>
-
+			
 			</div>
 		</section>
-	</main>
+
 
 
 
@@ -271,18 +284,12 @@
 				</div>
 			</div>
 		</div>
-
 	</footer>
-	<!-- Bootstrap core JS-->
+	<!— Bootstrap core JS—>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
+	<!— Core theme JS—>
 	<script src="/js/scripts.js"></script>
-	<script>
-		$("#logout").on("click", function() {
-			location.href = "/logout.mem";
-		})
-	</script>
 
 </body>
 </html>

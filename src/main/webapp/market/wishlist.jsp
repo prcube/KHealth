@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>K-Health</title>
@@ -14,51 +14,52 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet" />
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+   rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
 
 <style>
 .card-registration .select-arrow {
-	top: 13px;
+   top: 13px;
 }
 
 .bg-grey {
-	background-color: #eae8e8;
+   background-color: #eae8e8;
 }
 
 @media ( min-width : 992px) {
-	.card-registration-2 .bg-grey {
-		border-top-right-radius: 16px;
-		border-bottom-right-radius: 16px;
-	}
+   .card-registration-2 .bg-grey {
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+   }
 }
 
 @media ( max-width : 991px) {
-	.card-registration-2 .bg-grey {
-		border-bottom-left-radius: 16px;
-		border-bottom-right-radius: 16px;
-	}
+   .card-registration-2 .bg-grey {
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+   }
 }
 /* tr { */
 /*    border-color: transparent; */
 /* } */
 .table {
-	border-radius: 0.5rem;
+   border-radius: 0.5rem;
 }
 
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
-	{
-	-webkit-appearance: none;
-	margin: 0;
+   {
+   -webkit-appearance: none;
+   margin: 0;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.js">
-	
+   
 </script>
 </head>
 <body class="d-flex flex-column h-100">
+<<<<<<< HEAD
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
@@ -484,6 +485,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
             location.href = "/logout.mem";
          })
 
-	</script>
+   </script>
 </body>
 </html>
