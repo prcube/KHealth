@@ -89,7 +89,7 @@
 								<address>
 									<strong>배송지 정보</strong> <br> ${dao.zip } <br>
 									${dao.address1 }<br> ${dao.address2 }  <br> <abbr title="Phone">Phone:</abbr>
-									${dao.number }
+									${dao.mail }
 								</address>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 text-right">
