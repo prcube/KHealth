@@ -150,6 +150,7 @@
 <script>
    $(function(){
       if(${member_role}){
+    	 
          let adminBtn = $("#btnArea").append("<button>");
          adminBtn.attr("type", "button");
          adminBtn.text("관리자 페이지로 이동");
@@ -523,10 +524,7 @@
       </div>
 
 <!-- 수정완료 버튼이 나오는 곳 -->
-      <div class="container mb-5">
-      <button id=btnArea>
-      관리자 페이지로 이동
-      </button>
+      <div class="container mb-5" id=btnArea>
       </div>
       
 
