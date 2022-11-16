@@ -59,7 +59,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 </script>
 </head>
 <body class="d-flex flex-column h-100">
-<<<<<<< HEAD
+
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
 		<nav
