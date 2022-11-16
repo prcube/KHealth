@@ -2,6 +2,7 @@ package CONTROLLERS;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,8 +40,20 @@ public class buyController extends HttpServlet {
 				request.setAttribute("amount", result);
 				request.setAttribute("dao", dao);
 //				request.setAttribute("price", price * result);
+				Random random = new Random ();
+				int createNum = 0;
+				String ranNum = "";
+				int letter = 6;
+				String resultNum = "";
+				for (int i=0; i < letter; i++) {
+				createNum = random.nextInt (9);
+				//0부터9까지올수있는1자리난수생성
+				ranNum = Integer.toString(createNum);//1자리난수를String으로형변환
+				resultNum += ranNum;
+				}
+				request.setAttribute("ran", resultNum);
 				request.getRequestDispatcher("/order/orderpay.jsp").forward(request, response);
-
+			
 			}else if (uri.equals("/completed.buy")) {
 				
 				String id = (String) request.getSession().getAttribute("loginID");

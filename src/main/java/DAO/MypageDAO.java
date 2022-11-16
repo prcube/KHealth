@@ -3,11 +3,13 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import DTO.MypageDTO;
@@ -52,20 +54,21 @@ public class MypageDAO {
 
 	}
 
-	public int getRecordCount() throws Exception {
-		String sql = "select count(*) from buy_record";
-
-		try (Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);
-				ResultSet rs = pstat.executeQuery()) {
+	public int getRecordCount(String id) throws Exception {
+		String sql = "select count(*) from buy_record where buy_rcd_userid = ?";
+		
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			ResultSet rs = pstat.executeQuery(); {
 			rs.next();
 			return rs.getInt(1);
 		}
+		}
 	}
-
-	public String getPageNavi(int currentPage) throws Exception {
-
-		int recordTotalCount = this.getRecordCount(); // board table 에 144개 글이 있다고 가정
+	
+	public String getPageNavi(int currentPage, String id) throws Exception {
+		
+		int recordTotalCount = this.getRecordCount(id); // board table 에 144개 글이 있다고 가정
 		int recordCountPerpage = 5; // 게시판당 한 페이지 10 개씩 글 보여주는걸 설정
 		int naviCountPerpage = 10; // 게시판 하단의 네비게이터가 한 번에 몇개 보여질지 설정
 
@@ -116,6 +119,7 @@ public class MypageDAO {
 
 		return sb.toString();
 	}
+
 
 	public List<MypageDTO> selectByRange(int start, int end, String id) throws Exception {
 		String sql = "select * from (select buy_record.*, row_number() over(order by buy_rcd_seq desc) rn from buy_record) where (rn between ? and ?) and buy_rcd_userid=?";

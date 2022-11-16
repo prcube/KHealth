@@ -226,7 +226,7 @@
 			<form method="post">
 				<div class="row">
 					<div class="col-md-3">
-						<div class="profile-img">아마도 사진?</div>
+						
 					</div>
 					<div class="col-md-7">
 						<div class="profile-head">
@@ -247,10 +247,7 @@
 					<div class="col-md-3">
 						<div class="profile-work">
 							<p>My Page</p>
-							<a href="/mypage/MypageDummy.jsp">프로필 정보</a><br /> <a
-								href="/mypage/MypageUpdate.jsp">프로필 수정</a><br /> <a
-								href="/mypage/MypageBoard.jsp">작성한 글</a><br /> <a
-								href="/mypage/MypageComment.jsp">작성한 댓글</a><br />
+							<a href="/mypage.mem">프로필 정보</a><br />
 							<p>Order</p>
 							<a href="/orderhistory.mypage?cpage=1">구매 내역</a>
 						</div>
@@ -293,7 +290,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+ 				<div class="row">
 					<div class="col-md-12" align="center">
 						<h4 style="color: red" id="test">
 							<c:choose>
@@ -312,36 +309,36 @@
 
 						</h4>
 					</div>
-				</div>
+				</div> 
 			</form>
 		</div>
 		</main>
 		<!-- Footer-->
-		<footer class="bg-dark py-4 mt-auto ">
-			<div class="container px-5 ">
-				<div
-					class="row align-items-center justify-content-between flex-column flex-sm-row ">
-					<div class="text-center">
-						<div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 |
-							책임자 : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
-						<div class="small m-0 text-white"></div>
-						<div class="small m-0 text-white">케이헬스 주식회사
-							(www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
-						<div class="small m-0 text-white">Copyright &copy; K-Health
-							Corp. All rights reserved.</div>
-						<div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
+<footer class="bg-dark py-4 mt-auto ">
+      <div class="container px-5 ">
+         <div
+            class="row align-items-center justify-content-between flex-column flex-sm-row ">
+            <div class="text-center">
+               <div class="small m-0 text-white">대표자 : 임근혁 | 담당자 : 윤성민 | 책임자
+                  : 유한호 | 관리자 : 이진혁 | 개발자 : 이승택 | 총관리 : 권준구</div>
+               <div class="small m-0 text-white"></div>
+               <div class="small m-0 text-white">케이헬스 주식회사
+                  (www.k-health.com) | 사업자등록번호 : 851-12-34567</div>
+               <div class="small m-0 text-white">Copyright &copy; K-Health
+                  Corp. All rights reserved.</div>
+               <div class="small m-0 text-white">서울특별시 중구 남대문로 120 대일빌딩 3층</div>
 
-						<img src="/image/instagram.png" height="20px"> <span
-							class="text-white mx-1">&middot;</span> <img
-							src="/image/facebook.png" height="20px"> <span
-							class="text-white mx-1">&middot;</span> <img
-							src="/image/youtube.png" height="20px"> <span
-							class="/image/text-white mx-1">&middot;</span> <img
-							src="/image/twitter.png" height="20px">
-					</div>
-				</div>
-			</div>
-		</footer>
+               <img src="/image/instagram.png" height="20px"> <span
+                  class="text-white mx-1">&middot;</span> <img
+                  src="/image/facebook.png" height="20px"> <span
+                  class="text-white mx-1">&middot;</span> <img
+                  src="/image/youtube.png" height="20px"> <span
+                  class="/image/text-white mx-1">&middot;</span> <img
+                  src="/image/twitter.png" height="20px">
+            </div>
+         </div>
+      </div>
+   </footer>
 		<!-- Bootstrap core JS-->
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
