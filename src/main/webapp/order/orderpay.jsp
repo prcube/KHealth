@@ -132,7 +132,7 @@
 								<address>
 									<strong>배송지 정보</strong> <br> ${dao.zip } <br>
 									${dao.address1 }<br> ${dao.address2 }  <br> <abbr title="Phone">Phone:</abbr>
-									${dao.number }
+									${dao.mail }
 								</address>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 text-right">

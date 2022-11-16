@@ -293,7 +293,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+ 				<div class="row">
 					<div class="col-md-12" align="center">
 						<h4 style="color: red" id="test">
 							<c:choose>
@@ -312,7 +312,7 @@
 
 						</h4>
 					</div>
-				</div>
+				</div> 
 			</form>
 		</div>
 		</main>
