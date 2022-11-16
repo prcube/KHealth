@@ -112,9 +112,9 @@
                                         <li class="nav-item"><a class="nav-link" href="/list.market?cpage=1">Market</a>
                                         </li>
                                         <li class="nav-item"><a class="nav-link" href="/list.qna?cpage=1">Q&A</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="login/LoginDummy.jsp">Login</a>
+                                        <li class="nav-item"><a class="nav-link" href="/login/LoginDummy.jsp">Login</a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="login/SigninDummy.jsp">Signin</a>
+                                        <li class="nav-item"><a class="nav-link" href="/login/SigninDummy.jsp">Signin</a>
                                         </li>
                                         <li></li>
                                     </ul>

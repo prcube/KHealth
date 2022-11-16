@@ -66,7 +66,7 @@ body {
 						<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
 						<li class="nav-item"><a class="nav-link" href="/list.tips">Tips</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/market/MarketDummy.jsp">Market</a></li>
+							href="/list.market?cpage=1">Market</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/list.qna?cpage=1">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="">Login</a></li>
